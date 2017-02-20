@@ -6,12 +6,6 @@
         <script src="js/materialize.min.js"></script>
     </head>
     <body>
-    <script>
-        $(function(){
-            $("#header").load("header.php");
-            $("#footer").load("footer.php");
-        });
-    </script>
         <?php
             echo "<section class=\"header\">";
             include_once("header.php");
@@ -27,6 +21,5 @@
             include_once("footer.php");
             echo "</section>";
         ?>
-
     </body>
 </html>

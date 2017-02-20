@@ -10,6 +10,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="2ea9a9c6-0e8a-4a39-bdeb-ccfbcf4673b7" name="server-cll" url="http://205.236.12.52">
+        <fileTransfer host="205.236.12.52" port="22" rootFolder="/var/mers/html/projet/h2017/equipe5" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

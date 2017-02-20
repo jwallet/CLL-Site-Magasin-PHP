@@ -1,17 +1,17 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <?php include_once("meta.php");
-            echo "<meta name='description' content='" . $description . "'>";
-            echo "<meta name='keywords' content='" . $keywords . "'>";
-            echo "<meta name='author' content='Jose Ouellet et Guillaume Prudhomme'>";
-            echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
-            echo "<title>" . $title . " - La Boîte à Bouf</title>";
-        ?>
-        <link rel="stylesheet" type="text/css" href="/css/materialize.css">
+        <?php include_once("meta.php"); ?>
+        <link rel="stylesheet" type="text/css" href="css/materialize.css">
+        <script src="js/materialize.min.js"></script>
     </head>
     <body>
-
+    <script>
+        $(function(){
+            $("#header").load("header.php");
+            $("#footer").load("footer.php");
+        });
+    </script>
         <?php
             echo "<section class=\"header\">";
             include_once("header.php");

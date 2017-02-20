@@ -3,15 +3,9 @@
         <meta charset="UTF-8">
         <?php include_once("meta.php"); ?>
         <link rel="stylesheet" type="text/css" href="css/materialize.css">
-        <script src="js/materialize.min.js"></script>
+        <script src="js/materialize.js"></script>
     </head>
     <body>
-    <script>
-        $(function(){
-            $("#header").load("header.php");
-            $("#footer").load("footer.php");
-        });
-    </script>
         <?php
             echo "<section class=\"header\">";
             include_once("header.php");

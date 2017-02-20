@@ -1,7 +1,7 @@
 <?php
 $page = explode("/", $_SERVER['PHP_SELF']);
 switch ($page[count($page)-1]){
-    case '/projet/h2017/equipe5/accueil.php':
+    case 'accueil.php':
         $title= 'La Boîte à Bouf';
         $description = 'description index du site';
         $keywords = 'key, word, to, add';

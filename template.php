@@ -7,19 +7,10 @@
     </head>
     <body>
         <?php
-            echo "<section class=\"header\">";
             include_once("header.php");
-            echo "</section>";
-            echo "<h1>" . $title . "</h1>";
-            echo "<section class=\"menu\">";
             include_once("menu.php");
-            echo "</section>";
-            echo "<section class=\"content\">";
             include_once("contenu.php");
-            echo "</section>";
-            echo "<section class=\"footer\">";
             include_once("footer.php");
-            echo "</section>";
         ?>
     </body>
 </html>

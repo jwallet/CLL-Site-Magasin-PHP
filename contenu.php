@@ -1,6 +1,6 @@
 <?php
-$page = $_SERVER['PHP_SELF'];
-switch ($page){
+$page = explode("/", $_SERVER['PHP_SELF']);
+switch ($page[count($page)-1]){
     case 'accueil.php';
         include_once("accueil-contenu.php");
         break;

@@ -1,22 +1,22 @@
 <?php
 $page = explode("/", $_SERVER['PHP_SELF']);
 switch ($page[count($page)-1]){
-    case 'accueil.php':
+    case 'home.php':
         $title= 'La Boîte à Bouf';
         $description = 'description index du site';
         $keywords = 'key, word, to, add';
- break;
+    break;
 
-    case '/projet/h2017/equipe5/admin.php':
+    case 'admin.php':
         $title= 'titre a propos de';
         $description = 'description a propos de';
         $keywords = 'key, word, to, add';
- break;
+    break;
     default:
         $title= 'null';
         $description = 'null';
         $keywords = 'null';
-        break;
+    break;
 }
 echo "<meta name='description' content='" . $description . "'>";
 echo "<meta name='keywords' content='" . $keywords . "'>";

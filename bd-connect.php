@@ -1,7 +1,3 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Admin
- * Date: 2/21/2017
- * Time: 9:10 AM
- */
+    @$mysqli = new mysqli("localhost", "root", "", "admin123") or die("Impossible de se connecter à la base de donnée");
+?>

@@ -17,10 +17,10 @@ switch ($page){
         include_once("admin-content.php");
         break;
     case 'admin-majclient.php';
-        include_once("admin-majclient.php");
+        include_once("admin-majclient-content.php");
         break;
     case 'admin-formcommande.php';
-        include_once("admin-formcommande.php");
+        include_once("admin-formcommande-content.php");
         break;
     case 'admin-menu.php';
         include_once("admin-menu-content.php");

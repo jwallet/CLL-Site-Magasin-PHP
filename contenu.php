@@ -13,9 +13,20 @@ switch ($page){
     case 'home.php';
         include_once("home-content.php");
         break;
-
     case 'admin.php';
         include_once("admin-content.php");
+        break;
+    case 'admin-majclient.php';
+        include_once("admin-majclient-contenu.php");
+        break;
+    case 'admin-formcommande.php';
+        include_once("admin-formcommande-contenu.php");
+        break;
+    case 'admin-menu.php';
+        include_once("admin-menu-contenu.php");
+        break;
+    case 'admin-majcommande.php';
+        include_once("admin-majcommande-contenu.php");
         break;
 }
 ?>

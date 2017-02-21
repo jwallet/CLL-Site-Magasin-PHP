@@ -1,5 +1,5 @@
-<footer class="page-footer">
-    <div class="footer-copyright">
+<footer class="page-footer white">
+    <div class="footer-copyright grey">
         <div class="container">
             © <?php echo date("Y"); ?> Copyright
             <div class="right">

@@ -22,14 +22,23 @@
 <!--    <a class="collection-item center-align" href="admin-majclient.php"><i class="medium material-icons">restaurant_menu</i>Formulaire des commandes</a>-->
 <!--</div>-->
 <?php
-echo $date = date_create(date('Y-m-d'));
-echo $DayOfWeek = date('N');
-date_sub($date, date_interval_create_from_date_string( 'days'));
-echo date_format($date, 'Y-m-d');
-//echo $CurrentDate = new DateTime('2012-01-01');
-//$CurrentDate->sub(new DateInterval('P' . (date("N") - 1) . 'D'));
-$query2 = "SELECT * FROM Menu WHERE datemenud between ;";
-$result2 = $mysqli->query($query2);
+
+$DayOfWeek = date('N') - 1;
+$WeekStart = new DateTime(date('Y-m-d'));
+$WeekStart->sub(new DateInterval('P' . $DayOfWeek . 'D'));
+$WeekEnd = new DateTime($WeekStart->format('Y-m-d'));
+$WeekEnd->add(new DateInterval('P6D'));
+$WeekStart=$WeekStart->format('Y-m-d');
+$WeekEnd = $WeekEnd->format('Y-m-d');
+$query = "SELECT * FROM Menu WHERE datemenud between $WeekStart and $WeekEnd;";
+$result = $mysqli->query($query);
+echo "<TABLE border=1>";
+while ($val = mysqli_fetch_array($result, MYSQLI_BOTH)){	//utilisation de mysqli_fetch_array($result2, MYSQLI_BOTH) ou , MYSQLI_NUM ou , MYSQLI_ASSOC
+
+    echo "<TR>"."<TD>".$val["idmenu"]."<TD>".$val[1]."<TD>"."<IMG SRC=".$val["description"]."></TR>";
+
+}
+echo "</TABLE>";
 ?>
 <script type="text/javascript">
     $(".button-collapse").sideNav();

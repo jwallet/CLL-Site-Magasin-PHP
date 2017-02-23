@@ -1,3 +1,11 @@
+<nav class="deep-orange accent-2">
+    <div class="nav-wrapper deep-orange accent-2 container">
+        <a href="#" class="brand-logo left boite-bouf">Boîte à Bouf</a>
+        <ul id="nav-mobile" class="right">
+            <li><a href="sass.html"><i class="material-icons">person</i></a></li>
+        </ul>
+    </div>
+</nav>
 <div class="slider">
     <ul class="slides">
         <li>
@@ -33,13 +41,13 @@
 <br /><br />
 
 <!-- valider si le client est connecter dans la page de connexion sinon le logger et ensuite aller a bonne page de shop-->
-<div style="width: 90%;" class='row'><div class="s12"><a style="width: 100%;" class="waves-effect waves-light btn-large" href='#'>Commander</a></div></div>
-
+<div class='container'><div class="s12"><a style="width: 100%;" class="waves-effect waves-light btn-large deep-orange accent-2" href='shop.php'>Commander</a></div></div>
+<br/>
 <script type="text/javascript">
     $(document).ready(function(){
         $('.slider').slider({
-            height:400
-            interval:
+            height:400,
+            interval:6000
         });
     });
 </script>

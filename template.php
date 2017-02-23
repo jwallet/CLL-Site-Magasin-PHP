@@ -13,5 +13,4 @@
             include_once("footer.php");
         ?>
     </body>
-    </body>
 </html>

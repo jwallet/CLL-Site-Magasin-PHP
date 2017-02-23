@@ -28,17 +28,22 @@ $WeekStart = new DateTime(date('Y-m-d'));
 $WeekStart->sub(new DateInterval('P' . $DayOfWeek . 'D'));
 $WeekEnd = new DateTime($WeekStart->format('Y-m-d'));
 $WeekEnd->add(new DateInterval('P6D'));
-$WeekStart=$WeekStart->format('Y-m-d');
-$WeekEnd = $WeekEnd->format('Y-m-d');
-$query = "SELECT * FROM Menu WHERE datemenud between $WeekStart and $WeekEnd;";
-$result = $mysqli->query($query);
-echo "<TABLE border=1>";
-while ($val = mysqli_fetch_array($result, MYSQLI_BOTH)){	//utilisation de mysqli_fetch_array($result2, MYSQLI_BOTH) ou , MYSQLI_NUM ou , MYSQLI_ASSOC
-
-    echo "<TR>"."<TD>".$val["idmenu"]."<TD>".$val[1]."<TD>"."<IMG SRC=".$val["description"]."></TR>";
-
+echo $WeekStart=$WeekStart->format('Y-m-d');
+echo $WeekEnd = $WeekEnd->format('Y-m-d');
+echo $query = "SELECT * FROM menu WHERE datemenud between '$WeekStart' and '$WeekEnd';";
+//$query = "UPDATE menu SET description='bonjour' WHERE idmenu='1';";
+$result = $mysqli->query($query) or die("Error: ".mysqli_error($mysqli));
+if (!$result) {
+    printf("Error: %s\n", mysqli_error($mysqli));
+    exit();
 }
-echo "</TABLE>";
+while ($val = $result->fetch_assoc()){
+    echo "<br><h4> " . "id:  " . $val['idmenu'] . "</br>";
+    echo "<h4>" . "desc:  " . $val['description'] ;
+}
+//$val = mysqli_fetch_array($result);
+//$description = $val["description"];
+//echo $description;
 ?>
 <script type="text/javascript">
     $(".button-collapse").sideNav();

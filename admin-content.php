@@ -15,12 +15,22 @@
     </div>
 </ul>
 <a href="#" data-activates="slide-out" class="button-collapse show-on-small"><i class="material-icons">menu</i></a>
-<div class="collection">
-    <a class="collection-item center-align" href="admin-majclient.php"><i class="medium material-icons">person</i>Mise à jour client</a>
-    <a class="collection-item center-align" href="admin-majclient.php"><i class="medium material-icons">shopping_basket</i>Commandes Clients</a>
-    <a class="collection-item center-align" href="admin-majclient.php"><i class="medium material-icons">restaurant</i>Menu de la semaine</a>
-    <a class="collection-item center-align" href="admin-majclient.php"><i class="medium material-icons">restaurant_menu</i>Formulaire des commandes</a>
-</div>
+<!--<div class="collection">-->
+<!--    <a class="collection-item center-align" href="admin-majclient.php"><i class="medium material-icons">person</i>Mise à jour client</a>-->
+<!--    <a class="collection-item center-align" href="admin-majclient.php"><i class="medium material-icons">shopping_basket</i>Commandes Clients</a>-->
+<!--    <a class="collection-item center-align" href="admin-majclient.php"><i class="medium material-icons">restaurant</i>Menu de la semaine</a>-->
+<!--    <a class="collection-item center-align" href="admin-majclient.php"><i class="medium material-icons">restaurant_menu</i>Formulaire des commandes</a>-->
+<!--</div>-->
+<?php
+echo $date = date_create(date('Y-m-d'));
+echo $DayOfWeek = date('N');
+date_sub($date, date_interval_create_from_date_string( 'days'));
+echo date_format($date, 'Y-m-d');
+//echo $CurrentDate = new DateTime('2012-01-01');
+//$CurrentDate->sub(new DateInterval('P' . (date("N") - 1) . 'D'));
+$query2 = "SELECT * FROM Menu WHERE datemenud between ;";
+$result2 = $mysqli->query($query2);
+?>
 <script type="text/javascript">
     $(".button-collapse").sideNav();
 </script>

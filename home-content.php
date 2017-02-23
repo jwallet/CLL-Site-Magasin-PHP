@@ -2,7 +2,7 @@
     <div class="nav-wrapper deep-orange accent-2 container">
         <a href="#" class="brand-logo left boite-bouf">Boîte à Bouf</a>
         <ul id="nav-mobile" class="right">
-            <li><a href="sass.html"><i class="material-icons">person</i></a></li>
+            <li><a href="connect.php"><i class="material-icons">person</i></a></li>
         </ul>
     </div>
 </nav>

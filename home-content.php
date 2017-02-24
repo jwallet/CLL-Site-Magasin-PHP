@@ -1,6 +1,8 @@
 <nav class="deep-orange accent-2">
     <div class="nav-wrapper deep-orange accent-2 container">
-        <a href="#" class="brand-logo left boite-bouf">Boîte à Bouf</a>
+        <a href="#" class="brand-logo left boite-bouf">
+            <h3 style="margin-top:8px;text-shadow: 1px -1px #DDDDDD;font-weight: 600;">Boîte à Bouf</h3>
+        </a>
         <ul id="nav-mobile" class="right">
             <li><a href="connect.php"><i class="material-icons">person</i></a></li>
         </ul>
@@ -38,7 +40,7 @@
         </li>
     </ul>
 </div>
-<br /><br />
+<br />
 
 <!-- valider si le client est connecter dans la page de connexion sinon le logger et ensuite aller a bonne page de shop-->
 <div class='container'><div class="s12"><a style="width: 100%;" class="waves-effect waves-light btn-large deep-orange accent-2" href='shop.php'>Commander</a></div></div>

@@ -1,132 +1,45 @@
-<?php $expend = $_REQUEST["expend"] ?>
-<div class="collection">
-    <a href="shop.php?expend=1" class="collection-item black-text
-        <?php if($expend==1) {
-            echo "grey lighten-3 active";
-        } else {
-            echo "grey lighten-5";
-        } ?>">
-        <div class="container">
-            <span class="badge">14</span>
-            Menu principal
-        </div>
-    </a>
+<?php
+$j = 0;
+echo "<ul class=\"collapsible\" data-collapsible=\"accordion\">";
+    while($j<5){
+        echo "
+            
+            <li>
+                <div class=\"collapsible-header\">
+                    <div class=\"container\">
+                        <span class='secondary-content'>14</span>Menu principal                        
+                    </div>
+                </div>
+                <div class=\"collapsible-body\">
+                    <div class=\"container\">
+                        <span class=\"products\">
+                        ";
 
-    <?php if($expend==1){
-        echo "	
-	<section class=\"products container\">
-		<div class=\"product-card\">
-			<div class=\"product-image\">
-				<img src=\"https://cdn.shopify.com/s/files/1/0938/8938/products/10231100205_1_1315x1800_300_CMYK_1024x1024.jpeg?v=1445623369\">
-			</div>
-			<div class=\"product-info\">
-				<h5>Manteau</h5>
-				<h6>$99.99</h6>
-			</div>
-		</div>
-		
-		<div class=\"product-card\">
-			<div class=\"product-image\">
-				<img src=\"https://cdn.shopify.com/s/files/1/0938/8938/products/10231100205_1_1315x1800_300_CMYK_1024x1024.jpeg?v=1445623369\">
-			</div>
-			<div class=\"product-info\">
-				<h5>Manteau</h5>
-				<h6>$99.99</h6>
-			</div>
-		</div>
-		
-		<div class=\"product-card\">
-			<div class=\"product-image\">
-				<img src=\"https://cdn.shopify.com/s/files/1/0938/8938/products/10231100205_1_1315x1800_300_CMYK_1024x1024.jpeg?v=1445623369\">
-			</div>
-			<div class=\"product-info\">
-				<h5>Manteau</h5>
-				<h6>$99.99</h6>
-			</div>
-		</div>
-		
-		<div class=\"product-card\">
-			<div class=\"product-image\">
-				<img src=\"https://cdn.shopify.com/s/files/1/0938/8938/products/10231100205_1_1315x1800_300_CMYK_1024x1024.jpeg?v=1445623369\">
-			</div>
-			<div class=\"product-info\">
-				<h5>Manteau</h5>
-				<h6>$99.99</h6>
-			</div>
-		</div>
-		
-		<div class=\"product-card\">
-			<div class=\"product-image\">
-				<img src=\"https://cdn.shopify.com/s/files/1/0938/8938/products/10231100205_1_1315x1800_300_CMYK_1024x1024.jpeg?v=1445623369\">
-			</div>
-			<div class=\"product-info\">
-				<h5>Manteau</h5>
-				<h6>$99.99</h6>
-			</div>
-		</div>
-		
-		<div class=\"product-card\">
-			<div class=\"product-image\">
-				<img src=\"https://cdn.shopify.com/s/files/1/0938/8938/products/10231100205_1_1315x1800_300_CMYK_1024x1024.jpeg?v=1445623369\">
-			</div>
-			<div class=\"product-info\">
-				<h5>Manteau</h5>
-				<h6>$99.99</h6>
-			</div>
-		</div>
-		
-		<div class=\"product-card\">
-			<div class=\"product-image\">
-				<img src=\"https://cdn.shopify.com/s/files/1/0938/8938/products/10231100205_1_1315x1800_300_CMYK_1024x1024.jpeg?v=1445623369\">
-			</div>
-			<div class=\"product-info\">
-				<h5>Manteau</h5>
-				<h6>$99.99</h6>
-			</div>
-		</div>
-		
-		<div class=\"product-card\">
-			<div class=\"product-image\">
-				<img src=\"https://cdn.shopify.com/s/files/1/0938/8938/products/10231100205_1_1315x1800_300_CMYK_1024x1024.jpeg?v=1445623369\">
-			</div>
-			<div class=\"product-info\">
-				<h5>Manteau</h5>
-				<h6>$99.99</h6>
-			</div>
-		</div>
-		
-		<div class=\"product-card\">
-			<div class=\"product-image\">
-				<img src=\"https://cdn.shopify.com/s/files/1/0938/8938/products/10231100205_1_1315x1800_300_CMYK_1024x1024.jpeg?v=1445623369\">
-			</div>
-			<div class=\"product-info\">
-				<h5>Manteau</h5>
-				<h6>$99.99</h6>
-			</div>
-		</div>
-		
-		<div class=\"product-card\">
-			<div class=\"product-image\">
-				<img src=\"https://cdn.shopify.com/s/files/1/0938/8938/products/10231100205_1_1315x1800_300_CMYK_1024x1024.jpeg?v=1445623369\">
-			</div>
-			<div class=\"product-info\">
-				<h5>Manteau</h5>
-				<h6>$99.99</h6>
-			</div>
-		</div>
-		
-	</section>
+                        $i = 0;
+                        while($i<5) {
+                            $i++;
+                            echo"
+                            <div class=\"product-card\">
+                                <div class=\"product-image\">
+                                    <a href='shop-item.php'>
+                                        <img src=\"https://cdn.shopify.com/s/files/1/0938/8938/products/10231100205_1_1315x1800_300_CMYK_1024x1024.jpeg?v=1445623369\">
+                                    </a>
+                                </div>
+                                <div class=\"product-info\">
+                                    <h5>Manteau</h5>
+                                    <h6>$99.99</h6>
+                                </div>
+                            </div>
+                        ";
+                        }
+
+                        echo "
+                    </span>
+                </div>
+                </div>
+            </li>        
         ";
-    }?>
-    <a href="shop.php?expend=1" class="collection-item black-text
-        <?php if($expend==2) {
-        echo "grey lighten-3 active";
-    } else {
-        echo "grey lighten-5";
-    } ?>">
-        <div class="container">
-            <span class="badge">14</span>
-            Menu principal
-        </div>
-    </a>
-</div>
+        $j++;
+    }
+echo "</ul>";
+?>

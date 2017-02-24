@@ -22,6 +22,9 @@ switch ($page){
     case 'shop.php';
         include_once("shop-content.php");
         break;
+    case 'shop-item.php';
+        include_once ("shop-item-content.php");
+        break;
     case 'shop-cart.php';
         include_once ("shop-cart-content.php");
         break;

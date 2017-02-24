@@ -1,11 +1,9 @@
 <footer class="page-footer white">
     <div class="footer-copyright grey">
         <div class="container">
-            © <?php echo date("Y"); ?> Copyright
+            <i class="material-icons 18dp left">copyright</i> <?php echo date("Y"); ?> La Boîte à Bouf Enr.
             <div class="right">
-                <a class="grey-text text-lighten-4" href="#!">Nous joindre</a> |
-                <a class="grey-text text-lighten-4" href="#!">A propos</a> |
-                <a class="grey-text text-lighten-4" href="#!">Confidentialité</a>
+                <a class="grey-text text-lighten-4" href="#!"><i class="material-icons left 18dp">perm_phone_msg</i><f class="hide-on-small-only">Nous contacter</f></a>
             </div>
         </div>
     </div>

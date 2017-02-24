@@ -35,6 +35,7 @@ label {
 .products {
     display: flex;
     flex-wrap: wrap;
+    box-sizing: content-box;
 }
 
 .product-card {
@@ -42,7 +43,7 @@ label {
     flex-direction: column;
 
     padding: 2%;
-    flex: 1 16%;
+    flex: 0 16%; /*flex: 0 16%;*/
 
     background-color: #FFF;
     box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.25);
@@ -61,20 +62,21 @@ label {
 @media ( max-width: 920px ) {
 
     .product-card {
-        flex: 1 21%;
+        flex: 0 21%;
+        /*flex: 1 21%;*/
     }
 
-    .products .product-card:first-child,
-    .products .product-card:nth-child(2) {
-        flex: 2 46%;
-    }
-
+    /*.products .product-card:first-child,*/
+    /*.products .product-card:nth-child(2) {*/
+        /*flex: 2 46%;*/
+    /*}*/
 }
 
 @media ( max-width: 600px ) {
 
     .product-card {
-        flex: 1 46%;
+        flex: 0 46%;
+        /*flex: 1 46%;*/
     }
 
 }
@@ -4346,18 +4348,18 @@ nav .input-field label.active i {
   position: fixed;
 }
 
-@media only screen and (min-width: 601px) {
-  nav.nav-extended .nav-wrapper {
-    min-height: 64px;
-  }
-  nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-    height: 64px;
-    line-height: 64px;
-  }
-  .navbar-fixed {
-    height: 64px;
-  }
-}
+/*@media only screen and (min-width: 601px) {*/
+  /*nav.nav-extended .nav-wrapper {*/
+    /*min-height: 64px;*/
+  /*}*/
+  /*nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {*/
+    /*height: 64px;*/
+    /*line-height: 64px;*/
+  /*}*/
+  /*.navbar-fixed {*/
+    /*height: 64px;*/
+  /*}*/
+/*}*/
 
 @font-face {
   font-family: "Roboto";
@@ -4399,7 +4401,7 @@ a {
 }
 
 html {
-  line-height: 1.5;
+  line-height: 1.75;
   font-family: "Roboto", sans-serif;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.87);
@@ -5628,7 +5630,7 @@ button.btn-floating {
   border-top: 1px solid #ddd;
   border-right: 1px solid #ddd;
   border-left: 1px solid #ddd;
-  margin: 0.5rem 0 1rem 0;
+  margin: 0;
 }
 
 .collapsible-header {
@@ -5636,7 +5638,7 @@ button.btn-floating {
   cursor: pointer;
   min-height: 3rem;
   line-height: 3rem;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
 }

@@ -15,22 +15,24 @@
         </div>
     </div>
     <div class="container row">
-    <form action="#" class="col l7 offset-l2 m8 offset-m2 s12">
+    <form action="#" class="col l8 offset-l2 m8 offset-m2 s12">
+        <div class="col s7">
+            <div class="col s3">
+                <a class="btn-floating btn waves-effect waves-light grey">
+                    <i class="material-icons">remove</i>
+                </a>
+            </div>
+            <div class="col offset-s1 s2 pull-s1">
+                <h3 style="margin:0; padding-left:10px;">2</h3>
+            </div>
+            <div class="col s3">
+                <a class="btn-floating btn waves-effect waves-light grey">
+                    <i class="material-icons">add</i>
+                </a>
+            </div>
+        </div>
         <div class="col s2">
-            <a class="btn-floating btn-large waves-effect waves-light grey lighten-2 black-text">
-                <i class="material-icons">add</i>
-            </a>
-        </div>
-        <div class="col s2 center">
-            <h3 style="margin:0; padding-top:10px; padding-left:10px;">2</h3>
-        </div>
-        <div class="col s3">
-            <a class="btn-floating btn-large waves-effect waves-light grey lighten-2 black-text">
-                <i class="material-icons">remove</i>
-            </a>
-        </div>
-        <div class="col s1">
-            <button class="btn-large waves-effect waves-lightcol green" type="submit" name="action">Ajouter
+            <button class="btn waves-effect waves-lightcol green" type="submit" name="action">Ajouter
                 <i class="material-icons right"></i>
             </button>
         </div>

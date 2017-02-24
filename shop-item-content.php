@@ -17,16 +17,16 @@
     <div class="container row">
     <form action="#" class="col l7 offset-l2 m8 offset-m2 s12">
         <div class="col s2">
-            <a class="btn-floating btn-large waves-effect waves-light grey lighten-2 black-text">
-                <i class="material-icons">add</i>
+            <a class="btn-floating btn-large waves-effect waves-light grey">
+                <i class="material-icons">remove</i>
             </a>
         </div>
         <div class="col s2 center">
             <h3 style="margin:0; padding-top:10px; padding-left:10px;">2</h3>
         </div>
         <div class="col s3">
-            <a class="btn-floating btn-large waves-effect waves-light grey lighten-2 black-text">
-                <i class="material-icons">remove</i>
+            <a class="btn-floating btn-large waves-effect waves-light grey">
+                <i class="material-icons">add</i>
             </a>
         </div>
         <div class="col s1">

@@ -1,7 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Admin
- * Date: 2/23/2017
- * Time: 2:07 PM
- */
+<div class="container">
+    <h4>Votre panier d'achat est vide</h4>
+</div>

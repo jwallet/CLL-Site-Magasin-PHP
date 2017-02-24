@@ -18,9 +18,9 @@ switch ($page[count($page)-1]){
         $keywords = 'null';
     break;
 }
-echo "<meta name='description' content='" . $description . "'>";
-echo "<meta name='keywords' content='" . $keywords . "'>";
-echo "<meta name='author' content='Jose Ouellet et Guillaume Prudhomme'>";
-echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+echo "<meta name='description' content='" . $description . "'/>";
+echo "<meta name='keywords' content='" . $keywords . "'/>";
+echo "<meta name='author' content='Jose Ouellet et Guillaume Prudhomme'/>";
+echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'/>";
 echo "<title>" . $title . " - La Boîte à Bouf</title>";
 ?>

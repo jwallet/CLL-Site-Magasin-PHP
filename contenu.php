@@ -43,5 +43,8 @@ switch ($page){
     case 'admin-majcommande.php';
         include_once("admin-majcommande-content.php");
         break;
+    case 'contact.php';
+        include_once("contact-content.php");
+        break;
 }
 ?>

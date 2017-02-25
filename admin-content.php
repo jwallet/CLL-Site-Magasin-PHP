@@ -8,12 +8,12 @@ $WeekStart=$WeekStart->format('Y-m-d');
 $WeekEnd = $WeekEnd->format('Y-m-d');
 
 
+
 //ATTENTION AU SELECT SANS PREPARE STATEMENT, FACILE D'INJECTION SQL POUR DETRUIRE LA BD OU CREER USAGER ADMIN
 //LA FACON DE GERER LES MENUS PAR LA DATE A ETE MODIFIEE, VOIR CHAT
 //LE MENU ADMIN EN SLIDESHOW A ETE RETIRER VU QUE EN PLEIN ECRAN LES OPTIONS DANS NAVBAR DEBORDAIENT LARGEMENT
 //LES MENUS SERONT PLUTOT PLACE SUR LA PAGE PRINCIPALE DE LADMIN EN LISTE EXPENDABLE
 //LORSQUE CONNEXION SERA TERMINER UN VARIABLE SESSION SERA ACTIVE POUR DETERMINER LADMIN DUN USAGER
-
 
 //$query = "SELECT  FROM menu m INNER JOIN relmenunourr  mn on m.idmenu = mn.idmenu INNER JOIN nourriture n on n.idrepas = mn.idrepas WHERE datemenud between '$WeekStart' and '$WeekEnd';";
 $query = "SELECT n.nomrepas,n.description,n.prixportion FROM menu m,relmenunourr rmn,nourriture n WHERE datemenud between '$WeekStart' and '$WeekEnd' and rmn.idmenu = m.idmenu and n.idrepas = rmn.idrepas;";

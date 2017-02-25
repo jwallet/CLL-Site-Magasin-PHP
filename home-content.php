@@ -1,13 +1,3 @@
-<nav class="deep-orange accent-2">
-    <div class="nav-wrapper deep-orange accent-2 container">
-        <a href="#" class="brand-logo left boite-bouf">
-            <h3 style="margin-top:8px;text-shadow: 1px -1px #DDDDDD;font-weight: 600;">Boîte à Bouf</h3>
-        </a>
-        <ul id="nav-mobile" class="right">
-            <li><a href="connect.php"><i class="material-icons">person</i></a></li>
-        </ul>
-    </div>
-</nav>
 <div class="slider">
     <ul class="slides">
         <li>

@@ -1,50 +1,59 @@
 <?php
-$page = explode("/", $_SERVER['PHP_SELF']);
-$page = $page[count($page)-1];
+$fichier = explode("/", $_SERVER['PHP_SELF']);
+$fichier = $fichier[count($fichier)-1];
 
-if(strpos($page, "shop") !== false) {
-    include_once("nav.php");
-}
-elseif(strpos($page, "admin") !== false){
-    //load menu admin header
-}
+$sql = "SELECT * FROM w_pages_contenu WHERE CONCAT(fichier,'.php') LIKE '$fichier'";
+$result = $mysqli->query($sql);
+$page = $result->fetch_assoc();
+?>
 
-switch ($page){
-    case 'home.php';
-        include_once("home-content.php");
-        break;
-    case 'connect.php';
-        include_once("connect-content.php");
-        break;
-    case 'account.php';
-        include_once("account-content.php");
-        break;
-    case 'shop.php';
-        include_once("shop-content.php");
-        break;
-    case 'shop-item.php';
-        include_once ("shop-item-content.php");
-        break;
-    case 'shop-cart.php';
-        include_once ("shop-cart-content.php");
-        break;
-    case 'admin.php';
-        include_once("admin-content.php");
-        break;
-    case 'admin-majclient.php';
-        include_once("admin-majclient-content.php");
-        break;
-    case 'admin-formcommande.php';
-        include_once("admin-formcommande-content.php");
-        break;
-    case 'admin-menu.php';
-        include_once("admin-menu-content.php");
-        break;
-    case 'admin-majcommande.php';
-        include_once("admin-majcommande-content.php");
-        break;
-    case 'contact.php';
-        include_once("contact-content.php");
-        break;
-}
+    <nav class="deep-orange accent-2">
+        <div class="nav-wrapper deep-orange accent-2 container">
+
+            <?php
+            if($page['fichier']=='home'){
+                ?>
+            <a href="#" class="brand-logo left boite-bouf">
+                <h3 style="margin-top:8px;text-shadow: 1px -1px #DDDDDD;font-weight: 600;"><?php echo $page["titre"]; ?></h3>
+            </a>
+            <?php
+            }
+
+            if($page['pageretour']=='previous') {
+                ?>
+                <a href="javascript:history.back()" class="left"><i class="material-icons">arrow_back</i></a>
+                <?php
+            }
+            elseif($page['pageretour']!='none'){
+                ?>
+            <a href="<?php echo $page["pageretour"] ?>" class="left"><i class="material-icons">arrow_back</i></a>
+            <?php
+            }
+
+            if(strcmp($page["fichier"],"home")!= 0){
+                ?>
+            <a class="brand-logo center"><?php echo $page["titre"] ?></a>
+            <?php
+            }
+            ?>
+
+            <ul id="nav-mobile" class="right">
+
+                <?php
+                if(strcmp($page["categorie"],"account")!=0){
+                echo "<li><a href=\"account.php\"><i class=\"material-icons\">person</i></a></li>";
+                }
+                if(strcmp($page["categorie"],"shop")==0){
+                    ?>
+                <li><a href="shop-cart.php"><i class="material-icons">shopping_cart</i></a></li>
+                <?php
+                }
+                ?>
+
+            </ul>
+        </div>
+    </nav>
+
+    <?php
+include_once($page["fichier"]."-content.php");
 ?>

@@ -1,9 +1,3 @@
-<nav class="deep-orange accent-2">
-    <div class="nav-wrapper deep-orange accent-2 container">
-        <a href="home.php" class="left"><i class="material-icons">arrow_back</i></a>
-        <a class="brand-logo center">Nous contacter</a>
-    </div>
-</nav>
 <div class="container row">
     <div class="col m8">
         <h1 class="boite-bouf"><b>Boite à Bouf</b></h1>

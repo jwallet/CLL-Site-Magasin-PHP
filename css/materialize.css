@@ -4189,11 +4189,11 @@ nav .nav-wrapper {
   height: 100%;
 }
 
-@media only screen and (min-width: 993px) {
-  nav a.button-collapse {
-    display: none;
-  }
-}
+/*@media only screen and (min-width: 993px) {*/
+  /*nav a.button-collapse {*/
+    /*display: none;*/
+  /*}*/
+/*}*/
 
 nav .button-collapse {
   float: left;

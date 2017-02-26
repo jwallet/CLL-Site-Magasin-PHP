@@ -13,7 +13,7 @@
                     <a href="#" class="black-text">
                         <div class="collapsible-header grey lighten-4">
                             <div class="container">
-                                <i class="material-icons"></i>Voir les commandes de la semaine
+                                <i class="material-icons"></i>Voir les commandes recues pour cette semaine
                             </div>
                         </div>
                     </a>
@@ -96,6 +96,45 @@
                             </div>
                         </div>
                     </a>
+                </li>
+                <li>
+                    <div class="collapsible-header grey lighten-4">
+                        <div class="container">
+                            <i class="material-icons"></i>Définir les jours de la semaine pour commander
+                            <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
+                        </div>
+                    </div>
+                    <div class="collapsible-body" style="padding:0;">
+                        <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <a href="#" class="black-text">
+                                    <div class="collapsible-header grey lighten-2">
+                                        <div class="container">
+                                            <i class="material-icons"></i>Jour d'ouverture
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="black-text">
+                                    <div class="collapsible-header grey lighten-2">
+                                        <div class="container">
+                                            <i class="material-icons"></i>Jour de fermeture
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="black-text">
+                                    <div class="collapsible-header grey lighten-2">
+                                        <div class="container">
+                                            <i class="material-icons"></i>Jour d'envoie d'une alerte aux clients n'ayant pas commander
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -205,7 +244,7 @@
                     <a href="#" class="black-text">
                         <div class="collapsible-header grey lighten-4">
                             <div class="container">
-                                <i class="material-icons"></i>Modifier la liste les types de plat
+                                <i class="material-icons"></i>Modifier la liste des types de plat
                             </div>
                         </div>
                     </a>

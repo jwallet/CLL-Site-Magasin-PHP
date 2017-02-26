@@ -1,0 +1,9 @@
+<html>
+<head>
+    <meta name='description' content='Nourriture de traiteur'/>
+    <meta name='keywords' content='traiteur, nourriture, bouf, bouffe, bouff, boite, quebec, canada, levis'/>
+    <meta name='author' content='Jose Ouellet et Guillaume Prudhomme'/>
+    <title>La Boîte à Bouf</title>
+    <meta http-equiv="refresh" content="0;URL='home.php'"/>
+</head>
+</html>

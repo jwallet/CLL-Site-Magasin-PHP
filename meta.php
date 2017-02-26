@@ -12,3 +12,5 @@ $page = $result->fetch_assoc();
 <meta name='author' content='Jose Ouellet et Guillaume Prudhomme'/>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 <title><?php echo $page['titre'] ?> - La Boîte à Bouf</title>
+
+<!--mettre les valeurs meta (copier-coller) dans les fichiers independants index.html et index.php-->

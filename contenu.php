@@ -41,7 +41,15 @@ $page = $result->fetch_assoc();
 
                 <?php
                 if(strcmp($page["categorie"],"account")!=0){
-                echo "<li><a href=\"account.php\"><i class=\"material-icons\">person</i></a></li>";
+                    if(isset($_SESSION['user-online'])){
+                        if($_SESSION['user-online']==true){
+                            $btnCompte = "account.php";
+                        }
+                        else { $btnCompte = "#"; }
+                    }
+                    else { $btnCompte = "connect.php"; }
+
+                echo "<li><a href=$btnCompte><i class=\"material-icons\">person</i></a></li>";
                 }
                 if(strcmp($page["categorie"],"shop")==0){
                     ?>

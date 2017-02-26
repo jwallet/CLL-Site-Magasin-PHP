@@ -32,8 +32,22 @@
 </div>
 <br />
 
-<!-- valider si le client est connecter dans la page de connexion sinon le logger et ensuite aller a bonne page de shop-->
-<div class='container'><div class="s12"><a style="width: 100%;" class="waves-effect waves-light btn-large deep-orange accent-2" href='shop.php'>Commander</a></div></div>
+<?php
+if(isset($_SESSION['user-online'])){
+    if($_SESSION['user-online']==true){
+        $btnCommander = "shop.php";
+    }
+    else { $btnCommander = "#"; }
+}
+else { $btnCommander = "connect.php"; }
+?>
+<div class='container'>
+    <div class="s12">
+        <a style="width: 100%;" class="waves-effect waves-light btn-large deep-orange accent-2" href='<?php echo $btnCommander; ?>'>
+            Commander
+        </a>
+    </div>
+</div>
 <br/>
 <script type="text/javascript">
     $(document).ready(function(){

@@ -31,9 +31,9 @@
                 </a>
             </div>
         </div>
-        <div class="col s2">
+        <div class="col s4">
             <button class="btn waves-effect waves-lightcol green" type="submit" name="action">Ajouter
-                <i class="material-icons right"></i>
+                <i class="material-icons left">add_shopping_cart</i>
             </button>
         </div>
     </form>

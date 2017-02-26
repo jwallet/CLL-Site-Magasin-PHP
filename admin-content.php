@@ -218,7 +218,7 @@
         <div class="collapsible-body" style="padding:0;">
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
-                    <a href="#" class="black-text">
+                    <a href="admin-plat-ajout.php" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Ajouter un nouveau plat

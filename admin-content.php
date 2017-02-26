@@ -101,54 +101,6 @@
         </div>
     </li>
 
-    <!-- comptes -->
-    <li>
-        <div class="collapsible-header">
-            <div class="container">
-                <i class="material-icons">person</i>Compte clients
-            </div>
-        </div>
-        <div class="collapsible-body" style="padding:0;">
-            <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
-                            <div class="container">
-                                <i class="material-icons"></i>Ajouter un nouveau compte client
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
-                            <div class="container">
-                                <i class="material-icons"></i>Rechercher un compte client
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
-                            <div class="container">
-                                <i class="material-icons"></i>Modifier un compte client
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
-                            <div class="container">
-                                <i class="material-icons"></i>Désactiver un compte client
-                            </div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </li>
 
     <!-- menus -->
     <!--permet de gerer le titre d'un menu et d'associer des plats a celui-ci.-->
@@ -262,12 +214,72 @@
         </div>
     </li>
 
+    <!-- comptes -->
+    <li>
+        <div class="collapsible-header">
+            <div class="container">
+                <i class="material-icons">person</i>Compte clients
+            </div>
+        </div>
+        <div class="collapsible-body" style="padding:0;">
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <a href="#" class="black-text">
+                        <div class="collapsible-header grey lighten-4">
+                            <div class="container">
+                                <i class="material-icons"></i>Ajouter un nouveau compte client
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="black-text">
+                        <div class="collapsible-header grey lighten-4">
+                            <div class="container">
+                                <i class="material-icons"></i>Rechercher un compte client
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="black-text">
+                        <div class="collapsible-header grey lighten-4">
+                            <div class="container">
+                                <i class="material-icons"></i>Modifier un compte client
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="black-text">
+                        <div class="collapsible-header grey lighten-4">
+                            <div class="container">
+                                <i class="material-icons"></i>Désactiver un compte client
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </li>
+
     <!-- ecrire courriel general -->
     <li>
         <a href="#" class="black-text">
             <div class="collapsible-header">
                 <div class="container">
                     <i class="material-icons">email</i>Ecrire à tous les clients
+                </div>
+            </div>
+        </a>
+    </li>
+
+    <!-- modifier le slider sur la page accueil -->
+    <li>
+        <a href="#" class="black-text">
+            <div class="collapsible-header">
+                <div class="container">
+                    <i class="material-icons">slideshow</i>Modifier le slideshow d'accueil
                 </div>
             </div>
         </a>

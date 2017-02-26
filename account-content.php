@@ -1,16 +1,22 @@
+<?php
+    if(isset($_SESSION['user-isadmin'])){
+    $isadmin = $_SESSION['user-isadmin'];
+}?>
 <ul class="collapsible" data-collapsible="accordion">
-
-    <!-- commandes -->
-    <li>
-        <a href="#" class="black-text">
-            <div class="collapsible-header">
-                <div class="container">
-                    <span class="badge">4</span>
-                    <i class="material-icons">shopping_basket</i>Commandes
+    <?php if (!$isadmin){ ?>
+        <!-- commandes -->
+        <li>
+            <a href="#" class="black-text">
+                <div class="collapsible-header">
+                    <div class="container">
+                        <span class="badge">4</span>
+                        <i class="material-icons">shopping_basket</i>Commandes
+                    </div>
                 </div>
-            </div>
-        </a>
-    </li>
+            </a>
+        </li>
+    <?php } ?>
+
 
     <!-- messagerie -->
     <li>
@@ -25,6 +31,7 @@
         </a>
     </li>
 
+    <?php if (!$isadmin){ ?>
     <!-- profil -->
     <li>
         <a href="#" class="black-text">
@@ -36,6 +43,7 @@
             </div>
         </a>
     </li>
+    <?php } ?>
 
     <!-- changer password -->
     <li>
@@ -75,6 +83,7 @@
                 confirm_password.setCustomValidity("Mot de passe ne correspond pas");
             } else {
                 confirm_password.setCustomValidity('');
+                confirm_password.removeClass("invalid").addClass("valid");
             }
         }
         password.onchange = validatePassword;

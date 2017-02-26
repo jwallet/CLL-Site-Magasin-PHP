@@ -7,7 +7,6 @@
 
 <div class="container">
     <br/>
-    <h5>Pour commander, veuillez vous connecter.</h5>
 
     <?php if(isset($_GET['erreur'])) {
         echo "<p class='red-text'>Courriel ou mot de passe invalide.</p>";

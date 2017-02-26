@@ -24,7 +24,12 @@ if(isset($_POST['email']) and isset($_POST['password'])){
         $_SESSION['user-telephone'] = $telephone;
         $_SESSION['user-adresse'] = $adresse;
         $_SESSION['user-isadmin'] = $isadmin;
-        $redirect = "shop.php";
+        if(!$_SESSION['user-isadmin']){
+            $redirect = "shop.php"; //une fois connecte un user, il va shopper
+        }
+        else{
+            $redirect = 'admin.php'; //une fois connecte un admin, il va au dashboard admin
+        }
     }
     else{
         unset( $_SESSION['user-online']);

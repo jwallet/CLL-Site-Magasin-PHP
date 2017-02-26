@@ -5,6 +5,30 @@ $fichier = $fichier[count($fichier)-1];
 $sql = "SELECT * FROM w_pages_contenu WHERE CONCAT(fichier,'.php') LIKE '$fichier'";
 $result = $mysqli->query($sql);
 $page = $result->fetch_assoc();
+
+//----------verification des acces---------------------------------------------------------
+//verification si user est connecte et qui veut ouvrir la page connexion pareille = retour
+if(isset($_SESSION['user-online'])){
+    if($_SESSION['user-online']==true){
+        if($page['fichier']=="connect") {
+            header("Location: account.php");
+        }
+        //verification si user est admin pour acceder au panneau admin
+        elseif($page['categorie']=="admin" and $_SESSION['user-isadmin']!=true){
+            header ("Location: home.php");
+        }
+    }
+    else{
+        header ("Location: home.php");
+    }
+}
+//verification des pages bloquantes, si user est pas connecter et veut acceder a des pages avec acces
+else{
+    if($page['categorie']!="home"){
+        header ("Location: connect.php");
+    }
+}
+//-------------fin verification acces------------------------------------------------------
 ?>
 
     <nav class="deep-orange accent-2">
@@ -40,7 +64,22 @@ $page = $result->fetch_assoc();
             <ul id="nav-mobile" class="right">
 
                 <?php
-                if(strcmp($page["categorie"],"account")!=0){
+                if (strcmp($page["categorie"], "shop") == 0) {
+                    ?>
+                    <li><a href="shop-cart.php"><i class="material-icons">shopping_cart</i></a></li>
+                    <?php
+                }
+                if($page['fichier']=="home") {
+                    if (isset($_SESSION['user-isadmin'])) {
+                        if ($_SESSION['user-isadmin'] == true) {
+                            //si admin affiche bouton d'acces panel admin
+                            ?>
+                            <li><a href="admin.php"><i class="material-icons">developer_board</i></a></li>
+                            <?php
+                        }
+                    }
+                }
+                if(strcmp($page["fichier"],"connect")!=0 ){
                     if(isset($_SESSION['user-online'])){
                         if($_SESSION['user-online']==true){
                             $btnCompte = "account.php";
@@ -50,11 +89,6 @@ $page = $result->fetch_assoc();
                     else { $btnCompte = "connect.php"; }
 
                 echo "<li><a href=$btnCompte><i class=\"material-icons\">person</i></a></li>";
-                }
-                if(strcmp($page["categorie"],"shop")==0){
-                    ?>
-                <li><a href="shop-cart.php"><i class="material-icons">shopping_cart</i></a></li>
-                <?php
                 }
                 ?>
 

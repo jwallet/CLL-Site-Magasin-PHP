@@ -6,7 +6,7 @@
             <div class="collapsible-header">
                 <div class="container">
                     <span class="badge">4</span>
-                    <i class="material-icons">receipt</i>Commandes
+                    <i class="material-icons">shopping_basket</i>Commandes
                 </div>
             </div>
         </a>
@@ -19,7 +19,7 @@
             <div class="container">
                 <span class="badge">7</span>
                 <span class="new badge deep-orange accent-2" data-badge-caption="nouveaux">4</span>
-                <i class="material-icons">message</i>Messages
+                <i class="material-icons">message</i>Messagerie
             </div>
         </div>
         </a>

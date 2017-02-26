@@ -4,6 +4,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
+                <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">shopping_basket</i>Commandes
             </div>
         </div>
@@ -11,16 +12,16 @@
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
                     <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
+                        <div class="collapsible-header grey lighten-5">
                             <div class="container">
-                                <i class="material-icons"></i>Voir les commandes recues pour cette semaine
+                                <i class="material-icons"></i>Voir les commandes recues
                             </div>
                         </div>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
+                        <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Archives des commandes
                             </div>
@@ -28,7 +29,7 @@
                     </a>
                 </li>
                 <li>
-                    <div class="collapsible-header grey lighten-4">
+                    <div class="collapsible-header grey lighten-5">
                         <div class="container">
                             <i class="material-icons"></i>Gérer les commandes
                             <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
@@ -38,7 +39,7 @@
                         <ul class="collapsible" data-collapsible="accordion">
                             <li>
                                 <a href="#" class="black-text">
-                                    <div class="collapsible-header grey lighten-2">
+                                    <div class="collapsible-header grey lighten-3">
                                         <div class="container">
                                             <i class="material-icons"></i>Voir une commande
                                         </div>
@@ -47,7 +48,7 @@
                             </li>
                             <li>
                                 <a href="#" class="black-text">
-                                    <div class="collapsible-header grey lighten-2">
+                                    <div class="collapsible-header grey lighten-3">
                                         <div class="container">
                                             <i class="material-icons"></i>Modifier une commande
                                         </div>
@@ -56,7 +57,7 @@
                             </li>
                             <li>
                                 <a href="#" class="black-text">
-                                    <div class="collapsible-header grey lighten-2">
+                                    <div class="collapsible-header grey lighten-3">
                                         <div class="container">
                                             <i class="material-icons"></i>Retirer une commande
                                         </div>
@@ -74,6 +75,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
+                <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">date_range</i>Calendrier des menus
             </div>
         </div>
@@ -81,16 +83,16 @@
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
                     <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
+                        <div class="collapsible-header grey lighten-5">
                             <div class="container">
-                                <i class="material-icons"></i>Définir le menu actuel (par défaut)
+                                <i class="material-icons"></i>Définir le menu actuel
                             </div>
                         </div>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
+                        <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Définir le menu des semaines avenirs
                             </div>
@@ -98,9 +100,9 @@
                     </a>
                 </li>
                 <li>
-                    <div class="collapsible-header grey lighten-4">
+                    <div class="collapsible-header grey lighten-5">
                         <div class="container">
-                            <i class="material-icons"></i>Définir les jours de la semaine pour commander
+                            <i class="material-icons"></i>Définir les jours pour commander
                             <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
                         </div>
                     </div>
@@ -108,7 +110,7 @@
                         <ul class="collapsible" data-collapsible="accordion">
                             <li>
                                 <a href="#" class="black-text">
-                                    <div class="collapsible-header grey lighten-2">
+                                    <div class="collapsible-header grey lighten-3">
                                         <div class="container">
                                             <i class="material-icons"></i>Jour d'ouverture
                                         </div>
@@ -117,7 +119,7 @@
                             </li>
                             <li>
                                 <a href="#" class="black-text">
-                                    <div class="collapsible-header grey lighten-2">
+                                    <div class="collapsible-header grey lighten-3">
                                         <div class="container">
                                             <i class="material-icons"></i>Jour de fermeture
                                         </div>
@@ -126,7 +128,7 @@
                             </li>
                             <li>
                                 <a href="#" class="black-text">
-                                    <div class="collapsible-header grey lighten-2">
+                                    <div class="collapsible-header grey lighten-3">
                                         <div class="container">
                                             <i class="material-icons"></i>Jour d'envoie d'une alerte aux clients n'ayant pas commander
                                         </div>
@@ -146,6 +148,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
+                <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">map</i>Menus
             </div>
         </div>
@@ -153,7 +156,7 @@
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
                     <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
+                        <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Lier des plats à un menu
                             </div>
@@ -161,7 +164,7 @@
                     </a>
                 </li>
                 <li>
-                    <div class="collapsible-header grey lighten-4">
+                    <div class="collapsible-header grey lighten-5">
                         <div class="container">
                             <i class="material-icons"></i>Gérer les menus
                             <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
@@ -171,7 +174,7 @@
                         <ul class="collapsible" data-collapsible="accordion">
                             <li>
                                 <a href="#" class="black-text">
-                                    <div class="collapsible-header grey lighten-2">
+                                    <div class="collapsible-header grey lighten-3">
                                         <div class="container">
                                             <i class="material-icons"></i>Créer un nouveau menu
                                         </div>
@@ -180,7 +183,7 @@
                             </li>
                             <li>
                                 <a href="#" class="black-text">
-                                    <div class="collapsible-header grey lighten-2">
+                                    <div class="collapsible-header grey lighten-3">
                                         <div class="container">
                                             <i class="material-icons"></i>Modifier un menu
                                         </div>
@@ -189,7 +192,7 @@
                             </li>
                             <li>
                                 <a href="#" class="black-text">
-                                    <div class="collapsible-header grey lighten-2">
+                                    <div class="collapsible-header grey lighten-3">
                                         <div class="container">
                                             <i class="material-icons"></i>Supprimer un menu
                                         </div>
@@ -208,6 +211,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
+                <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">restaurant</i>Plats
             </div>
         </div>
@@ -215,7 +219,7 @@
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
                     <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
+                        <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Ajouter un nouveau plat
                             </div>
@@ -224,7 +228,7 @@
                 </li>
                 <li>
                     <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
+                        <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Modifier un plat
                             </div>
@@ -233,7 +237,7 @@
                 </li>
                 <li>
                     <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
+                        <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Supprimer un plat
                             </div>
@@ -242,7 +246,7 @@
                 </li>
                 <li>
                     <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
+                        <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Modifier la liste des types de plat
                             </div>
@@ -257,6 +261,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
+                <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">person</i>Compte clients
             </div>
         </div>
@@ -264,7 +269,7 @@
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
                     <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
+                        <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Ajouter un nouveau compte client
                             </div>
@@ -273,7 +278,7 @@
                 </li>
                 <li>
                     <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
+                        <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Rechercher un compte client
                             </div>
@@ -282,7 +287,7 @@
                 </li>
                 <li>
                     <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
+                        <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Modifier un compte client
                             </div>
@@ -291,7 +296,7 @@
                 </li>
                 <li>
                     <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-4">
+                        <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Désactiver un compte client
                             </div>

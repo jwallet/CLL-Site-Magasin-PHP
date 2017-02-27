@@ -1,8 +1,8 @@
 <?php if(isset($_SESSION['toast'])) {
-    if ($_SESSION['toast'] == 'ajout-plat-erreur'){?>
+    if ($_SESSION['toast'] == 'client-ajout-existe'){?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Il y a eu un erreur lors de lajout du plat, 8000);
+                Materialize.toast('le email existe déja', 8000);
             });
         </script>
     <?php } unset($_SESSION['toast']);

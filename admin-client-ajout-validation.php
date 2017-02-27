@@ -1,25 +1,22 @@
 <?php
 include("bd-connect.php");
-if(isset($_POST['plat-titre']) and isset($_POST['plat-prix'])and isset($_POST['plat-type'])) {
-
-
-    $plattitre = $_POST['plat-titre'];
-    $platdescription = $_POST['plat-description'];
-    $platprix = $_POST['plat-prix'];
-    $plattype = $_POST['plat-type'];
-    $platimage = $_POST['plat-image'];
-    $sql = "INSERT INTO item (idtype,titre,description,prix,image) values (?,?,?,?,?)";
-
+if(isset($_POST['email'])) {
+    $prenom = $_POST['prenom'];
+    $nom = $_POST['nom'];
+    $telephone = $_POST['telephone'];
+    $email = $_POST['email'];
+    //Ajouter l'envoie du mail ici
+    $password = md5($email);
+    $sql = "INSERT INTO personne (prenom,nom,telephone,email,passe) values (?,?,?,?,?)";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("ssdis", $plattype, $plattitre, $platdescription, $platprix, $platimage);
+    $stmt->bind_param("sssss", $prenom, $nom, $telephone, $email, $password);
     if ($stmt->execute()) {
-        $_SESSION['toast'] = "plat-ajout";
+        $_SESSION['toast'] = "client-ajout";
         $redirect = "admin";
-
     }
     $stmt->close();
 //    else
-//    {
+//    {-
 //        $_SESSION['toast'] = "plat-ajout-erreur";
 //        $redirect = "admin-plat-ajout";
 //    }
@@ -30,7 +27,6 @@ if(isset($_POST['plat-titre']) and isset($_POST['plat-prix'])and isset($_POST['p
 //    $_SESSION['toast'] = "plat-ajout-erreur";
 //    $redirect = "admin-plat-ajout";
 }
-
 ?>
 <html>
 <head>

@@ -43,7 +43,7 @@ else { $btnCommander = "connect"; }
 ?>
 <div class='container'>
     <div class="s12">
-        <a style="width: 100%;" class="waves-effect waves-light btn-large deep-orange accent-2" href='<?php echo $btnCommander; ?>'>
+        <a style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>" href='<?php echo $btnCommander; ?>'>
             Commander
         </a>
     </div>

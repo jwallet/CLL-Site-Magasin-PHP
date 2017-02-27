@@ -1,12 +1,21 @@
 <?php if(isset($_SESSION['toast'])) {
-    if ($_SESSION['toast'] = 'ajout-plat'){?>
-<script type="text/javascript">
-    $(document).ready(function () {
-        Materialize.toast('Le plat a été ajouté avec succès', 8000);
-    });
-</script>
-        <?php unset($_SESSION['toast']);
+    if ($_SESSION['toast'] == 'plat-ajout'){?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Le plat a été ajouté avec succès', 8000);
+            });
+        </script>
+        <?php
     }
+    elseif ($_SESSION['toast'] == 'client-ajout'){ ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Le client a été ajouté avec succès', 8000);
+            });
+        </script>
+        <?php
+    }
+    unset($_SESSION['toast']);
 }
 ?>
 <ul class="collapsible" data-collapsible="accordion">

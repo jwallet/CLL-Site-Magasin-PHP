@@ -47,6 +47,7 @@ if(isset($_POST['email']) and isset($_POST['password'])){
 else{
     $redirect = "home";
 }
+$stmt->close();
 ?>
 <html>
 <head>

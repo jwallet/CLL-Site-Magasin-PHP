@@ -1,11 +1,15 @@
+<?php if(isset($_SESSION['toast'])) {
+    if ($_SESSION['toast'] = 'ajout-plat'){?>
 <script type="text/javascript">
     $(document).ready(function () {
         Materialize.toast('Le plat a été ajouté avec succès', 8000);
     });
 </script>
-
+        <?php unset($_SESSION['toast']);
+    }
+}
+?>
 <ul class="collapsible" data-collapsible="accordion">
-
     <!-- Commandes -->
     <li>
         <div class="collapsible-header">
@@ -161,7 +165,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="black-text">
+                    <a href="admin-client-ajout" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Ajouter un nouveau compte client

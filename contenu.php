@@ -1,7 +1,7 @@
 <?php
 $fichier = explode("/", $_SERVER['PHP_SELF']);
 $fichier = $fichier[count($fichier)-1];
-
+//CONCAT(fichier,'.php') LIKE '$fichier'";
 $sql = "SELECT * FROM w_pages_contenu WHERE CONCAT(fichier,'.php') LIKE '$fichier'";
 $result = $mysqli->query($sql);
 $page = $result->fetch_assoc();

@@ -1,15 +1,31 @@
 <?php
-//include("bd-connect.php");
-if(isset($_POST['plat-titre']) and isset($_POST['plat-description'])) {
+include("bd-connect.php");
+if(isset($_POST['plat-titre']) and isset($_POST['plat-description'])and isset($_POST['plat-prix'])and isset($_POST['plat-type'])) {
 
-//    $sql = "SELECT id, prenom, nom, telephone, adresse, isadmin FROM personne WHERE email LIKE ? AND passe LIKE ?;";
-//    $stmt = $mysqli->prepare($sql);
-//    $stmt->bind_param("ss",$email,$passe);
 
     $plattitre = $_POST['plat-titre'];
-    $description = $_POST['plat-description'];
-    echo $plattitre . " " . $description;
+    $platdescription = $_POST['plat-description'];
+    $platprix = $_POST['plat-prix'];
+    $plattype = $_POST['plat-type'];
+    $platimage = $_POST['plat-image'];
+
+    $sql = "INSERT INTO item values (?,?,?,?,?)";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("ssdis",$plattitre,$platdescription,$platprix,$plattype,$platimage);
+    if($stmt->execute()){
+        $redirect = "admin?reussi=" . $toast;
+    }
+    else
+        $redirect = "admin-plat-ajout?erreur";
+    echo $plattitre . "\<br\>";
+    echo $platdescription . "\<br\>";
+    echo $platprix . "\<br\>";
+    echo $plattype . "\<br\>";
+    echo $platimage . "\<br\>";
+
 }
+else
+    $redirect = "admin-plat-ajout?erreur";
 //    $stmt->execute();
 //
 //    $stmt->bind_result($id, $prenom, $nom, $telephone, $adresse, $isadmin);

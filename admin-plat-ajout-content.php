@@ -1,27 +1,27 @@
 <div class="container">
-    <br/>
-    <form class="col s12" action="admin-plat-validation" method="post">
+    <br>
+    <form class="col s12" action="admin-plat-ajout-validation" method="POST">
         <div class="row">
             <div class="input-field col s12">
-                <input type="text" id="plat-titre" class="validate">
+                <input type="text" name="plat-titre" id="titre" class="validate">
                 <label>Titre du plat</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input type="text" id="plat-description" class="validate">
+                <input type="text" name="plat-description" id="description" class="validate">
                 <label>Description du plat</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input type="text" id="plat-prix" class="validate">
+                <input type="number" name="plat-prix" id="plat-prix" class="validate">
                 <label>Prix du plat</label>
             </div>
         </div>
         <div class="row">
             <label>Type de plat</label>
-            <select class="browser-default">
+            <select name="plat-type" class="browser-default">
                 <option value="" disabled selected>Choisir un type de plat</option>
                 <?php
                 $stmt = $mysqli->prepare("SELECT id,type FROM p_item;");
@@ -40,7 +40,7 @@
 
                 <div class="btn">
                     <span>Ajouter une photo</span>
-                    <input type="file">
+                    <input name="plat-image" type="file">
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text">
@@ -49,7 +49,7 @@
         </div>
         <div class="row">
             <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?> "
-                    type='submit' name="connect">Ajouter le plat</button>
+                    type='submit' name="ajoutplat">Ajouter le plat</button>
         </div>
     </form>
 </div>

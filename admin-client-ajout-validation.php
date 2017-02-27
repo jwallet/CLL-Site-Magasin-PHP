@@ -6,6 +6,7 @@ if(isset($_POST['email'])) {
     $nom = $_POST['nom'];
     $telephone = $_POST['telephone'];
     $email = $_POST['email'];
+    $password = uniqid("BB",false);
     //Envoie email
     $mail = new PHPMailer;
     $mail->isSMTP();
@@ -15,22 +16,13 @@ if(isset($_POST['email'])) {
     $mail->Password = $_GLOBAL['mail-psw'];
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
-
     $mail->setFrom($_GLOBAL['mail-user'], 'Mailer');
-    $mail->addAddress('guillaumeprudhomme12@gmail.com');
+    $mail->addAddress($email);
     $mail->addReplyTo($_GLOBAL['mail-user'], 'Info');
     $mail->isHTML(true);
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-    if(!$mail->send()) {
-        echo 'Message could not be sent.';
-        echo 'Mailer Error: ' . $mail->ErrorInfo;
-    } else {
-        echo 'Message has been sent';
-    }
-
-
-    $password = md5($email);
+    $mail->Subject = 'Votre inscription à la Boîte À Bouf';
+    $mail->Body    = "Bienvenue chez la Boîte À Bouf, <br> <br> voici le mot de passe qui vous a été attribué: <b> $password </b>";
+    //$password = md5($password);
     $sql = "select id from personne where email = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("s", $email);
@@ -49,11 +41,17 @@ if(isset($_POST['email'])) {
         $redirect = "admin";
     }
     $stmt->close();
+    if(!$mail->send()) {
+        echo 'Message could not be sent.';
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+    } else {
+        echo 'Message has been sent';
+    }
 }
 ?>
 <html>
 <head>
-<!--    <meta http-equiv="refresh" content="0;URL='--><?php //echo $redirect; ?><!--'"/>-->
+    <meta http-equiv="refresh" content="0;URL='<?php echo $redirect; ?>'"/>
 </head>
 </html>
 <?php

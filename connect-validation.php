@@ -2,7 +2,7 @@
 include("bd-connect.php");
 if(isset($_POST['email']) and isset($_POST['password'])){
 
-    $sql = "SELECT id, prenom, nom, telephone, adresse, isadmin FROM personne WHERE email LIKE ? AND passe LIKE ?;";
+    $sql = "SELECT id, prenom, nom, telephone, adresse, isadmin, isnew FROM personne WHERE email LIKE ? AND passe LIKE ?;";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ss",$email,$passe);
 
@@ -11,10 +11,9 @@ if(isset($_POST['email']) and isset($_POST['password'])){
 
     $stmt->execute();
 
-    $stmt->bind_result($id, $prenom, $nom, $telephone, $adresse, $isadmin);
+    $stmt->bind_result($id, $prenom, $nom, $telephone, $adresse, $isadmin, $isnew);
 
     if($stmt->fetch()){
-        echo "usager trouve " .$prenom. " ". $nom;
         $_SESSION['user-online'] = true;
         $_SESSION['user-id'] = $id;
         $_SESSION['user-email'] = $email;
@@ -24,8 +23,14 @@ if(isset($_POST['email']) and isset($_POST['password'])){
         $_SESSION['user-telephone'] = $telephone;
         $_SESSION['user-adresse'] = $adresse;
         $_SESSION['user-isadmin'] = $isadmin;
+        $_SESSION['user-isnew'] = $isnew;
         if(!$_SESSION['user-isadmin']){
-            $redirect = "shop"; //une fois connecte un user, il va shopper
+            if(!$_SESSION['user-isnew']) {
+                $redirect = "shop"; //une fois connecte un user, il va shopper
+            }
+            else{
+                $redirect = "account-first-access"; //si premier acces, va remplir tes infos.
+            }
         }
         else{
             $redirect = 'admin'; //une fois connecte un admin, il va au dashboard admin
@@ -41,6 +46,7 @@ if(isset($_POST['email']) and isset($_POST['password'])){
         unset( $_SESSION['user-telephone']);
         unset( $_SESSION['user-adresse']);
         unset( $_SESSION['user-isadmin']);
+        unset( $_SESSION['user-isnew']);
         $_SESSION['toast'] = "login-failed";
         $redirect = "connect";
     }

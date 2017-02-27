@@ -9,13 +9,20 @@ $page = $result->fetch_assoc();
 //----------verification des acces---------------------------------------------------------
 //verification si user est connecte et qui veut ouvrir la page connexion pareille = retour
 if(isset($_SESSION['user-online'])){
-    if($_SESSION['user-online']==true){
-        if($page['fichier']=="connect") {
-            header("Location: account");
+    if($_SESSION['user-online']){
+        if(!$_SESSION['user-isnew']) {
+            //verification si user est admin pour acceder au panneau admin
+            if ($page['categorie'] == "admin" and !$_SESSION['user-isadmin']) {
+                header("Location: home");
+            } elseif ($page['fichier'] == "connect") {
+                header("Location: account");
+            }
         }
-        //verification si user est admin pour acceder au panneau admin
-        elseif($page['categorie']=="admin" and $_SESSION['user-isadmin']!=true){
-            header ("Location: home");
+        else {
+            if($page['categorie']!="home" and $page['categorie']!="account") {
+                //verifier si user est nouveau et le forcer a remplir ses infos
+                header("Location: account-first-access");
+            }
         }
     }
     else{

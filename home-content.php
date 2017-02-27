@@ -52,7 +52,7 @@ else { $btnCommander = "connect.php"; }
 <script type="text/javascript">
     $(document).ready(function(){
         $('.slider').slider({
-            height:400,
+            height:350,
             interval:6000
         });
     });

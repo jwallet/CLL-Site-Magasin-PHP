@@ -12,9 +12,8 @@ if(isset($_SESSION['toast'])) {
             });
         </script>
         <?php
-        unset($_SESSION['toast']);
     }
-    if($_SESSION['toast']=='password-changed'){
+    elseif($_SESSION['toast']=='password-changed'){
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -22,8 +21,8 @@ if(isset($_SESSION['toast'])) {
             });
         </script>
         <?php
-        unset($_SESSION['toast']);
     }
+    unset($_SESSION['toast']);
 }?>
 
 <ul class="collapsible" data-collapsible="accordion">
@@ -56,7 +55,7 @@ if(isset($_SESSION['toast'])) {
     <?php if (!$isadmin){ ?>
     <!-- profil -->
     <li>
-        <a href="#" class="black-text">
+        <a href="account-infos" class="black-text">
             <div class="collapsible-header">
                 <div class="container">
                     <i class="material-icons">person</i>

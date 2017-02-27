@@ -3,14 +3,23 @@
     if($_SESSION['user-online']==true){
         header ("Location: account");
     }
+}
+
+if(isset($_SESSION['toast'])) {
+    if($_SESSION['toast']=='login-failed'){
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Courriel ou mot de passe invalide.', 8000);
+            });
+        </script>
+        <?php
+    }
+    unset($_SESSION['toast']);
 }?>
 
 <div class="container">
     <br/>
-
-    <?php if(isset($_GET['erreur'])) {
-        echo "<p class='red-text'>Courriel ou mot de passe invalide.</p>";
-    }?>
     <form class="col s12" action="connect-validation" method="post">
         <div class="row">
             <div class="input-field col s12">

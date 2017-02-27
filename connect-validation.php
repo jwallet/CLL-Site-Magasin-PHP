@@ -41,7 +41,8 @@ if(isset($_POST['email']) and isset($_POST['password'])){
         unset( $_SESSION['user-telephone']);
         unset( $_SESSION['user-adresse']);
         unset( $_SESSION['user-isadmin']);
-        $redirect = "connect?erreur";
+        $_SESSION['toast'] = "login-failed";
+        $redirect = "connect";
     }
 }
 else{

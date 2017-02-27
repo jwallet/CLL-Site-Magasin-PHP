@@ -220,7 +220,7 @@
         <div class="collapsible-header">
             <div class="container">
                 <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
-                <i class="material-icons">description</i>Modifier pages d'infos
+                <i class="material-icons">dvr</i>Modifier pages d'infos
             </div>
         </div>
         <div class="collapsible-body" style="padding:0;">

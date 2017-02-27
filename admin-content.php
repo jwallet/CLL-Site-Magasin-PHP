@@ -218,7 +218,7 @@
         <div class="collapsible-body" style="padding:0;">
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
-                    <a href="admin-plat-ajout.php" class="black-text">
+                    <a href="admin-plat-ajout" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Ajouter un nouveau plat
@@ -342,7 +342,7 @@
 
     <!-- sortie panneau admin -->
     <li>
-        <a href="home.php" class="black-text">
+        <a href="home" class="black-text">
             <div class="collapsible-header">
                 <div class="container">
                     <i class="material-icons">screen_share</i>Sortir du panneau administration

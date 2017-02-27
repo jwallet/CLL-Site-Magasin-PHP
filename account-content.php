@@ -54,7 +54,7 @@
         </div>
         <div class="collapsible-body">
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
-                <form action="account-password-changed.php" class="col s12" method="post">
+                <form action="account-password-changed" class="col s12" method="post">
                     <div class="input-field row">
                         <input type="password" name="old" id="old" required>
                         <label for="old">Mot de passe actuel</label>
@@ -92,7 +92,7 @@
 
     <!-- deconnexion -->
     <li>
-        <a href="account-disconnect.php" class="black-text">
+        <a href="account-disconnect" class="black-text">
             <div class="collapsible-header">
                 <div class="container">
                     <i class="material-icons">screen_share</i>Déconnexion

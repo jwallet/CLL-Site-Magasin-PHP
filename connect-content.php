@@ -1,7 +1,7 @@
 <!-- verification si user est connecte, dun coup qui tape l'adresse a main, sinon redirection vers son compte -->
 <?php if(isset($_SESSION['user-online'])){
     if($_SESSION['user-online']==true){
-        header ("Location: account.php");
+        header ("Location: account");
     }
 }?>
 
@@ -11,7 +11,7 @@
     <?php if(isset($_GET['erreur'])) {
         echo "<p class='red-text'>Courriel ou mot de passe invalide.</p>";
     }?>
-    <form class="col s12" action="connect-validation.php" method="post">
+    <form class="col s12" action="connect-validation" method="post">
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">email</i>

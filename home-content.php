@@ -35,11 +35,11 @@
 <?php
 if(isset($_SESSION['user-online'])){
     if($_SESSION['user-online']==true){
-        $btnCommander = "shop.php";
+        $btnCommander = "shop";
     }
     else { $btnCommander = "#"; }
 }
-else { $btnCommander = "connect.php"; }
+else { $btnCommander = "connect"; }
 ?>
 <div class='container'>
     <div class="s12">

@@ -11,28 +11,28 @@ $page = $result->fetch_assoc();
 if(isset($_SESSION['user-online'])){
     if($_SESSION['user-online']==true){
         if($page['fichier']=="connect") {
-            header("Location: account.php");
+            header("Location: account");
         }
         //verification si user est admin pour acceder au panneau admin
         elseif($page['categorie']=="admin" and $_SESSION['user-isadmin']!=true){
-            header ("Location: home.php");
+            header ("Location: home");
         }
     }
     else{
-        header ("Location: home.php");
+        header ("Location: home");
     }
 }
 //verification des pages bloquantes, si user est pas connecter et veut acceder a des pages avec acces
 else{
     if($page['categorie']!="home"){
-        header ("Location: connect.php");
+        header ("Location: connect");
     }
 }
 //-------------fin verification acces------------------------------------------------------
 
 ?>
 
-    <nav class="">
+    <nav class="<?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a'] ?>">
         <div class="nav-wrapper container <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a'] ?>">
 
             <?php
@@ -67,7 +67,7 @@ else{
                 <?php
                 if (strcmp($page["categorie"], "shop") == 0) {
                     ?>
-                    <li><a href="shop-cart.php"><i class="material-icons">shopping_cart</i></a></li>
+                    <li><a href="shop-cart"><i class="material-icons">shopping_cart</i></a></li>
                     <?php
                 }
                 if($page['fichier']=="home") {
@@ -75,7 +75,7 @@ else{
                         if ($_SESSION['user-isadmin'] == true) {
                             //si admin affiche bouton d'acces panel admin
                             ?>
-                            <li><a href="admin.php"><i class="material-icons">developer_board</i></a></li>
+                            <li><a href="admin"><i class="material-icons">developer_board</i></a></li>
                             <?php
                         }
                     }
@@ -83,11 +83,11 @@ else{
                 if(strcmp($page["fichier"],"connect")!=0 ){
                     if(isset($_SESSION['user-online'])){
                         if($_SESSION['user-online']==true){
-                            $btnCompte = "account.php";
+                            $btnCompte = "account";
                         }
                         else { $btnCompte = "#"; }
                     }
-                    else { $btnCompte = "connect.php"; }
+                    else { $btnCompte = "connect"; }
 
                 echo "<li><a href=$btnCompte><i class=\"material-icons\">person</i></a></li>";
                 }

@@ -1,5 +1,5 @@
 <footer class="page-footer white">
-    <div class="footer-copyright grey">
+    <div class="footer-copyright <?php echo $_GLOBAL['couleur2']?>">
         <div class="container">
             <i class="material-icons 18dp left">copyright</i> <?php echo date("Y"); ?> La Boîte à Bouf Enr.
             <div class="right">

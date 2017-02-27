@@ -4,7 +4,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
-                <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
+                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">shopping_basket</i>Commandes
             </div>
         </div>
@@ -32,7 +32,7 @@
                     <div class="collapsible-header grey lighten-5">
                         <div class="container">
                             <i class="material-icons"></i>Gérer les commandes
-                            <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
+                            <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
                         </div>
                     </div>
                     <div class="collapsible-body" style="padding:0;">
@@ -75,7 +75,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
-                <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
+                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">date_range</i>Calendrier des menus
             </div>
         </div>
@@ -103,7 +103,7 @@
                     <div class="collapsible-header grey lighten-5">
                         <div class="container">
                             <i class="material-icons"></i>Définir les jours pour commander
-                            <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
+                            <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
                         </div>
                     </div>
                     <div class="collapsible-body" style="padding:0;">
@@ -148,7 +148,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
-                <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
+                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">map</i>Menus
             </div>
         </div>
@@ -167,7 +167,7 @@
                     <div class="collapsible-header grey lighten-5">
                         <div class="container">
                             <i class="material-icons"></i>Gérer les menus
-                            <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
+                            <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
                         </div>
                     </div>
                     <div class="collapsible-body" style="padding:0;">
@@ -211,7 +211,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
-                <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
+                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">restaurant</i>Plats
             </div>
         </div>
@@ -261,7 +261,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
-                <span class="secondary-content"><i class="material-icons deep-orange-text">keyboard_arrow_down</i></span>
+                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">person</i>Compte clients
             </div>
         </div>

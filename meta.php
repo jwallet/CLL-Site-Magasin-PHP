@@ -1,4 +1,9 @@
 <?php
+$_GLOBAL['couleur1'] = "green";
+$_GLOBAL['couleur1a'] = " accent-2";
+$_GLOBAL['couleur2'] = "grey";
+$_GLOBAL['couleur2a'] = "";
+
 $fichier = explode("/", $_SERVER['PHP_SELF']);
 $fichier = $fichier[count($fichier)-1];
 

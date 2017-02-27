@@ -24,7 +24,7 @@
         <div class="collapsible-header">
             <div class="container">
                 <span class="badge">7</span>
-                <span class="new badge deep-orange accent-2" data-badge-caption="nouveaux">4</span>
+                <span class="new badge  <?php echo $_GLOBAL['couleur1'] ?>" data-badge-caption="nouveaux">4</span>
                 <i class="material-icons">message</i>Messagerie
             </div>
         </div>
@@ -67,7 +67,7 @@
                         <input type="password" name="new2" id="new2" minlength="6" class="validate" required>
                         <label for="new2">Nouveau mot de passe</label>
                     </div>
-                    <button class="btn waves-effect waves-light row right deep-orange accent-2" type="submit" name="action">Enregistrer
+                    <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1'] ?>" type="submit" name="action">Enregistrer
                         <i class="material-icons right">send</i>
                     </button>
                 </form>

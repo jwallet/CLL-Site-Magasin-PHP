@@ -29,10 +29,11 @@ else{
     }
 }
 //-------------fin verification acces------------------------------------------------------
+
 ?>
 
-    <nav class="deep-orange accent-2">
-        <div class="nav-wrapper deep-orange accent-2 container">
+    <nav class="">
+        <div class="nav-wrapper container <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a'] ?>">
 
             <?php
             if($page['fichier']=='home'){

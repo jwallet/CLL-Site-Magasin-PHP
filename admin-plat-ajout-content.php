@@ -1,6 +1,6 @@
 <div class="container">
     <br/>
-    <form class="col s12" action="#" method="post">
+    <form class="col s12" action="admin-plat-validation" method="post">
         <div class="row">
             <div class="input-field col s12">
                 <input type="text" id="plat-titre" class="validate">

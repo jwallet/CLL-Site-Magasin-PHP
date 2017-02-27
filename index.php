@@ -4,6 +4,6 @@
     <meta name='keywords' content='traiteur, nourriture, bouf, bouffe, bouff, boite, quebec, canada, levis'/>
     <meta name='author' content='Jose Ouellet et Guillaume Prudhomme'/>
     <title>La Boîte à Bouf</title>
-    <meta http-equiv="refresh" content="0;URL='home.php'"/>
+    <meta http-equiv="refresh" content="0;URL='home'"/>
 </head>
 </html>

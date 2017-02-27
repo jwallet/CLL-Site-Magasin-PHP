@@ -12,6 +12,6 @@ unset( $_SESSION['user-isadmin']);
 ?>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0;URL='home.php'"/>
+    <meta http-equiv="refresh" content="0;URL='home'"/>
 </head>
 </html>

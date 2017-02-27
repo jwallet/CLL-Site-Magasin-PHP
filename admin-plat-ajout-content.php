@@ -1,6 +1,6 @@
 <div class="container">
     <br/>
-    <form class="col s12" action="#" method="post">
+    <form class="col s12" action="admin-plat-validation" method="post">
         <div class="row">
             <div class="input-field col s12">
                 <input type="text" id="plat-titre" class="validate">
@@ -8,11 +8,10 @@
             </div>
         </div>
         <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">mode_edit</i>
-                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                    <label for="icon_prefix2">Description du plat</label>
-                </div>
+            <div class="input-field col s12">
+                <input type="text" id="plat-description" class="validate">
+                <label>Description du plat</label>
+            </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
@@ -49,7 +48,7 @@
             </div>
         </div>
         <div class="row">
-            <button style="width: 100%;" class="waves-effect waves-light btn-large deep-orange accent-2"
+            <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?> "
                     type='submit' name="connect">Ajouter le plat</button>
         </div>
     </form>

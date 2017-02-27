@@ -25,10 +25,10 @@ if(isset($_POST['email']) and isset($_POST['password'])){
         $_SESSION['user-adresse'] = $adresse;
         $_SESSION['user-isadmin'] = $isadmin;
         if(!$_SESSION['user-isadmin']){
-            $redirect = "shop.php"; //une fois connecte un user, il va shopper
+            $redirect = "shop"; //une fois connecte un user, il va shopper
         }
         else{
-            $redirect = 'admin.php'; //une fois connecte un admin, il va au dashboard admin
+            $redirect = 'admin'; //une fois connecte un admin, il va au dashboard admin
         }
     }
     else{
@@ -41,11 +41,11 @@ if(isset($_POST['email']) and isset($_POST['password'])){
         unset( $_SESSION['user-telephone']);
         unset( $_SESSION['user-adresse']);
         unset( $_SESSION['user-isadmin']);
-        $redirect = "connect.php?erreur";
+        $redirect = "connect?erreur";
     }
 }
 else{
-    $redirect = "home.php";
+    $redirect = "home";
 }
 ?>
 <html>

@@ -15,6 +15,7 @@ if(isset($_POST['plat-titre']) and isset($_POST['plat-prix'])and isset($_POST['p
         $_SESSION['toast'] = "plat-ajout";
         $redirect = "admin";
     }
+    $stmt->free_result();
     $stmt->close();
 }
 ?>

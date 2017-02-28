@@ -1,4 +1,4 @@
-<footer class="page-footer white">
+<footer class="page-footer <?php echo $_GLOBAL['couleur2']; echo " ".$_GLOBAL['couleur2a']; ?>">
     <div class="footer-copyright <?php echo $_GLOBAL['couleur2']?>">
         <div class="container">
             <div class="right">

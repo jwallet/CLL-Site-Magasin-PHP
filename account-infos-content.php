@@ -39,11 +39,13 @@
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
                 <form action="account-password-changed" class="col s12" style="margin:0;padding:0;" method="post">
                     <div class="input-field row">
-                        <input type="text" name="prenom" id="prenom" required>
+                        <input type="text" name="prenom" id="prenom"
+                               title="Lettres seulement"  pattern="[a-zA-Z]+" value="<?php echo $_SESSION['user-prenom']?>" required>
                         <label for="prenom">Prénom</label>
                     </div>
                     <div class="input-field row">
-                        <input type="text" name="nom" id="nom" required>
+                        <input type="text" name="nom" id="nom"
+                               title="Lettres seulement"  pattern="[a-zA-Z]+" value="<?php echo $_SESSION['user-nom']?>" required>
                         <label for="nom">Nom</label>
                     </div>
                     <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1'] ?>" type="submit" name="action">Enregistrer
@@ -64,7 +66,7 @@
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
                 <form action="account-password-changed" class="col s12" style="margin:0;padding:0;" method="post">
                     <div class="input-field row">
-                        <input type="email" name="email" id="email" value="<?php echo $_SESSION['user-email']?>"required>
+                        <input type="email" name="email" id="email" value="<?php echo $_SESSION['user-email']?>" required>
                         <label for="email">Courriel</label>
                     </div>
                     <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1'] ?>" type="submit" name="action">Enregistrer
@@ -85,7 +87,8 @@
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
                 <form action="account-password-changed" class="col s12" style="margin:0;padding:0;" method="post">
                     <div class="input-field row">
-                        <input type="tel" name="telephone" id="telephone" required>
+                        <input type="tel" name="telephone" id="telephone"
+                               title="999 999-9999" pattern="^([0-9]{3} |[0-9]{3}-)[0-9]{3}-[0-9]{4}$" class="validate" value="<?php echo $_SESSION['user-telephone']?>" required>
                         <label for="telephone">Téléphone</label>
                     </div>
                     <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1'] ?>" type="submit" name="action">Enregistrer
@@ -106,7 +109,7 @@
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
                 <form action="account-password-changed" class="col s12" style="margin:0;padding:0;" method="post">
                     <div class="input-field row">
-                        <input type="text" name="adresse" id="adresse" required>
+                        <input type="text" name="adresse" id="adresse" value="<?php echo $_SESSION['user-adresse']?>" required>
                         <label for="adresse">Adresse</label>
                     </div>
                     <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1'] ?>" type="submit" name="action">Enregistrer

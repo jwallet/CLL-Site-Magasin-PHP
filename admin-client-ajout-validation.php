@@ -2,6 +2,11 @@
 include("bd-connect.php");
 require 'phpmailer/PHPMailerAutoload.php';
 if(isset($_POST['email'])) {
+    $isnew = 1;
+    //verification si tous les champs ont été renseignés, pu besoin de l'indiquer comme "is new"
+    if(isset($_POST['prenom'])and isset($_POST['nom']) and isset($_POST['telephone'])){
+        $isnew = 0;
+    }
     $prenom = $_POST['prenom'];
     $nom = $_POST['nom'];
     $telephone = $_POST['telephone'];
@@ -21,7 +26,7 @@ if(isset($_POST['email'])) {
     $mail->addReplyTo($_GLOBAL['mail-user'], 'Info');
     $mail->isHTML(true);
     $mail->Subject = 'Votre inscription à la Boîte À Bouf';
-    $mail->Body    = "Bienvenue chez la Boîte À Bouf, <br> <br> voici le mot de passe qui vous a été attribué: <b> $password </b>";
+    $mail->Body    = "Bienvenue chez la Boîte À Bouf, <br> <br> voici le mot de passe qui vous a été généré: <b> $password </b>. <br>Vous pouvez le modifier à tout moment en vous connectant à votre compte sur notre site web.<br>Merci, et au plaisir de vous revoir.";
     //$password = md5($password);
     $sql = "select id from personne where email = ?";
     $stmt = $mysqli->prepare($sql);
@@ -33,9 +38,9 @@ if(isset($_POST['email'])) {
         $redirect = "admin-client-ajout";
         $stmt->free_result();
     } else {
-        $sql = "INSERT INTO personne (prenom,nom,telephone,email,passe) values (?,?,?,?,?)";
+        $sql = "INSERT INTO personne (prenom,nom,telephone,email,passe,isnew) values (?,?,?,?,?,?)";
         $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("sssss", $prenom, $nom, $telephone, $email, $password);
+        $stmt->bind_param("sssss", $prenom, $nom, $telephone, $email, $password, $isnew);
         $stmt->execute();
         $_SESSION['toast'] = "client-ajout";
         $redirect = "admin";

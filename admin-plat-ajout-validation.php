@@ -1,7 +1,7 @@
 <?php
-include("bd-connect.php");
-if(isset($_POST['plat-titre']) and isset($_POST['plat-prix'])and isset($_POST['plat-type'])) {
 
+if(isset($_POST['plat-titre']) and isset($_POST['plat-prix'])and isset($_POST['plat-type'])) {
+    include("bd-connect.php");
 
     $plattitre = $_POST['plat-titre'];
     $platdescription = $_POST['plat-description'];
@@ -17,23 +17,12 @@ if(isset($_POST['plat-titre']) and isset($_POST['plat-prix'])and isset($_POST['p
         $redirect = "admin";
 
     }
+    $stmt->free_result();
     $stmt->close();
-//    else
-//    {
-//        $_SESSION['toast'] = "plat-ajout-erreur";
-//        $redirect = "admin-plat-ajout";
-//    }
-//
-//}
-//else
-//{
-//    $_SESSION['toast'] = "plat-ajout-erreur";
-//    $redirect = "admin-plat-ajout";
 }
-
 ?>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0;URL='<?php echo $redirect; ?>'"/>
+    <meta http-equiv="refresh" content="0;URL='<?php if(isset($redirect)){ echo $redirect; } else { echo "home"; } ?>'"/>
 </head>
 </html>

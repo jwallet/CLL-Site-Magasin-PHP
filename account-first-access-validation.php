@@ -1,9 +1,8 @@
 <?php
-include("bd-connect.php");
 if(isset($_SESSION['user-id']) and
     isset($_POST['email']) and isset($_POST['prenom']) and
     isset($_POST['nom']) and isset($_POST['telephone'])) {
-
+    include("bd-connect.php");
     $sql = "UPDATE personne SET prenom = ?, nom = ?, telephone = ?, adresse = ?, isnew = 0 WHERE id = ? AND email LIKE ?;";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ssssis",$prenom, $nom, $telephone, $adresse, $id, $email);
@@ -48,14 +47,11 @@ if(isset($_SESSION['user-id']) and
     }
 
     $stmt->free_result();
-}
-else{
-    $_SESSION['toast']="first-access-failed";
-    $redirect = "account-first-access";
+    $stmt->close();
 }
 ?>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0;URL='<?php echo $redirect; ?>'"/>
+    <meta http-equiv="refresh" content="0;URL='<?php if(isset($redirect)){ echo $redirect; } else { echo "home"; } ?>'"/>
 </head>
 </html>

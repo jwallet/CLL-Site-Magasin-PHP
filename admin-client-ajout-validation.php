@@ -1,7 +1,7 @@
 <?php
-include("bd-connect.php");
-require 'phpmailer/PHPMailerAutoload.php';
 if(isset($_POST['email'])) {
+    include("bd-connect.php");
+    require 'phpmailer/PHPMailerAutoload.php';
     $isnew = 1;
     //verification si tous les champs ont été renseignés, pu besoin de l'indiquer comme "is new"
     if(isset($_POST['prenom'])and isset($_POST['nom']) and isset($_POST['telephone'])){
@@ -45,18 +45,20 @@ if(isset($_POST['email'])) {
         $_SESSION['toast'] = "client-ajout";
         $redirect = "admin";
     }
-    $stmt->close();
+
     if(!$mail->send()) {
         echo 'Message could not be sent.';
         echo 'Mailer Error: ' . $mail->ErrorInfo;
     } else {
         echo 'Message has been sent';
     }
+    $stmt->free_result();
+    $stmt->close();
 }
 ?>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0;URL='<?php echo $redirect; ?>'"/>
+    <meta http-equiv="refresh" content="0;URL='<?php if(isset($redirect)){ echo $redirect; } else { echo "home"; } ?>'"/>
 </head>
 </html>
 <?php

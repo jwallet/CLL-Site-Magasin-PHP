@@ -1,7 +1,6 @@
 <?php
-include("bd-connect.php");
 if(isset($_POST['email']) and isset($_POST['password'])){
-
+    include("bd-connect.php");
     $sql = "SELECT id, prenom, nom, telephone, adresse, isadmin, isnew FROM personne WHERE email LIKE ? AND passe LIKE ?;";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ss",$email,$passe);
@@ -50,14 +49,12 @@ if(isset($_POST['email']) and isset($_POST['password'])){
         $_SESSION['toast'] = "login-failed";
         $redirect = "connect";
     }
+    $stmt->free_result();
+    $stmt->close();
 }
-else{
-    $redirect = "home";
-}
-$stmt->close();
 ?>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0;URL='<?php echo $redirect; ?>'"/>
+    <meta http-equiv="refresh" content="0;URL='<?php if(isset($redirect)){ echo $redirect; } else { echo "home"; } ?>'"/>
 </head>
 </html>

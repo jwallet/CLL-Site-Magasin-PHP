@@ -39,7 +39,6 @@
                     <label for="adresse">Adresse</label>
                 </div>
                 <button style="width: 100%;" class="waves-effect waves-light btn-large  <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>" type="submit" name="action">Inscrire
-                    <i class="material-icons right">send</i>
                 </button>
             </div>
         </form>

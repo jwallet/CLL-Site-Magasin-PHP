@@ -31,7 +31,7 @@ if(isset($_SESSION['user-online'])){
 }
 //verification des pages bloquantes, si user est pas connecter et veut acceder a des pages avec acces
 else{
-    if($page['categorie']!="home"){
+    if($page['categorie']!="home" and $page['categorie']!="menu"){
         header ("Location: connect");
     }
 }

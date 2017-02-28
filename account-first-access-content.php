@@ -1,3 +1,17 @@
+<?php
+if(isset($_SESSION['toast'])) {
+    if ($_SESSION['toast'] == 'first-access-failed') {
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Veuillez remplir les champs.', 8000);
+            });
+        </script>
+        <?php
+    }
+    unset($_SESSION['toast']);
+}
+?>
 <div class="container">
     <div class="section">
         <form class="row" action="account-first-access-validation" method="post">

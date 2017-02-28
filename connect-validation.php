@@ -26,7 +26,7 @@ if(isset($_POST['email']) and isset($_POST['password'])){
         $_SESSION['user-isnew'] = $isnew;
         if(!$_SESSION['user-isadmin']){
             if(!$_SESSION['user-isnew']) {
-                $redirect = "shop"; //une fois connecte un user, il va shopper
+                $redirect = "menu"; //une fois connecte un user, il va shopper
             }
             else{
                 $redirect = "account-first-access"; //si premier acces, va remplir tes infos.

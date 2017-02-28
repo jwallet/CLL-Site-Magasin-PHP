@@ -9,17 +9,19 @@
                 </div>
                 <div class="input-field row">
                     <i class="material-icons prefix">person</i>
-                    <input type="text" name="prenom" id="prenom" value="<?php echo $_SESSION['user-prenom']?>"required>
+                    <input type="text" name="prenom" id="prenom" title="Lettres seulement"  pattern="[a-zA-Z]+" value="<?php echo $_SESSION['user-prenom']?>"required>
                     <label for="prenom">Prénom</label>
                 </div>
                 <div class="input-field row">
                     <i class="material-icons prefix">person</i>
-                    <input type="text" name="nom" id="nom" value="<?php echo $_SESSION['user-nom']?>"required>
+                    <input type="text" name="nom" id="nom" title="Lettres seulement"  pattern="[a-zA-Z]+" value="<?php echo $_SESSION['user-nom']?>"required>
                     <label for="nom">Nom</label>
                 </div>
                 <div class="input-field row">
                     <i class="material-icons prefix">phone</i>
-                    <input type="tel" name="telephone" id="telephone" value="<?php echo $_SESSION['user-telephone']?>" required>
+                    <input type="tel" name="telephone" id="telephone"
+                           title="999 999-9999" pattern="^([0-9]{3} |[0-9]{3}-)[0-9]{3}-[0-9]{4}$" class="validate"
+                           value="<?php echo $_SESSION['user-telephone']?>" required>
                     <label for="telephone">Téléphone</label>
                 </div>
                 <div class="input-field row">
@@ -27,8 +29,6 @@
                     <input type="text" name="adresse" id="adresse" value="<?php echo $_SESSION['user-adresse']?>"required>
                     <label for="adresse">Adresse</label>
                 </div>
-            </div>
-            <div class="s12">
                 <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>"
                         type='submit' name="connect">Enregistrer</button>
             </div>

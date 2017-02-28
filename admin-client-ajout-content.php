@@ -9,71 +9,39 @@
 }
 ?>
 <div class="container">
-    <br>
-    <div class="row">
-        <form class="col s12" action="admin-client-ajout-validation" method="post">
-            <div class="row">
-                <div class="input-field col s12">
+    <div class="section">
+        <form class="row" action="admin-client-ajout-validation" method="post">
+            <div class="col s12">
+                <div class="input-field row">
                     <i class="material-icons prefix">email</i>
-                    <input id="icon_email" name="email" type="email" class="validate" required>
-                    <label for="icon_email">Email (*)</label>
+                    <input id="email" name="email" type="email" class="validate" required>
+                    <label for="email">Courriel *</label>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_prenom" name="prenom" type="text" class="validate">
-                    <label for="icon_prenom">Prénom</label>
+                <div class="input-field row">
+                    <i class="material-icons prefix">person</i>
+                    <input id="prenom" name="prenom" type="text" title="Lettres seulement"  pattern="[a-zA-Z]+" class="validate">
+                    <label for="prenom">Prénom</label>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_Nom" name="nom" type="text" class="validate">
-                    <label for="icon_Nom">Nom</label>
+                <div class="input-field row">
+                    <i class="material-icons prefix">person</i>
+                    <input id="nom" name="nom" type="text" title="Lettres seulement" pattern="[a-zA-Z]+" class="validate">
+                    <label for="nom">Nom</label>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field row">
                     <i class="material-icons prefix">phone</i>
-                    <input id="icon_telephone" name="telephone" type="tel" class="validate">
-                    <label for="icon_telephone">Telephone</label>
+                    <input id="telephone" name="telephone"
+                           type="tel" title="(999) 999-9999" pattern="^([0-9]{3} |[0-9]{3}-)[0-9]{3}-[0-9]{4}$" class="validate">
+                    <label for="telephone">Telephone</label>
                 </div>
+                <div class="input-field row">
+                    <i class="material-icons prefix">home</i>
+                    <input type="text" name="adresse" id="adresse">
+                    <label for="adresse">Adresse</label>
+                </div>
+                <button style="width: 100%;" class="waves-effect waves-light btn-large  <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>" type="submit" name="action">Inscrire
+                    <i class="material-icons right">send</i>
+                </button>
             </div>
-            <button class="btn waves-effect waves-light right" type="submit" name="action">Inscrire
-                <i class="material-icons right">send</i>
-            </button>
         </form>
     </div>
 </div>
-<!-- Table des clients à faire-->
-<!--<table class="highlight">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th data-field="id">Name</th>-->
-<!--        <th data-field="name">Item Name</th>-->
-<!--        <th data-field="price">Item Price</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!---->
-<!--    <tbody>-->
-<!--    <tr>-->
-<!--        <td>Alvin</td>-->
-<!--        <td>Eclair</td>-->
-<!--        <td>$0.87</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Alan</td>-->
-<!--        <td>Jellybean</td>-->
-<!--        <td>$3.76</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Jonathan</td>-->
-<!--        <td>Lollipop</td>-->
-<!--        <td>$7.00</td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
-<?php
-
-?>

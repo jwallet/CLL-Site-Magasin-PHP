@@ -25,7 +25,7 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input type="number" name="plat-prix" id="plat-prix" class="validate" required>
+                <input type="number" name="plat-prix" id="plat-prix" pattern="\d+(,\d{2})?" title="9,99" class="validate" required>
                 <label>Prix du plat</label>
             </div>
         </div>

@@ -48,7 +48,7 @@
                                title="Lettres seulement"  pattern="[a-zA-Z]+" value="<?php echo $_SESSION['user-nom']?>" required>
                         <label for="nom">Nom</label>
                     </div>
-                    <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1'] ?>" type="submit" name="action">Enregistrer
+                    <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1']; ?>" type="submit" name="action">Enregistrer
                         <i class="material-icons right">send</i>
                     </button>
                 </form>
@@ -69,7 +69,11 @@
                         <input type="email" name="email" id="email" value="<?php echo $_SESSION['user-email']?>" required>
                         <label for="email">Courriel</label>
                     </div>
-                    <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1'] ?>" type="submit" name="action">Enregistrer
+                    <div class="input-field row">
+                        <input type="password" name="oldpassword" id="old" required>
+                        <label for="old">Mot de passe actuel</label>
+                    </div>
+                    <button class="btn waves-effect waves-light row right <?php echo $_GLOBAL['couleur1']; ?>" type="submit" name="action">Enregistrer
                         <i class="material-icons right">send</i>
                     </button>
                 </form>
@@ -91,7 +95,7 @@
                                title="999 999-9999" pattern="^([0-9]{3} |[0-9]{3}-)[0-9]{3}-[0-9]{4}$" class="validate" value="<?php echo $_SESSION['user-telephone']?>" required>
                         <label for="telephone">Téléphone</label>
                     </div>
-                    <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1'] ?>" type="submit" name="action">Enregistrer
+                    <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1']; ?>" type="submit" name="action">Enregistrer
                         <i class="material-icons right">send</i>
                     </button>
                 </form>
@@ -112,7 +116,7 @@
                         <input type="text" name="adresse" id="adresse" value="<?php echo $_SESSION['user-adresse']?>" required>
                         <label for="adresse">Adresse</label>
                     </div>
-                    <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1'] ?>" type="submit" name="action">Enregistrer
+                    <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1']; ?>" type="submit" name="action">Enregistrer
                         <i class="material-icons right">send</i>
                     </button>
                 </form>

@@ -2,7 +2,7 @@
 $_GLOBAL['couleur1'] = "teal";
 $_GLOBAL['couleur1a'] = " darken-2";
 $_GLOBAL['couleur2'] = "grey";
-$_GLOBAL['couleur2a'] = "";
+$_GLOBAL['couleur2a'] = "lighten-2";
 
 $fichier = explode("/", $_SERVER['PHP_SELF']);
 $fichier = $fichier[count($fichier)-1];

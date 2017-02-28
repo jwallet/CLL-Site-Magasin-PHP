@@ -5,9 +5,17 @@
                 Materialize.toast('le email existe déja', 8000);
             });
         </script>
-    <?php } unset($_SESSION['toast']);
-}
+    <?php }elseif($_SESSION['toast'] == 'client-ajout-erreurmail'){ ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Un erreur a eu lieu lors de l\'envoi du mail. Veuillez réessayer plus tard', 8000);
+            });
+        </script>
+    <?php }
+    unset($_SESSION['toast']);
+    }
 ?>
+
 <div class="container">
     <div class="section">
         <form class="row" action="admin-client-ajout-validation" method="post">
@@ -38,9 +46,14 @@
                     <input type="text" name="adresse" id="adresse">
                     <label for="adresse">Adresse</label>
                 </div>
-                <button style="width: 100%;" class="waves-effect waves-light btn-large  <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>" type="submit" name="action">Inscrire
+                <button style="width: 100%;" id="send" class="waves-effect waves-light btn-large  <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>" type="submit" name="action">Inscrire
                 </button>
             </div>
         </form>
     </div>
 </div>
+<script type="text/javascript">
+    window.onbeforeunload = function () {
+        $("#mainProgressBar").removeClass('hide');
+    }
+</script>

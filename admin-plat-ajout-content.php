@@ -1,13 +1,3 @@
-<?php if(isset($_SESSION['toast'])) {
-    if ($_SESSION['toast'] == 'ajout-plat-erreur'){?>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                Materialize.toast('Il y a eu un erreur lors de lajout du plat, 8000);
-            });
-        </script>
-    <?php } unset($_SESSION['toast']);
-    }
-?>
 <div class="container">
     <div class="section">
         <form class="row" action="admin-plat-ajout-validation" method="POST">
@@ -29,7 +19,7 @@
                 </div>
                 <div class="input-field row">
                     <i class="material-icons prefix">restaurant_menu</i>
-                    <select name="plat-type">
+                    <select name="plat-type" required>
                         <option value="" disabled selected>Choisir un type de plat</option>
                         <?php
                         $stmt = $mysqli->prepare("SELECT id,type FROM p_item;");
@@ -46,10 +36,9 @@
                 <div class="input-field row">
                     <i class="material-icons prefix" style="margin-top:10px;">add_a_photo</i>
                     <div class="file-field input-field" style="padding-left:30px;">
-
                         <div class="btn right">
                             <span>Parcourir</span>
-                            <input name="plat-image" type="file">
+                            <input name="plat-image" type="file" accept="image/x-png,image/gif,image/jpeg">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" placeholder="IMAGE" type="text">

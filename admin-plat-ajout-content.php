@@ -25,28 +25,29 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input type="number" name="plat-prix" id="plat-prix" pattern="\d+(,\d{2})?" title="9,99" class="validate" required>
+                <input type="tel" name="plat-prix" id="plat-prix" pattern="\d+(,\d{2})?" title="9,99" class="validate" required>
                 <label>Prix du plat</label>
             </div>
         </div>
         <div class="row">
-            <label>Type de plat</label>
-            <select name="plat-type" required class="browser-default">
-                <option value="" disabled selected>Choisir un type de plat</option>
-                <?php
-                $stmt = $mysqli->prepare("SELECT id,type FROM p_item;");
-                $stmt->execute();
-                $stmt->bind_result($id,$type);
-                while($stmt->fetch()) {
+            <div class="input-field col s12">
+                <select>
+                    <option value="" disabled selected>Choisir un type de plat</option>
+                    <?php
+                    $stmt = $mysqli->prepare("SELECT id,type FROM p_item;");
+                    $stmt->execute();
+                    $stmt->bind_result($id,$type);
+                    while($stmt->fetch()) {
+                        echo "<option value=\"$id\">$type</option>";
+                    }
+                    $stmt->close();
                     ?>
-                    <option value="<?php echo $id; ?>"><?php echo $type; ?></option><?php
-                }
-                $stmt->close();
-                ?>
-            </select>
+                </select>
+                <label>Type de plat</label>
+            </div>
         </div>
         <div class="row">
-            <div class="file-field input-field">
+            <div class="file-field input-field col s12">
 
                 <div class="btn">
                     <span>Ajouter une photo</span>
@@ -63,3 +64,8 @@
         </div>
     </form>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>

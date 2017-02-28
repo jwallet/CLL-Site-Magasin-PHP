@@ -46,15 +46,17 @@ if(isset($_POST['email'])) {
         $_SESSION['toast'] = "client-ajout";
         $redirect = "admin";
     }
-    $stmt->close();
+
     if(!$mail->send()) {
         $_SESSION['toast'] = "client-ajout-erreurmail";
     }
+    $stmt->free_result();
+    $stmt->close();
 }
 ?>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0;URL='<?php echo $redirect; ?>'"/>
+    <meta http-equiv="refresh" content="0;URL='<?php if(isset($redirect)){ echo $redirect; } else { echo "home"; } ?>'"/>
 </head>
 </html>
 <?php

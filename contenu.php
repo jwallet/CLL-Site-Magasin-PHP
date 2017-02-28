@@ -45,7 +45,7 @@ else{
             <?php
             if($page['fichier']=='home'){
                 ?>
-            <a href="#" class="brand-logo left boite-bouf">
+            <a href="#" class="brand-logo left boite-bouf button-collapse"  data-activates="slide-out">
                 <h3 style="margin-top:8px;text-shadow: 1px -1px #DDDDDD;font-weight: 600;"><?php echo $page["titre"]; ?></h3>
             </a>
             <?php

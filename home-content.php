@@ -40,11 +40,33 @@
     </div>
 </div>
 <br/>
+
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="center userView">
+            <img src="css/ico/logo_blanc.png" width="70%"">
+        </div>
+    </li>
+    <li><div class="divider"></div></li>
+    <li><a href="#!"><i class="material-icons">map</i>Menu de la semaine</a></li>
+    <li><a href="#!"><i class="material-icons">today</i>Horaires</a></li>
+    <li><a href="#!"><i class="material-icons">perm_phone_msg</i>Nous contacter</a></li>
+    <li><a href="#!"><i class="material-icons">help</i>Fonctionnement</a></li>
+    <li><a href="#!"><i class="material-icons">store</i>A propos de l'entreprise</a></li>
+    <li><a href="#!"><i class="material-icons">gavel</i>Termes et conditions</a></li>
+</ul>
+
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('.slider').slider({
-            height:350,
-            interval:6000
-        });
+$(document).ready(function(){
+    $('.slider').slider({
+        height:350,
+        interval:6000
     });
+    $('.button-collapse').sideNav({
+        menuWidth: 300, // Default is 300
+        edge: 'left', // Choose the horizontal origin
+        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        draggable: true // Choose whether you can drag to open on touch screens
+    });
+});
 </script>

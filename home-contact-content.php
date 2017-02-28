@@ -1,7 +1,5 @@
-<div class="container row">
-    <div class="col m8">
-        <h1 class="boite-bouf"><b>Boite à Bouf</b></h1>
-        <p>La boite a bouf est une entreprise de ...</p>
+<div class="container">
+    <div class="section">
         <p><b>Nous contacter?</b><br/>
             Madame Madame<br/>
             Téléphone: (418) 555-0242<br/>
@@ -18,9 +16,24 @@
         Samedi : 10h00 à 14h00<br/>
         Dimanche : Fermé</p>
     </div>
-    <div class="right col hide-on-small-only m4">
-        <br/>
-        <h5>A propos de...</h5>
-        <p>Historique, infos superflu blal  balaal  blblala bl blblalbl lb lall lblballbl lb lalbla lblblalal lblbla</p>
-    </div>
 </div>
+<div id="map" style="height: 400px; width: 100%; pointer-events: none;"></div>
+<script>
+    function initMap() {
+        var uluru = {lat: 46.7308251, lng: -71.2937554};
+        var ulurc = {lat: 46.735, lng: -71.2937554};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: ulurc,
+            disableDefaultUI: true
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map,
+            icon: 'css/ico/pin.png'
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt_9EOJGlNq42uK4xVSSiWgCVjT63gN1g&callback=initMap">
+</script>

@@ -38,7 +38,7 @@
                     <div class="file-field input-field" style="padding-left:30px;">
                         <div class="btn right">
                             <span>Parcourir</span>
-                            <input name="plat-image" type="file" accept="image/x-png,image/gif,image/jpeg">
+                            <input name="plat-image" id="plat-image" type="file" accept="image/x-png,image/gif,image/jpeg">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" placeholder="IMAGE" type="text">

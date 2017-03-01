@@ -9,14 +9,14 @@
         </li>
         <li>
             <img src="http://nomadjunkies.com/wp-content/uploads/2017/01/Photo-01_Fotor-1900x700_c.jpg"> <!-- random image -->
-            <div class="caption left-align">
-                <h3>Semaine 2</h3>
+            <div class="caption center-align">
+                <h3 class="">aaa</h3>
                 <h5 class="light grey-text text-lighten-3">Poutine cambogienne</h5>
             </div>
         </li>
         <li>
             <img src="http://maigrirsansfaim.net/wp-content/uploads/2015/03/patechinoischeval.png"> <!-- random image -->
-            <div class="caption right-align">
+            <div class="caption center-align">
                 <h3>Menu semaine 3</h3>
                 <h5 class="light grey-text text-lighten-3">Pate chinois</h5>
             </div>
@@ -30,16 +30,18 @@
         </li>
     </ul>
 </div>
-<br />
+
 
 <div class='container'>
-    <div class="s12">
-        <a style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>" href='menu'>
-            <?php if(!isset($_SESSION['user-online'])){ echo "Menu de la semaine"; } else { echo "Commander"; } ?>
-        </a>
+    <div class="section">
+        <div class="col s12">
+            <a style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>" href='menu'>
+                <?php if(!isset($_SESSION['user-online'])){ echo "Menu de la semaine"; } else { echo "Commander"; } ?>
+            </a>
+        </div>
     </div>
 </div>
-<br/>
+
 
 <ul id="slide-out" class="side-nav">
     <li>

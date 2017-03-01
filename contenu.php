@@ -38,6 +38,9 @@ else{
 //-------------fin verification acces------------------------------------------------------
 
 ?>
+<div class="progress" id="mainProgressBar" style="margin:0;">
+    <div class="indeterminate"></div>
+</div>
 
     <nav class="<?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a'] ?>">
         <div class="nav-wrapper container <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a'] ?>">
@@ -103,9 +106,6 @@ else{
             </ul>
         </div>
     </nav>
-    <div class="progress" id="mainProgressBar" style="margin:0;">
-        <div class="indeterminate"></div>
-    </div>
 
     <?php
 include_once($page["fichier"]."-content.php");

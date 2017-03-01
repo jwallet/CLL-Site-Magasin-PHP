@@ -48,43 +48,13 @@
                     </a>
                 </li>
                 <li>
-                    <div class="collapsible-header grey lighten-5">
-                        <div class="container">
-                            <i class="material-icons"></i>Gérer une commande de client
-                            <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
+                    <a href="#" class="black-text">
+                        <div class="collapsible-header grey lighten-5">
+                            <div class="container">
+                                <i class="material-icons"></i>Gérer une commande de client
+                            </div>
                         </div>
-                    </div>
-                    <div class="collapsible-body" style="padding:0;">
-                        <ul class="collapsible" data-collapsible="accordion">
-                            <li>
-                                <a href="#" class="black-text">
-                                    <div class="collapsible-header grey lighten-3">
-                                        <div class="container">
-                                            <i class="material-icons"></i>Voir une commande
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="black-text">
-                                    <div class="collapsible-header grey lighten-3">
-                                        <div class="container">
-                                            <i class="material-icons"></i>Modifier une commande
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="black-text">
-                                    <div class="collapsible-header grey lighten-3">
-                                        <div class="container">
-                                            <i class="material-icons"></i>Retirer une commande
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -147,16 +117,7 @@
                     <a href="#" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
-                                <i class="material-icons"></i>Modifier un plat
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
-                            <div class="container">
-                                <i class="material-icons"></i>Supprimer un plat
+                                <i class="material-icons"></i>Gérer un plat existant
                             </div>
                         </div>
                     </a>
@@ -185,15 +146,6 @@
         <div class="collapsible-body" style="padding:0;">
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
-                            <div class="container">
-                                <i class="material-icons"></i>Rechercher un compte client
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
                     <a href="admin-client-ajout" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
@@ -206,33 +158,13 @@
                     <a href="#" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
-                                <i class="material-icons"></i>Modifier un compte client
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
-                            <div class="container">
-                                <i class="material-icons"></i>Désactiver un compte client
+                                <i class="material-icons"></i>Gérer un compte client existant
                             </div>
                         </div>
                     </a>
                 </li>
             </ul>
         </div>
-    </li>
-
-    <!-- ecrire courriel general -->
-    <li>
-        <a href="#" class="black-text">
-            <div class="collapsible-header">
-                <div class="container">
-                    <i class="material-icons">email</i>Ecrire à tous les clients
-                </div>
-            </div>
-        </a>
     </li>
 
     <!-- pages web -->
@@ -283,6 +215,17 @@
                 </li>
             </ul>
         </div>
+    </li>
+
+    <!-- ecrire courriel general -->
+    <li>
+        <a href="#" class="black-text">
+            <div class="collapsible-header">
+                <div class="container">
+                    <i class="material-icons">email</i>Ecrire à tous les clients
+                </div>
+            </div>
+        </a>
     </li>
 
     <!-- sortie panneau admin -->

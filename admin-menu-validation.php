@@ -25,6 +25,7 @@ if(isset($_POST['titre'])) {
             $stmt->bind_result($idmenu);
             $stmt->fetch();
             echo "--insert-menu-next--";
+            $_SESSION['toast']="menu-next-added";
         }
         else{
             $sql="UPDATE menu SET titre = ? WHERE isnext = 1 AND id = ?;";
@@ -35,6 +36,7 @@ if(isset($_POST['titre'])) {
             $idmenu = (int)$_POST['id'];
             echo "--update-menu-next--";
         }
+        $_SESSION['toast']="menu-next-updated";
     }
     else{
         $sql ="SELECT id FROM menu WHERE isnow=1";
@@ -48,6 +50,7 @@ if(isset($_POST['titre'])) {
         $stmt->bind_param("si",$_POST['titre'],$idmenu);
         $stmt->execute();
         echo "--update-menu-now--";
+        $_SESSION['toast']="menu-now-updated";
     }
     //verifier combien enregistrement sont deja dispo dans la bd pour se faire overwriter par le next loop
     $sql="SELECT id FROM menu_detail WHERE idmenu = ?;";
@@ -61,7 +64,7 @@ if(isset($_POST['titre'])) {
         $itemsdejabd[] = $id;
     }
     $stmt->free_result();
-    echo "--items-count-FOUND!--";
+    //echo "--items-count-FOUND!--";
     for($j = 0; $j < sizeof($itemsdejabd); $j++){
         $iditem = (int)$itemsdejabd[$j];
         if($j<$count){
@@ -76,10 +79,10 @@ if(isset($_POST['titre'])) {
             $stmt = $mysqli->prepare($sql);
             $stmt->bind_param("i",$iditem);
             $stmt->execute();
-            echo "--deleted-old-entry--";
+            //echo "--deleted-old-entry--";
         }
         $stmt->free_result();
-        echo "--update-items--".$j;
+        //echo "--update-items--".$j;
     }
     if($j<$count) {
         for ($i = $j; $i < $count; $i++) {
@@ -89,7 +92,7 @@ if(isset($_POST['titre'])) {
             $stmt->bind_param("ii", $idmenu, $itemvalue);
             $stmt->execute();
             $stmt->free_result();
-            echo "--insert-items--" . $i;
+            //echo "--insert-items--" . $i;
         }
     }
     $stmt->close();

@@ -2,7 +2,7 @@
     if ($_SESSION['toast'] == 'plat-ajout'){?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Le plat a été ajouté avec succès', 8000);
+                Materialize.toast('Le plat a été ajouté', 8000);
             });
         </script>
         <?php
@@ -10,7 +10,31 @@
     elseif ($_SESSION['toast'] == 'client-ajout'){ ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Le client a été ajouté avec succès', 8000);
+                Materialize.toast('Le client a été ajouté', 8000);
+            });
+        </script>
+        <?php
+    }
+    elseif ($_SESSION['toast'] == 'menu-next-added'){?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Le prochain menu a été ajouté', 8000);
+            });
+        </script>
+        <?php
+    }
+    elseif ($_SESSION['toast'] == 'menu-next-updated'){?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Le prochain menu a été mis à jour', 8000);
+            });
+        </script>
+        <?php
+    }
+    elseif ($_SESSION['toast'] == 'menu-now-updated'){?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Le menu actuel a été mis à jour', 8000);
             });
         </script>
         <?php

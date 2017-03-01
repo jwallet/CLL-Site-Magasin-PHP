@@ -24,12 +24,12 @@ if(isset($_SESSION['toast'])) {
             <div class="col s12">
                 <div class="input-field row">
                     <i class="material-icons prefix">email</i>
-                    <input id="icon_email" type="email" name="email" id="email" class="validate">
+                    <input id="icon_email" type="email" name="email" id="email" class="validate" required>
                     <label for="icon_email">Courriel</label>
                 </div>
                 <div class="input-field row">
                     <i class="material-icons prefix">lock</i>
-                    <input id="icon_password" type="password" name="password" id="password" class="validate">
+                    <input id="icon_password" type="password" name="password" id="password" lass="validate" required>
                     <label for="icon_password">Mot de passe</label>
                 </div>
             </div>

@@ -8,10 +8,10 @@
             </div>
         </li>
         <li>
-            <img src="http://nomadjunkies.com/wp-content/uploads/2017/01/Photo-01_Fotor-1900x700_c.jpg"> <!-- random image -->
+            <img src="https://i.ytimg.com/vi/jyaLMHBKCic/maxresdefault.jpg"> <!-- random image -->
             <div class="caption center-align">
-                <h3 class="">aaa</h3>
-                <h5 class="light grey-text text-lighten-3">Poutine cambogienne</h5>
+                <h3 class="">Cotes levees</h3>
+                <h5 class="light grey-text text-lighten-3">Baby back ribs</h5>
             </div>
         </li>
         <li>

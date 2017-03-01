@@ -1,4 +1,5 @@
 <?php
+
 $j = 0;
 echo "<ul class=\"collapsible\" data-collapsible=\"accordion\">";
     while($j<5){

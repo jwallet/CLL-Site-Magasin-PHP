@@ -20,7 +20,6 @@ if(isset($_SESSION['user-id']) and
 
     $sql = "SELECT id, prenom, nom, telephone, adresse, isadmin, isnew FROM personne WHERE id = ? AND email LIKE ?;";
     $stmt = $mysqli->prepare($sql);
-    $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ss",$id, $email);
 
     $stmt->execute();

@@ -90,17 +90,37 @@
         </div>
     </li>
 
-
     <!-- menus -->
     <!--permet de gerer le titre d'un menu et d'associer des plats a celui-ci.-->
     <li>
-        <a href="#" class="black-text">
-            <div class="collapsible-header">
-                <div class="container">
-                    <i class="material-icons">map</i>Menus
-                </div>
+        <div class="collapsible-header">
+            <div class="container">
+                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
+                <i class="material-icons">map</i>Menu
             </div>
-        </a>
+        </div>
+        <div class="collapsible-body" style="padding:0;">
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <a href="admin-menu?next" class="black-text">
+                        <div class="collapsible-header grey lighten-5">
+                            <div class="container">
+                                <i class="material-icons"></i>Rédiger le prochain menu
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="admin-menu?current" class="black-text">
+                        <div class="collapsible-header grey lighten-5">
+                            <div class="container">
+                                <i class="material-icons"></i>Modifier le menu actuel
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </li>
 
     <!-- Les plats / items -->

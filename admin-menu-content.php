@@ -2,10 +2,12 @@
 if(isset($_GET['next'])){
     $visnext=1;
     $visnow =0;
+    $action="next";
 }
 elseif(isset($_GET['current'])){
     $visnext=0;
     $visnow =1;
+    $action="current";
 }
 else{
     header ("Location: admin");
@@ -18,8 +20,9 @@ $stmt->fetch();
 ?>
     <div class="container">
     <div class="section">
-        <form class="row" action="admin-plat-ajout-validation" method="POST">
+        <form class="row" action="admin-menu-validation" method="GET">
             <div class="col s12">
+                <input type="hidden" name="action" value="<?php echo $action; ?>"/>
                 <div class="input-field row">
                     <i class="material-icons prefix">title</i>
                     <input type="text" name="titre" id="titre" class="validate" value="<?php echo $titre; ?>" required>
@@ -27,18 +30,30 @@ $stmt->fetch();
                 </div>
                 <div class="row">
                     <?php
+                    $menuloaded = $id;
                     $stmt->free_result();
-                    $stmt = $mysqli->prepare("SELECT i.id, t.type, i.titre, i.prix FROM item i JOIN p_item t ON i.idtype=t.id ORDER BY t.ordre;");
-                    $stmt->execute();
-                    $stmt->bind_result($iditem,$type,$item,$prix);
+                    if($menuloaded>0){
+                        $sql="SELECT i.id, t.type, i.titre, i.prix, m.idmenu FROM item i JOIN p_item t ON i.idtype=t.id LEFT JOIN menu_detail m ON i.id = m.iditem WHERE m.idmenu = ? OR m.idmenu IS NULL ORDER BY t.ordre;";
+                        $stmt = $mysqli->prepare($sql);
+                        $stmt->bind_param('i',$menuloaded);
+                        $stmt->execute();
+                        $stmt->bind_result($iditem,$type,$item,$prix,$idmenu);
+                    }
+                    else{
+                        $sql = "SELECT i.id, t.type, i.titre, i.prix FROM item i JOIN p_item t ON i.idtype=t.id ORDER BY t.ordre;";
+                        $stmt = $mysqli->prepare($sql);
+                        $stmt->execute();
+                        $stmt->bind_result($iditem,$type,$item,$prix);
+                        $idmenu=null;
+                    }
                     $group = null;
-                    $groupopen = false;
                     while($stmt->fetch()) {
                         $type = ucfirst(strtolower($type));
+                        if($idmenu!=null){ $checkit="checked"; } else { $checkit = ""; }
                         if(strcmp($group,$type)==0){
                             echo "
                             <tr>
-                                <td><input type=\"checkbox\" id=\"$iditem\"/>
+                                <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items\" $checkit/>
                                     <label for=\"$iditem\">$item</label></td>
                                 <td class=\"right-align\">$prix $</td>
                             </tr>
@@ -60,7 +75,7 @@ $stmt->fetch();
     
                             <tbody>
                             <tr>
-                                <td><input type=\"checkbox\" id=\"$iditem\"/>
+                                <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items\" $checkit/>
                                     <label for=\"$iditem\">$item</label></td>
                                 <td class=\"right-align\">$prix $</td>     
                             </tr>";

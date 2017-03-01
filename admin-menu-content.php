@@ -16,13 +16,17 @@ $stmt = $mysqli->prepare("SELECT id, titre FROM menu WHERE isnext = ? AND isnow 
 $stmt->bind_param("ii",$visnext,$visnow);
 $stmt->execute();
 $stmt->bind_result($id, $titre);
-$stmt->fetch();
+$menuloaded=0;
+if($stmt->fetch()){
+    $menuloaded = $id;
+}
 ?>
     <div class="container">
     <div class="section">
-        <form class="row" action="admin-menu-validation" method="GET">
+        <form class="row" action="admin-menu-validation" method="POST">
             <div class="col s12">
                 <input type="hidden" name="action" value="<?php echo $action; ?>"/>
+                <input type="hidden" name="id" value="<?php echo $menuloaded; ?>"/>
                 <div class="input-field row">
                     <i class="material-icons prefix">title</i>
                     <input type="text" name="titre" id="titre" class="validate" value="<?php echo $titre; ?>" required>
@@ -30,9 +34,8 @@ $stmt->fetch();
                 </div>
                 <div class="row">
                     <?php
-                    $menuloaded = $id;
                     $stmt->free_result();
-                    if($menuloaded>0){
+                    if($menuloaded!=0){
                         $sql="SELECT i.id, t.type, i.titre, i.prix, m.idmenu FROM item i JOIN p_item t ON i.idtype=t.id LEFT JOIN menu_detail m ON i.id = m.iditem WHERE m.idmenu = ? OR m.idmenu IS NULL ORDER BY t.ordre;";
                         $stmt = $mysqli->prepare($sql);
                         $stmt->bind_param('i',$menuloaded);
@@ -53,7 +56,7 @@ $stmt->fetch();
                         if(strcmp($group,$type)==0){
                             echo "
                             <tr>
-                                <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items\" $checkit/>
+                                <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items[]\" $checkit/>
                                     <label for=\"$iditem\">$item</label></td>
                                 <td class=\"right-align\">$prix $</td>
                             </tr>
@@ -75,7 +78,7 @@ $stmt->fetch();
     
                             <tbody>
                             <tr>
-                                <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items\" $checkit/>
+                                <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items[]\" $checkit/>
                                     <label for=\"$iditem\">$item</label></td>
                                 <td class=\"right-align\">$prix $</td>     
                             </tr>";

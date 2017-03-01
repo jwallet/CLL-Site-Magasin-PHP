@@ -1,4 +1,5 @@
 <?php
+//check pour des toasts
 if(isset($_SESSION['toast'])) {
     if ($_SESSION['toast'] == 'first-access-failed') {
         ?>

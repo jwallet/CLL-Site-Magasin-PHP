@@ -9,4 +9,4 @@ if ($mysqli -> connect_error) {
 }
 $mysqli->set_charset("UTF8");
 session_start();
-?>
+?>//

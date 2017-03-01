@@ -11,7 +11,7 @@ if(isset($_POST['email'])) {
     $nom = $_POST['nom'];
     $telephone = $_POST['telephone'];
     $email = $_POST['email'];
-    $password = uniqid("BB",false);
+    $password = randomPassword();
     //Envoie email
     $mail = new PHPMailer;
     $mail->isSMTP();
@@ -26,8 +26,9 @@ if(isset($_POST['email'])) {
     $mail->addReplyTo($_GLOBAL['mail-user'], 'Info');
     $mail->isHTML(true);
     $mail->Subject = 'Votre inscription à la Boîte À Bouf';
-    $mail->Body    = "Bienvenue chez la Boîte À Bouf, <br> <br> voici le mot de passe qui vous a été généré: <b> $password </b>. <br>Vous pouvez le modifier à tout moment en vous connectant à votre compte sur notre site web.<br>Merci, et au plaisir de vous revoir.";
-    //$password = md5($password);
+    $mail->CharSet = 'UTF-8';
+    $mail->Body    = "Bienvenue chez la Boîte À Bouf, <br> voici le mot de passe qui vous a été généré: <b> $password </b>. <br>Vous pouvez le modifier à tout moment en vous connectant à votre compte sur notre site web.<br>Merci, et au plaisir de vous revoir.";
+    $password = md5($password);
     $sql = "select id from personne where email = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("s", $email);
@@ -40,17 +41,14 @@ if(isset($_POST['email'])) {
     } else {
         $sql = "INSERT INTO personne (prenom,nom,telephone,email,passe,isnew) values (?,?,?,?,?,?)";
         $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("sssss", $prenom, $nom, $telephone, $email, $password, $isnew);
+        $stmt->bind_param("sssssi", $prenom, $nom, $telephone, $email, $password, $isnew);
         $stmt->execute();
         $_SESSION['toast'] = "client-ajout";
         $redirect = "admin";
     }
 
     if(!$mail->send()) {
-        echo 'Message could not be sent.';
-        echo 'Mailer Error: ' . $mail->ErrorInfo;
-    } else {
-        echo 'Message has been sent';
+        $_SESSION['toast'] = "client-ajout-erreurmail";
     }
     $stmt->free_result();
     $stmt->close();
@@ -62,11 +60,14 @@ if(isset($_POST['email'])) {
 </head>
 </html>
 <?php
-//    $to = 'misterj.20@hotmail.com';
-//    $subject = 'Confirmation de votre inscription à La Boîte À Bouf';
-//    $message = 'hello';
-//    $headers = "From:" . $_SESSION['user-email'] . "\r\n" .
-//        "Reply-To:" . $_SESSION['user-email'] . "\r\n" .
-//        'X-Mailer: PHP/' . phpversion();
-//$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-    ?>
+function randomPassword() {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
+    }
+?>

@@ -103,7 +103,16 @@ else{
             </ul>
         </div>
     </nav>
+    <div class="progress" id="mainProgressBar" style="margin:0;">
+        <div class="indeterminate"></div>
+    </div>
 
     <?php
 include_once($page["fichier"]."-content.php");
 ?>
+
+<script type="text/javascript">
+    window.onload = function () {
+        $("#mainProgressBar").addClass('hide');
+    }
+</script>

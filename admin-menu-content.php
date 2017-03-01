@@ -35,24 +35,24 @@ if($stmt->fetch()){
                 <div class="row">
                     <?php
                     $stmt->free_result();
-                    if($menuloaded!=0){
-                        $sql="SELECT i.id, t.type, i.titre, i.prix, m.idmenu FROM item i JOIN p_item t ON i.idtype=t.id LEFT JOIN menu_detail m ON i.id = m.iditem WHERE m.idmenu = ? OR m.idmenu IS NULL ORDER BY t.ordre;";
-                        $stmt = $mysqli->prepare($sql);
-                        $stmt->bind_param('i',$menuloaded);
-                        $stmt->execute();
-                        $stmt->bind_result($iditem,$type,$item,$prix,$idmenu);
+                    $idmenu = null;
+                    $sql = "SELECT idmenu, iditem FROM menu_detail WHERE idmenu = ?;";
+                    $stmt = $mysqli->prepare($sql);
+                    $stmt->bind_param('i',$menuloaded);
+                    $stmt->execute();
+                    $stmt->bind_result($idmenu,$iditem);
+                    $itemsIdFromMenu = array();
+                    while($stmt->fetch()) {
+                        $itemsIdFromMenu[] = $iditem;
                     }
-                    else{
-                        $sql = "SELECT i.id, t.type, i.titre, i.prix FROM item i JOIN p_item t ON i.idtype=t.id ORDER BY t.ordre;";
-                        $stmt = $mysqli->prepare($sql);
-                        $stmt->execute();
-                        $stmt->bind_result($iditem,$type,$item,$prix);
-                        $idmenu=null;
-                    }
+                    $sql = "SELECT i.id, t.type, i.titre, i.prix FROM item i JOIN p_item t ON i.idtype=t.id ORDER BY t.ordre;";
+                    $stmt = $mysqli->prepare($sql);
+                    $stmt->execute();
+                    $stmt->bind_result($iditem,$type,$item,$prix);
                     $group = null;
                     while($stmt->fetch()) {
                         $type = ucfirst(strtolower($type));
-                        if($idmenu!=null){ $checkit="checked"; } else { $checkit = ""; }
+                        if(in_array($iditem,$itemsIdFromMenu)){ $checkit="checked"; } else { $checkit = ""; }
                         if(strcmp($group,$type)==0){
                             echo "
                             <tr>

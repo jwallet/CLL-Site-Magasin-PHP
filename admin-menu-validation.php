@@ -22,7 +22,8 @@ if(isset($_POST['titre'])) {
             $sql ="SELECT id FROM menu WHERE isnext=1";
             $stmt = $mysqli->prepare($sql);
             $stmt->execute();
-            $stmt->bind_result($idmenu);
+            $stmt->bind_result($menu);
+            $idmenu = $menu;
             $stmt->fetch();
             echo "--insert-menu-next--";
             $_SESSION['toast']="menu-next-added";
@@ -39,11 +40,7 @@ if(isset($_POST['titre'])) {
         $_SESSION['toast']="menu-next-updated";
     }
     else{
-        $sql ="SELECT id FROM menu WHERE isnow=1";
-        $stmt = $mysqli->prepare($sql);
-        $stmt->execute();
-        $stmt->bind_result($idmenu);
-        $stmt->fetch();
+        $idmenu = (int)$_POST['id'];
         echo "NOW!!!";
         $sql="UPDATE menu SET titre = ? WHERE isnow = 1 AND id = ?;";
         $stmt = $mysqli->prepare($sql);

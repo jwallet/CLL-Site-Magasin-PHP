@@ -22,7 +22,7 @@
                     <select name="plat-type" required>
                         <option value="" disabled selected>Choisir un type de plat</option>
                         <?php
-                        $stmt = $mysqli->prepare("SELECT id,type FROM p_item;");
+                        $stmt = $mysqli->prepare("SELECT id,type FROM p_item order by type;");
                         $stmt->execute();
                         $stmt->bind_result($id,$type);
                         while($stmt->fetch()) {

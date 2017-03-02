@@ -2,42 +2,40 @@
 $stmt = $mysqli->prepare("SELECT item.titre,p_item.type,description,prix,image FROM item,p_item where item.idtype = p_item.id and item.id=?;");
 $stmt->bind_param("i",$_GET['id']);
 $stmt->execute();
-if($stmt->fetch()){
-    $stmt->bind_result($modtitre,$modtyperepas,$moddescription,$modprix,$modimage);
-    echo $modtitre;
-    echo "<br>";
-    echo $modtyperepas;
-    echo "<br>";
-    echo $moddescription;
-    echo "<br>";
-    echo $modprix;
-    echo "<br>";
-    echo $modimage;
-    echo "<br>";
-    $stmt->free_result();
-    $stmt->close();
+$stmt->bind_result($modtitre, $modtyperepas, $moddescription, $modprix, $modimage);
+if($stmt->fetch()) {
+//    echo $modtitre;
+//    echo "<br>";
+//    echo $modtyperepas;
+//    echo "<br>";
+//    echo $moddescription;
+//    echo "<br>";
+//    echo $modprix;
+//    echo "<br>";
+//    echo $modimage;
+//    echo "<br>";
 }
-else
-{echo "erreur";}
+$stmt->free_result();
+$stmt->close();
 ?>
 <div class="container">
     <div class="section">
-        <form class="row" action="admin-plat-ajout-validation" method="POST" enctype="multipart/form-data">
+        <form class="row" action="admin-plat-mod-validation?id=<?php echo $_GET['id']?>" method="GET" enctype="multipart/form-data">
             <div class="col s12">
                 <div class="input-field row">
                     <i class="material-icons prefix">title</i>
-                    <input type="text" name="mod-titre" id="mod-titre" class="validate" required>
-                    <label><?php echo $modtitre; ?></label>
+                    <input type="text" name="mod-titre" id="mod-titre" value="<?php echo $modtitre; ?>" class="validate" required>
+                    <label>Titre du plat</label>
                 </div>
                 <div class="input-field row">
                     <i class="material-icons prefix">description</i>
-                    <input type="text" name="mod-description" id="mod-description" class="validate" required>
-                    <label><?php echo $moddescription; ?></label>
+                    <input type="text" name="mod-description" id="mod-description" value="<?php echo $moddescription; ?>" class="validate" required>
+                    <label>Description du plat</label>
                 </div>
                 <div class="input-field row">
                     <i class="material-icons prefix">attach_money</i>
-                    <input type="number" step="any" min="0" name="mod-prix" id="mod-prix" pattern="\d+(.\d{2})?" title="9.99" class="validate" required>
-                    <label><?php echo $modprix;?></label>
+                    <input type="number" step="any" min="0" name="mod-prix" id="mod-prix" value="<?php echo $modprix;?>" pattern="\d+(.\d{2})?" title="9.99" class="validate" required>
+                    <label>Prix du plat</label>
                 </div>
                 <div class="input-field row">
                     <i class="material-icons prefix">restaurant_menu</i>
@@ -46,7 +44,7 @@ else
                         <?php
                         $stmt = $mysqli->prepare("SELECT id,type FROM p_item order by type;");
                         $stmt->execute();
-                        $stmt->bind_result($id,$type);
+                        $stmt->bind_result($idtype,$type);
                         while($stmt->fetch())
                         {
                             echo $modtyperepas;
@@ -54,11 +52,11 @@ else
                             echo $type;
                             echo "<br>";
                             if($type == $modtyperepas){
-                                echo "<option value=\"$id\">$type</option>";
-                            }
-                            else{
-                                echo "<option value=\"$id\">$type</option>";
-                            }
+                                echo "<option value=\"$idtype\" selected>$type</option>";
+                           }
+                           else{
+                               echo "<option value=\"$idtype$id\">$type</option>";
+                           }
                         }
                         $stmt->free_result();
                         $stmt->close();
@@ -71,10 +69,10 @@ else
                     <div class="file-field input-field" style="padding-left:30px;">
                         <div class="btn right">
                             <span>Parcourir</span>
-                            <input value="<?php echo $modimage?>" $image name="mod-image" id="mod-image" type="file" accept="image/x-png,image/gif,image/jpeg">
+                            <input value="<?php echo $modimage?>" name="mod-image" id="mod-image" type="file" accept="image/x-png,image/gif,image/jpeg">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" placeholder="IMAGE" type="text">
+                            <input class="file-path validate" value="<?php echo $modimage; ?>" placeholder="IMAGE" type="text">
                         </div>
                     </div>
                 </div>
@@ -86,3 +84,8 @@ else
         </form>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>

@@ -28,6 +28,7 @@
                         while($stmt->fetch()) {
                             echo "<option value=\"$id\">$type</option>";
                         }
+                        $stmt->free_result();
                         $stmt->close();
                         ?>
                     </select>

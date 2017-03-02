@@ -48,8 +48,9 @@ else{
             <?php
             if($page['fichier']=='home'){
                 ?>
-            <a href="#" class="brand-logo left boite-bouf button-collapse"  data-activates="slide-out">
-                <h3 style="margin-top:8px;text-shadow: 1px -1px #DDDDDD;font-weight: 600;"><?php echo $page["titre"]; ?></h3>
+            <a href="#" class="left button-collapse"  data-activates="slide-out">
+               <i class="material-icons" style="font-size: 35px;">menu</i>
+<!--                <h3 style="margin-top:8px;text-shadow: 1px -1px #DDDDDD;font-weight: 600;">--><?php //echo $page["titre"]; ?><!--</h3>-->
             </a>
             <?php
             }

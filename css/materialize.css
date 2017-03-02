@@ -5642,6 +5642,7 @@ button.btn-floating {
   border-right: 1px solid #ddd;
   border-left: 1px solid #ddd;
   margin: 0;
+    box-shadow: none;
 }
 
 .collapsible-header {

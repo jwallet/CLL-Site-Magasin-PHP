@@ -24,7 +24,6 @@
     </ul>
 </div>
 
-
 <div class='container'>
     <div class="section">
         <div class="col s12">
@@ -34,7 +33,6 @@
         </div>
     </div>
 </div>
-
 
 <ul id="slide-out" class="side-nav">
     <li>

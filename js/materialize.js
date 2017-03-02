@@ -3723,18 +3723,31 @@ if (jQuery) {
         var $active, $indicators, $interval;
         if ($active_index != -1) { $active = $slides.eq($active_index); }
 
-        // Transitions the caption depending on alignment
-        function captionTransition(caption, duration) {
-          if (caption.hasClass("center-align")) {
-            caption.velocity({opacity: 0, translateY: -100}, {duration: duration, queue: false});
+        // // Transitions the caption depending on alignment
+        // function captionTransition(caption, duration) {
+        //   if (caption.hasClass("center-align")) {
+        //     caption.velocity({opacity: 0, translateY: -100}, {duration: duration, queue: false});
+        //   }
+        //   else if (caption.hasClass("right-align")) {
+        //     caption.velocity({opacity: 0, translateX: 100}, {duration: duration, queue: false});
+        //   }
+        //   else if (caption.hasClass("left-align")) {
+        //     caption.velocity({opacity: 0, translateX: -100}, {duration: duration, queue: false});
+        //   }
+        // }
+
+          // Transitions the caption depending on alignment
+          function captionTransition(caption, duration) {
+              if (caption.hasClass("center-align")) {
+                  caption.velocity({opacity: 100, translateY: 0}, {duration: duration, queue: false});
+              }
+              else if (caption.hasClass("right-align")) {
+                  caption.velocity({opacity: 0, translateX: 0}, {duration: duration, queue: false});
+              }
+              else if (caption.hasClass("left-align")) {
+                  caption.velocity({opacity: 0, translateX: 0}, {duration: duration, queue: false});
+              }
           }
-          else if (caption.hasClass("right-align")) {
-            caption.velocity({opacity: 0, translateX: 100}, {duration: duration, queue: false});
-          }
-          else if (caption.hasClass("left-align")) {
-            caption.velocity({opacity: 0, translateX: -100}, {duration: duration, queue: false});
-          }
-        }
 
         // This function will transition the slide to any index of the next slide
         function moveToSlide(index) {

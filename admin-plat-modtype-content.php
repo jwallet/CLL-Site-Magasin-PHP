@@ -1,16 +1,16 @@
 <?php if(isset($_SESSION['toast'])) {
-    if ($_SESSION['toast'] == 'client-ajout-existe'){?>
+    if ($_SESSION['toast'] == 'plat-type-mod'){?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('le email existe déja', 8000);
+                Materialize.toast('Modification a réussi', 3000);
             });
         </script>
-    <?php }elseif($_SESSION['toast'] == 'client-ajout-erreurmail'){ ?>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                Materialize.toast('Un erreur a eu lieu lors de l\'envoi du mail. Veuillez réessayer plus tard', 8000);
-            });
-        </script>
+    <?php }elseif($_SESSION['toast'] == 'plat-type-add'){ ?>
+            <script type="text/javascript">
+                    $(document).ready(function () {
+                    Materialize.toast('Ajout a réussi', 3000);
+                    });
+            </script>
     <?php }
     unset($_SESSION['toast']);
 }
@@ -35,17 +35,33 @@
                 <label>Type de plat</label>
             </div>
             <div class="input-field row">
-                <i class="material-icons prefix">description</i>
+                <i class="material-icons prefix">update</i>
                 <input type="text" name="plat-ntype" id="platntype" class="validate" required>
                 <label>Veuillez choisir un nouveau titre pour le type de plat sélectionné</label>
             </div>
             <div class="row">
                 <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?> "
-                        type='submit' name="ajoutplat">Modifier</button>
+                        type='submit' name="modtype">Modifier</button>
             </div>
             </div>
         </form>
     </div>
+</div>
+<div class="container">
+    <div class="section">
+        <form class="row" action="admin-plat-modtype-validation" method="POST">
+            <div class="input-field row">
+                <i class="material-icons prefix">add</i>
+                <input type="text" name="plat-addtype" id="plataddtype" class="validate" required>
+                <label>Inscrivez le nouveau type de repas ici</label>
+            </div>
+            <div class="row">
+                <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?> "
+                        type='submit' name="addtype">Ajouter</button>
+            </div>
+    </div>
+    </form>
+</div>
 </div>
 <script type="text/javascript">
     $(document).ready(function() {

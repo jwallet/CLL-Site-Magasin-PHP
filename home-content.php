@@ -53,7 +53,7 @@
 $(document).ready(function(){
     $('.slider').slider({
         height:350,
-        transition:1000,
+        transition:3000,
         indicators:false,
         interval:6000
     });

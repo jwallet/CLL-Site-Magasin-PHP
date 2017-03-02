@@ -19,25 +19,36 @@ $stmt->free_result();
 $j = 0;
 $htmltype = null;
 echo "
-<ul class=\"collapsible\" data-collapsible=\"expandable\">";
-for($j = 0; $j<sizeof($itemsBdId); $j++){
-    if(strcmp($htmltype,$itemsBdType[$j])!= 0){
-    echo "      
-    <li>
-        <div class=\"collapsible-header active\">
-            <div class=\"container\"><i class=\"material-icons\">restaurant_menu</i>";
-echo ucfirst(strtolower($itemsBdType[$j]));
-echo "
-            </div>
-        </div>
-        <div class='collapsible-body' style='padding:0;'>
-            <ul class=\"collapsible\" data-collapsible=\"expandable\">
-";
-    }
-    $i = 0; //condition i pour permettre au premier de rentrer et de sinscrire
-    while($j<sizeof($itemsBdId)&&(strcmp($htmltype,$itemsBdType[$j])== 0 || $i==0)) {
+<ul class=\"collapsible\" data-collapsible=\"accordion\">";
+//for($j = 0; $j<sizeof($itemsBdId); $j++){
+//    if(strcmp($htmltype,$itemsBdType[$j])!= 0){
+//        echo "
+//    <li>
+//        <div class=\"collapsible-header active\">
+//            <div class=\"container\"><i class=\"material-icons\">restaurant_menu</i>";
+//        echo ucfirst(strtolower($itemsBdType[$j]));
+//        echo "
+//            </div>
+//        </div>
+//        <div class='collapsible-body' style='padding:0;'>
+//            <ul class=\"collapsible\" data-collapsible=\"expandable\">
+//";
+//    }
+
+    for($j=0;$j<sizeof($itemsBdId);$j++) {
         echo "
-                <li>
+                <li>";
+                if(strcmp($htmltype,$itemsBdType[$j])!= 0){
+                echo "
+                    <div class=\"menu-header\" style='pointer-events:none;'>
+                        <div class=\"container\"><h5 class='center-align'>";
+                            echo ucfirst(strtolower($itemsBdType[$j]));
+                            echo "</h5>
+                        </div>
+                    </div>
+                ";
+                }
+                echo "
                     <div class=\"collapsible-header grey lighten-5\">
                         <div class=\"container\">";
         echo ucfirst(strtolower($itemsBdTitre[$j]));
@@ -45,35 +56,36 @@ echo "
         echo "
                         </div>
                     </div>
-                    <div class='collapsible-body' style='padding:0;'>
+                    
+                    <div class='collapsible-body grey lighten-3' style='padding:0;'>
                         <span>
                             <div class=\"container\">
-                                item goes here
+                                <div class='section'>
+                                item goes here<br>i<br>i<br>is
+                                </div>
                             </div>
                         </span>
                     </div>
                 </li>
-";
+        ";
         $htmltype = $itemsBdType[$j];
-        $j++;
-        $i = 1;
     }
-    $i=0;
-    if($j<sizeof($itemsBdId)) {
-        if (strcmp($htmltype, $itemsBdType[$j]) != 0) {
-                echo " 
-                </ul>
-            </div>
-        </li>";
-        }
-    }
-    else{
-        echo " 
-                </ul>
-            </div>
-        </li>";
-    }
-}
+//    $i=0;
+//    if($j<sizeof($itemsBdId)) {
+//        if (strcmp($htmltype, $itemsBdType[$j]) != 0) {
+//                echo "
+//                </ul>
+//            </div>
+//        </li>";
+//        }
+//    }
+//    else{
+//        echo "
+//                </ul>
+//            </div>
+//        </li>";
+//    }
+//}
 echo "
 </ul>";
 ?>

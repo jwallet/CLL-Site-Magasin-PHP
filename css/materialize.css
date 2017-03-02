@@ -5645,7 +5645,7 @@ button.btn-floating {
     box-shadow: none;
 }
 
-.collapsible-header {
+.collapsible-header, .menu-header {
   display: block;
   cursor: pointer;
   min-height: 3rem;

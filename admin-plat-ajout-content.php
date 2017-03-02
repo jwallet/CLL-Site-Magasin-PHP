@@ -1,6 +1,6 @@
 <div class="container">
     <div class="section">
-        <form class="row" action="admin-plat-ajout-validation" method="POST">
+        <form class="row" action="admin-plat-ajout-validation" method="POST" enctype="multipart/form-data">
             <div class="col s12">
                 <div class="input-field row">
                     <i class="material-icons prefix">title</i>

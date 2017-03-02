@@ -138,7 +138,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="black-text">
+                    <a href="admin-plat-mod" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Gérer un plat existant

@@ -3,17 +3,21 @@
 $itemsBdId = array();
 $itemsBdType = array();
 $itemsBdTitre = array();
+$itemsBdDesc = array();
+$itemsBdImg = array();
 $itemsBdPrix = array();
-$sql="SELECT i.id, pi.type, i.titre, i.prix FROM menu m JOIN menu_detail md ON m.id = md.idmenu JOIN item i ON md.iditem = i.id JOIN p_item pi ON i.idtype = pi.id WHERE m.isnow=1 ORDER BY pi.ordre, i.prix, i.titre;";
+$sql="SELECT i.id, pi.type, i.titre, i.description, i.image, i.prix FROM menu m JOIN menu_detail md ON m.id = md.idmenu JOIN item i ON md.iditem = i.id JOIN p_item pi ON i.idtype = pi.id WHERE m.isnow=1 ORDER BY pi.ordre, i.prix, i.titre";
 $stmt = $mysqli->prepare($sql);
 $stmt->execute();
-$stmt->bind_result($un,$deux,$trois, $quatre);
+$stmt->bind_result($un,$deux,$trois, $quatre, $cinq, $six);
 $j = 0;
 while($stmt->fetch()) {
     $itemsBdId[] = (string)$un;
     $itemsBdType[] = $deux;
     $itemsBdTitre[] = $trois;
-    $itemsBdPrix[] = $quatre;
+    $itemsBdDesc[] = $quatre;
+    $itemsBdImg[] = $cinq;
+    $itemsBdPrix[] = $six;
 }
 $stmt->free_result();
 $j = 0;
@@ -25,27 +29,27 @@ echo "
                 <li>";
                 if(strcmp($htmltype,$itemsBdType[$j])!= 0){
                 ?>
-                <div class="menu-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>" style='pointer-events:none;'>
-                        <div class="container"><h5><u>
+                <div class="menu-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>" style='pointer-events:none;border:0px;'>
+                        <div class="container"><h5 class="<?php echo $_GLOBAL['couleur-menu-4a']. "-text"; ?>"><u>
                             <?php echo ucfirst(strtolower($itemsBdType[$j])); ?>
                                 </u></h5>
                         </div>
                     </div>
                 <?php } ?>
-                    <div class="collapsible-header active <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>">
-                        <div class="container">
-                            <span class="<?php echo $_GLOBAL['couleur-menu-2a']. "-text text-" . $_GLOBAL['couleur-menu-2b'] ?>">
-                                <b><?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?></b>
+                    <div class="collapsible-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>" style="border:0px;">
+                        <div class="container" style="font-size:16px;font-variant:small-caps;">
+                            <span style="font-style: italic;" class="<?php echo $_GLOBAL['couleur-menu-2a']. "-text text-" . $_GLOBAL['couleur-menu-2b'] ?>">
+                                <?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?>
                             </span>
                             <span class='secondary-content <?php echo $_GLOBAL['couleur-menu-3a']. "-text text-" . $_GLOBAL['couleur-menu-3b'] ?>'>
-                                <b><?php echo $itemsBdPrix[$j]. "$" ?></b>
+                                <?php echo $itemsBdPrix[$j]. "$" ?>
                             </span>
                         </div>
                     </div>
                     
                     <div class='collapsible-body' style='padding:0;'>
                         <span>
-                            <div class="menu-back-img" style="background-image:url('https://i.ytimg.com/vi/jyaLMHBKCic/maxresdefault.jpg');">
+                            <div class="menu-back-img" style="background-image:url('<?php if($itemsBdImg[$j]!="" and $itemsBdImg[$j]!=null){ echo "upload/$itemsBdImg[$j]"; } else { echo "http://www.harristonmintofair.ca/wp-content/uploads/2015/07/o-CHICKEN-WINGS-facebook.jpg";} ?>');">
                                 <div class="menu-back-img-shadow">
                                     <div class="container">
                                         <div class='section'>
@@ -54,54 +58,140 @@ echo "
                                                 <div class="section">
                                                     <div class="white-text row s12" style="margin:0px 20px 0px 20px;">
 
-                                                        <h5 class="col s6"><?php echo $itemsBdTitre[$j]; ?></h5>
-                                                        <input type="hidden" id="hiddenprix<?php echo $j; ?>" value="<?php echo $itemsBdPrix[$j]; ?>"/>
-                                                        <h5 class="col s6 right-align"><?php echo $itemsBdPrix[$j]; ?>$</h5>
+                                                        <h4 class="col s6"><?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?></h4>
+                                                        <input type="hidden" class="hiddenprix<?php echo $j; ?>" value="<?php echo $itemsBdPrix[$j]; ?>"/>
+                                                        <h4 class="col s6 right-align"><?php echo $itemsBdPrix[$j]; ?>$</h4>
+                                                        <p class="col s12"><?php if($itemsBdDesc[$j]!=null and $itemsBdDesc[$j]!=""){ echo $itemsBdDesc[$j]; } else { echo "Aucune description n'est disponible."; } ?></p>
 
-                                                        <div class="col s12" style="min-height: 180px;">
-                                                            <img class="right hide-on-small-only" style="padding-left:20px;" src="css/ico/logo_blanc.png" width="auto" height="160px"/>
-                                                            <h6>description a a a
-                                                                description  a a a  description  a aaa adescriptio naaa
-                                                                description  a a a adescription  aa description  aa a descriptiona a a
-                                                                description  a  a a a a adescription  a aa description descriptiona a  a
-                                                                description  a aa description  a aa description aaa  descriptiona a
-                                                                description  a a a  description  a aaa adescriptio naaa
-                                                                description  a a a adescription  aa description  aa a descriptiona a a
-                                                                description  a  a a a a adescription  a aa description descriptiona a  a
-                                                            </h6>
-                                                        </div>
-                                                        <div class="col s12">
-                                                            <div class="row s12">
-                                                                <form action="#" class="col s12">
-                                                                    <div class="col s12" style="padding-left:0;padding-right: 0;">
-                                                                        <div class="input-group col center" style="padding-left:0;padding-right: 0;">
-                                                                            <span class="input-group-btn">
-                                                                              <button type="button" class="col btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                                                                  <span><i class="material-icons">remove</i></span>
-                                                                              </button>
-                                                                            </span>
-                                                                            <input type="text" name="quant[1]" class="form-control input-number center" value="1" min="1" max="100">
-                                                                            <span class="input-group-btn">
-                                                                              <button type="button" class="col btn btn-default btn-number" data-type="plus" data-field="quant[1]">
-                                                                                  <span><i class="material-icons">add</i></span>
-                                                                              </button>
-                                                                            </span>
-                                                                        </div>
-                                                                        <div class="input-group-btn col hide-on-small-only">
-                                                                            <button class="col btn btn-default waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">
-                                                                                <span><i class="material-icons left">add_shopping_cart</i>Ajouter au panier</span>
-                                                                            </button>
-                                                                        </div>
+                                                        <div class="col s12 hide-on-small-only">
+
+                                                            <form action="#" style="padding-top:25px;">
+                                                                <div class="col s12" style="padding-left:0;padding-right: 0;">
+                                                                    <div class="input-group col center" style="padding-left:0;padding-right: 0;">
+                                                                        <span class="input-group-btn">
+                                                                          <button type="button" class="col btn btn-default btn-number<?php echo $j; ?> <?php echo $_GLOBAL['couleur1a']; ?>" disabled="disabled" data-type="minus" data-field="quant<?php echo $j; ?>">
+                                                                              <span><i class="material-icons">remove</i></span>
+                                                                          </button>
+                                                                        </span>
+                                                                        <input type="text" name="quant<?php echo $j; ?>" class="form-control input-number<?php echo $j; ?> center" value="1" min="1" max="1000">
+                                                                        <span class="input-group-btn">
+                                                                          <button type="button" class="col btn btn-default btn-number<?php echo $j; ?> <?php echo $_GLOBAL['couleur1a']; ?>" data-type="plus" data-field="quant<?php echo $j; ?>">
+                                                                              <span><i class="material-icons">add</i></span>
+                                                                          </button>
+                                                                        </span>
                                                                     </div>
-                                                                    <div class="input-group-btn col s12 hide-on-med-and-up" style="padding-left:0;padding-right: 0;">
+                                                                    <div class="input-group-btn col">
                                                                         <button class="col btn btn-default waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">
                                                                             <span><i class="material-icons left">add_shopping_cart</i>Ajouter au panier</span>
                                                                         </button>
                                                                     </div>
-                                                                </form>
-                                                                <div class="col s12"><label>Prix total : </label><span id="prixnumber"><?php echo $itemsBdPrix[$j]; ?></span> $</div>
-                                                            </div>
+                                                                </div>
+                                                            </form>
+                                                            <label>Prix total : </label><span class="prixnumber<?php echo $j; ?>"><?php echo $itemsBdPrix[$j]; ?></span> $
+
                                                         </div>
+                                                        <div class="col s12 hide-on-med-and-up">
+                                                            <form action="#" style="padding-top:25px;">
+                                                                <div class="col s12" style="padding-left:0;padding-right: 0;">
+                                                                    <div class="input-group col s12" style="width:100%;padding-left:0;padding-right: 0;">
+                                                                        <span class="input-group-btn">
+                                                                          <button type="button" class="col btn btn-default btn-number<?php echo $j; ?> <?php echo $_GLOBAL['couleur1a']; ?>" disabled="disabled" data-type="minus" data-field="quant<?php echo $j; ?>">
+                                                                              <span><i class="material-icons">remove</i></span>
+                                                                          </button>
+                                                                        </span>
+                                                                        <input type="text" name="quant<?php echo $j; ?>" class="form-control input-number<?php echo $j; ?> center" value="1" min="1" max="1000">
+                                                                        <span class="input-group-btn">
+                                                                          <button type="button" class="col btn btn-default btn-number<?php echo $j; ?> <?php echo $_GLOBAL['couleur1a']; ?>" data-type="plus" data-field="quant<?php echo $j; ?>">
+                                                                              <span><i class="material-icons">add</i></span>
+                                                                          </button>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="col s12" style="padding-left:0;padding-right: 0;">
+                                                                        <button style="width:100%;" class="col btn btn-default waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">
+                                                                            <span><i class="material-icons left">add_shopping_cart</i>Ajouter au panier</span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                            <label>Prix total : </label><span class="prixnumber<?php echo $j; ?>"><?php echo $itemsBdPrix[$j]; ?></span> $
+                                                        </div>
+
+                                                        <script type="text/javascript">
+                                                            $('.btn-number<?php echo $j; ?>').click(function(e){
+                                                                e.preventDefault();
+
+                                                                fieldName = $(this).attr('data-field');
+                                                                type      = $(this).attr('data-type');
+                                                                var input = $("input[name='"+fieldName+"']");
+                                                                var currentVal = parseInt(input.val());
+                                                                if (!isNaN(currentVal)) {
+                                                                    if(type == 'minus') {
+
+                                                                        if(currentVal > input.attr('min')) {
+                                                                            input.val(currentVal - 1).change();
+                                                                        }
+                                                                        if(parseInt(input.val()) == input.attr('min')) {
+                                                                            $(this).attr('disabled', true);
+                                                                        }
+
+                                                                    } else if(type == 'plus') {
+
+                                                                        if(currentVal < input.attr('max')) {
+                                                                            input.val(currentVal + 1).change();
+                                                                        }
+                                                                        if(parseInt(input.val()) == input.attr('max')) {
+                                                                            $(this).attr('disabled', true);
+                                                                        }
+
+                                                                    }
+                                                                } else {
+                                                                    input.val(0);
+                                                                }
+                                                            });
+                                                            $('.input-number<?php echo $j; ?>').focusin(function(){
+                                                                $(this).data('oldValue', $(this).val());
+                                                            });
+                                                            $('.input-number<?php echo $j; ?>').change(function() {
+                                                                prixUnit = parseFloat($('.hiddenprix<?php echo $j; ?>').val());
+                                                                var prixTotal = $('.prixnumber<?php echo $j; ?>');
+                                                                minValue =  parseInt($(this).attr('min'));
+                                                                maxValue =  parseInt($(this).attr('max'));
+                                                                valueCurrent = parseInt($(this).val());
+
+                                                                name = $(this).attr('name');
+                                                                if(valueCurrent >= minValue) {
+                                                                    $(".btn-number<?php echo $j; ?>[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+                                                                } else {
+                                                                    alert('Sorry, the minimum value was reached');
+                                                                    $(this).val($(this).data('oldValue'));
+                                                                }
+                                                                if(valueCurrent <= maxValue) {
+                                                                    $(".btn-number<?php echo $j; ?>[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+                                                                } else {
+                                                                    alert('Désolé, la limite est atteinte.');
+                                                                    $(this).val($(this).data('oldValue'));
+                                                                }
+                                                                prixTotal.text(prixUnit*valueCurrent);
+
+
+                                                            });
+                                                            $('.input-number<?php echo $j; ?>').keydown(function (e) {
+                                                                // Allow: backspace, delete, tab, escape, enter and .
+                                                                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+                                                                    // Allow: Ctrl+A
+                                                                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                                                                    // Allow: home, end, left, right
+                                                                    (e.keyCode >= 35 && e.keyCode <= 39)) {
+                                                                    // let it happen, don't do anything
+                                                                    return;
+                                                                }
+                                                                // Ensure that it is a number and stop the keypress
+                                                                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                                                                    e.preventDefault();
+                                                                }
+                                                            });
+                                                        </script>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -141,83 +231,7 @@ echo "
       color: <?php echo $_GLOBAL['couleur1a']; ?>; }
 </style>
 
-                                            <script type="text/javascript">
-                                                var prixUnit = document.getElementById('hiddenprix');
-                                                var prixTotal = document.getElementById('prixnumber');
-                                                $('.btn-number').click(function(e){
-                                                    e.preventDefault();
 
-                                                    fieldName = $(this).attr('data-field');
-                                                    type      = $(this).attr('data-type');
-                                                    var input = $("input[name='"+fieldName+"']");
-                                                    var currentVal = parseInt(input.val());
-                                                    if (!isNaN(currentVal)) {
-                                                        if(type == 'minus') {
-
-                                                            if(currentVal > input.attr('min')) {
-                                                                input.val(currentVal - 1).change();
-                                                            }
-                                                            if(parseInt(input.val()) == input.attr('min')) {
-                                                                $(this).attr('disabled', true);
-                                                            }
-
-                                                        } else if(type == 'plus') {
-
-                                                            if(currentVal < input.attr('max')) {
-                                                                input.val(currentVal + 1).change();
-                                                            }
-                                                            if(parseInt(input.val()) == input.attr('max')) {
-                                                                $(this).attr('disabled', true);
-                                                            }
-
-                                                        }
-                                                    } else {
-                                                        input.val(0);
-                                                    }
-                                                });
-                                                $('.input-number').focusin(function(){
-                                                    $(this).data('oldValue', $(this).val());
-                                                });
-                                                $('.input-number').change(function() {
-                                                    prixUnit = parseFloat($('#hiddenprix1').val());
-                                                    var prixTotal = $('#prixnumber');
-                                                    minValue =  parseInt($(this).attr('min'));
-                                                    maxValue =  parseInt($(this).attr('max'));
-                                                    valueCurrent = parseInt($(this).val());
-
-                                                    name = $(this).attr('name');
-                                                    if(valueCurrent >= minValue) {
-                                                        $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
-                                                    } else {
-                                                        alert('Sorry, the minimum value was reached');
-                                                        $(this).val($(this).data('oldValue'));
-                                                    }
-                                                    if(valueCurrent <= maxValue) {
-                                                        $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
-                                                    } else {
-                                                        alert('Sorry, the maximum value was reached');
-                                                        $(this).val($(this).data('oldValue'));
-                                                    }
-                                                    prixTotal.text(prixUnit*valueCurrent);
-
-
-                                                });
-                                                $(".input-number").keydown(function (e) {
-                                                    // Allow: backspace, delete, tab, escape, enter and .
-                                                    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
-                                                        // Allow: Ctrl+A
-                                                        (e.keyCode == 65 && e.ctrlKey === true) ||
-                                                        // Allow: home, end, left, right
-                                                        (e.keyCode >= 35 && e.keyCode <= 39)) {
-                                                        // let it happen, don't do anything
-                                                        return;
-                                                    }
-                                                    // Ensure that it is a number and stop the keypress
-                                                    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-                                                        e.preventDefault();
-                                                    }
-                                                });
-                                            </script>
 <!--echo"-->
 <!--<div class=\"product-card\">-->
 <!--    <div class=\"product-image\">-->

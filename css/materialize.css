@@ -3162,6 +3162,27 @@ td, th {
   }
 }
 
+/*------------------ block plus minus control input number menu quantity ----*/
+.input-group{
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+.input-group-btn, .input-group .form-control {
+    display: table-cell;
+
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 10px;
+    padding: 20px 22px;
+    font-size: 20px;
+    line-height: 1.428571429;
+    vertical-align: middle;
+}
+/*---------------------------------------------------------------------------*/
+
 .collection {
   margin: 0;
   border: 1px solid #e0e0e0;
@@ -3492,6 +3513,25 @@ nav ul a span.badge {
 
 .side-nav span.badge {
   margin-top: calc(24px - 11px);
+}
+
+.menu-back-img {
+    background-position: center;
+    opacity:50;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+}
+.menu-back-img-shadow {
+    background-color: rgba(0, 0, 0, .5);
+    background-size: cover;
+    width: 100%;
+    height: auto;
+}
+
+.menu-container{
+    background-color: rgba(0,0,0,0.6);
+    border: 1px solid rgba(0,0,0,0.8);
 }
 
 /* This is needed for some mobile phones to display the Google Icon font properly */
@@ -6937,10 +6977,10 @@ input[type=range] + .thumb {
   width: 0;
   border-radius: 50%;
   background-color: #26a69a;
-  top: 10px;
+  top: 12px;
   margin-left: -6px;
-  -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
+  -webkit-transform-origin: 15% 30%;
+          transform-origin: 15% 30%;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
@@ -6979,13 +7019,13 @@ input[type=range]::-webkit-slider-runnable-track {
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: none;
-  height: 14px;
-  width: 14px;
-  border-radius: 50%;
+  height: 20px;
+  width: 24px;
+  border-radius: 25%;
   background-color: #26a69a;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
-  margin: -5px 0 0 0;
+  margin: -8px 0 0 0;
   transition: .3s;
 }
 
@@ -6995,7 +7035,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 input[type=range] {
   /* fix for FF unable to apply focus style bug  */
-  border: 1px solid white;
+  border: 0px solid white;
   /*required for proper track sizing in FF*/
 }
 
@@ -7007,9 +7047,9 @@ input[type=range]::-moz-range-track {
 
 input[type=range]::-moz-range-thumb {
   border: none;
-  height: 14px;
-  width: 14px;
-  border-radius: 50%;
+    height: 20px;
+    width: 24px;
+  border-radius: 25%;
   background: #26a69a;
   margin-top: -5px;
 }

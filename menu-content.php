@@ -32,7 +32,7 @@ echo "
                         </div>
                     </div>
                 <?php } ?>
-                    <div class="collapsible-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>">
+                    <div class="collapsible-header active <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>">
                         <div class="container">
                             <span class="<?php echo $_GLOBAL['couleur-menu-2a']. "-text text-" . $_GLOBAL['couleur-menu-2b'] ?>">
                                 <b><?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?></b>
@@ -45,45 +45,66 @@ echo "
                     
                     <div class='collapsible-body' style='padding:0;'>
                         <span>
-                            <div class="container">
-                                <div class='section'>
-                                //DEBUT container de l'item
+                            <div class="menu-back-img" style="background-image:url('https://i.ytimg.com/vi/jyaLMHBKCic/maxresdefault.jpg');">
+                                <div class="menu-back-img-shadow">
+                                    <div class="container">
+                                        <div class='section'>
+    <!--                                DEBUT container de l'item-->
+                                            <div class="menu-container">
+                                                <div class="section">
+                                                    <div class="white-text row s12" style="margin:0px 20px 0px 20px;">
 
-        <div class="container row <?php if(!isset($_SESSION['user-online'])){ echo "hide"; } ?>">
-            <form action="#" class="col l11 offset-l1 m11 offset-m1 s12">
-                <div class="col s7">
-                    <div class="col s3">
-                        <a class="btn-floating btn waves-effect waves-light grey">
-                            <i class="material-icons">remove</i>
-                        </a>
-                    </div>
-                    <div class="col offset-s1 s2 pull-s1">
-                        <h3 style="margin:0; padding-left:10px;">2</h3>
-                    </div>
-                    <div class="col s3">
-                        <a class="btn-floating btn waves-effect waves-light grey">
-                            <i class="material-icons">add</i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col s5">
-                    <button class="btn-large waves-effect waves-light col <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">Ajouter
-                        <i class="material-icons left">add_shopping_cart</i>
-                    </button>
-                </div>
-            </form>
-        </div>
-        <div class="container row <?php if(isset($_SESSION['user-online'])){ echo "hide"; } ?>">
-            <div class="s12">
-                <a style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?>" href='connect'>
-                    Commander
-                </a>
-            </div>
-        </div>
-        </div>
-<?php
-                                //FIN container de l'item
-        echo "                </div>
+                                                        <h5 class="col s6"><?php echo $itemsBdTitre[$j]; ?></h5>
+                                                        <input type="hidden" id="hiddenprix<?php echo $j; ?>" value="<?php echo $itemsBdPrix[$j]; ?>"/>
+                                                        <h5 class="col s6 right-align"><?php echo $itemsBdPrix[$j]; ?>$</h5>
+
+                                                        <div class="col s12">
+                                                            <img class="right hide-on-small-only" style="padding-left:20px;" src="css/ico/logo_blanc.png" width="auto" height="160px"/>
+                                                            <h6>description a a a
+                                                                description  a a a  description  a aaa adescriptio naaa
+                                                                description  a a a adescription  aa description  aa a descriptiona a a
+                                                                description  a  a a a a adescription  a aa description descriptiona a  a
+                                                                description  a aa description  a aa description aaa  descriptiona a
+                                                                description  a a a  description  a aaa adescriptio naaa
+                                                                description  a a a adescription  aa description  aa a descriptiona a a
+                                                                description  a  a a a a adescription  a aa description descriptiona a  a
+                                                            </h6>
+
+                                                        </div>
+                                                        <div class="col s12">
+                                                            <div class="row s12">
+    <!--                                                            --><?php //if(!isset($_SESSION['user-online'])){ echo "hide"; } ?>
+                                                                <div class="col s12">
+                                                                    <form action="#">
+                                                                        <div>
+                                                                             <p class="range-field">
+                                                                                 <input type="range" id="slider" value=1 min="1" step="1" max="100" oninput="fncslider(this.value,<?php echo $j; ?>)"/>
+                                                                                 <label for="slider">Quantite: </label>
+                                                                                 <span name="quantite" id="slidervalue<?php echo $j; ?>">1</span>
+                                                                                 <label for="slider">Prix: </label>
+                                                                                 <span name="prix" id="sliderprix<?php echo $j; ?>"><?php echo $itemsBdPrix[$j]; ?>$</span>
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </form>
+                                                                </div>
+                                                                <div class="<?php if(isset($_SESSION['user-online'])){ echo "hide"; } ?>">
+                                                                    <div class="col s12">
+                                                                        <button style="width: 100%" class="btn-large waves-effect waves-light col <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">
+                                                                                Ajouter au panier
+                                                                            </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+    <!--                                FIN container de l'item-->
+    <?php
+        echo "                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </span>
                     </div>
@@ -91,10 +112,38 @@ echo "
         ";
         $htmltype = $itemsBdType[$j];
     }
+
 echo "
 </ul>";
 ?>
+<style>
 
+  input[type=range]::-webkit-slider-thumb {
+      background-color: <?php echo $_GLOBAL['couleur1a']; ?>;
+  }
+  input[type=range]::-moz-range-thumb {
+      background-color: <?php echo $_GLOBAL['couleur1a']; ?>
+  }
+  input[type=range]::-ms-thumb {
+      background-color: <?php echo $_GLOBAL['couleur1a']; ?>;
+  }
+
+  /***** These are to edit the thumb and the text inside the thumb *****/
+  input[type=range] + .thumb {
+      background-color: whitesmoke;
+  }
+  input[type=range] + .thumb.active .value {
+      color: <?php echo $_GLOBAL['couleur1a']; ?>;
+  }
+</style>
+
+                                            <script type="text/javascript">
+                                                function fncslider(valeur,y){
+                                                    var prix = document.getElementById("hiddenprix"+y).value;
+                                                    document.getElementById("sliderprix"+y).innerHTML = (valeur * prix).toFixed(2) + "$";
+                                                    document.getElementById("slidervalue"+y).innerHTML = valeur;
+                                                    }
+                                            </script>
 <!--echo"-->
 <!--<div class=\"product-card\">-->
 <!--    <div class=\"product-image\">-->

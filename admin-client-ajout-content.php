@@ -46,7 +46,7 @@
                     <input type="text" name="adresse" id="adresse">
                     <label for="adresse">Adresse</label>
                 </div>
-                <button style="width: 100%;" id="send" class="waves-effect waves-light btn-large  <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>" type="submit" name="action">Inscrire
+                <button style="width: 100%;" id="send" class="waves-effect waves-light btn-large  <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?>" type="submit" name="action">Inscrire
                 </button>
             </div>
         </form>

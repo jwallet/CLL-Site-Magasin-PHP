@@ -40,7 +40,7 @@
                 <label>Veuillez choisir un nouveau titre pour le type de plat sélectionné</label>
             </div>
             <div class="row">
-                <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?> "
+                <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?> "
                         type='submit' name="modtype">Modifier</button>
             </div>
             </div>
@@ -56,7 +56,7 @@
                 <label>Inscrivez le nouveau type de repas ici</label>
             </div>
             <div class="row">
-                <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?> "
+                <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?> "
                         type='submit' name="addtype">Ajouter</button>
             </div>
     </div>

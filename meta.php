@@ -1,8 +1,14 @@
 <?php
-$_GLOBAL['couleur1'] = "teal";
-$_GLOBAL['couleur1a'] = " darken-2";
-$_GLOBAL['couleur2'] = "grey";
-$_GLOBAL['couleur2a'] = "lighten-2";
+$_GLOBAL['couleur1a'] = "teal";
+$_GLOBAL['couleur1b'] = "darken-2";
+$_GLOBAL['couleur2a'] = "grey";
+$_GLOBAL['couleur2b'] = "lighten-2";
+$_GLOBAL['couleur-menu-1a'] = "yellow";
+$_GLOBAL['couleur-menu-1b'] = "lighten-5";
+$_GLOBAL['couleur-menu-2a'] = "teal";
+$_GLOBAL['couleur-menu-2b'] = "darken-2";
+$_GLOBAL['couleur-menu-3a'] = "black";
+$_GLOBAL['couleur-menu-3b'] = "";
 $fichier = explode("/", $_SERVER['PHP_SELF']);
 $fichier = $fichier[count($fichier)-1];
 

@@ -47,7 +47,7 @@ if(isset($_SESSION['toast'])) {
                     <input type="text" name="adresse" id="adresse" value="<?php echo $_SESSION['user-adresse']?>">
                     <label for="adresse">Adresse</label>
                 </div>
-                <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>"
+                <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?>"
                         type='submit' name="connect">Enregistrer</button>
             </div>
         </form>

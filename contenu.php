@@ -42,8 +42,8 @@ else{
     <div class="indeterminate"></div>
 </div>
 
-    <nav class="<?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a'] ?>">
-        <div class="nav-wrapper container <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a'] ?>">
+    <nav class="<?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b'] ?>">
+        <div class="nav-wrapper container <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b'] ?>">
 
             <?php
             if($page['fichier']=='home'){

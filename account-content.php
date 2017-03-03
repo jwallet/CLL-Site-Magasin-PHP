@@ -45,7 +45,7 @@ if(isset($_SESSION['toast'])) {
         <a href="#" class="black-text">
         <div class="collapsible-header">
             <div class="container">
-                <span class="new badge  <?php echo $_GLOBAL['couleur1'] ?>" data-badge-caption="nouveaux">4</span>
+                <span class="new badge  <?php echo $_GLOBAL['couleur1a'] ?>" data-badge-caption="nouveaux">4</span>
                 <i class="material-icons">message</i>Messagerie
             </div>
         </div>
@@ -88,7 +88,7 @@ if(isset($_SESSION['toast'])) {
                         <input type="password" name="new2password" id="new2" minlength="6" class="validate" required>
                         <label for="new2">Nouveau mot de passe</label>
                     </div>
-                    <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1'] ?>" type="submit" name="action">Enregistrer
+                    <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1a'] ?>" type="submit" name="action">Enregistrer
                         <i class="material-icons right">send</i>
                     </button>
                 </form>

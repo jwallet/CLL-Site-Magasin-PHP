@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="col s5">
-                <button class="btn-large waves-effect waves-lightcol <?php echo $_GLOBAL['couleur1']; ?>" type="submit" name="action">Ajouter
+                <button class="btn-large waves-effect waves-light col <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">Ajouter
                     <i class="material-icons left">add_shopping_cart</i>
                 </button>
             </div>
@@ -40,7 +40,7 @@
     </div>
     <div class="container row <?php if(isset($_SESSION['user-online'])){ echo "hide"; } ?>">
         <div class="s12">
-            <a style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>" href='connect'>
+            <a style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . $_GLOBAL['couleur1b']?>" href='connect'>
                 Commander
             </a>
         </div>

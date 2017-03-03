@@ -20,49 +20,70 @@ $j = 0;
 $htmltype = null;
 echo "
 <ul class=\"collapsible\" data-collapsible=\"accordion\">";
-//for($j = 0; $j<sizeof($itemsBdId); $j++){
-//    if(strcmp($htmltype,$itemsBdType[$j])!= 0){
-//        echo "
-//    <li>
-//        <div class=\"collapsible-header active\">
-//            <div class=\"container\"><i class=\"material-icons\">restaurant_menu</i>";
-//        echo ucfirst(strtolower($itemsBdType[$j]));
-//        echo "
-//            </div>
-//        </div>
-//        <div class='collapsible-body' style='padding:0;'>
-//            <ul class=\"collapsible\" data-collapsible=\"expandable\">
-//";
-//    }
-
     for($j=0;$j<sizeof($itemsBdId);$j++) {
         echo "
                 <li>";
                 if(strcmp($htmltype,$itemsBdType[$j])!= 0){
-                echo "
-                    <div class=\"menu-header\" style='pointer-events:none;'>
-                        <div class=\"container\"><h5 class='center-align'>";
-                            echo ucfirst(strtolower($itemsBdType[$j]));
-                            echo "</h5>
+                ?>
+                <div class="menu-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>" style='pointer-events:none;'>
+                        <div class="container"><h5><u>
+                            <?php echo ucfirst(strtolower($itemsBdType[$j])); ?>
+                                </u></h5>
                         </div>
                     </div>
-                ";
-                }
-                echo "
-                    <div class=\"collapsible-header grey lighten-5\">
-                        <div class=\"container\">";
-        echo ucfirst(strtolower($itemsBdTitre[$j]));
-        echo "<span class='secondary-content'>" . $itemsBdPrix[$j] . " $</span>";
-        echo "
+                <?php } ?>
+                    <div class="collapsible-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>">
+                        <div class="container">
+                            <span class="<?php echo $_GLOBAL['couleur-menu-2a']. "-text text-" . $_GLOBAL['couleur-menu-2b'] ?>">
+                                <b><?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?></b>
+                            </span>
+                            <span class='secondary-content <?php echo $_GLOBAL['couleur-menu-3a']. "-text text-" . $_GLOBAL['couleur-menu-3b'] ?>'>
+                                <b><?php echo $itemsBdPrix[$j]. "$" ?></b>
+                            </span>
                         </div>
                     </div>
                     
-                    <div class='collapsible-body grey lighten-3' style='padding:0;'>
+                    <div class='collapsible-body' style='padding:0;'>
                         <span>
-                            <div class=\"container\">
+                            <div class="container">
                                 <div class='section'>
-                                item goes here<br>i<br>i<br>is
-                                </div>
+                                //DEBUT container de l'item
+
+        <div class="container row <?php if(!isset($_SESSION['user-online'])){ echo "hide"; } ?>">
+            <form action="#" class="col l11 offset-l1 m11 offset-m1 s12">
+                <div class="col s7">
+                    <div class="col s3">
+                        <a class="btn-floating btn waves-effect waves-light grey">
+                            <i class="material-icons">remove</i>
+                        </a>
+                    </div>
+                    <div class="col offset-s1 s2 pull-s1">
+                        <h3 style="margin:0; padding-left:10px;">2</h3>
+                    </div>
+                    <div class="col s3">
+                        <a class="btn-floating btn waves-effect waves-light grey">
+                            <i class="material-icons">add</i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col s5">
+                    <button class="btn-large waves-effect waves-light col <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">Ajouter
+                        <i class="material-icons left">add_shopping_cart</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="container row <?php if(isset($_SESSION['user-online'])){ echo "hide"; } ?>">
+            <div class="s12">
+                <a style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?>" href='connect'>
+                    Commander
+                </a>
+            </div>
+        </div>
+        </div>
+<?php
+                                //FIN container de l'item
+        echo "                </div>
                             </div>
                         </span>
                     </div>
@@ -70,22 +91,6 @@ echo "
         ";
         $htmltype = $itemsBdType[$j];
     }
-//    $i=0;
-//    if($j<sizeof($itemsBdId)) {
-//        if (strcmp($htmltype, $itemsBdType[$j]) != 0) {
-//                echo "
-//                </ul>
-//            </div>
-//        </li>";
-//        }
-//    }
-//    else{
-//        echo "
-//                </ul>
-//            </div>
-//        </li>";
-//    }
-//}
 echo "
 </ul>";
 ?>

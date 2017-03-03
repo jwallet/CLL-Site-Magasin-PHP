@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?> "
+                    <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?> "
                             type='submit' name="ajoutplat">Ajouter le plat</button>
                 </div>
             </div>

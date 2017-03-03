@@ -47,7 +47,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
-                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
+                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1a'] ?>-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">shopping_basket</i>Commandes
             </div>
         </div>
@@ -89,7 +89,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
-                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
+                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1a'] ?>-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">map</i>Menu
             </div>
         </div>
@@ -122,7 +122,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
-                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
+                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1a'] ?>-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">restaurant</i>Plats
             </div>
         </div>
@@ -163,7 +163,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
-                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
+                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1a'] ?>-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">person</i>Compte clients
             </div>
         </div>
@@ -195,7 +195,7 @@
     <li>
         <div class="collapsible-header">
             <div class="container">
-                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1'] ?>-text">keyboard_arrow_down</i></span>
+                <span class="secondary-content"><i class="material-icons <?php echo $_GLOBAL['couleur1a'] ?>-text">keyboard_arrow_down</i></span>
                 <i class="material-icons">dvr</i>Modifier pages d'infos
             </div>
         </div>

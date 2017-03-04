@@ -75,7 +75,7 @@ if(isset($_SESSION['toast'])) {
         </div>
         <div class="collapsible-body">
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
-                <form action="account-password-changed" class="col s12" method="post" style="margin:0;padding:0;">
+                <form action="account-password-validation" class="col s12" method="post" style="margin:0;padding:0;">
                     <div class="input-field row">
                         <input type="password" name="oldpassword" id="old" required>
                         <label for="old">Mot de passe actuel</label>

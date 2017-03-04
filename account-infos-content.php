@@ -1,3 +1,52 @@
+<?php
+if(isset($_SESSION['toast'])) {
+    if($_SESSION['toast']=='changed-failed'){
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('La modification a échoué.', 8000);
+            });
+        </script>
+        <?php
+    }
+    elseif($_SESSION['toast']=='name-changed'){
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Nom et prénom modifiés.', 8000);
+            });
+        </script>
+        <?php
+    }
+    elseif($_SESSION['toast']=='email-changed'){
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Courriel modifié.', 8000);
+            });
+        </script>
+        <?php
+    }
+    elseif($_SESSION['toast']=='phone-changed'){
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Téléphone modifié.', 8000);
+            });
+        </script>
+        <?php
+    }
+    elseif($_SESSION['toast']=='address-changed'){
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Adresse modifié.', 8000);
+            });
+        </script>
+        <?php
+    }
+    unset($_SESSION['toast']);
+}?>
 <div class="container">
     <div class="section">
         <div class="row">
@@ -37,7 +86,7 @@
         </div>
         <div class="collapsible-body">
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
-                <form action="account-password-changed" class="col s12" style="margin:0;padding:0;" method="post">
+                <form action="account-name-validation" class="col s12" style="margin:0;padding:0;" method="post">
                     <div class="input-field row">
                         <input type="text" name="prenom" id="prenom"
                                title="Lettres seulement"  pattern="[a-zA-Z]+" value="<?php echo $_SESSION['user-prenom']?>" required>
@@ -64,13 +113,13 @@
         </div>
         <div class="collapsible-body">
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
-                <form action="account-password-changed" class="col s12" style="margin:0;padding:0;" method="post">
+                <form action="account-email-validation" class="col s12" style="margin:0;padding:0;" method="post">
                     <div class="input-field row">
                         <input type="email" name="email" id="email" value="<?php echo $_SESSION['user-email']?>" required>
                         <label for="email">Courriel</label>
                     </div>
                     <div class="input-field row">
-                        <input type="password" name="oldpassword" id="old" required>
+                        <input type="password" name="password" id="old" required>
                         <label for="old">Mot de passe actuel</label>
                     </div>
                     <button class="btn waves-effect waves-light row right <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">Enregistrer
@@ -89,7 +138,7 @@
         </div>
         <div class="collapsible-body">
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
-                <form action="account-password-changed" class="col s12" style="margin:0;padding:0;" method="post">
+                <form action="account-phone-validation" class="col s12" style="margin:0;padding:0;" method="post">
                     <div class="input-field row">
                         <input type="tel" name="telephone" id="telephone"
                                title="999 999-9999" pattern="^([0-9]{3} |[0-9]{3}-)[0-9]{3}-[0-9]{4}$" class="validate" value="<?php echo $_SESSION['user-telephone']?>" required>
@@ -111,7 +160,7 @@
         </div>
         <div class="collapsible-body">
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
-                <form action="account-password-changed" class="col s12" style="margin:0;padding:0;" method="post">
+                <form action="account-address-validation" class="col s12" style="margin:0;padding:0;" method="post">
                     <div class="input-field row">
                         <input type="text" name="adresse" id="adresse" value="<?php echo $_SESSION['user-adresse']?>" required>
                         <label for="adresse">Adresse</label>

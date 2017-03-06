@@ -1,4 +1,16 @@
 <?php
+if(isset($_SESSION['toast'])) {
+    if ($_SESSION['toast'] == 'order-failed') {
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('L\'ajout de la commande a échoué.', 8000);
+            });
+        </script>
+        <?php
+    }
+    unset($_SESSION['toast']);
+}
 //trouve les plats de la semaine selon l'ordre des categories
 $itemsBdId = array();
 $itemsBdType = array();
@@ -23,7 +35,7 @@ $stmt->free_result();
 $j = 0;
 $htmltype = null;
 echo "
-<ul class=\"collapsible\" data-collapsible=\"accordion\">";
+<ul class=\"collapsible chalk-board-small\" data-collapsible=\"accordion\">";
     for($j=0;$j<sizeof($itemsBdId);$j++) {
         echo "
                 <li>";
@@ -37,7 +49,7 @@ echo "
                     </div>
                 <?php } ?>
                     <div class="collapsible-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>" style="border:0px;">
-                        <div class="container" style="font-size:16px;border-bottom: 2px dotted rgb(145, 145, 145);">
+                        <div class="container" style="font-size:1.3em;border-bottom: 2px dotted rgb(145, 145, 145);">
                             <span class="<?php echo $_GLOBAL['couleur-menu-3a']. "-text text-" . $_GLOBAL['couleur-menu-3b'] ?>">
                                 <?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?>
                             </span>
@@ -57,18 +69,21 @@ echo "
                                     <div class="container">
                                         <div class='section'>
     <!--                                DEBUT container de l'item-->
-                                            <div class="menu-container">
+                                            <div class="menu-container" style="font-family: Roboto;">
                                                 <div class="section">
                                                     <div class="white-text row s12" style="margin:0px 20px 0px 20px;">
 
                                                         <h4 class="col s6"><?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?></h4>
-                                                        <input type="hidden" class="hiddenprix<?php echo $j; ?>" value="<?php echo $itemsBdPrix[$j]; ?>"/>
+
                                                         <h4 class="col s6 right-align"><?php echo $itemsBdPrix[$j]; ?>$</h4>
                                                         <p class="col s12"><?php if($itemsBdDesc[$j]!=null and $itemsBdDesc[$j]!=""){ echo $itemsBdDesc[$j]; } else { echo "Aucune description n'est disponible."; } ?></p>
-
+                                                        <?php if(isset($_SESSION['user-online'])){?>
                                                         <div class="col s12 hide-on-small-only">
 
-                                                            <form action="#" style="padding-top:25px;">
+                                                            <form action="menu-validation" method="post" style="padding-top:25px;">
+                                                                <input type="hidden" name="jvalue" value="<?php echo $j; ?>"/>
+                                                                <input type="hidden" class="hiddenprix<?php echo $j; ?>" value="<?php echo $itemsBdPrix[$j]; ?>"/>
+                                                                <input type="hidden" name="hiddenitem<?php echo $j; ?>" value="<?php echo $itemsBdId[$j]; ?>"/>
                                                                 <div class="col s12" style="padding-left:0;padding-right: 0;">
                                                                     <div class="input-group col center" style="padding-left:0;padding-right: 0;">
                                                                         <span class="input-group-btn">
@@ -76,7 +91,7 @@ echo "
                                                                               <span><i class="material-icons">remove</i></span>
                                                                           </button>
                                                                         </span>
-                                                                        <input type="text" name="quant<?php echo $j; ?>" class="form-control input-number<?php echo $j; ?> center" value="1" min="1" max="1000">
+                                                                        <input type="text" style="width: 50px;margin:0;margin-top:-28px;padding:0;height: 2.2rem;border:2px solid #CCC;" name="quant<?php echo $j; ?>" class="form-control input-number<?php echo $j; ?> center" value="1" min="1" max="1000">
                                                                         <span class="input-group-btn">
                                                                           <button type="button" class="col btn btn-default btn-number<?php echo $j; ?> <?php echo $_GLOBAL['couleur1a']; ?>" data-type="plus" data-field="quant<?php echo $j; ?>">
                                                                               <span><i class="material-icons">add</i></span>
@@ -94,7 +109,10 @@ echo "
 
                                                         </div>
                                                         <div class="col s12 hide-on-med-and-up">
-                                                            <form action="#" style="padding-top:25px;">
+                                                            <form action="menu-validation" method="post" style="padding-top:25px;">
+                                                                <input type="hidden" name="jvalue" value="<?php echo $j; ?>"/>
+                                                                <input type="hidden" name="hiddenprix<?php echo $j; ?> "class="hiddenprix<?php echo $j; ?>" value="<?php echo $itemsBdPrix[$j]; ?>"/>
+                                                                <input type="hidden" name="hiddenitem<?php echo $j; ?>" value="<?php echo $itemsBdId[$j]; ?>"/>
                                                                 <div class="col s12" style="padding-left:0;padding-right: 0;">
                                                                     <div class="input-group col s12" style="width:100%;padding-left:0;padding-right: 0;">
                                                                         <span class="input-group-btn">
@@ -194,7 +212,14 @@ echo "
                                                                 }
                                                             });
                                                         </script>
-
+                                                        <?php }
+                                                        else{?>
+                                                            <div class="col s12" style="padding-left:0;padding-right: 0;">
+                                                                <a href="connect" style="width:100%;" class="col btn btn-default waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">
+                                                                    <span>Connectez-vous</span>
+                                                                </a>
+                                                            </div>
+                                                        <?php }?>
                                                     </div>
                                                 </div>
                                             </div>

@@ -78,7 +78,7 @@ echo "
                                                         <h4 class="col s6 right-align"><?php echo $itemsBdPrix[$j]; ?>$</h4>
                                                         <p class="col s12"><?php if($itemsBdDesc[$j]!=null and $itemsBdDesc[$j]!=""){ echo $itemsBdDesc[$j]; } else { echo "Aucune description n'est disponible."; } ?></p>
                                                         <?php if(isset($_SESSION['user-online'])){?>
-                                                        <div class="col s12 hide-on-small-only">
+                                                        <div class="col s12">
 
                                                             <form action="menu-validation" method="post" style="padding-top:25px;">
                                                                 <input type="hidden" name="jvalue" value="<?php echo $j; ?>"/>
@@ -98,8 +98,13 @@ echo "
                                                                           </button>
                                                                         </span>
                                                                     </div>
-                                                                    <div class="input-group-btn col">
+                                                                    <div class="input-group-btn col hide-on-small-only">
                                                                         <button class="col btn btn-default waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">
+                                                                            <span><i class="material-icons left">add_shopping_cart</i>Ajouter au panier</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col s12 input-group-btn col hide-on-med-and-up" style="padding:0;padding-top:18px;">
+                                                                        <button style="width:100%;" class="col btn btn-default waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">
                                                                             <span><i class="material-icons left">add_shopping_cart</i>Ajouter au panier</span>
                                                                         </button>
                                                                     </div>
@@ -108,34 +113,7 @@ echo "
                                                             <label>Prix total : </label><span class="prixnumber<?php echo $j; ?>"><?php echo $itemsBdPrix[$j]; ?></span> $
 
                                                         </div>
-                                                        <div class="col s12 hide-on-med-and-up">
-                                                            <form action="menu-validation" method="post" style="padding-top:25px;">
-                                                                <input type="hidden" name="jvalue" value="<?php echo $j; ?>"/>
-                                                                <input type="hidden" name="hiddenprix<?php echo $j; ?> "class="hiddenprix<?php echo $j; ?>" value="<?php echo $itemsBdPrix[$j]; ?>"/>
-                                                                <input type="hidden" name="hiddenitem<?php echo $j; ?>" value="<?php echo $itemsBdId[$j]; ?>"/>
-                                                                <div class="col s12" style="padding-left:0;padding-right: 0;">
-                                                                    <div class="input-group col s12" style="width:100%;padding-left:0;padding-right: 0;">
-                                                                        <span class="input-group-btn">
-                                                                          <button type="button" class="col btn btn-default btn-number<?php echo $j; ?> <?php echo $_GLOBAL['couleur1a']; ?>" disabled="disabled" data-type="minus" data-field="quant<?php echo $j; ?>">
-                                                                              <span><i class="material-icons">remove</i></span>
-                                                                          </button>
-                                                                        </span>
-                                                                        <input type="text" name="quant<?php echo $j; ?>" class="form-control input-number<?php echo $j; ?> center" value="1" min="1" max="1000">
-                                                                        <span class="input-group-btn">
-                                                                          <button type="button" class="col btn btn-default btn-number<?php echo $j; ?> <?php echo $_GLOBAL['couleur1a']; ?>" data-type="plus" data-field="quant<?php echo $j; ?>">
-                                                                              <span><i class="material-icons">add</i></span>
-                                                                          </button>
-                                                                        </span>
-                                                                    </div>
-                                                                    <div class="col s12" style="padding-left:0;padding-right: 0;">
-                                                                        <button style="width:100%;" class="col btn btn-default waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">
-                                                                            <span><i class="material-icons left">add_shopping_cart</i>Ajouter au panier</span>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                            <label>Prix total : </label><span class="prixnumber<?php echo $j; ?>"><?php echo $itemsBdPrix[$j]; ?></span> $
-                                                        </div>
+
 
                                                         <script type="text/javascript">
                                                             $('.btn-number<?php echo $j; ?>').click(function(e){

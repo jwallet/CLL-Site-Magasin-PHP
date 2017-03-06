@@ -1,22 +1,22 @@
 <?php
-if(isset($_GET['mod-titre']) and isset($_GET['mod-prix'])and isset($_GET['mod-type'])) {
+if(isset($_POST['mod-titre']) and isset($_POST['mod-prix'])and isset($_POST['mod-type'])) {
     include("bd-connect.php");
-    ECHO $plattitre = $_GET['mod-titre'];
+    ECHO $plattitre = $_POST['mod-titre'];
     echo "<br>";
-    ECHO $platdescription = $_GET['mod-description'];
+    ECHO $platdescription = $_POST['mod-description'];
     echo "<br>";
-    ECHO $platprix = $_GET['mod-prix'];
+    ECHO $platprix = $_POST['mod-prix'];
     echo "<br>";
-    ECHO $plattype = $_GET['mod-type'];
+    ECHO $plattype = $_POST['mod-type'];
     echo "<br>";
-    ECHO $platimage = basename($_FILES['mod-image']['name']); //retient le filename . extension
+    echo $platimage = $_POST['mod-image-txt']; //retient le filename . extension
     echo "<br>";
-    ECHO $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
+    echo $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
     echo "<br>";
-    ECHO $filename = basename($_FILES['mod-image']['name'],".".$extension); // retient seulement le filename
+    echo $filename = basename($platimage,".".$extension); // retient seulement le filename
     echo "<br>";
     //si le fichier existe
-    if (isset($_FILES["plat-image"])){
+    if (isset($_POST["mod-image-txt"])){
         $index = 0;
         while(fileExists($_GLOBAL['dirimg'].$platimage))
         {
@@ -35,19 +35,11 @@ if(isset($_GET['mod-titre']) and isset($_GET['mod-prix'])and isset($_GET['mod-ty
             code();
         }
     }
-//    $sql = "UPDATE INTO item (idtype,titre,description,prix,image) values (?,?,?,?,?)";
-//    $stmt = $mysqli->prepare($sql);
-//    $stmt->bind_param("issds", $plattype, $plattitre, $platdescription, $platprix, basename($platimage));
-//    if ($stmt->execute()) {
-//        $_SESSION['toast'] = "plat-ajout";
-//        $redirect = "admin";
-//    }
-//    $stmt->free_result();
-//    $stmt->close();
-    $sql = "UPDATE item SET titre=$plattitre,description=$platdescription,prix=$platprix,image=basename($platimage) WHERE id=?;";
+    $sql = "UPDATE item SET titre=?,description=?,prix=?,image=? WHERE id=?;";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $_GET['id']);
+    $stmt->bind_param("ssdsi", $plattitre,$platdescription,$platprix,$platimage,$_GET['id']);
     if ($stmt->execute()) {
+        echo $plattitre;
         $_SESSION['toast'] = "plat-type-mod";
         $redirect = "admin-plat-mod";
     }

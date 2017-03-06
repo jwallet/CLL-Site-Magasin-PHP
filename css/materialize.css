@@ -145,13 +145,13 @@ label {
 }
 
 @font-face {
-    font-family: 'BoiteABouff';
-    src: url(../fonts/boitebouf/Tevegraphy_Medium.ttf);
+    font-family: 'chalk-board-small';
+    src: url(../fonts/boitebouf/chalk.ttf);
 }
-.boite-bouf {
-    font-family: 'BoiteABouff';
-    font-weight: 400;
-    font-size: 30px;
+.chalk-board-small {
+    font-family: 'chalk-board-small';
+    font-weight: 100;
+    font-size: 1em;
 }
 
 .materialize-red {

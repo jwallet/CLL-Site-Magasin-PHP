@@ -50,7 +50,6 @@ else{
                 ?>
             <a href="#" class="left button-collapse"  data-activates="slide-out">
                <i class="material-icons" style="font-size: 35px;">menu</i>
-<!--                <h3 style="margin-top:8px;text-shadow: 1px -1px #DDDDDD;font-weight: 600;">--><?php //echo $page["titre"]; ?><!--</h3>-->
             </a>
             <?php
             }
@@ -76,7 +75,7 @@ else{
             <ul id="nav-mobile" class="right">
 
                 <?php
-                if (strcmp($page["categorie"], "shop") == 0) {
+                if (isset($_SESSION['user-online']) AND ($page['categorie']=='menu') OR $page['categorie']=='shop') {
                     ?>
                     <li><a href="shop-cart"><i class="material-icons">shopping_cart</i></a></li>
                     <?php

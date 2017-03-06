@@ -75,10 +75,12 @@ else{
             <ul id="nav-mobile" class="right">
 
                 <?php
-                if (isset($_SESSION['user-online']) AND ($page['categorie']=='menu') OR $page['categorie']=='shop') {
-                    ?>
-                    <li><a href="shop-cart"><i class="material-icons">shopping_cart</i></a></li>
-                    <?php
+                if (isset($_SESSION['user-online']) AND isset($_SESSION['user-isadmin'])) {
+                    if(!$_SESSION['user-isadmin']) {
+                        ?>
+                        <li><a href="shop-cart"><i class="material-icons">shopping_cart</i></a></li>
+                        <?php
+                    }
                 }
                 if($page['fichier']=="home") {
                     if (isset($_SESSION['user-isadmin'])) {

@@ -20,7 +20,7 @@ $stmt->close();
 ?>
 <div class="container">
     <div class="section">
-        <form class="row" action="admin-plat-mod-validation?id=<?php echo $_GET['id']?>" method="GET" enctype="multipart/form-data">
+        <form class="row" action="admin-plat-mod-validation?id=<?php echo $_GET['id']?>" method="POST" enctype="multipart/form-data">
             <div class="col s12">
                 <div class="input-field row">
                     <i class="material-icons prefix">title</i>
@@ -72,7 +72,32 @@ $stmt->close();
                             <input value="<?php echo $modimage?>" name="mod-image" id="mod-image" type="file" accept="image/x-png,image/gif,image/jpeg">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" value="<?php echo $modimage; ?>" placeholder="IMAGE" type="text">
+                            <input class="file-path validate" value="<?php echo $modimage; ?>"name="mod-image-txt" id="mod-image-txt" placeholder="IMAGE" type="text">
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="row center">-->
+<!--                    <img src="--><?php
+//                    if(isset($modimage)){
+//                        echo $_GLOBAL['dirimg'].$modimage;
+//                    }
+//                    ?><!--" class="circle responsive-img" alt="Aucune image" style="width:256px;height:256px">-->
+<!--                </div>-->
+                <div class="col s12">
+                    <div class="card-panel grey lighten-5 z-depth-1">
+                        <div class="row valign-wrapper">
+                            <div class="col s4">
+                                <img src="<?php
+                                if(isset($modimage)){
+                                    echo $_GLOBAL['dirimg'].$modimage;
+                                }
+                                ?>" class="circle responsive-img" alt="Aucune image">
+                            </div>
+                            <div class="col s10">
+                              <span class="black-text">
+                                Aperçu de l'image associé a ce plat
+                              </span>
+                            </div>
                         </div>
                     </div>
                 </div>

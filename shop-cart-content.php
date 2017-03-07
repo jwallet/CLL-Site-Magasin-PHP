@@ -127,17 +127,17 @@ else{
                             <i class="material-icons">delete</i>
                         </a>
                     </form></p>
-                    <a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo ($itemsPrix[$i]*$itemsQuant[$i])."$"; ?></a>
-                    <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/>(<?php echo $itemsPrix[$i]."$"; ?> /chacun)</a>
+                    <a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($itemsPrix[$i]*$itemsQuant[$i])). "$"; ?></a>
+                    <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/>(<?php echo money_format('%(#10n', ($itemsPrix[$i])). "$"; ?> /chacun)</a>
                 </li>
             <?php
             $total += $itemsQuant[$i]*$itemsPrix[$i];
             }?>
             <li class="collection-item">
-                <span>Sous-total</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo $total . "$"; ?></a><br/>
-                <span>TVQ (9.975%)</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo ($total*0.09975) . "$"; ?></a><br/>
-                <span>TPS (5%)</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo ($total*0.05) . "$"; ?></a><hr/>
-                <span>Total</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo ($total*1.14975) . "$"; ?></a><br/>
+                <span>Sous-total</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($total)). "$"; ?></a><br/>
+                <span>TVQ (9.975%)</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($total*0.09975)). "$"; ?></a><br/>
+                <span>TPS (5%)</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($total*0.05)). "$"; ?></a><hr/>
+                <span>Total</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($total*1.14975)). "$"; ?></a><br/>
                 <button type="submit" class="btn secondary-content <?php echo $_GLOBAL['couleur1a']; ?>" style="margin-top:20px;margin-bottom:20px;">Commander</button>
             </li>
         <?php }

@@ -54,7 +54,7 @@ echo "
                                 <?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?>
                             </span>
                             <span class='secondary-content <?php echo $_GLOBAL['couleur-menu-3a']. "-text text-" . $_GLOBAL['couleur-menu-3b'] ?>'>
-                                <?php echo $itemsBdPrix[$j]. "$" ?>
+                                <?php echo money_format('%(#10n', ($itemsBdPrix[$j])). "$";?>
                             </span>
                         </div>
                         <div class="container <?php echo $_GLOBAL['couleur-menu-2a']. "-text text-" . $_GLOBAL['couleur-menu-2b'] ?>" style="font-style: italic;">
@@ -83,7 +83,7 @@ echo "
                                                                 <input type="hidden" name="jvalue" value="<?php echo $j; ?>"/>
                                                                 <input type="hidden" class="hiddenprix<?php echo $j; ?>" value="<?php echo $itemsBdPrix[$j]; ?>"/>
                                                                 <input type="hidden" name="hiddenitem<?php echo $j; ?>" value="<?php echo $itemsBdId[$j]; ?>"/>
-                                                                <label style="font-size:95%;">Prix unitaire : </label><span style="font-size:120%;"><?php echo $itemsBdPrix[$j]; ?> $</span>
+                                                                <label style="font-size:95%;">Prix unitaire : </label><span style="font-size:120%;"><?php echo money_format('%(#10n', ($itemsBdPrix[$j])). "$";?></span>
                                                                 <div class="col s12" style="padding-left:0;padding-right: 0;">
                                                                     <div class="input-group col center" style="padding-left:0;padding-right: 0;">
                                                                         <span class="input-group-btn">
@@ -110,10 +110,8 @@ echo "
                                                                     </div>
                                                                 </div>
                                                             </form>
-                                                            <label>Prix total : </label><span class="prixnumber<?php echo $j; ?>"><?php echo $itemsBdPrix[$j]; ?></span> $
-
+                                                            <label>Prix total : </label><span class="prixnumber<?php echo $j; ?>"><?php echo money_format('%(#10n', ($itemsBdPrix[$j])). "$";?></span>
                                                         </div>
-
 
                                                         <script type="text/javascript">
                                                             $('.btn-number<?php echo $j; ?>').click(function(e){
@@ -170,7 +168,8 @@ echo "
                                                                     alert('Désolé, la limite est atteinte.');
                                                                     $(this).val($(this).data('oldValue'));
                                                                 }
-                                                                prixTotal.text(prixUnit*valueCurrent);
+                                                                //prixTotal.text(prixUnit*valueCurrent);
+                                                                prixTotal.text(parseFloat((prixUnit*valueCurrent), 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1 ").toString() + "$");
 
 
                                                             });

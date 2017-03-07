@@ -1,20 +1,14 @@
 <?php
-if(isset($_POST['mod-titre']) and isset($_POST['mod-prix'])and isset($_POST['mod-type'])) {
-    include("bd-connect.php");
-    ECHO $plattitre = $_POST['mod-titre'];
-    echo "<br>";
-    ECHO $platdescription = $_POST['mod-description'];
-    echo "<br>";
-    ECHO $platprix = $_POST['mod-prix'];
-    echo "<br>";
-    ECHO $plattype = $_POST['mod-type'];
-    echo "<br>";
-    echo $platimage = $_POST['mod-image-txt']; //retient le filename . extension
-    echo "<br>";
-    echo $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
-    echo "<br>";
-    echo $filename = basename($platimage,".".$extension); // retient seulement le filename
-    echo "<br>";
+//Modification
+include("bd-connect.php");
+if(isset($_POST['mod-titre']) and isset($_POST['modplat']) and isset($_POST['mod-prix'])and isset($_POST['mod-type'])) {
+    $plattitre = $_POST['mod-titre'];
+    $platdescription = $_POST['mod-description'];
+    $platprix = $_POST['mod-prix'];
+    $plattype = $_POST['mod-type'];
+    $platimage = $_POST['mod-image-txt']; //retient le filename . extension
+    $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
+    $filename = basename($platimage,".".$extension); // retient seulement le filename
     //si le fichier existe
     if (isset($_FILES["mod-image"])){
         $index = 0;
@@ -42,6 +36,26 @@ if(isset($_POST['mod-titre']) and isset($_POST['mod-prix'])and isset($_POST['mod
     $stmt->bind_param("ssdsi", $plattitre,$platdescription,$platprix,$platimage,$_GET['id']);
     if ($stmt->execute()) {
         echo $plattitre;
+        $_SESSION['toast'] = "plat-type-mod";
+        $redirect = "admin-plat-mod";
+    }
+    $stmt->free_result();
+    $stmt->close();
+}
+elseif(isset($_POST['mod-titre']) and isset($_POST['supplat']) and isset($_POST['mod-prix'])and isset($_POST['mod-type'])){
+    $platimage = $_POST['mod-image-txt']; //retient le filename . extension
+    $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
+    echo $filename = basename($platimage,".".$extension); // retient seulement le filename
+    if (isset($_FILES["mod-image"])){
+        //copie du fichier du dossier temporaire au bon endroit
+        if (fileExists($_GLOBAL['dirimg'].$platimage)){
+                unlink($_GLOBAL['dirimg'].$platimage);
+            }
+    }
+    $sql = "DELETE FROM item WHERE id=?;";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i",$_GET['id']);
+    if ($stmt->execute()) {
         $_SESSION['toast'] = "plat-type-mod";
         $redirect = "admin-plat-mod";
     }

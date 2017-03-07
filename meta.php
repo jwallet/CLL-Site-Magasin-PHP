@@ -15,6 +15,8 @@ $_GLOBAL['couleur-menu-5a'] = "black";
 
 $_GLOBAL['jour-limite-commander'] = 5; //vendredi = 5, quand sera desactiver la commande
 $_GLOBAL['jour-limite-commander-text'] = "friday"; //anglais pour datetime
+$_GLOBAL['jour-debut-commander-text'] = "monday"; //anglais pour datetime
+$_GLOBAL['jour-debut-commander'] = 1; //lundi = 1, quand sera ouvert
 
 setlocale(LC_ALL, 'fr_CA.utf8', 'fra');
 
@@ -26,8 +28,8 @@ $result = $mysqli->query($sql);
 $page = $result->fetch_assoc();
 ?>
 
-<meta name='description' content='Boite à bouf est un service traiteur qui offre des plats cuisinés maison.'/>
-<meta name='keywords' content='boite, bouf, bouffe, traiteur, plats, cuisine, maison'/>
+<meta name='description' content='Boîte à Bouf est un service traiteur qui offre des plats cuisinés maison.'/>
+<meta name='keywords' content='Boîte, à, Bouf, bouffe, traiteur, plats, cuisine, maison'/>
 <meta name='author' content='Jose Ouellet et Guillaume Prudhomme'/>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 <title><?php echo $page['titre'] ?> - La Boîte à Bouf</title>

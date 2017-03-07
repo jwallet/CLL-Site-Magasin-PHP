@@ -25,14 +25,28 @@
 </div>
 
 <div class='container'>
-    <div class="center red-text" style="width: 100%;font-size:120%;font-weight: bold;">
-        <span style="padding:6px;">Date limite: <?php $day = $_GLOBAL['jour-limite-commander-text']; echo strftime("%A, %e %B %Y",date(strtotime("next $day"))); ?></span>
-    </div>
-    <div class="center">
-        <a style="width: 94%; margin-left:3%; margin-right: 3%;" class="waves-effect waves-light btn-large <?php if(date("N")>$_GLOBAL['jour-limite-commander']){ echo "disabled";}?> <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>" href='menu'>
-            Menu de la semaine
-        </a>
-        <?php include_once("home-horaire-content.php"); ?>
+    <div class="section" style="width: 94%; margin-left:3%; margin-right: 3%;">
+        <div class="center red-text text-darken-2" style="width: 100%;font-size:120%;font-weight: bold;line-height: 2.5;">
+            <?php
+            $dayend = $_GLOBAL['jour-limite-commander-text'];
+            $daystart = $_GLOBAL['jour-debut-commander-text'];
+            if(date("N")<=$_GLOBAL['jour-limite-commander']){
+                echo "<span>Date limite : " . strftime("%A, %e %B",date(strtotime("next $dayend"))) . "</span>";
+            }
+            else{
+                echo "<span>Date limite expirée<br/>Prochain menu : " . strftime("%A, %e %B",date(strtotime("next $daystart"))) . "</span>";
+            }?>
+        </div>
+        <div class="center">
+            <a style="width:100%;" class="waves-effect waves-light btn-large <?php if(date("N")>$_GLOBAL['jour-limite-commander']){ echo "disabled";}?> <?php echo $_GLOBAL['couleur-menu-2a'] . ' ' .$_GLOBAL['couleur-menu-2b'] ?>" href='menu'>
+                Menu de la semaine
+            </a>
+            <?php include_once("home-horaire-content.php");
+                include_once("home-contact-content.php"); ?>
+            <a style="width:100%;" class="waves-effect waves-light btn-large <?php if(date("N")>$_GLOBAL['jour-limite-commander']){ echo "disabled";}?> <?php echo $_GLOBAL['couleur1a']?>" href='home-faq'>
+                Fonctionnement
+            </a>
+        </div>
     </div>
 </div>
 
@@ -43,12 +57,19 @@
         </div>
     </li>
     <li><div class="divider"></div></li>
-    <li><a href="#!"><i class="material-icons">map</i>Menu de la semaine</a></li>
-    <li><a href="#!"><i class="material-icons">today</i>Horaires</a></li>
-    <li><a href="#!"><i class="material-icons">perm_phone_msg</i>Nous contacter</a></li>
-    <li><a href="#!"><i class="material-icons">help</i>Fonctionnement</a></li>
-    <li><a href="#!"><i class="material-icons">store</i>A propos de l'entreprise</a></li>
-    <li><a href="#!"><i class="material-icons">gavel</i>Termes et conditions</a></li>
+    <li><a href="menu"><i class="material-icons">map</i>Menu de la semaine</a></li>
+    <?php if(isset($_SESSION['user-online'])){ if($_SESSION['user-online']){ echo "
+    <li><a href=\"shop-cart\"><i class=\"material-icons\">shopping_cart</i>Panier de commande</a></li>
+    <li><a href=\"account\"><i class=\"material-icons\">person</i>Compte</a></li>
+    "; }}?>
+    <li><div class="divider"></div></li>
+    <li><a href="home-faq"><i class="material-icons">help</i>Fonctionnement</a></li>
+    <li><a href="home-a-propos"><i class="material-icons">store</i>Entreprise</a></li>
+    <li><a href="home-termes-conditions"><i class="material-icons">gavel</i>Termes et conditions</a></li>
+    <?php if(isset($_SESSION['user-online'])){ if($_SESSION['user-isadmin']){ echo "
+    <li><div class=\"divider\"></div></li>
+    <li><a href=\"admin\"><i class=\"material-icons\">developer_board</i>Administration</a></li>
+    "; }}?>
 </ul>
 
 <script type="text/javascript">

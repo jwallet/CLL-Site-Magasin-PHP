@@ -1,10 +1,22 @@
 <?php
 if(isset($_SESSION['toast'])) {
-    if ($_SESSION['toast'] == 'order-added') {
+    if ($_SESSION['toast'] == 'item-added') {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Commande ajoutée.', 8000);
+                Materialize.toast('Plat ajouté.', 8000);
+            });
+        </script>
+        <?php
+    }
+    unset($_SESSION['toast']);
+}
+elseif(isset($_SESSION['toast'])) {
+    if ($_SESSION['toast'] == 'order-failed') {
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('L\'envoie de la commande a échoué.', 8000);
             });
         </script>
         <?php
@@ -128,7 +140,7 @@ else{
                         </a>
                     </form></p>
                     <a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($itemsPrix[$i]*$itemsQuant[$i])). "$"; ?></a>
-                    <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/>(<?php echo money_format('%(#10n', ($itemsPrix[$i])). "$"; ?> /chacun)</a>
+                    <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/><?php echo money_format('%(#10n', ($itemsPrix[$i])). "$"; ?> /chacun</a>
                 </li>
             <?php
             $total += $itemsQuant[$i]*$itemsPrix[$i];
@@ -138,11 +150,33 @@ else{
                 <span>TVQ (9.975%)</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($total*0.09975)). "$"; ?></a><br/>
                 <span>TPS (5%)</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($total*0.05)). "$"; ?></a><hr/>
                 <span>Total</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($total*1.14975)). "$"; ?></a><br/>
-                <button type="submit" class="btn secondary-content <?php echo $_GLOBAL['couleur1a']; ?>" style="margin-top:20px;margin-bottom:20px;">Commander</button>
+                <a href="#modalCommander" class="btn waves-effect waves-light secondary-content <?php if(date("N")>$_GLOBAL['jour-limite-commander']){ echo "disabled";}?> <?php echo $_GLOBAL['couleur1a']; ?>" style="margin-top:20px;margin-bottom:20px;">Commander</a>
             </li>
         <?php }
         else{
             echo "<h5 class='center'>Panier vide</h5><p class='center'>Ajouter des plats à partir du <a href='menu'>menu de la semaine</a> pour passer une commande.</p>";
         }?>
     </ul>
+    <!-- Modal Structure -->
+    <div id="modalCommander" class="modal">
+        <div class="modal-content">
+            <h4>Commander</h4>
+            <p>En poursuivant, vous acceptez les <a href="home-termes-conditions">termes et conditions</a> et vous
+                comprenez que le prix total de la commande correspond au montant qui vous sera chargé pour récupérer
+                vos plats sur nos lieux à la <a href="home-contact">Boîte à Bouf</a>. Assurez-vous d'avoir pris
+                connaissances de l'<a href="home-horaire">horaire de cueillette</a> des repas et des autres liens
+                au bas de la page. Nous vous invitions à consulter également <a href="home-faq">le fonctionnement</a>
+                de la Boîte à Bouf avant de commander.
+            </p>
+            <b>Désirez-vous poursuvire et commander ces plats?</b>
+
+        </div>
+        <div class="modal-footer">
+            <a href="shop-commander-validation" class="btn modal-action modal-close waves-effect waves-green <?php echo $_GLOBAL['couleur1a']; ?>">Oui</a>
+            <a class="modal-action modal-close waves-effect waves-green btn-flat"><b>Non, annuler</b></a>
+        </div>
+    </div>
 </div>
+<script type="text/javascript">
+    $('.modal').modal();
+</script>

@@ -12,6 +12,12 @@ $_GLOBAL['couleur-menu-3b'] = "";
 $_GLOBAL['couleur-menu-4a'] = "white";
 $_GLOBAL['couleur-menu-4b'] = "";
 $_GLOBAL['couleur-menu-5a'] = "black";
+
+$_GLOBAL['jour-limite-commander'] = 5; //vendredi = 5, quand sera desactiver la commande
+$_GLOBAL['jour-limite-commander-text'] = "friday"; //anglais pour datetime
+
+setlocale(LC_ALL, 'fr_CA.utf8', 'fra');
+
 $fichier = explode("/", $_SERVER['PHP_SELF']);
 $fichier = $fichier[count($fichier)-1];
 

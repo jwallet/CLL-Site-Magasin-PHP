@@ -1,10 +1,10 @@
 <?php
 if(isset($_SESSION['toast'])) {
-    if ($_SESSION['toast'] == 'order-failed') {
+    if ($_SESSION['toast'] == 'item-failed') {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('L\'ajout de la commande a échoué.', 8000);
+                Materialize.toast('L\'ajout du plat a échoué.', 8000);
             });
         </script>
         <?php

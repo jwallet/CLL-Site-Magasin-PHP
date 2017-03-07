@@ -20,23 +20,19 @@ if(isset($_SESSION['toast'])) {
 
 <div class="container">
     <div class="section">
-        <form class="row" action="connect-validation" method="post">
-            <div class="col s12">
-                <div class="input-field row">
+        <form action="connect-validation" method="post">
+                <div class="input-field">
                     <i class="material-icons prefix">email</i>
                     <input id="icon_email" type="email" name="email" id="email" class="validate" required>
                     <label for="icon_email">Courriel</label>
                 </div>
-                <div class="input-field row">
+                <div class="input-field">
                     <i class="material-icons prefix">lock</i>
                     <input id="icon_password" type="password" name="password" id="password" lass="validate" required>
                     <label for="icon_password">Mot de passe</label>
                 </div>
-            </div>
-            <div class="s12">
-                <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?>"
+                <button style="width: 94%; margin-left:3%; margin-right: 3%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?>"
                    type='submit' name="connect">Se connecter</button>
-            </div>
         </form>
     </div>
 </div>

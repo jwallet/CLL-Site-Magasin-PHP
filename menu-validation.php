@@ -56,17 +56,17 @@ if(isset($_SESSION['user-id']) and isset($_POST['jvalue'])){
             $cookieval = $idmenu . '>' . $iditem . ':' . $quantitem;
             setcookie("shoppingcart",$cookieval,time()+604800);//expire in a week
         }
-        $_SESSION['toast']="order-added";
+        $_SESSION['toast']="item-added";
         $redirect = "shop-cart";
     }
     else
     {
-        $_SESSION['toast']="order-failed";
+        $_SESSION['toast']="item-failed";
         $redirect = "menu";
     }
 }
 else{
-    $_SESSION['toast']="order-failed";
+    $_SESSION['toast']="item-failed";
     $redirect = "menu";
 }
 ?>

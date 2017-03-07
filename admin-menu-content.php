@@ -22,80 +22,76 @@ if($stmt->fetch()){
 }
 ?>
     <div class="container">
-    <div class="section">
-        <form class="row" action="admin-menu-validation" method="POST">
-            <div class="col s12">
-                <input type="hidden" name="action" value="<?php echo $action; ?>"/>
-                <input type="hidden" name="id" value="<?php echo $menuloaded; ?>"/>
-                <div class="input-field row">
-                    <i class="material-icons prefix">title</i>
-                    <input type="text" name="titre" id="titre" class="validate" value="<?php echo $titre; ?>" required>
-                    <label for="titre">Titre du menu</label>
-                </div>
-                <div class="row">
-                    <?php
-                    $stmt->free_result();
-                    $idmenu = null;
-                    $sql = "SELECT idmenu, iditem FROM menu_detail WHERE idmenu = ?;";
-                    $stmt = $mysqli->prepare($sql);
-                    $stmt->bind_param('i',$menuloaded);
-                    $stmt->execute();
-                    $stmt->bind_result($idmenu,$iditem);
-                    $itemsIdFromMenu = array();
-                    while($stmt->fetch()) {
-                        $itemsIdFromMenu[] = $iditem;
-                    }
-                    $sql = "SELECT i.id, t.type, i.titre, i.prix FROM item i JOIN p_item t ON i.idtype=t.id ORDER BY t.ordre;";
-                    $stmt = $mysqli->prepare($sql);
-                    $stmt->execute();
-                    $stmt->bind_result($iditem,$type,$item,$prix);
-                    $group = null;
-                    while($stmt->fetch()) {
-                        $type = ucfirst(strtolower($type));
-                        if(in_array($iditem,$itemsIdFromMenu)){ $checkit="checked"; } else { $checkit = ""; }
-                        if(strcmp($group,$type)==0){
-                            echo "
-                            <tr>
-                                <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items[]\" $checkit/>
-                                    <label for=\"$iditem\">$item</label></td>
-                                <td class=\"right-align\">$prix $</td>
-                            </tr>
-                            ";
-                        }
-                        else{
-                            if($group!=null){
-                                echo " </tbody>
-                                        </table>
-                                        <br/>";
-                            }
-                            echo "<table class=\"striped\">
-                            <thead>
-                            <tr>
-                                <th data-field=\"type\">$type</th>
-                                <th class=\"right-align\" data-field=\"prix\">Prix</th>
-                            </tr>
-                            </thead>
-    
-                            <tbody>
-                            <tr>
-                                <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items[]\" $checkit/>
-                                    <label for=\"$iditem\">$item</label></td>
-                                <td class=\"right-align\">$prix $</td>     
-                            </tr>";
-                        }
-                        $group = $type;
-                    }
-                    echo "</tbody>
-                            </table>
-                            <br/>";
-                    $stmt->close();
-                    ?>
-                </div>
-                <div class="row">
-                    <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?> "
-                            type='submit' name="save">Enregistrer le menu</button>
-                </div>
+    <div class="section" style="padding:5px;">
+        <form action="admin-menu-validation" method="POST">
+            <input type="hidden" name="action" value="<?php echo $action; ?>"/>
+            <input type="hidden" name="id" value="<?php echo $menuloaded; ?>"/>
+            <div class="input-field">
+                <i class="material-icons prefix">title</i>
+                <input type="text" name="titre" id="titre" class="validate" value="<?php echo $titre; ?>" required>
+                <label for="titre">Titre du menu</label>
             </div>
+            <div>
+                <?php
+                $stmt->free_result();
+                $idmenu = null;
+                $sql = "SELECT idmenu, iditem FROM menu_detail WHERE idmenu = ?;";
+                $stmt = $mysqli->prepare($sql);
+                $stmt->bind_param('i',$menuloaded);
+                $stmt->execute();
+                $stmt->bind_result($idmenu,$iditem);
+                $itemsIdFromMenu = array();
+                while($stmt->fetch()) {
+                    $itemsIdFromMenu[] = $iditem;
+                }
+                $sql = "SELECT i.id, t.type, i.titre, i.prix FROM item i JOIN p_item t ON i.idtype=t.id ORDER BY t.ordre;";
+                $stmt = $mysqli->prepare($sql);
+                $stmt->execute();
+                $stmt->bind_result($iditem,$type,$item,$prix);
+                $group = null;
+                while($stmt->fetch()) {
+                    $type = ucfirst(strtolower($type));
+                    if(in_array($iditem,$itemsIdFromMenu)){ $checkit="checked"; } else { $checkit = ""; }
+                    if(strcmp($group,$type)==0){
+                        echo "
+                        <tr>
+                            <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items[]\" $checkit/>
+                                <label for=\"$iditem\">$item</label></td>
+                            <td class=\"right-align\">$prix $</td>
+                        </tr>
+                        ";
+                    }
+                    else{
+                        if($group!=null){
+                            echo " </tbody>
+                                    </table>
+                                    <br/>";
+                        }
+                        echo "<table class=\"striped\">
+                        <thead>
+                        <tr>
+                            <th data-field=\"type\">$type</th>
+                            <th class=\"right-align\" data-field=\"prix\">Prix</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items[]\" $checkit/>
+                                <label for=\"$iditem\">$item</label></td>
+                            <td class=\"right-align\">$prix $</td>     
+                        </tr>";
+                    }
+                    $group = $type;
+                }
+                echo "</tbody>
+                        </table>
+                        <br/>";
+                $stmt->close();
+                ?>
+            </div>
+            <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?> "
+                    type='submit' name="save">Enregistrer le menu</button>
         </form>
     </div>
 </div>

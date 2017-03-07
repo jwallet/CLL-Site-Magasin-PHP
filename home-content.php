@@ -25,12 +25,14 @@
 </div>
 
 <div class='container'>
-    <div class="section">
-        <div class="col s12">
-            <a style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>" href='menu'>
-                Menu de la semaine
-            </a>
-        </div>
+    <div class="center red-text" style="width: 100%;font-size:120%;font-weight: bold;">
+        <span style="padding:6px;">Date limite: <?php $day = $_GLOBAL['jour-limite-commander-text']; echo strftime("%A, %e %B %Y",date(strtotime("next $day"))); ?></span>
+    </div>
+    <div class="center">
+        <a style="width: 94%; margin-left:3%; margin-right: 3%;" class="waves-effect waves-light btn-large <?php if(date("N")>$_GLOBAL['jour-limite-commander']){ echo "disabled";}?> <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>" href='menu'>
+            Menu de la semaine
+        </a>
+        <?php include_once("home-horaire-content.php"); ?>
     </div>
 </div>
 

@@ -16,23 +16,25 @@ if(isset($_POST['mod-titre']) and isset($_POST['mod-prix'])and isset($_POST['mod
     echo $filename = basename($platimage,".".$extension); // retient seulement le filename
     echo "<br>";
     //si le fichier existe
-    if (isset($_POST["mod-image-txt"])){
+    if (isset($_FILES["mod-image"])){
         $index = 0;
-        while(fileExists($_GLOBAL['dirimg'].$platimage))
+        while(fileExists($_FILES["mod-image"]))
         {
             $index = $index+1;
             $platimage = $filename."(".$index.")." . $extension;
         }
         //copie du fichier du dossier temporaire au bon endroit
-        if ( copy($_FILES["plat-image"]["tmp_name"],$_GLOBAL['dirimg'].$platimage)){
-            echo "Transmission réussis!!!";
-            echo "Code d'erreur=".$_FILES["plat-image"]["error"];
-            code();
-        }
-        else {
-            echo "Transmission non-réussis<P>";
-            echo "Code d'erreur=".$_FILES["plat-image"]["error"];
-            code();
+        if (!fileExists($_GLOBAL['dirimg'].$platimage)){
+            if ( copy($_FILES["mod-image"]["tmp_name"],$_GLOBAL['dirimg'].$platimage)){
+                echo "Transmission réussis!!!";
+                echo "Code d'erreur=".$_FILES["mod-image"]["error"];
+                code();
+            }
+            else {
+                echo "Transmission non-réussis<P>";
+                echo "Code d'erreur=".$_FILES["mod-image"]["error"];
+                code();
+            }
         }
     }
     $sql = "UPDATE item SET titre=?,description=?,prix=?,image=? WHERE id=?;";

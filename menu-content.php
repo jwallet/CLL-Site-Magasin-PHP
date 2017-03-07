@@ -71,19 +71,19 @@ echo "
     <!--                                DEBUT container de l'item-->
                                             <div class="menu-container" style="font-family: Roboto;">
                                                 <div class="section">
-                                                    <div class="white-text row s12" style="margin:0px 20px 0px 20px;">
+                                                    <div class="white-text" style="margin:0px 20px 0px 20px;">
 
-                                                        <h4 class="col s6"><?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?></h4>
-
-                                                        <h4 class="col s6 right-align"><?php echo $itemsBdPrix[$j]; ?>$</h4>
+                                                        <div style="float:right; border-radius:70px;background-image:url('<?php if( $itemsBdImg[$j]!=null and  $itemsBdImg[$j]!=""){ echo "upload/".$itemsBdImg[$j];} else { echo "css/ico/logo.png"; } ?>');background-position:center;background-size:auto 140px;width:140px;height: 140px; margin-right:-10px;" alt=""></div>
+                                                        <h5 class="col s12"><?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?></h5>
                                                         <p class="col s12"><?php if($itemsBdDesc[$j]!=null and $itemsBdDesc[$j]!=""){ echo $itemsBdDesc[$j]; } else { echo "Aucune description n'est disponible."; } ?></p>
                                                         <?php if(isset($_SESSION['user-online'])){?>
-                                                        <div class="col s12">
+                                                        <div class="row s12" style="margin:0;padding:0;">
 
                                                             <form action="menu-validation" method="post" style="padding-top:25px;">
                                                                 <input type="hidden" name="jvalue" value="<?php echo $j; ?>"/>
                                                                 <input type="hidden" class="hiddenprix<?php echo $j; ?>" value="<?php echo $itemsBdPrix[$j]; ?>"/>
                                                                 <input type="hidden" name="hiddenitem<?php echo $j; ?>" value="<?php echo $itemsBdId[$j]; ?>"/>
+                                                                <label style="font-size:95%;">Prix unitaire : </label><span style="font-size:120%;"><?php echo $itemsBdPrix[$j]; ?> $</span>
                                                                 <div class="col s12" style="padding-left:0;padding-right: 0;">
                                                                     <div class="input-group col center" style="padding-left:0;padding-right: 0;">
                                                                         <span class="input-group-btn">

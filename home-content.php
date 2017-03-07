@@ -28,7 +28,7 @@
     <div class="section">
         <div class="col s12">
             <a style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1'] . $_GLOBAL['couleur1a']?>" href='menu'>
-                <?php if(!isset($_SESSION['user-online'])){ echo "Menu de la semaine"; } else { echo "Commander"; } ?>
+                Menu de la semaine
             </a>
         </div>
     </div>

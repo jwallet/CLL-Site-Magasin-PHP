@@ -20,8 +20,8 @@ $result = $mysqli->query($sql);
 $page = $result->fetch_assoc();
 ?>
 
-<meta name='description' content='aa'/>
-<meta name='keywords' content='aa'/>
+<meta name='description' content='Boite à bouf est un service traiteur qui offre des plats cuisinés maison.'/>
+<meta name='keywords' content='boite, bouf, bouffe, traiteur, plats, cuisine, maison'/>
 <meta name='author' content='Jose Ouellet et Guillaume Prudhomme'/>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 <title><?php echo $page['titre'] ?> - La Boîte à Bouf</title>

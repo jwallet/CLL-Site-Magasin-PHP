@@ -119,12 +119,15 @@ else{
                     <p><form action="shop-cart" method="post" style="padding:0;margin:0;">
                         <input name="updateid" type="hidden" value="<?php echo $itemsId[$i]; ?>"/>
                         <input name="updatequant" style="width: 50px;float:left;height: 1.5rem;border:1px solid #AAA;" type="number" value="<?php echo $itemsQuant[$i]; ?>"/>
-                        <button type="submit" style="border:none;background:none;padding:0;margin:0;width: 30px;" class="<?php echo $_GLOBAL['couleur1a']; ?>-text">
+                        <button type="submit" style="border:none;background:none;padding:0;margin:0;width: 30px; margin-right:20px;" class="<?php echo $_GLOBAL['couleur1a']; ?>-text">
                             <i class="material-icons">update</i>
                         </button>
+                        <a href="shop-cart?d=<?php echo $itemsId[$i]; ?>" class="<?php echo $_GLOBAL['couleur1a']; ?>-text">
+                            <i class="material-icons">delete</i>
+                        </a>
                     </form></p>
-                    <a class="secondary-content"><?php echo $itemsPrix[$i]."$"; ?></a>
-                    <a href="shop-cart?d=<?php echo $itemsId[$i]; ?>" class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text"><br/><i class="material-icons">delete</i></a>
+                    <a class="secondary-content" style="font-size:120%;"><?php echo $itemsPrix[$i]."$"; ?></a>
+                    <a class="secondary-content grey-text" style="font-size:90%;"><br/>(<?php echo $itemsPrix[$i]."$"; ?> /chacun)</a>
                 </li>
             <?php }?>
         <?php }

@@ -4,11 +4,22 @@ $stmt->bind_param("i",$_GET['id']);
 $stmt->execute();
 $stmt->bind_result($modtitre, $modtyperepas, $moddescription, $modprix, $modimage);
 if($stmt->fetch()) {
+//    echo $modtitre;
+//    echo "<br>";
+//    echo $modtyperepas;
+//    echo "<br>";
+//    echo $moddescription;
+//    echo "<br>";
+//    echo $modprix;
+//    echo "<br>";
+//    echo $modimage;
+//    echo "<br>";
 }
 $stmt->free_result();
 $stmt->close();
 ?>
-<div id="modalsup" name="modalsup" class="modal">
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
     <div class="modal-content">
         <h4>Modal Header</h4>
         <p>A bunch of text</p>
@@ -20,6 +31,7 @@ $stmt->close();
 <div class="container">
     <div class="section">
         <form class="row" action="admin-plat-mod-validation?id=<?php echo $_GET['id']?>" method="POST" enctype="multipart/form-data">
+
             <div class="col s12">
                 <div class="input-field row">
                     <i class="material-icons prefix">title</i>
@@ -52,10 +64,10 @@ $stmt->close();
                             echo "<br>";
                             if($type == $modtyperepas){
                                 echo "<option value=\"$idtype\" selected>$type</option>";
-                           }
-                           else{
-                               echo "<option value=\"$idtype$id\">$type</option>";
-                           }
+                            }
+                            else{
+                                echo "<option value=\"$idtype$id\">$type</option>";
+                            }
                         }
                         $stmt->free_result();
                         $stmt->close();
@@ -75,13 +87,13 @@ $stmt->close();
                         </div>
                     </div>
                 </div>
-<!--                <div class="row center">-->
-<!--                    <img src="--><?php
-//                    if(isset($modimage)){
-//                        echo $_GLOBAL['dirimg'].$modimage;
-//                    }
-//                    ?><!--" class="circle responsive-img" alt="Aucune image" style="width:256px;height:256px">-->
-<!--                </div>-->
+                <!--                <div class="row center">-->
+                <!--                    <img src="--><?php
+                //                    if(isset($modimage)){
+                //                        echo $_GLOBAL['dirimg'].$modimage;
+                //                    }
+                //                    ?><!--" class="circle responsive-img" alt="Aucune image" style="width:256px;height:256px">-->
+                <!--                </div>-->
                 <div class="col s12">
                     <div class="card-panel grey lighten-5 z-depth-1">
                         <div class="row valign-wrapper">
@@ -105,10 +117,20 @@ $stmt->close();
                             type='submit' name="modplat">Appliquer les modifications</button>
                 </div>
             </div>
+        </form>
+        <form class="row" action="#modal1">
+            <div class="row">
+                <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?> "
+                        type='submit' name="modplat">Appliquer modifications</button>
+            </div>
+        </form>
     </div>
 </div>
 <script type="text/javascript">
     $(document).ready(function() {
         $('select').material_select();
+    });
+    $(document).ready(function(){
+        $('.modal').modal();
     });
 </script>

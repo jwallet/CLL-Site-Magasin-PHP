@@ -1,6 +1,6 @@
 <?php
-$_GLOBAL['couleur1a'] = "teal";
-$_GLOBAL['couleur1b'] = "darken-2";
+$_GLOBAL['couleur1a'] = "brown";
+$_GLOBAL['couleur1b'] = "lighten-1";
 $_GLOBAL['couleur2a'] = "grey";
 $_GLOBAL['couleur2b'] = "lighten-2";
 $_GLOBAL['couleur-menu-1a'] = "grey";

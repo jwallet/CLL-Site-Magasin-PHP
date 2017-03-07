@@ -41,14 +41,14 @@ echo "
                 <li>";
                 if(strcmp($htmltype,$itemsBdType[$j])!= 0){
                 ?>
-                <div class="menu-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>" style='font-variant:small-caps; pointer-events:none;border:0px;'>
-                        <div class="container"><h4 class="center <?php echo $_GLOBAL['couleur-menu-4a']. "-text"; ?>">
+                <div class="menu-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>" style='font-variant:small-caps; pointer-events:none;border:0px;background-image:url("css/res/blackboard.jpg");background-repeat: repeat;background-size:175px 175px;'>
+                        <div class="container"><h4 style="margin-top:39px;" class="center <?php echo $_GLOBAL['couleur-menu-4a']. "-text"; ?>">
                             <?php echo ucfirst(strtolower($itemsBdType[$j])); ?>
                                 </h4>
                         </div>
                     </div>
                 <?php } ?>
-                    <div class="collapsible-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>" style="border:0px;">
+                    <div class="collapsible-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>" style="border:0px;background-image:url('css/res/blackboard.jpg');background-repeat: repeat;background-size:175px 175px;background-position-y: 100px;">
                         <div class="container" style="font-size:1.3em;border-bottom: 2px dotted rgb(145, 145, 145);">
                             <span class="<?php echo $_GLOBAL['couleur-menu-3a']. "-text text-" . $_GLOBAL['couleur-menu-3b'] ?>">
                                 <?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?>

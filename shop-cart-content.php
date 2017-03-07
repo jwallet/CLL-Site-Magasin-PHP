@@ -110,12 +110,13 @@ else{
 }
 ?>
 <div class="container col">
-<ul class="collection">
+    <ul class="collection">
         <?php if(!$empty) {
+            $total=0;
             for($i=0; $i<sizeof($itemsId); $i++){?>
                 <li class="collection-item avatar" style="padding-left:80px;">
                     <span style="background-image:url('<?php if( $itemsImg[$i]!=null and  $itemsImg[$i]!=""){ echo "upload/".$itemsImg[$i];} else { echo "css/ico/logo.png"; } ?>');background-position:center;background-size:auto 60px;width:60px;height: 60px; margin-top:-8px;margin-left:-6px;" alt="" class="circle"></span>
-                    <span class="title"><?php echo ucfirst(strtolower($itemsTitre[$i])); ?></span><span style="padding-left:8px;color:#aaa;font-size:14px;font-style: italic;"><?php echo ucfirst(strtolower($itemsType[$i])); ?></span>
+                    <span class="title"><?php echo ucfirst(strtolower($itemsTitre[$i])); ?></span><span class="<?php echo $_GLOBAL['couleur2a']; ?>-text" style="padding-left:8px;font-size:14px;font-style: italic;"><?php echo ucfirst(strtolower($itemsType[$i])); ?></span>
                     <p><form action="shop-cart" method="post" style="padding:0;margin:0;">
                         <input name="updateid" type="hidden" value="<?php echo $itemsId[$i]; ?>"/>
                         <input name="updatequant" style="width: 50px;float:left;height: 1.5rem;border:1px solid #AAA;" type="number" value="<?php echo $itemsQuant[$i]; ?>"/>
@@ -126,13 +127,22 @@ else{
                             <i class="material-icons">delete</i>
                         </a>
                     </form></p>
-                    <a class="secondary-content" style="font-size:120%;"><?php echo $itemsPrix[$i]."$"; ?></a>
-                    <a class="secondary-content grey-text" style="font-size:90%;"><br/>(<?php echo $itemsPrix[$i]."$"; ?> /chacun)</a>
+                    <a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo ($itemsPrix[$i]*$itemsQuant[$i])."$"; ?></a>
+                    <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/>(<?php echo $itemsPrix[$i]."$"; ?> /chacun)</a>
                 </li>
-            <?php }?>
+            <?php
+            $total += $itemsQuant[$i]*$itemsPrix[$i];
+            }?>
+            <li class="collection-item">
+                <span>Sous-total</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo $total . "$"; ?></a><br/>
+                <span>TVQ (9.975%)</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo ($total*0.09975) . "$"; ?></a><br/>
+                <span>TPS (5%)</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo ($total*0.05) . "$"; ?></a><hr/>
+                <span>Total</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo ($total*1.14975) . "$"; ?></a><br/>
+                <button type="submit" class="btn secondary-content <?php echo $_GLOBAL['couleur1a']; ?>" style="margin-top:20px;margin-bottom:20px;">Commander</button>
+            </li>
         <?php }
         else{
             echo "<h5 class='center'>Panier vide</h5><p class='center'>Ajouter des plats à partir du <a href='menu'>menu de la semaine</a> pour passer une commande.</p>";
         }?>
-</ul>
+    </ul>
 </div>

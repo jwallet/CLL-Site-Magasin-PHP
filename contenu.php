@@ -42,7 +42,7 @@ else{
     <div class="indeterminate"></div>
 </div>
 
-    <nav class="<?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b'] ?>" style="background-image:url('css/res/wood.jpg');background-size:auto 62px;border-bottom:2px solid #4e342e;">
+    <nav class="<?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b'] ?>" style="background-image:url('css/res/wood.jpg');background-size:auto 62px;border-bottom:2px solid #4e342e;text-shadow: #444 0px -2px;">
         <div class="nav-wrapper container" style="background:none;background-color: transparent;">
 
             <?php

@@ -35,7 +35,7 @@ $stmt->free_result();
 $j = 0;
 $htmltype = null;
 echo "
-<ul class=\"collapsible chalk-board-small\" data-collapsible=\"accordion\">";
+<ul class=\"collapsible chalk-board-small\" data-collapsible=\"accordion\" style=\"border:none;\">";
     for($j=0;$j<sizeof($itemsBdId);$j++) {
         echo "
                 <li>";

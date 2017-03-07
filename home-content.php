@@ -43,7 +43,7 @@
             </a>
             <?php include_once("home-horaire-content.php");
                 include_once("home-contact-content.php"); ?>
-            <a style="width:100%;" class="waves-effect waves-light btn-large <?php if(date("N")>$_GLOBAL['jour-limite-commander']){ echo "disabled";}?> <?php echo $_GLOBAL['couleur1a']?>" href='home-faq'>
+            <a style="width:100%;" class="waves-effect waves-light btn-large <?php if(date("N")>$_GLOBAL['jour-limite-commander']){ echo "disabled";}?> <?php echo $_GLOBAL['couleur1a'] ?>" href='home-faq'>
                 Fonctionnement
             </a>
         </div>

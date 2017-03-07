@@ -17,8 +17,8 @@
 ?>
 <div class="container">
     <div class="section">
-        <form class="row" action="admin-plat-modtype-validation" method="POST">
-            <div class="input-field row">
+        <form action="admin-plat-modtype-validation" method="POST">
+            <div class="input-field">
                 <i class="material-icons prefix">restaurant_menu</i>
                 <select name="plat-atype" required>
                     <option value="" disabled selected>Choisir un type de plat</option>
@@ -34,31 +34,27 @@
                 </select>
                 <label>Type de plat</label>
             </div>
-            <div class="input-field row">
+            <div class="input-field">
                 <i class="material-icons prefix">update</i>
                 <input type="text" name="plat-ntype" id="platntype" class="validate" required>
                 <label>Veuillez choisir un nouveau titre pour le type de plat sélectionné</label>
             </div>
-            <div class="row">
-                <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?> "
+            <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] ?> "
                         type='submit' name="modtype">Modifier</button>
-            </div>
             </div>
         </form>
     </div>
 </div>
 <div class="container">
     <div class="section">
-        <form class="row" action="admin-plat-modtype-validation" method="POST">
-            <div class="input-field row">
+        <form action="admin-plat-modtype-validation" method="POST">
+            <div class="input-field">
                 <i class="material-icons prefix">add</i>
                 <input type="text" name="plat-addtype" id="plataddtype" class="validate" required>
                 <label>Inscrivez le nouveau type de repas ici</label>
             </div>
-            <div class="row">
-                <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?> "
+            <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] ?> "
                         type='submit' name="addtype">Ajouter</button>
-            </div>
     </div>
     </form>
 </div>

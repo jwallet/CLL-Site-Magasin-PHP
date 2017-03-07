@@ -18,37 +18,35 @@
 
 <div class="container">
     <div class="section">
-        <form class="row" action="admin-client-ajout-validation" method="post">
-            <div class="col s12">
-                <div class="input-field row">
-                    <i class="material-icons prefix">email</i>
-                    <input id="email" name="email" type="email" class="validate" required>
-                    <label for="email">Courriel *</label>
-                </div>
-                <div class="input-field row">
-                    <i class="material-icons prefix">person</i>
-                    <input id="prenom" name="prenom" type="text" title="Lettres seulement"  pattern="[a-zA-Z]+" class="validate">
-                    <label for="prenom">Prénom</label>
-                </div>
-                <div class="input-field row">
-                    <i class="material-icons prefix">person</i>
-                    <input id="nom" name="nom" type="text" title="Lettres seulement" pattern="[a-zA-Z]+" class="validate">
-                    <label for="nom">Nom</label>
-                </div>
-                <div class="input-field row">
-                    <i class="material-icons prefix">phone</i>
-                    <input id="telephone" name="telephone"
-                           type="tel" title="(999) 999-9999" pattern="^([0-9]{3} |[0-9]{3}-)[0-9]{3}-[0-9]{4}$" class="validate">
-                    <label for="telephone">Telephone</label>
-                </div>
-                <div class="input-field row">
-                    <i class="material-icons prefix">home</i>
-                    <input type="text" name="adresse" id="adresse">
-                    <label for="adresse">Adresse</label>
-                </div>
-                <button style="width: 100%;" id="send" class="waves-effect waves-light btn-large  <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?>" type="submit" name="action">Inscrire
-                </button>
+        <form action="admin-client-ajout-validation" method="post">
+            <div class="input-field">
+                <i class="material-icons prefix">email</i>
+                <input id="email" name="email" type="email" class="validate" required>
+                <label for="email">Courriel *</label>
             </div>
+            <div class="input-field">
+                <i class="material-icons prefix">person</i>
+                <input id="prenom" name="prenom" type="text" title="Lettres seulement"  pattern="[a-zA-Z]+" class="validate">
+                <label for="prenom">Prénom</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">person</i>
+                <input id="nom" name="nom" type="text" title="Lettres seulement" pattern="[a-zA-Z]+" class="validate">
+                <label for="nom">Nom</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">phone</i>
+                <input id="telephone" name="telephone"
+                       type="tel" title="(999) 999-9999" pattern="^([0-9]{3} |[0-9]{3}-)[0-9]{3}-[0-9]{4}$" class="validate">
+                <label for="telephone">Telephone</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">home</i>
+                <input type="text" name="adresse" id="adresse">
+                <label for="adresse">Adresse</label>
+            </div>
+            <button style="width: 100%;" id="send" class="waves-effect waves-light btn-large  <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?>" type="submit" name="action">Inscrire
+            </button>
         </form>
     </div>
 </div>

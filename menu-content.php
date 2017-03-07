@@ -18,6 +18,7 @@ $itemsBdTitre = array();
 $itemsBdDesc = array();
 $itemsBdImg = array();
 $itemsBdPrix = array();
+$itemsBdOrdre = array();
 $sql="SELECT i.id, pi.type, i.titre, i.description, i.image, i.prix FROM menu m JOIN menu_detail md ON m.id = md.idmenu JOIN item i ON md.iditem = i.id JOIN p_item pi ON i.idtype = pi.id WHERE m.isnow=1 ORDER BY pi.ordre, i.prix, i.titre";
 $stmt = $mysqli->prepare($sql);
 $stmt->execute();
@@ -42,19 +43,20 @@ echo "
                 if(strcmp($htmltype,$itemsBdType[$j])!= 0){
                 ?>
                 <div class="menu-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>" style='font-variant:small-caps; pointer-events:none;border:0px;background-image:url("css/res/blackboard.jpg");background-repeat: repeat;background-size:175px 175px;'>
-                        <div class="container"><h4 style="margin-top:39px;" class="center <?php echo $_GLOBAL['couleur-menu-4a']. "-text"; ?>">
+                    <div class="container">
+                        <h4 style="margin-top:39px;" class="center <?php echo $_GLOBAL['couleur-menu-4a']. "-text"; ?>">
                             <?php echo ucfirst(strtolower($itemsBdType[$j])); ?>
-                                </h4>
-                        </div>
+                        </h4>
                     </div>
-                <?php } ?>
+                </div>
+                <?php }?>
                     <div class="collapsible-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>" style="border:0px;background-image:url('css/res/blackboard.jpg');background-repeat: repeat;background-size:175px 175px;background-position-y: 100px;">
                         <div class="container" style="font-size:1.3em;border-bottom: 2px dotted rgb(145, 145, 145);">
                             <span class="<?php echo $_GLOBAL['couleur-menu-3a']. "-text text-" . $_GLOBAL['couleur-menu-3b'] ?>">
                                 <?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?>
                             </span>
                             <span class='secondary-content <?php echo $_GLOBAL['couleur-menu-3a']. "-text text-" . $_GLOBAL['couleur-menu-3b'] ?>'>
-                                <?php echo money_format('%(#10n', ($itemsBdPrix[$j])). "$";?>
+                                <?php echo money_format('%(#10n', ($itemsBdPrix[$j]));?>
                             </span>
                         </div>
                         <div class="container <?php echo $_GLOBAL['couleur-menu-2a']. "-text text-" . $_GLOBAL['couleur-menu-2b'] ?>" style="font-style: italic;">
@@ -83,7 +85,7 @@ echo "
                                                                 <input type="hidden" name="jvalue" value="<?php echo $j; ?>"/>
                                                                 <input type="hidden" class="hiddenprix<?php echo $j; ?>" value="<?php echo $itemsBdPrix[$j]; ?>"/>
                                                                 <input type="hidden" name="hiddenitem<?php echo $j; ?>" value="<?php echo $itemsBdId[$j]; ?>"/>
-                                                                <label style="font-size:95%;">Prix unitaire : </label><span style="font-size:120%;"><?php echo money_format('%(#10n', ($itemsBdPrix[$j])). "$";?></span>
+                                                                <label style="font-size:95%;">Prix unitaire : </label><span style="font-size:120%;"><?php echo money_format('%(#10n', ($itemsBdPrix[$j]));?></span>
                                                                 <div class="col s12" style="padding-left:0;padding-right: 0;">
                                                                     <div class="input-group col center" style="padding-left:0;padding-right: 0;">
                                                                         <span class="input-group-btn">
@@ -110,7 +112,7 @@ echo "
                                                                     </div>
                                                                 </div>
                                                             </form>
-                                                            <label>Prix total : </label><span class="prixnumber<?php echo $j; ?>"><?php echo money_format('%(#10n', ($itemsBdPrix[$j])). "$";?></span>
+                                                            <label>Prix total : </label><span class="prixnumber<?php echo $j; ?>"><?php echo money_format('%(#10n', ($itemsBdPrix[$j]));?></span>
                                                         </div>
 
                                                         <script type="text/javascript">

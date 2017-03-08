@@ -8,7 +8,7 @@ if(isset($_SESSION['user-id']) and isset($_POST['email']) and
 
     $id = $_SESSION['user-id'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
 
     $stmt->execute();
 

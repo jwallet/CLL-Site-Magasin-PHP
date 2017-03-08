@@ -1,29 +1,42 @@
-<div class="container">
-        <ul class="collection">
-            <?php
-            $stmt = $mysqli->prepare("SELECT item.id,titre,description,prix,image,type FROM item,p_item WHERE item.idtype = p_item.id order by type;");
-            $stmt->execute();
-            $stmt->bind_result($id,$titre,$description,$prix,$image,$type);
-            while($stmt->fetch()) {
-                echo "<li class=\"collection-item avatar\">"; ?>
-                <img src="
-                    <?php
-                if(isset($image)){
-                    echo $_GLOBAL['dirimg'].$image;
-                }
-                ?>"
-                     alt="" class="circle">
+<?php
+$itemsId = array();
+$itemsType = array();
+$itemsTitre = array();
+$itemsDesc = array();
+$itemsImg = array();
+$itemsPrix = array();
+$stmt = $mysqli->prepare("SELECT item.id,titre,description,prix,image,type FROM item,p_item WHERE item.idtype = p_item.id order by type;");
+$stmt->execute();
+$stmt->bind_result($id,$titre,$description,$prix,$image,$type);
+while($stmt->fetch()) {
+    $stmt->fetch();
+    $itemsId[] = $id;
+    $itemsTitre[] = $titre;
+    $itemsDesc[] = $description;
+    $itemsPrix[] = $prix;
+    $itemsImg[] = $image;
+    $itemsType[] = $type;
+}
+?>
+<div class="container col">
+    <ul class="collection">
+        <?php for($i=0; $i<sizeof($itemsId); $i++){?>
+                <li class="collection-item avatar" style="padding-left:80px;">
+                    <a style="color:black;" href="admin-plat?id=<?php echo $itemsId[$i]; ?>">
+                        <span style="background-image:url('<?php if( $itemsImg[$i]!=null and  $itemsImg[$i]!=""){ echo "upload/".$itemsImg[$i];} else { echo "css/ico/logo.png"; } ?>');background-position:center;background-size:auto 60px;width:60px;height: 60px; margin-top:-8px;margin-left:-6px;" alt="" class="circle"></span>
+                        <span class="title">
+                            <?php echo ucfirst(strtolower($itemsTitre[$i])); ?>
+                        </span>
+                        <span class="<?php echo $_GLOBAL['couleur2a']; ?>-text" style="padding-left:8px;font-size:14px;font-style: italic;">
+                            <?php echo ucfirst(strtolower($itemsType[$i])); ?>
+                        </span><br/>
+                        <span style="font-size:85%;">
+                            <?php echo $itemsDesc[$i]; ?>
+                        </span>
+                        <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/><?php echo money_format('%(#10n', ($itemsPrix[$i])); ?></a>
+                    </a>
+                </li>
                 <?php
-                echo "<span value=\"$titre\">$titre</span>";
-                echo "<p>";
-                echo "<span value='$description'> $description <br>";
-                echo "<span value='$prix'> $prix <br>";
-                echo "<span value='$type'> $type <br>";
-                echo "</p>";
-                echo "<a href=\"admin-plat?id=$id\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>";
-                echo "</li>";
-            }
-            $stmt->close();
-            ?>
-        </ul>
+            }?>
+    </ul>
 </div>

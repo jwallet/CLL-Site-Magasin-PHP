@@ -68,7 +68,7 @@
     }?>
     <li><div class="divider"></div></li>
     <li><a href="home-faq"><i class="material-icons">help</i>Fonctionnement</a></li>
-    <li><a href="home-a-propos"><i class="material-icons">store</i>Entreprise</a></li>
+    <li><a href="home-a-propos"><i class="material-icons">store</i><?php echo $_GLOBAL['entreprise'];?></a></li>
     <li><a href="home-termes-conditions"><i class="material-icons">gavel</i>Termes et conditions</a></li>
     <?php if(isset($_SESSION['user-online'])){ if($_SESSION['user-isadmin']){ echo "
     <li><div class=\"divider\"></div></li>

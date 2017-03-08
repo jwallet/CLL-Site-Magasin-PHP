@@ -20,7 +20,7 @@
                 echo "<span value='$prix'> $prix <br>";
                 echo "<span value='$type'> $type <br>";
                 echo "</p>";
-                echo "<a href=\"admin-plat-modid?id=$id\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>";
+                echo "<a href=\"admin-plat?id=$id\" class=\"secondary-content\"><i class=\"material-icons\">send</i></a>";
                 echo "</li>";
             }
             $stmt->close();

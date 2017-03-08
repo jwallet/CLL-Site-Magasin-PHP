@@ -3,7 +3,7 @@
         <table>
             <thead>
             <tr>
-                <th style="font-size:120%;">À propos de la Boîte à Bouf</th>
+                <th style="font-size:120%;">À propos de la <?php echo $_GLOBAL['entreprise'];?></th>
             </tr>
             </thead>
             <tbody>

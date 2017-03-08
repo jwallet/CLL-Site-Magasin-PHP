@@ -11,7 +11,7 @@
 <div class="row s12 left-align">
     <div class="col s5">
         <b>Horaire ouverture</b>
-        <br/>Boîte à Bouf<br/>(Cueillette)
+        <br/><?php echo $_GLOBAL['entreprise'];?><br/>(Cueillette)
     </div>
     <div class="col s7">
         Samedi, de 8h à 14h<br/>

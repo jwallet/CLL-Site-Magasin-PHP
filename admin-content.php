@@ -129,7 +129,7 @@
         <div class="collapsible-body" style="padding:0;">
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
-                    <a href="admin-plat-ajout" class="black-text">
+                    <a href="admin-plat" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Ajouter un nouveau plat
@@ -138,7 +138,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="admin-plat-mod" class="black-text">
+                    <a href="admin-plat-list" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Gérer un plat existant

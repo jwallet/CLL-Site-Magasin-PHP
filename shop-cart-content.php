@@ -165,10 +165,10 @@ else{
             <h4>Commander</h4>
             <p>En poursuivant, vous acceptez les <a href="home-termes-conditions">termes et conditions</a> et vous
                 comprenez que le prix total de la commande correspond au montant qui vous sera chargé pour récupérer
-                vos plats sur nos lieux à la <a href="home-contact">Boîte à Bouf</a>. Assurez-vous d'avoir pris
+                vos plats sur nos lieux à la <a href="home-contact"><?php echo $_GLOBAL['entreprise']; ?></a>. Assurez-vous d'avoir pris
                 connaissances de l'<a href="home-horaire">horaire de cueillette</a> des repas et des autres liens
                 au bas de la page. Nous vous invitions à consulter également <a href="home-faq">le fonctionnement</a>
-                de la Boîte à Bouf avant de commander.
+                de la <?php echo $_GLOBAL['entreprise'];?> avant de commander.
             </p>
             <b>Désirez-vous poursuivre et commander ces plats?</b>
 

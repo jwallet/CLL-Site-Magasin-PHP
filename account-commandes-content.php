@@ -48,13 +48,13 @@ if (isset($_SESSION['user-online'])){
 
         $sql ="SELECT c.id, i.id, c.date, m.titre, i.titre, i.description, i.prix, 
                       t.type, d.quantite, c.idpersonne, p.prenom, p.nom, p.email,
-                      m.id
+                      m.id, p.telephone, p.adresse
                 FROM commande c JOIN commande_detail d ON c.id = d.idcommande 
                 JOIN personne p ON c.idpersonne = p.id
                 JOIN menu m ON c.idmenu = m.id
                 JOIN item i ON d.iditem = i.id
                 JOIN p_item t ON i.idtype = t.id
-                WHERE c.id=?";
+                WHERE c.id=? ORDER BY t.ordre";
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param("i", $idcommande);
         $stmt->execute();
@@ -67,7 +67,7 @@ if (isset($_SESSION['user-online'])){
         $TABquantite = array();
 
         $stmt->bind_result($idcommande,$iditem,$datecommande,$titremenu,$titreitem,$description,$prix,
-            $type, $quantite, $idpersonne, $prenom, $nom, $email, $idmenu);
+            $type, $quantite, $idpersonne, $prenom, $nom, $email, $idmenu, $telephone, $adresse);
 
         while($stmt->fetch()){
             $TABiditem[] = $iditem;
@@ -106,8 +106,10 @@ else{
             </p>
             <p>
                 Numéro du client : <?php echo $idpersonne; ?><br/>
-                Nom du client : <?php echo $nom . ", " . $prenom; ?><br/>
-                Courriel du client : <?php echo "<mail>" . $email . "</mail>"; ?>
+                Nom du client : <?php echo $prenom . " " . $nom; ?><br/>
+                Courriel du client : <?php echo "<mail>" . $email . "</mail><br/>"; ?>
+                Téléphone du client : <?php echo "$telephone"; ?><br/>
+                Adresse du client : <?php echo "$adresse"; ?><br/>
             </p>
             <h5>Détails de la commande</h5>
         <div class="divider"></div>
@@ -115,9 +117,9 @@ else{
             <?php
             $soustotal = 0;
             for($i=0; $i<sizeof($TABiditem); $i++){
-                echo "<p>(No." . $TABiditem[$i] . ") "
-                    . ucfirst(strtolower($TABtitreitem[$i])) . " : "
-                    . ucfirst(strtolower($TABtype[$i])) . "<br/>Prix : "
+                echo "<p>" . ucfirst(strtolower($TABtype[$i])) . " : "
+                    . ucfirst(strtolower($TABtitreitem[$i]))
+                    . " (No." . $TABiditem[$i] . ")<br/>Prix : "
                     . money_format('%(#10n', ($TABprix[$i])) . " (chacun) x "
                     . $TABquantite[$i] . " portions = " . money_format('%(#10n', ($TABprix[$i]*$TABquantite[$i]))
                     . " </p>";

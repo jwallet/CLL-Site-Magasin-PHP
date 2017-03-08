@@ -14,6 +14,9 @@ if(isset($_SESSION['user-id']) and isset($_POST['email']) and
 
     $_SESSION['user-email'] = $email;
     $_SESSION['toast']="email-changed";
+
+    $stmt->close();
+
     $redirect = "account-infos";
 }
 else{

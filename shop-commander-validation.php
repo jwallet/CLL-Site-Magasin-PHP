@@ -54,16 +54,40 @@ if(isset($_COOKIE['shoppingcart']) and isset($_SESSION['user-id']) and (date("N"
         $j=0;
         foreach ($entries as $item){
             list($id,$quant) = explode(":", $item);
-
-            //insert items in commande detail
-            $sql="INSERT INTO commande_detail (idcommande, iditem, quantite) VALUES (?,?,?);";
+            $sql ="SELECT quantite FROM commande_detail WHERE idcommande = ? AND iditem = ?";
             $stmt = $mysqli->prepare($sql);
-            $stmt->bind_param("iii", $idcommande, $id, $quant);
+            $stmt->bind_param("ii", $idcommande, $id);
             $stmt->execute();
-            $stmt->free_result();
-            $stmt->close();
+            $stmt->bind_result($quatre);
+            if($stmt->fetch()){
+                $quantold = $quatre;
+                $stmt->free_result();
+                $stmt->close();
+                //update items in commande detail
+                $sql="UPDATE commande_detail SET quantite = ? WHERE idcommande = ? AND iditem = ?;";
+                $stmt = $mysqli->prepare($sql);
+                $quant+=$quantold;
+                $stmt->bind_param("iii", $quant, $idcommande, $id);
+                $stmt->execute();
+                $stmt->free_result();
+                $stmt->close();
+            }
+            else{
+                $stmt->free_result();
+                $stmt->close();
+                //insert items in commande detail
+                $sql = "INSERT INTO commande_detail (idcommande, iditem, quantite) VALUES (?,?,?);";
+                $stmt = $mysqli->prepare($sql);
+                $stmt->bind_param("iii", $idcommande, $id, $quant);
+                $stmt->execute();
+                $stmt->free_result();
+                $stmt->close();
+            }
             $j++;
         }
+
+        include_once("shop-commander-validation-email.php");
+
         setcookie("shoppingcart",null, time()-1);//expired
         $_SESSION['toast']="order-added";
         $redirect = "shop-commander";

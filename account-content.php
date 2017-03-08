@@ -29,7 +29,7 @@ if(isset($_SESSION['toast'])) {
     <?php if (!$isadmin){ ?>
         <!-- commandes -->
         <li>
-            <a href="#" class="black-text">
+            <a href="account-commandes" class="black-text">
                 <div class="collapsible-header">
                     <div class="container">
                         <i class="material-icons">shopping_basket</i>Commandes
@@ -38,19 +38,6 @@ if(isset($_SESSION['toast'])) {
             </a>
         </li>
     <?php } ?>
-
-
-    <!-- messagerie -->
-    <li>
-        <a href="#" class="black-text">
-        <div class="collapsible-header">
-            <div class="container">
-                <span class="new badge  <?php echo $_GLOBAL['couleur1a'] ?>" data-badge-caption="nouveaux">4</span>
-                <i class="material-icons">message</i>Messagerie
-            </div>
-        </div>
-        </a>
-    </li>
 
     <?php if (!$isadmin){ ?>
     <!-- profil -->

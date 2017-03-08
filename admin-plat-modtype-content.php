@@ -41,7 +41,6 @@
             </div>
             <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] ?> "
                         type='submit' name="modtype">Modifier</button>
-            </div>
         </form>
     </div>
 </div>

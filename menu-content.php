@@ -51,7 +51,7 @@ echo "
                 </div>
                 <?php }?>
                     <div class="collapsible-header <?php echo $_GLOBAL['couleur-menu-1a']. " " . $_GLOBAL['couleur-menu-1b'] ?>" style="border:0px;background-image:url('css/res/blackboard.jpg');background-repeat: repeat;background-size:175px 175px;background-position-y: 100px;">
-                        <div class="container" style="font-size:1.3em;border-bottom: 2px dotted rgb(145, 145, 145);">
+                        <div class="container" style="font-size:1.4em;border-bottom: 2px dotted rgb(145, 145, 145);">
                             <span class="<?php echo $_GLOBAL['couleur-menu-3a']. "-text text-" . $_GLOBAL['couleur-menu-3b'] ?>">
                                 <?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?>
                             </span>
@@ -59,7 +59,7 @@ echo "
                                 <?php echo money_format('%(#10n', ($itemsBdPrix[$j]));?>
                             </span>
                         </div>
-                        <div class="container <?php echo $_GLOBAL['couleur-menu-2a']. "-text text-" . $_GLOBAL['couleur-menu-2b'] ?>" style="font-style: italic;">
+                        <div class="container <?php echo $_GLOBAL['couleur-menu-2a']. "-text text-" . $_GLOBAL['couleur-menu-2b'] ?>" style="font-size:1.2em;font-style: italic;">
                             <span><?php if($itemsBdDesc[$j]!=null and $itemsBdDesc[$j]!=""){ echo $itemsBdDesc[$j]; } else { echo "Aucune description n'est disponible."; } ?></span>
                         </div>
                     </div>
@@ -71,17 +71,17 @@ echo "
                                     <div class="container">
                                         <div class='section'>
     <!--                                DEBUT container de l'item-->
-                                            <div class="menu-container" style="font-family: Roboto;">
+                                            <div class="menu-container" style="font-family: 'Roboto', sans-serif;font-weight: normal;">
                                                 <div class="section">
                                                     <div class="white-text" style="margin:0px 20px 0px 20px;">
 
                                                         <div style="float:right; border-radius:70px;background-image:url('<?php if( $itemsBdImg[$j]!=null and  $itemsBdImg[$j]!=""){ echo "upload/".$itemsBdImg[$j];} else { echo "css/ico/logo.png"; } ?>');background-position:center;background-size:auto 140px;width:140px;height: 140px; margin-right:-10px;" alt=""></div>
                                                         <h5 class="col s12"><?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?></h5>
-                                                        <p class="col s12"><?php if($itemsBdDesc[$j]!=null and $itemsBdDesc[$j]!=""){ echo $itemsBdDesc[$j]; } else { echo "Aucune description n'est disponible."; } ?></p>
+                                                        <p class="col s12" style="min-height: 100px;"><?php if($itemsBdDesc[$j]!=null and $itemsBdDesc[$j]!=""){ echo $itemsBdDesc[$j]; } else { echo "Aucune description n'est disponible."; } ?></p>
                                                         <?php if(isset($_SESSION['user-online'])){?>
                                                         <div class="row s12" style="margin:0;padding:0;">
 
-                                                            <form action="menu-validation" method="post" style="padding-top:25px;">
+                                                            <form action="menu-validation" method="post">
                                                                 <input type="hidden" name="jvalue" value="<?php echo $j; ?>"/>
                                                                 <input type="hidden" class="hiddenprix<?php echo $j; ?>" value="<?php echo $itemsBdPrix[$j]; ?>"/>
                                                                 <input type="hidden" name="hiddenitem<?php echo $j; ?>" value="<?php echo $itemsBdId[$j]; ?>"/>
@@ -106,7 +106,7 @@ echo "
                                                                         </button>
                                                                     </div>
                                                                     <div class="col s12 input-group-btn col hide-on-med-and-up" style="padding:0;padding-top:18px;">
-                                                                        <button style="width:100%;" class="col btn btn-default waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">
+                                                                        <button style="width:100%;" class="btn btn-default waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">
                                                                             <span><i class="material-icons left">add_shopping_cart</i>Ajouter au panier</span>
                                                                         </button>
                                                                     </div>
@@ -194,7 +194,7 @@ echo "
                                                         <?php }
                                                         else{?>
                                                             <div class="col s12" style="padding-left:0;padding-right: 0;">
-                                                                <a href="connect" style="width:100%;" class="col btn btn-default waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">
+                                                                <a href="connect" style="width:100%;" class="btn btn-default waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">
                                                                     <span>Connectez-vous</span>
                                                                 </a>
                                                             </div>

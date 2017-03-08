@@ -44,35 +44,35 @@ else{
 
     <nav class="<?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b'] ?>" style="background-image:url('css/res/wood.jpg');background-size:auto 62px;border-bottom:2px solid #4e342e;text-shadow: #444 0px -2px;">
         <div class="nav-wrapper container" style="background:none;background-color: transparent;">
-
+            <ul class="left">
             <?php
             if($page['fichier']=='home'){
                 ?>
-            <a href="#" class="left button-collapse"  data-activates="slide-out">
+            <li><a href="#" class="left button-collapse"  data-activates="slide-out">
                <i class="material-icons" style="font-size: 35px;">menu</i>
-            </a>
+            </a></li>
             <?php
             }
 
             if($page['pageretour']=='previous') {
                 ?>
-                <a href="javascript:history.back()" class="left"><i class="material-icons">arrow_back</i></a>
+                <li><a href="javascript:history.back()" class="left"><i class="material-icons">arrow_back</i></a></li>
                 <?php
             }
             elseif($page['pageretour']!='none'){
                 ?>
-            <a href="<?php echo $page["pageretour"] ?>" class="left"><i class="material-icons">arrow_back</i></a>
+                <li><a href="<?php echo $page["pageretour"] ?>" class="left"><i class="material-icons">arrow_back</i></a></li>
             <?php
             }
 
             if(strcmp($page["fichier"],"home")!= 0){
                 ?>
-            <a class="brand-logo center"><?php echo $page["titre"] ?></a>
+                <li><a class="brand-logo center"><?php echo $page["titre"] ?></a></li>
             <?php
             }
             ?>
-
-            <ul id="nav-mobile" class="right">
+            </ul>
+            <ul class="right">
 
                 <?php
                 if (isset($_SESSION['user-online']) AND isset($_SESSION['user-isadmin'])) {

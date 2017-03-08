@@ -53,7 +53,7 @@
 <ul id="slide-out" class="side-nav">
     <li>
         <div class="center userView">
-            <img src="css/ico/logo_blanc.png" width="70%"">
+            <a href="#"><img src="css/ico/logo_blanc.png" width="70%"></a>
         </div>
     </li>
     <li><div class="divider"></div></li>

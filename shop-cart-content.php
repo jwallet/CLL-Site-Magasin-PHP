@@ -147,8 +147,10 @@ else{
             }?>
             <li class="collection-item">
                 <span>Sous-total</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($total)); ?></a><br/>
+                <div class="divider" style="margin-top:8px;margin-bottom:8px;"></div>
                 <span>TVQ (9.975%)</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($total*0.09975)); ?></a><br/>
-                <span>TPS (5%)</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($total*0.05)); ?></a><hr/>
+                <span>TPS (5%)</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($total*0.05)); ?></a>
+                <div class="divider" style="margin-top:8px;margin-bottom:8px;"></div>
                 <span>Total</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($total*1.14975)); ?></a><br/>
                 <a href="#modalCommander" class="btn waves-effect waves-light secondary-content <?php if(date("N")>$_GLOBAL['jour-limite-commander']){ echo "disabled";}?> <?php echo $_GLOBAL['couleur1a']; ?>" style="margin-top:20px;margin-bottom:20px;">Commander</a>
             </li>
@@ -168,12 +170,12 @@ else{
                 au bas de la page. Nous vous invitions à consulter également <a href="home-faq">le fonctionnement</a>
                 de la Boîte à Bouf avant de commander.
             </p>
-            <b>Désirez-vous poursuvire et commander ces plats?</b>
+            <b>Désirez-vous poursuivre et commander ces plats?</b>
 
         </div>
         <div class="modal-footer">
             <a href="shop-commander-validation" class="btn modal-action modal-close waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">Oui</a>
-            <a class="modal-action modal-close waves-effect waves-green btn-flat"><b>Non, annuler</b></a>
+            <a class="modal-action modal-close waves-effect waves-light btn-flat"><b>Non, annuler</b></a>
         </div>
     </div>
 </div>

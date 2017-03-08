@@ -172,7 +172,7 @@ else{
 
         </div>
         <div class="modal-footer">
-            <a href="shop-commander-validation" class="btn modal-action modal-close waves-effect waves-green <?php echo $_GLOBAL['couleur1a']; ?>">Oui</a>
+            <a href="shop-commander-validation" class="btn modal-action modal-close waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">Oui</a>
             <a class="modal-action modal-close waves-effect waves-green btn-flat"><b>Non, annuler</b></a>
         </div>
     </div>

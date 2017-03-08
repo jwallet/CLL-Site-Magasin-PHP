@@ -37,7 +37,7 @@
                 echo "<span>Date limite expirée<br/>Prochain menu : " . strftime("%A, %e %B",date(strtotime("next $daystart"))) . "</span>";
             }?>
         </div>
-        <div class="center">
+        <div>
             <a style="width:100%;" class="waves-effect waves-light btn-large <?php if(date("N")>$_GLOBAL['jour-limite-commander']){ echo "disabled";}?> <?php echo $_GLOBAL['couleur-menu-2a'] . ' ' .$_GLOBAL['couleur-menu-2b'] ?>" href='menu'>
                 Menu de la semaine
             </a>
@@ -61,7 +61,11 @@
     <?php if(isset($_SESSION['user-online'])){ if($_SESSION['user-online']){ echo "
     <li><a href=\"shop-cart\"><i class=\"material-icons\">shopping_cart</i>Panier de commande</a></li>
     <li><a href=\"account\"><i class=\"material-icons\">person</i>Compte</a></li>
-    "; }}?>
+    "; }}else{
+        ?>
+        <li><a href="connect"><i class="material-icons">input</i>Connexion</a></li>
+    <?php
+    }?>
     <li><div class="divider"></div></li>
     <li><a href="home-faq"><i class="material-icons">help</i>Fonctionnement</a></li>
     <li><a href="home-a-propos"><i class="material-icons">store</i>Entreprise</a></li>

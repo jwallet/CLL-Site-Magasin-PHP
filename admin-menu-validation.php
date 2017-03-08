@@ -23,8 +23,8 @@ if(isset($_POST['titre'])) {
             $stmt = $mysqli->prepare($sql);
             $stmt->execute();
             $stmt->bind_result($menu);
-            $idmenu = $menu;
             $stmt->fetch();
+            $idmenu = $menu;
             echo "--insert-menu-next--";
             $_SESSION['toast']="menu-next-added";
         }

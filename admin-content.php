@@ -147,7 +147,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="admin-plat-modtype" class="black-text">
+                    <a href="admin-plat-type" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Modifier la liste des types de plat

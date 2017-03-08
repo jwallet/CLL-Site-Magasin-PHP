@@ -2,13 +2,13 @@
     if ($_SESSION['toast'] == 'client-ajout-existe'){?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('le email existe déja', 8000);
+                Materialize.toast('L\'ajout a échoué. Ce courriel est déjà enregistré.', 8000);
             });
         </script>
     <?php }elseif($_SESSION['toast'] == 'client-ajout-erreurmail'){ ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Un erreur a eu lieu lors de l\'envoi du mail. Veuillez réessayer plus tard', 8000);
+                Materialize.toast('L\'envoie du courriel a échoué. Veuillez réessayer plus tard.', 8000);
             });
         </script>
     <?php }

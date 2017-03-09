@@ -18,7 +18,9 @@ $_GLOBAL['jour-limite-commander-text'] = "friday"; //anglais pour datetime
 $_GLOBAL['jour-debut-commander-text'] = "monday"; //anglais pour datetime
 $_GLOBAL['jour-debut-commander'] = 1; //lundi = 1, quand sera ouvert
 $_GLOBAL['entreprise'] = "Boîte à Bouf";
-
+$_GLOBAL['mail-user'] = 'laboiteabouf@outlook.com';
+$_GLOBAL['mail-psw'] = 'Dodgecolt1984';
+$_GLOBAL['dirimg'] = "upload/";
 setlocale(LC_ALL, 'fr_CA.utf8', 'fra');
 
 $fichier = explode("/", $_SERVER['PHP_SELF']);

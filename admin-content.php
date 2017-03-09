@@ -7,14 +7,6 @@
         </script>
         <?php
     }
-    elseif ($_SESSION['toast'] == 'plat-mod'){?>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                Materialize.toast('Le plat a été mis à jour', 8000);
-            });
-        </script>
-        <?php
-    }
     elseif ($_SESSION['toast'] == 'client-ajout'){ ?>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -178,7 +170,7 @@
         <div class="collapsible-body" style="padding:0;">
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
-                    <a href="admin-client-ajout" class="black-text">
+                    <a href="admin-client" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Ajouter un nouveau compte client
@@ -187,7 +179,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="admin-client-mod" class="black-text">
+                    <a href="admin-client-list" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Gérer un compte client existant

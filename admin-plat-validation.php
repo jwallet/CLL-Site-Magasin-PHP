@@ -1,6 +1,7 @@
 <?php
 if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
     include("bd-connect.php");
+    include("meta.php");
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
     } else {
@@ -40,7 +41,7 @@ if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
         $stmt->free_result();
         $stmt->close();
         $_SESSION['toast'] = "plat-mod";
-        $redirect = "admin";
+        $redirect = "admin-plat-list";
 
     } else {
         if ($platimage != "") {
@@ -63,7 +64,6 @@ if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
 else{
     $_SESSION['toast'] = "erreur-plat";
     $redirect = "admin-plat";
-
 }
 ?>
 

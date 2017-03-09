@@ -17,6 +17,14 @@ while($stmt->fetch()) {
     $itemsType[] = $type;
 }
 ?>
+<?php if (isset($_SESSION['toast']) == 'plat-mod'){?>
+<script type="text/javascript">
+    $(document).ready(function () {
+        Materialize.toast('Le plat a été mis à jour', 4000);
+    });
+</script>
+<?php
+} ?>
 <div class="container col">
     <ul class="collection">
         <?php for($i=0; $i<sizeof($itemsId); $i++){?>

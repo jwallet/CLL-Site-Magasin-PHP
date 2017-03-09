@@ -28,7 +28,7 @@ if(isset($_SESSION['toast'])) {
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">lock</i>
-                    <input id="icon_password" type="password" name="password" id="password" lass="validate" required>
+                    <input id="icon_password" type="password" name="password" id="password" class="validate" required>
                     <label for="icon_password">Mot de passe</label>
                 </div>
                 <button style="width: 94%; margin-left:3%; margin-right: 3%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?>"

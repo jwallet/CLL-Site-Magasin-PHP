@@ -1,5 +1,5 @@
 <?php if(isset($_GET['id'])) {
-    $stmt = $mysqli->prepare("SELECT item.titre,p_item.type,description,prix,image FROM item,p_item where item.idtype = p_item.id and item.id=?;");
+    $stmt = $mysqli->prepare("SELECT item.titre,p_item.type,description,prix,image FROM item JOIN p_item ON item.idtype = p_item.id WHERE item.id=?;");
     $stmt->bind_param("i", $_GET['id']);
     $stmt->execute();
     $stmt->bind_result($titre, $typerepas, $description, $prix, $image);
@@ -37,7 +37,7 @@ else{
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">description</i>
-                    <input type="text" name="description" value="<?php echo $description; ?>" class="validate" required>
+                    <input type="text" name="description" value="<?php echo $description; ?>" class="validate">
                     <label>Description du plat</label>
                 </div>
                 <div class="input-field">

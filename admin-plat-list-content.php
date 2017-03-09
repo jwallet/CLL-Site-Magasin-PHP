@@ -5,11 +5,10 @@ $itemsTitre = array();
 $itemsDesc = array();
 $itemsImg = array();
 $itemsPrix = array();
-$stmt = $mysqli->prepare("SELECT item.id,titre,description,prix,image,type FROM item,p_item WHERE item.idtype = p_item.id order by type;");
+$stmt = $mysqli->prepare("SELECT item.id,titre,description,prix,image,type FROM item LEFT JOIN p_item ON item.idtype = p_item.id order by ordre;");
 $stmt->execute();
 $stmt->bind_result($id,$titre,$description,$prix,$image,$type);
 while($stmt->fetch()) {
-    $stmt->fetch();
     $itemsId[] = $id;
     $itemsTitre[] = $titre;
     $itemsDesc[] = $description;

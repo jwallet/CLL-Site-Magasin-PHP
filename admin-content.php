@@ -7,6 +7,14 @@
         </script>
         <?php
     }
+    elseif ($_SESSION['toast'] == 'plat-mod'){?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Le plat a été mis à jour', 8000);
+            });
+        </script>
+        <?php
+    }
     elseif ($_SESSION['toast'] == 'client-ajout'){ ?>
         <script type="text/javascript">
             $(document).ready(function () {

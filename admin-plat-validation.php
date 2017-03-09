@@ -14,7 +14,7 @@ if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
     $platimage = basename($_FILES['image']['name']); //retient le filename . extension
     $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
     $filename = basename($_FILES['image']['name'], "." . $extension); // retient seulement le filename
-    if(isset($_POST['image'])) {
+    if(isset($_POST['image-txt'])) {
         //si le fichier existe
         if (isset($_FILES["image"])) {
             $index = 0;

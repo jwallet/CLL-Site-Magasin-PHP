@@ -1,6 +1,9 @@
 # Site magasin PHP
 Projet final fait dans le cadre du cours de commerces et entreprise du Cégep de Lévis-Lauzon CLL par but éducatif. Le site utilise Apache 2, PHP 5, MySQL 5, Materialize CSS template (ci-dessous), en plus de l'indispensable Javascript et Jquery. Le site simule les fonctionalités d'un site web transactionnel autant accessible sur ordinateur, tablette ou mobile.
 
+![image](https://cloud.githubusercontent.com/assets/23088305/23735037/3068dd32-0451-11e7-952f-876594c79918.png)
+![image](https://cloud.githubusercontent.com/assets/23088305/23735080/70c45eba-0451-11e7-88bc-3aed65e29e4e.png)
+
 ![alt tag](https://raw.github.com/dogfalo/materialize/master/images/materialize.gif)
 ===========
 

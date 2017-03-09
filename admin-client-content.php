@@ -37,6 +37,7 @@ else{
 <div class="container">
     <div class="section">
         <form action="admin-client-validation" method="post">
+            <input type="hidden" name="id" value="<?php echo $id; ?>"/>
             <div class="input-field">
                 <i class="material-icons prefix">email</i>
                 <input id="email" name="email" type="email" value="<?php echo $email; ?>" class="validate" required>

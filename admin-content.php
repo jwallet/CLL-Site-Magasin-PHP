@@ -80,7 +80,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="black-text">
+                    <a href="admin-commande-list" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Gérer une commande de client

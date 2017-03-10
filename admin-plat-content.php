@@ -1,5 +1,5 @@
 <?php if(isset($_GET['id'])) {
-    $stmt = $mysqli->prepare("SELECT item.titre,p_item.type,description,prix,image FROM item JOIN p_item ON item.idtype = p_item.id WHERE item.id=?;");
+    $stmt = $mysqli->prepare("SELECT item.titre,p_item.type,description,prix,image FROM item LEFT JOIN p_item ON item.idtype = p_item.id WHERE item.id=?;");
     $stmt->bind_param("i", $_GET['id']);
     $stmt->execute();
     $stmt->bind_result($titre, $typerepas, $description, $prix, $image);
@@ -95,8 +95,13 @@ else{
                         </div>
                     </div>
                 <?php } ?>
-                    <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?> "
+                    <button style="width: 100%;" name="platenrg" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?> "
                             type='submit'>Enregistrer</button>
+                <?php if ($id != "") {?>
+                    <br><br>
+                    <button style="width: 100%;" name="platsupp" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?> "
+                            type='submit'>Supprimer</button>
+            <?php }?>
             </form>
     </div>
 </div>

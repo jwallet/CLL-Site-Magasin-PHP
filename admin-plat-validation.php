@@ -1,7 +1,7 @@
 <?php
-if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
-    include("bd-connect.php");
-    include("meta.php");
+include("bd-connect.php");
+include("meta.php");
+if(isset($_POST['titre'])and isset($_POST['platenrg']) and isset($_POST['prix'])and isset($_POST['type'])) {
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
     } else {
@@ -61,7 +61,32 @@ if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
         $redirect = "admin";
     }
 }
-else{
+elseif(isset($_POST['titre']) and isset($_POST['platsupp']) and isset($_POST['prix'])and isset($_POST['type'])) {
+    $platimage = "";
+    $plattitre = $_POST['titre'];
+    $platdescription = $_POST['description'];
+    $platprix = $_POST['prix'];
+    $plattype = $_POST['type'];
+    $platimage = basename($_FILES['image']['name']); //retient le filename . extension
+    $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
+    $filename = basename($_FILES['image']['name'], "." . $extension); // retient seulement le filename
+    if (isset($_FILES["image"])) {
+        //copie du fichier du dossier temporaire au bon endroit
+        if (@fopen($_GLOBAL['dirimg'] . $platimage, "r")) {
+            unlink($_GLOBAL['dirimg'] . $platimage);
+        }
+    }
+    $sql = "DELETE FROM item WHERE id=?;";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $_GET['id']);
+    if ($stmt->execute()) {
+        $_SESSION['toast'] = "plat-type-mod";
+        $redirect = "admin-plat-mod";
+    }
+    $stmt->free_result();
+    $stmt->close();
+}else
+{
     $_SESSION['toast'] = "erreur-plat";
     $redirect = "admin-plat";
 }

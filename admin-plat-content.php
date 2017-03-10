@@ -13,7 +13,7 @@ else{
     $titre = "";
     $typerepas = "";
     $description = "";
-    $prix = "";
+    $prix = 0;
     $image = "";
 }
 ?>
@@ -42,7 +42,7 @@ else{
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">attach_money</i>
-                    <input type="number" step="any" min="0" name="prix" value="<?php echo $prix;?>" pattern="\d+(.\d{2})?" title="9.99" class="validate" required>
+                    <input type="number" step="any" min="0" name="prix" value="<?php echo number_format($prix,2,".","");?>" pattern="\d+(.\d{2})?" title="9.99" class="validate" required>
                     <label>Prix du plat</label>
                 </div>
                 <div class="input-field">

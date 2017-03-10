@@ -7,6 +7,14 @@
         </script>
         <?php
     }
+    elseif($_SESSION['toast'] == 'erreur-plat'){?>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Materialize.toast('La modification du plat a échoué', 3000);
+        });
+    </script>
+    <?php
+    }
     elseif ($_SESSION['toast'] == 'client-ajout'){ ?>
         <script type="text/javascript">
             $(document).ready(function () {

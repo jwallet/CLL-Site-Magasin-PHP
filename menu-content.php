@@ -66,7 +66,7 @@ echo "
                     
                     <div class='collapsible-body' style='padding:0;'>
                         <span>
-                            <div class="menu-back-img" style="background-image:url('<?php if($itemsBdImg[$j]!="" and $itemsBdImg[$j]!=null){ echo "upload/$itemsBdImg[$j]"; } else { echo "http://www.harristonmintofair.ca/wp-content/uploads/2015/07/o-CHICKEN-WINGS-facebook.jpg";} ?>');">
+                            <div class="menu-back-img" style="background-color:#444;background-image:url('<?php if($itemsBdImg[$j]!="" and $itemsBdImg[$j]!=null){ echo "upload/$itemsBdImg[$j]"; } else { echo "";} ?>');">
                                 <div class="menu-back-img-shadow">
                                     <div class="container">
                                         <div class='section'>

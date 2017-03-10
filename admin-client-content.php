@@ -2,13 +2,13 @@
     if ($_SESSION['toast'] == 'client-ajout-existe'){?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('L\'ajout a échoué. Ce courriel est déjà enregistré.', 8000);
+                Materialize.toast('L\'ajout a échoué. Ce courriel est déjà enregistré.', 3000);
             });
         </script>
     <?php }elseif($_SESSION['toast'] == 'client-ajout-erreurmail'){ ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('L\'envoie du courriel a échoué. Veuillez réessayer plus tard.', 8000);
+                Materialize.toast('L\'envoie du courriel a échoué. Veuillez réessayer plus tard.', 3000);
             });
         </script>
     <?php }
@@ -64,8 +64,13 @@ else{
                 <input type="text" value="<?php echo $adresse; ?>" name="adresse" id="adresse">
                 <label for="adresse">Adresse</label>
             </div>
-            <button style="width: 100%;" id="send" class="waves-effect waves-light btn-large  <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?>" type="submit" name="action">Enregistrer
+            <button style="width: 100%;" id="send" name="clientadd" class="waves-effect waves-light btn-large  <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?>" type="submit" name="action">Enregistrer
             </button>
+            <?php if ($id != "") {?>
+                <br><br>
+                <button style="width: 100%;" name="clientsupp" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?> "
+                        type='submit'>Supprimer</button>
+            <?php }?>
         </form>
     </div>
 </div>

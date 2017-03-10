@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
+if(isset($_POST['titre'])and isset($_POST['platenrg']) and isset($_POST['prix'])and isset($_POST['type'])) {
     include("bd-connect.php");
     include("meta.php");
     if (isset($_POST['id'])) {
@@ -10,12 +10,13 @@ if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
     $platimage = "";
     $plattitre = $_POST['titre'];
     $platdescription = $_POST['description'];
-    $platprix = $_POST['prix'];
-    $plattype = $_POST['type'];
-    $platimage = basename($_FILES['image']['name']); //retient le filename . extension
-    $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
-    $filename = basename($_FILES['image']['name'], "." . $extension); // retient seulement le filename
-    if(isset($_POST['image-txt'])) {
+    $platprix = (double)$_POST['prix'];
+    $plattype = number_format($_POST['type'],2,".","");
+
+    if(($_POST['image-txt'])!="") {
+        $platimage = basename($_FILES['image']['name']); //retient le filename . extension
+        $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
+        $filename = basename($_FILES['image']['name'], "." . $extension); // retient seulement le filename
         //si le fichier existe
         if (isset($_FILES["image"])) {
             $index = 0;
@@ -29,16 +30,15 @@ if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
     }
     if ($id != "") {
         if ($platimage != "") {
-            $sql = "UPDATE item SET titre=?,description=?,prix=?,image=? WHERE id=?;";
+            $sql = "UPDATE item SET idtype=?,titre=?,description=?,prix=?,image=? WHERE id=?;";
             $stmt = $mysqli->prepare($sql);
-            $stmt->bind_param("ssdsi", $plattitre, $platdescription, $platprix, $platimage, $id);
+            $stmt->bind_param("issdsi", $plattype,$plattitre, $platdescription, $platprix, $platimage, $id);
         } else {
-            $sql = "UPDATE item SET titre=?,description=?,prix=? WHERE id=?;";
+            $sql = "UPDATE item SET idtype=?,titre=?,description=?,prix=? WHERE id=?;";
             $stmt = $mysqli->prepare($sql);
-            $stmt->bind_param("ssdi", $plattitre, $platdescription, $platprix, $id);
+            $stmt->bind_param("issdi", $plattype, $plattitre, $platdescription, $platprix, $id);
         }
         $stmt->execute();
-        $stmt->free_result();
         $stmt->close();
         $_SESSION['toast'] = "plat-mod";
         $redirect = "admin-plat-list";
@@ -55,13 +55,39 @@ if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
             $stmt->bind_param("issd", $plattype, $plattitre, $platdescription, $platprix);
         }
         $stmt->execute();
-        $stmt->free_result();
         $stmt->close();
         $_SESSION['toast'] = "plat-ajout";
         $redirect = "admin";
     }
 }
-else{
+elseif(isset($_POST['titre']) and isset($_POST['platsupp']) and isset($_POST['prix'])and isset($_POST['type'])) {
+    include("bd-connect.php");
+    include("meta.php");
+    $platimage = "";
+    $plattitre = $_POST['titre'];
+    $platdescription = $_POST['description'];
+    $platprix = $_POST['prix'];
+    $plattype = $_POST['type'];
+    $platimage = basename($_FILES['image']['name']); //retient le filename . extension
+    $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
+    $filename = basename($_FILES['image']['name'], "." . $extension); // retient seulement le filename
+    if (isset($_FILES["image"])) {
+        //copie du fichier du dossier temporaire au bon endroit
+        if (@fopen($_GLOBAL['dirimg'] . $platimage, "r")) {
+            unlink($_GLOBAL['dirimg'] . $platimage);
+        }
+    }
+    $sql = "DELETE FROM item WHERE id=?;";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $_GET['id']);
+    if ($stmt->execute()) {
+        $_SESSION['toast'] = "plat-type-mod";
+        $redirect = "admin-plat-mod";
+    }
+    $stmt->free_result();
+    $stmt->close();
+}else
+{
     $_SESSION['toast'] = "erreur-plat";
     $redirect = "admin-plat";
 }

@@ -1,7 +1,7 @@
 <?php
-if(isset($_POST['email'])) {
-    include("bd-connect.php");
-    include("meta.php");
+include("bd-connect.php");
+include("meta.php");
+if(isset($_POST['email']) and $POST('clientadd')) {
     require 'phpmailer/PHPMailerAutoload.php';
     $isnew = 1;
     if (isset($_POST['id'])) {
@@ -69,7 +69,21 @@ if(isset($_POST['email'])) {
     }
     $stmt->free_result();
     $stmt->close();
-}
+}elseif(isset($_POST['email']) and $POST('clientsupp')){
+    $sql = "UPDATE personne SET isnew=2 WHERE id=?;";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $_GET['id']);
+    if ($stmt->execute()) {
+        $_SESSION['toast'] = "client-mod";
+        $redirect = "admin-client";
+    }
+    $stmt->free_result();
+    $stmt->close();
+    }else
+    {
+        $_SESSION['toast'] = "erreur-client";
+        $redirect = "admin-client";
+    }
 ?>
 <html>
 <head>

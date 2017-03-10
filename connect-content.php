@@ -10,7 +10,7 @@ if(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Courriel ou mot de passe invalide.', 8000);
+                Materialize.toast('Courriel ou mot de passe invalide.', 3000);
             });
         </script>
         <?php

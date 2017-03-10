@@ -1,5 +1,5 @@
 <?php if(isset($_GET['id'])) {
-    $stmt = $mysqli->prepare("SELECT item.titre,p_item.type,description,prix,image FROM item JOIN p_item ON item.idtype = p_item.id WHERE item.id=?;");
+    $stmt = $mysqli->prepare("SELECT item.titre,p_item.type,description,prix,image FROM item LEFT JOIN p_item ON item.idtype = p_item.id WHERE item.id=?;");
     $stmt->bind_param("i", $_GET['id']);
     $stmt->execute();
     $stmt->bind_result($titre, $typerepas, $description, $prix, $image);
@@ -13,7 +13,7 @@ else{
     $titre = "";
     $typerepas = "";
     $description = "";
-    $prix = "";
+    $prix = 0;
     $image = "";
 }
 ?>
@@ -42,7 +42,7 @@ else{
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">attach_money</i>
-                    <input type="number" step="any" min="0" name="prix" value="<?php echo $prix;?>" pattern="\d+(.\d{2})?" title="9.99" class="validate" required>
+                    <input type="number" step="0.01" min="0" name="prix" value="<?php echo number_format($prix,2,".","");?>" pattern="\d+(.\d{2})?" title="9.99" class="validate" required>
                     <label>Prix du plat</label>
                 </div>
                 <div class="input-field">
@@ -95,8 +95,13 @@ else{
                         </div>
                     </div>
                 <?php } ?>
-                    <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?> "
+                    <button style="width: 100%;" name="platenrg" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?> "
                             type='submit'>Enregistrer</button>
+                <?php if ($id != "") {?>
+                    <br><br>
+                    <button style="width: 100%;" name="platsupp" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?> "
+                            type='submit'>Supprimer</button>
+            <?php }?>
             </form>
     </div>
 </div>

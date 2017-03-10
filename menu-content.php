@@ -4,7 +4,7 @@ if(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('L\'ajout du plat a échoué.', 8000);
+                Materialize.toast('L\'ajout du plat a échoué.', 3000);
             });
         </script>
         <?php

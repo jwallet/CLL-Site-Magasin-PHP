@@ -4,7 +4,7 @@ if(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Commande envoyée.', 8000);
+                Materialize.toast('Commande envoyée.', 3000);
             });
         </script>
         <?php

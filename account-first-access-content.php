@@ -5,7 +5,7 @@ if(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Veuillez remplir les champs.', 8000);
+                Materialize.toast('Veuillez remplir les champs.', 3000);
             });
         </script>
         <?php

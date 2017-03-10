@@ -4,7 +4,7 @@ if(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('La modification a échoué.', 8000);
+                Materialize.toast('La modification a échoué.', 3000);
             });
         </script>
         <?php
@@ -13,7 +13,7 @@ if(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Nom et prénom modifiés.', 8000);
+                Materialize.toast('Nom et prénom modifiés.', 3000);
             });
         </script>
         <?php
@@ -22,7 +22,7 @@ if(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Courriel modifié.', 8000);
+                Materialize.toast('Courriel modifié.', 3000);
             });
         </script>
         <?php
@@ -31,7 +31,7 @@ if(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Téléphone modifié.', 8000);
+                Materialize.toast('Téléphone modifié.', 3000);
             });
         </script>
         <?php
@@ -40,7 +40,7 @@ if(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Adresse modifié.', 8000);
+                Materialize.toast('Adresse modifié.', 3000);
             });
         </script>
         <?php

@@ -8,7 +8,7 @@ if(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Impossible de modifier le mot de passe.', 8000);
+                Materialize.toast('Impossible de modifier le mot de passe.', 3000);
             });
         </script>
         <?php
@@ -17,7 +17,7 @@ if(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Mot de passe modifié.', 8000);
+                Materialize.toast('Mot de passe modifié.', 3000);
             });
         </script>
         <?php

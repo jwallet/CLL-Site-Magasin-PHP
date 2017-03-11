@@ -6,9 +6,6 @@ $personnesTelephone = array();
 $personnesAdresse = array();
 $personnesEmail = array();
 
-$CommandesId = array();
-$CommandesQte = array();
-
 //trouve les plats de la semaine selon l'ordre des categories
 $itemsBdId = array();
 $itemsBdType = array();
@@ -34,25 +31,13 @@ $stmt->free_result();
 //Aller chercher tous les clients actifs
 $stmt = $mysqli->prepare("SELECT id,email,prenom,nom,telephone,adresse FROM personne WHERE isadmin=0 order by nom;");
 $stmt->execute();
-$stmt->bind_result($id,$email,$prenom,$nom,$telephone,$adresse);
+$stmt->bind_result($id,$prenom,$nom);
 while($stmt->fetch()) {
     $personnesId[] = $id;
     $personnesPrenom[] = $prenom;
     $personnesNom[] = $nom;
-    $personnesTelephone[] = $telephone;
-    $personnesAdresse[] = $adresse;
-    $personnesEmail[] = $email;
 }
 $stmt->free_result();
-$sql ="SELECT c.id, i.id, c.date, m.titre, i.titre, i.description, i.prix, 
-                      t.type, d.quantite, c.idpersonne, p.prenom, p.nom, p.email,
-                      m.id, p.telephone, p.adresse
-                FROM commande c JOIN commande_detail d ON c.id = d.idcommande 
-                JOIN personne p ON c.idpersonne = p.id
-                JOIN menu m ON c.idmenu = m.id
-                JOIN item i ON d.iditem = i.id
-                JOIN p_item t ON i.idtype = t.id
-                WHERE c.id=? ORDER BY t.ordre";
 ?>
 
 <table class="centered highlight bordered">

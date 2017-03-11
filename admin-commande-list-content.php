@@ -29,7 +29,7 @@ while($stmt->fetch()) {
 }
 $stmt->free_result();
 //Aller chercher tous les clients actifs
-$stmt = $mysqli->prepare("SELECT id,email,prenom,nom,telephone,adresse FROM personne WHERE isadmin=0 order by nom;");
+$stmt = $mysqli->prepare("SELECT id,prenom,nom FROM personne WHERE isadmin=0 order by nom;");
 $stmt->execute();
 $stmt->bind_result($id,$prenom,$nom);
 while($stmt->fetch()) {
@@ -63,7 +63,7 @@ $stmt->free_result();
             $stmt->free_result();
             ?>
             <tr>
-                <td><b><?php echo "$personnesPrenom[$i]" . " " . "$personnesNom[$i]";?></b></td>
+                <td> <a style="color:black;" href="admin-commande?id=<?php echo $personnesId[$i]; ?>"><b><?php echo "$personnesPrenom[$i]" . " " . "$personnesNom[$i]";?></b></td>
                 <?php for($j=0; $j<sizeof($itemsBdId); $j++){
                     $Quantite = 0;
                     $stmt = $mysqli->prepare("SELECT Quantite FROM commande_detail AS cd JOIN commande AS c ON c.id = cd.idcommande WHERE cd.iditem = ? AND c.id=?;");

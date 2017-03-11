@@ -31,19 +31,24 @@
             $dayend = $_GLOBAL['jour-limite-commander-text'];
             $daystart = $_GLOBAL['jour-debut-commander-text'];
             if(date("N")<=$_GLOBAL['jour-limite-commander']){
-                echo "<span>Date limite : " . strftime("%A, %e %B",date(strtotime("next $dayend"))) . "</span>";
+                if(date("N")!=$_GLOBAL['jour-limite-commander']) {
+                    echo "<span>Date limite : " . strftime("%A, %e %B", date(strtotime("next $dayend"))) . " avant minuit</span>";
+                }
+                else{
+                    echo "<span>Date limite : " . strftime("%A, %e %B", date(strtotime($dayend))) . " avant minuit</span>";
+                }
             }
             else{
                 echo "<span>Date limite expirée<br/>Prochain menu : " . strftime("%A, %e %B",date(strtotime("next $daystart"))) . "</span>";
             }?>
         </div>
         <div>
-            <a style="width:100%;" class="waves-effect waves-light btn-large <?php if(date("N")>$_GLOBAL['jour-limite-commander']){ echo "disabled";}?> <?php echo $_GLOBAL['couleur-menu-2a'] . ' ' .$_GLOBAL['couleur-menu-2b'] ?>" href='menu'>
+            <a style="width:100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur-menu-2a'] . ' ' .$_GLOBAL['couleur-menu-2b'] ?>" href='menu'>
                 Menu de la semaine
             </a>
             <?php include_once("home-horaire-content.php");
                 include_once("home-contact-content.php"); ?>
-            <a style="width:100%;" class="waves-effect waves-light btn-large <?php if(date("N")>$_GLOBAL['jour-limite-commander']){ echo "disabled";}?> <?php echo $_GLOBAL['couleur1a'] ?>" href='home-faq'>
+            <a style="width:100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a'] ?>" href='home-faq'>
                 Fonctionnement
             </a>
         </div>
@@ -58,10 +63,10 @@
     </li>
     <li><div class="divider"></div></li>
     <li><a href="menu"><i class="material-icons">map</i>Menu de la semaine</a></li>
-    <?php if(isset($_SESSION['user-online'])){ if($_SESSION['user-online']){ echo "
-    <li><a href=\"shop-cart\"><i class=\"material-icons\">shopping_cart</i>Panier de commande</a></li>
-    <li><a href=\"account\"><i class=\"material-icons\">person</i>Compte</a></li>
-    "; }}else{
+    <?php if(isset($_SESSION['user-online'])){ if($_SESSION['user-online']){ ?>
+    <li><a href="shop-cart"><i class="material-icons">shopping_cart</i>Panier de commande</a></li>
+    <li><a href="account"><i class="material-icons">person</i>Compte</a></li>
+    <?php }}else{
         ?>
         <li><a href="connect"><i class="material-icons">input</i>Connexion</a></li>
     <?php

@@ -48,8 +48,7 @@ if(isset($_POST['titre'])and isset($_POST['platenrg']) and isset($_POST['prix'])
             $sql = "INSERT INTO item (idtype,titre,description,prix,image) values (?,?,?,?,?)";
             $stmt = $mysqli->prepare($sql);
             $stmt->bind_param("issds", $plattype, $plattitre, $platdescription, $platprix, basename($platimage));
-        }
-        else{
+        } else {
             $sql = "INSERT INTO item (idtype,titre,description,prix) values (?,?,?,?)";
             $stmt = $mysqli->prepare($sql);
             $stmt->bind_param("issd", $plattype, $plattitre, $platdescription, $platprix);
@@ -59,37 +58,71 @@ if(isset($_POST['titre'])and isset($_POST['platenrg']) and isset($_POST['prix'])
         $_SESSION['toast'] = "plat-ajout";
         $redirect = "admin";
     }
+
 }
-elseif(isset($_POST['titre']) and isset($_POST['platsupp']) and isset($_POST['prix'])and isset($_POST['type'])) {
-    include("bd-connect.php");
-    include("meta.php");
-    $platimage = "";
-    $plattitre = $_POST['titre'];
-    $platdescription = $_POST['description'];
-    $platprix = $_POST['prix'];
-    $plattype = $_POST['type'];
-    $platimage = basename($_FILES['image']['name']); //retient le filename . extension
-    $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
-    $filename = basename($_FILES['image']['name'], "." . $extension); // retient seulement le filename
-    if (isset($_FILES["image"])) {
-        //copie du fichier du dossier temporaire au bon endroit
-        if (@fopen($_GLOBAL['dirimg'] . $platimage, "r")) {
-            unlink($_GLOBAL['dirimg'] . $platimage);
-        }
-    }
-    $sql = "DELETE FROM item WHERE id=?;";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $_GET['id']);
-    if ($stmt->execute()) {
-        $_SESSION['toast'] = "plat-type-mod";
-        $redirect = "admin-plat-mod";
-    }
-    $stmt->free_result();
-    $stmt->close();
-}else
+//elseif(isset($_POST['titre']) and isset($_POST['platsupp']) and isset($_POST['prix'])and isset($_POST['type'])) {
+//    include("bd-connect.php");
+//    include("meta.php");
+//    $platimage = "";
+//    $plattitre = $_POST['titre'];
+//    $platdescription = $_POST['description'];
+//    $platprix = $_POST['prix'];
+//    $plattype = $_POST['type'];
+//    $platimage = basename($_FILES['image']['name']); //retient le filename . extension
+//    $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
+//    $filename = basename($_FILES['image']['name'], "." . $extension); // retient seulement le filename
+//    if (isset($_FILES["image"])) {
+//        //copie du fichier du dossier temporaire au bon endroit
+//        if (@fopen($_GLOBAL['dirimg'] . $platimage, "r")) {
+//            unlink($_GLOBAL['dirimg'] . $platimage);
+//        }
+//    }
+//    $sql = "DELETE FROM item WHERE id=?;";
+//    $stmt = $mysqli->prepare($sql);
+//    $stmt->bind_param("i", $_GET['id']);
+//    if ($stmt->execute()) {
+//        $_SESSION['toast'] = "plat-type-mod";
+//        $redirect = "admin-plat-mod";
+//    }
+//    $stmt->free_result();
+//    $stmt->close();
+//}
+else
 {
-    $_SESSION['toast'] = "erreur-plat";
-    $redirect = "admin-plat";
+    if(isset($_GET['idout'])){
+        include("bd-connect.php");
+        include("meta.php");
+        //on efface le id, le call vient du bouton delete dans la liste des items
+        // on cherche limage associer avant
+        $id = (integer)$_GET['idout'];
+        $sql = "SELECT image FROM item WHERE id=?;";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->bind_result($imagetoremove);
+        $stmt->fetch();
+        //si ya une image on la delete de upload
+        if($imgtorem!=null and $imgtorem!=""){
+            if (@fopen($_GLOBAL['dirimg'] . $imagetoremove, "r")) {
+                unlink($_GLOBAL['dirimg'] . $imagetoremove);
+            }
+        }
+        $stmt->free_result();
+        $stmt->close();
+        //on fini par retirer litem de la bd
+        $sql = "DELETE FROM item WHERE id=?;";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("i", $id);
+        if ($stmt->execute()) {
+            $_SESSION['toast'] = "plat-del";
+            $redirect = "admin-plat-list";
+        }
+        $stmt->close();
+    }
+    else{
+        $_SESSION['toast'] = "erreur-plat";
+        $redirect = "admin";
+    }
 }
 ?>
 

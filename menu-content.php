@@ -63,10 +63,10 @@ echo "
                             <span><?php if($itemsBdDesc[$j]!=null and $itemsBdDesc[$j]!=""){ echo $itemsBdDesc[$j]; } else { echo "Aucune description n'est disponible."; } ?></span>
                         </div>
                     </div>
-                    
+
                     <div class='collapsible-body' style='padding:0;'>
                         <span>
-                            <div class="menu-back-img" style="background-image:url('<?php if($itemsBdImg[$j]!="" and $itemsBdImg[$j]!=null){ echo "upload/$itemsBdImg[$j]"; } else { echo "http://www.harristonmintofair.ca/wp-content/uploads/2015/07/o-CHICKEN-WINGS-facebook.jpg";} ?>');">
+                            <div class="menu-back-img" style="background-color:#444;background-image:url('<?php if($itemsBdImg[$j]!="" and $itemsBdImg[$j]!=null){ echo "upload/$itemsBdImg[$j]"; } else { echo "";} ?>');">
                                 <div class="menu-back-img-shadow">
                                     <div class="container">
                                         <div class='section'>
@@ -78,7 +78,7 @@ echo "
                                                         <div style="float:right; border-radius:70px;background-image:url('<?php if( $itemsBdImg[$j]!=null and  $itemsBdImg[$j]!=""){ echo "upload/".$itemsBdImg[$j];} else { echo "css/ico/logo.png"; } ?>');background-position:center;background-size:auto 140px;width:140px;height: 140px; margin-right:-10px;" alt=""></div>
                                                         <h5 class="col s12"><?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?></h5>
                                                         <p class="col s12" style="min-height: 100px;"><?php if($itemsBdDesc[$j]!=null and $itemsBdDesc[$j]!=""){ echo $itemsBdDesc[$j]; } else { echo "Aucune description n'est disponible."; } ?></p>
-                                                        <?php if(isset($_SESSION['user-online'])){?>
+                                                        <?php if(isset($_SESSION['user-online']) and date("N")<=$_GLOBAL['jour-limite-commander']){?>
                                                         <div class="row s12" style="margin:0;padding:0;">
 
                                                             <form action="menu-validation" method="post">
@@ -192,7 +192,13 @@ echo "
                                                             });
                                                         </script>
                                                         <?php }
-                                                        else{?>
+                                                        elseif(date("N")>$_GLOBAL['jour-limite-commander']){ ?>
+                                                            <div class="col s12" style="padding-left:0;padding-right: 0;">
+                                                                <a style="width:100%;" class="btn btn-default disabled waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">
+                                                                    <span>Période de commande terminée</span>
+                                                                </a>
+                                                            </div>
+                                                        <?php } else {?>
                                                             <div class="col s12" style="padding-left:0;padding-right: 0;">
                                                                 <a href="connect" style="width:100%;" class="btn btn-default waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">
                                                                     <span>Connectez-vous</span>

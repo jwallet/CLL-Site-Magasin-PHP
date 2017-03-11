@@ -1,10 +1,21 @@
-<?php if (isset($_SESSION['toast']) == 'plat-mod'){?>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            Materialize.toast('Le plat a été mis à jour', 3000);
-        });
-    </script>
-    <?php
+<?php if(isset($_SESSION['toast'])) {
+    if ($_SESSION['toast'] == 'plat-mod') {
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Le plat a été mis à jour', 3000);
+            });
+        </script>
+        <?php
+    } elseif ($_SESSION['toast'] == 'plat-del') {
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Le plat a été effacé', 3000);
+            });
+        </script>
+        <?php
+    }
     unset($_SESSION['toast']);
 }
 
@@ -42,12 +53,30 @@ while($stmt->fetch()) {
                         <span style="font-size:85%;">
                             <?php echo $itemsDesc[$i]; ?>
                         </span>
-                        <a href="#" class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text"><i class="material-icons">delete</i></a>
-                        <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/><?php echo money_format('%(#10n', ($itemsPrix[$i])); ?></a>
+                        <!-- Modal Structure -->
+                        <div id="modalDelItem<?php echo $i; ?>" class="modal">
+                            <div class="modal-content">
+                                <h4>Retirer un plat</h4>
+                                <p><h5>Etes-vous certain de vouloir retirer ce plat?</h5>
+                                <b>Titre:</b> <?php echo ucfirst(strtolower($itemsTitre[$i])); ?><br/>
+                                <b>Type:</b> <?php echo ucfirst(strtolower($itemsType[$i])); ?><br/>
+                                <b>Prix:</b> <?php echo money_format('%(#10n', ($itemsPrix[$i])); ?>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="admin-plat-validation?idout=<?php echo $itemsId[$i]; ?>" class="btn modal-action modal-close waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">Oui</a>
+                                <a class="modal-action modal-close waves-effect waves-light btn-flat"><b>Non, annuler</b></a>
+                            </div>
+                        </div>
 
+                        <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/><?php echo money_format('%(#10n', ($itemsPrix[$i])); ?></a>
+                        <a href="#modalDelItem<?php echo $i; ?>"  class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text"><i class="material-icons">delete</i></a>
                     </a>
                 </li>
                 <?php
             }?>
     </ul>
 </div>
+
+<script type="text/javascript">
+    $('.modal').modal();
+</script>

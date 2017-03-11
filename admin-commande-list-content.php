@@ -47,13 +47,13 @@ $stmt->free_result();
 $stmt->close();
 ?>
 
-<table>
+<table class="responsive-table">
     <thead>
     <tr>
         <th data-field="blabla"></th>
-        <th data-field="id">Name</th>
-        <th data-field="name">Item Name</th>
-        <th data-field="price">Item Price</th>
+        <?php for($i=0; $i<sizeof($itemsBdId); $i++){?>
+            <th data-field="id"><?php echo $itemsBdTitre[$i];?></th>
+        <?php } ?>
     </tr>
     </thead>
 

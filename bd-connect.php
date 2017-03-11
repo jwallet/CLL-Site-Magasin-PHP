@@ -1,4 +1,6 @@
 <?php
+$_GLOBAL['mail-user'] = 'laboiteabouf@outlook.com';
+$_GLOBAL['mail-psw'] = 'Dodgecolt1984';
 //iP0AxxQjTpQR2lwO -- password
 //$_GLOBAL['dirimg'] = "/var/mers/html/projet/h2017/equipe5/upload/";
 $mysqli = new mysqli("localhost", "equipe5h17", "rogue-art","equipe5h17","22");

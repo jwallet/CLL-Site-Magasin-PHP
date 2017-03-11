@@ -44,34 +44,95 @@ while($stmt->fetch()) {
     $personnesEmail[] = $email;
 }
 $stmt->free_result();
-$stmt->close();
+$sql ="SELECT c.id, i.id, c.date, m.titre, i.titre, i.description, i.prix, 
+                      t.type, d.quantite, c.idpersonne, p.prenom, p.nom, p.email,
+                      m.id, p.telephone, p.adresse
+                FROM commande c JOIN commande_detail d ON c.id = d.idcommande 
+                JOIN personne p ON c.idpersonne = p.id
+                JOIN menu m ON c.idmenu = m.id
+                JOIN item i ON d.iditem = i.id
+                JOIN p_item t ON i.idtype = t.id
+                WHERE c.id=? ORDER BY t.ordre";
 ?>
 
-<table class="responsive-table">
+<table class="centered highlight bordered">
     <thead>
     <tr>
-        <th data-field="blabla"></th>
+        <th data-field="Client"></th>
         <?php for($i=0; $i<sizeof($itemsBdId); $i++){?>
-            <th data-field="id"><?php echo $itemsBdTitre[$i];?></th>
+            <th data-field="itemid"><?php echo $itemsBdTitre[$i];?></th>
         <?php } ?>
+            <th data-field="total">Total</th>
     </tr>
     </thead>
-
     <tbody>
-    <tr>
-        <td>Alvin</td>
-        <td>Eclair</td>
-        <td>$0.87</td>
-    </tr>
-    <tr>
-        <td>Alan</td>
-        <td>Jellybean</td>
-        <td>$3.76</td>
-    </tr>
-    <tr>
-        <td>Jonathan</td>
-        <td>Lollipop</td>
-        <td>$7.00</td>
-    </tr>
+        <?php for($i=0; $i<sizeof($personnesId); $i++)
+        {
+            $TotalPers = 0;
+            $idcommande = 0;
+            $stmt = $mysqli->prepare("SELECT c.id FROM commande AS c JOIN menu m ON m.id = c.idmenu WHERE c.idpersonne = ? and m.isnow=1;");
+            $stmt->bind_param("i",$personnesId[$i]);
+            $stmt->execute();
+            $stmt->bind_result($idcommande);
+            $stmt->fetch();
+            $stmt->free_result();
+            ?>
+            <tr>
+                <td><b><?php echo "$personnesPrenom[$i]" . " " . "$personnesNom[$i]";?></b></td>
+                <?php for($j=0; $j<sizeof($itemsBdId); $j++){
+                    $Quantite = 0;
+                    $stmt = $mysqli->prepare("SELECT Quantite FROM commande_detail AS cd JOIN commande AS c ON c.id = cd.idcommande WHERE cd.iditem = ? AND c.id=?;");
+                    $stmt->bind_param("ii",$itemsBdId[$j],$idcommande);
+                    $stmt->execute();
+                    $stmt->bind_result($Quantite);
+                    $stmt->fetch();
+                    $stmt->free_result();
+                    ?>
+                    <td><?php echo $Quantite;?></td>
+                <?php
+                }
+                $stmt = $mysqli->prepare("SELECT SUM(i.prix * cd.Quantite) FROM item AS i JOIN commande_detail AS cd ON i.id = cd.iditem JOIN commande c ON c.id = cd.idcommande WHERE c.id = ?;");
+                $stmt->bind_param("i",$idcommande);
+                $stmt->execute();
+                $stmt->bind_result($TotalPers);
+                $stmt->fetch();
+                $stmt->free_result();
+                if (!isset($TotalPers)){
+                    $TotalPers = 0;
+                }
+                ?>
+                    <td><?php echo "$TotalPers" . " $";?></td>
+            </tr>
+        <?php }
+        ?>
+        <td><b>Total Portions</b></td>
+        <?php for($j=0; $j<sizeof($itemsBdId); $j++){
+            $TotalQuantite = 0;
+            $stmt = $mysqli->prepare("SELECT SUM(Quantite) FROM commande_detail AS cd JOIN commande AS c ON c.id = cd.idcommande JOIN menu m on m.id = c.idmenu WHERE cd.iditem = ? and m.isnow=1;");
+            $stmt->bind_param("i",$itemsBdId[$j]);
+            $stmt->execute();
+            $stmt->bind_result($TotalQuantite);
+            $stmt->fetch();
+            $stmt->free_result();
+            if (!isset($TotalQuantite)){
+                $TotalQuantite = 0;
+            }
+            ?>
+            <td><?php echo "$TotalQuantite";?> </td>
+        <?php
+        }
+        ?>
+        <?php
+        $stmt = $mysqli->prepare("SELECT SUM(Quantite*i.prix) FROM commande_detail AS cd JOIN commande AS c ON c.id = cd.idcommande JOIN menu m on m.id = c.idmenu JOIN item i ON cd.iditem = i.id WHERE m.isnow=1;");
+//        $stmt->bind_param("i",$Total);
+        $stmt->execute();
+        $stmt->bind_result($Total);
+        $stmt->fetch();
+        $stmt->free_result();
+        if (!isset($Total)){
+            $Total = 0;
+        }
+         ?>
+        <td><?php echo "$Total" . " $";?></td>
     </tbody>
 </table>

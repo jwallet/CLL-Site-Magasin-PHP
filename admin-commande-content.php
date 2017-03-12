@@ -24,7 +24,9 @@
 ?>
 <div class="container">
     <div class="section">
-        <form action="admin-plat-validation" method="POST">
+        <form action="admin-commande-validation" method="POST">
+            <input type="hidden" name="idmenu" value="<?php echo $idmenu; ?>">
+            <input type="hidden" name="idpersonne" value="<?php echo $_GET['id']; ?>">
             <?php for($i=0; $i<sizeof($itemsBdId); $i++){
                 $Quantite=0;
                 $stmt= $mysqli->prepare("SELECT IFNULL(Quantite,0) FROM commande c JOIN commande_detail cd ON c.id = cd.idcommande JOIN item i ON cd.iditem = i.id WHERE c.idpersonne=? and c.idmenu=? and cd.iditem=?;");
@@ -48,34 +50,7 @@
                     </div>
                 </div>
             <?php } ?>
-            <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?> "
-                    type='submit'>Enregistrer</button>
+            <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?> " name="commandeEnrg" type='submit'>Enregistrer</button>
         </form>
     </div>
 </div>
-
-<!--<div class="container" style="font-family: 'Roboto', sans-serif;font-weight: normal;">-->
-    <!--    <div class="section">-->
-    <!--        <h5 class="col s12">ALO</h5>-->
-    <!--        <p class="col s12" style="min-height: 100px;">allo-->
-    <!--        <div class="row s12" style="margin:-5%;padding:0%;">-->
-    <!--            <form action="menu-validation" method="post">-->
-    <!--                <div class="col s12" style="padding-left:0;padding-right: 0;">-->
-    <!--                    <div class="input-group col center" style="padding-left:0;padding-right: 0;">-->
-    <!--                          <span class="input-group-btn">-->
-    <!--                          <button type="button" class="col btn btn-default btn-number--><?php //echo $j; ?><!-- --><?php //echo $_GLOBAL['couleur1a']; ?><!--" disabled="disabled" data-type="minus" data-field="quant--><?php //echo $j; ?><!--">-->
-    <!--                              <span><i class="material-icons">remove</i></span>-->
-    <!--                          </button>-->
-    <!--                          </span>-->
-    <!--                        <input type="text" style="width: 50px;margin:0;margin-top:-28px;padding:0;height: 2.2rem;border:2px solid #CCC;" name="quant--><?php //echo $j; ?><!--" class="form-control input-number--><?php //echo $j; ?><!-- center" value="1" min="1" max="100">-->
-    <!--                        <span class="input-group-btn">-->
-    <!--                          <button type="button" class="col btn btn-default btn-number--><?php //echo $j; ?><!-- --><?php //echo $_GLOBAL['couleur1a']; ?><!--" data-type="plus" data-field="quant--><?php //echo $j; ?><!--">-->
-    <!--                              <span><i class="material-icons">add</i></span>-->
-    <!--                          </button>-->
-    <!--                        </span>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </form>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</div>

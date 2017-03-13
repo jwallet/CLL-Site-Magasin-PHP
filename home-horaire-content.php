@@ -14,8 +14,7 @@
         <br/><?php echo $_GLOBAL['entreprise'];?><br/>(Cueillette)
     </div>
     <div class="col s7">
-        Samedi, de 8h à 14h<br/>
-        Dimanche, de 12h à 18h<br/>
-        Lundi, de 8h à 17h
+        Lundi, de 12h à 19h<br/>
+        Mardi, de 8h à 19h
     </div>
 </div>

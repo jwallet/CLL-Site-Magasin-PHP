@@ -5,9 +5,9 @@
         <b>Contact</b><br/>
     </div>
     <div class="col s7">
-        Madame Madame<br/>
-        Téléphone: (418) 555-0242<br/>
-        Email: <mail>courrieldespam@outlook.com</mail>
+        Madame Carole Blanchette<br/>
+        Téléphone: (418) 831-2390<br/>
+        Email: <mail>laboiteabouf@outlook.com</mail>
     </div>
 </div>
 <div class="row s12 left-align">
@@ -15,9 +15,9 @@
         <b>Emplacement</b>
     </div>
     <div class="col s7">
-        19 rue des Residences<br/>
-        Saint-Romuald<br/>
-        Québec, H0H 0H0<br/>
+        248 rue des pervenches<br/>
+        Saint-Nicolas<br/>
+        Québec, G7A 3M3<br/>
         Canada
     </div>
 </div>

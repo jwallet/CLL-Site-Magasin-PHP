@@ -1,3 +1,23 @@
+<?php if(isset($_SESSION['toast'])) {
+    if ($_SESSION['toast'] == 'mod-commande') {
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('La commande du client a été mise à jour', 3000);
+            });
+        </script>
+        <?php
+    } elseif ($_SESSION['toast'] == 'erreur-commande') {
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                Materialize.toast('Une erreur s est produite, veuillez reessayer plus tard', 3000);
+            });
+        </script>
+        <?php
+    }
+    unset($_SESSION['toast']);
+}?>
 <?php
 $personnesId = array();
 $personnesPrenom = array();

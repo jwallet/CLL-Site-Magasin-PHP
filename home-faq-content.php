@@ -24,7 +24,7 @@ for($i=1;$i<sizeof($divider);$i+=2){
             <div class="collapsible-header">
                 <div class="container"><?php echo $questions[$j]; ?></div>
             </div>
-            <div class="collapsible-body">
+            <div class="collapsible-body grey lighten-3">
                 <div class="container">
                     <span><?php echo $reponses[$j]; ?></span>
                 </div>

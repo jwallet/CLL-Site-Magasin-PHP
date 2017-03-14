@@ -1,26 +1,23 @@
+<?php
+$dir = 'upload';
+$images = glob($dir . '/*.jpg');
+$images += glob($dir . '/*.jpeg');
+$images += glob($dir . '/*.png');
+$images += glob($dir . '/*.PNG');
+$images += glob($dir . '/*.JPG');
+$images += glob($dir . '/*.JPEG');
+?>
 <div class="slider">
     <ul class="slides">
-        <li>
-            <img src="http://static.harmony.groupetva.ca/media/static/filemanager/content/1444104000/poulet-general-tao_1444157247.jpg"> <!-- random image -->
-            <div class="caption center-align " style="width:100%;height:500px;left:0;top:0;background-color:rgba(0, 0, 0, 0.5);" >
-                <img class="hide-on-small-only" src="css/ico/logo.png" style="width: auto; height:270px; margin-top:40px;"/>
-                <img class="hide-on-med-and-up" src="css/ico/logo.png" style="width: auto; height: 230px; margin-top:60px;"/>
-            </div>
-        </li>
-        <li>
-            <img src="https://i.ytimg.com/vi/jyaLMHBKCic/maxresdefault.jpg"> <!-- random image -->
-            <div class="caption center-align" style="width:100%;height:500px;left:0;top:0;background-color:rgba(0, 0, 0, 0.5);">
-                <img class="hide-on-small-only" src="css/ico/logo.png" style="width: auto; height: 270px; margin-top:40px;"/>
-                <img class="hide-on-med-and-up" src="css/ico/logo.png" style="width: auto; height: 230px; margin-top:60px;"/>
-            </div>
-        </li>
-        <li>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Cuisse_da_canard_confit_et_pommes_de_terre_%C3%A0_la_sarladaise.JPG/1200px-Cuisse_da_canard_confit_et_pommes_de_terre_%C3%A0_la_sarladaise.JPG"> <!-- random image -->
-            <div class="caption center-align" style="width:100%;height:500px;left:0;top:0;background-color:rgba(0, 0, 0, 0.5);">
-                <img class="hide-on-small-only" src="css/ico/logo.png" style="width: auto; height: 270px; margin-top:40px;"/>
-                <img class="hide-on-med-and-up" src="css/ico/logo.png" style="width: auto; height: 230px; margin-top:60px;"/>
-            </div>
-        </li>
+        <?php for($i = 0; $i < 5; $i++){?>
+            <li>
+                <img src="<?php $img = array_rand($images); echo $images[$img]; ?>">
+                <div class="caption center-align " style="width:100%;height:500px;left:0;top:0;background-color:rgba(0, 0, 0, 0.5);" >
+                    <img class="hide-on-small-only" src="css/ico/logo.png" style="width: auto; height:270px; margin-top:40px;"/>
+                    <img class="hide-on-med-and-up" src="css/ico/logo.png" style="width: auto; height: 230px; margin-top:60px;"/>
+                </div>
+            </li>
+        <?php }?>
     </ul>
 </div>
 

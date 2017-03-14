@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['titre'])and isset($_POST['platenrg']) and isset($_POST['prix'])and isset($_POST['type'])) {
+if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
     include("bd-connect.php");
     include("meta.php");
     if (isset($_POST['id'])) {
@@ -14,9 +14,9 @@ if(isset($_POST['titre'])and isset($_POST['platenrg']) and isset($_POST['prix'])
     $plattype = number_format($_POST['type'],2,".","");
 
     if(($_POST['image-txt'])!="") {
-        $platimage = basename($_FILES['image']['name']); //retient le filename . extension
-        $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
-        $filename = basename($_FILES['image']['name'], "." . $extension); // retient seulement le filename
+        $platimage = strtolower(str_replace(array(' ','(',')'), '', basename($_FILES['image']['name']))); //retient le filename . extension
+        $extension = strtolower(pathinfo($platimage, PATHINFO_EXTENSION)); // retient l extension seulement
+        $filename = strtolower(str_replace(array(' ','(',')'), '', basename($_FILES['image']['name'], "." . $extension))); // retient seulement le filename
         //si le fichier existe
         if (isset($_FILES["image"])) {
             $index = 0;

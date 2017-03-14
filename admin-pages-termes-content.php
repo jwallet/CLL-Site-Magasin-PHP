@@ -28,7 +28,7 @@ $stmt->close();
         theme: 'modern',
         menubar:false,
         statusbar: false,
-        toolbar: 'undo redo styleselect bold italic underline alignleft aligncenter alignright bullist numlist outdent indent code',
+        toolbar: 'undo redo styleselect bold italic underline blockquote removeformat alignleft aligncenter alignright alignjustify outdent indent code',
         plugins: 'code',
         height: 200,
     });

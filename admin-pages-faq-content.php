@@ -35,9 +35,9 @@ $stmt->close();
         theme: 'modern',
         menubar:false,
         statusbar: false,
-        toolbar: 'undo redo styleselect bold italic underline alignleft aligncenter alignright bullist numlist outdent indent code',
+        toolbar: 'undo redo styleselect bold italic underline blockquote removeformat alignleft aligncenter alignright alignjustify outdent indent code',
         plugins: 'code',
-        height: 500,
+        height: 500
     });
 </script>
 
@@ -47,6 +47,6 @@ $stmt->close();
         <p>Utilisez ### pour ajouter une section, puis sur une nouvelle ligne écrivez le contenu de la nouvelle section.<br/><div style="background-color:#666; color:white; padding:10px;border:1px solid black;font-family: Courier"><b>###</b> Titre de la section <b>###</b><br/>Le contenu de la section</div></p>
         <textarea id="textarea1" name="textarea1"><?php if($i = array_search("fonctionnement",$titre,true)){ echo $tarea[$i];}; ?></textarea>
         <br/>
-        <button type="submit" style="width: 100%" class="btn btn-large <?php echo $_GLOBAL['couleur1a']?> ">Enregister</button>
+        <button type="submit" style="width: 100%" class="btn btn-large <?php echo $_GLOBAL['couleur1a']?> ">Enregistrer</button>
     </form>
 </div>

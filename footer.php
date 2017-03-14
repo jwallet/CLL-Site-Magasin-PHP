@@ -28,10 +28,7 @@
         </div>
     </div>
     <div class="center-align <?php echo $_GLOBAL['couleur2a'] ?>-text">
-<!--        <span>&copy; --><?php //echo date("Y"); ?><!--</span>-->
-        <span class="hide-on-small-only">Conception de <a href="https://github.com/jwallet" target="_blank" style="color:#777" class="git">jwallet</a>
-            et <a href="https://github.com/guillaumeprudhomme"  style="color:#666" target="_blank" class="git">gprudhomme</a></span>
-        <span class="center-block hide-on-med-and-up" style="font-size:12px;">Conception de <a href="https://github.com/jwallet" target="_blank" style="color:#777" class="git">jwallet</a>
+        <span class="center-block"><a href="LICENSE.TXT" target="_blank" class="grey-text">Conception</a> de <a href="https://github.com/jwallet" target="_blank" style="color:#777" class="git">jwallet</a>
             et <a href="https://github.com/guillaumeprudhomme"  style="color:#666" target="_blank" class="git">gprudhomme</a></span>
     </div>
 </footer>

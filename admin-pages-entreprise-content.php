@@ -55,7 +55,7 @@ $stmt->close();
 </script>
 
 <div class="container">
-    <form action="#" method="post">
+    <form action="#" class="section" method="post">
         <h5>A propos de la Boîte à Bouf</h5>
         <textarea id="textarea1" name="textarea1"><?php if($i = array_search("apropos",$titre,true)){ echo $tarea[$i];}; ?></textarea>
         <h5>Nos horaires</h5>

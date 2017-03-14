@@ -43,7 +43,8 @@ $stmt->close();
 
 <div class="container">
     <form action="#" class="section" method="post">
-        <h5>Termes et conditions du site</h5>
+        <h5>Fonctionnement (FAQ)</h5>
+        <p>Utilisez ### pour ajouter une question, puis sur une nouvelle ligne écrivez la réponse.<br/><div style="background-color:#666; color:white; padding:10px;border:1px solid black;font-family: Courier"><b>###</b> Question <b>###</b><br/>Réponse à la question</div></p>
         <textarea id="textarea1" name="textarea1"><?php if($i = array_search("fonctionnement",$titre,true)){ echo $tarea[$i];}; ?></textarea>
         <br/>
         <button type="submit" style="width: 100%" class="btn btn-large <?php echo $_GLOBAL['couleur1a']?> ">Enregister</button>

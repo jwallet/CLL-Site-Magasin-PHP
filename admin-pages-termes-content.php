@@ -24,7 +24,7 @@ $stmt->close();
 <script src='//cloud.tinymce.com/stable/tinymce.min.js'></script>
 <script>
     tinymce.init({
-        selector: '#textarea1, #textarea2, #textarea3',
+        selector: '#textarea1',
         theme: 'modern',
         menubar:false,
         statusbar: false,

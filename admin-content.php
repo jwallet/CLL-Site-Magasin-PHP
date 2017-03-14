@@ -210,25 +210,16 @@
         <div class="collapsible-body" style="padding:0;">
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
-                    <a href="#" class="black-text">
+                    <a href="admin-pages-entreprise" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
-                                <i class="material-icons"></i>A propos de l'entreprise
+                                <i class="material-icons"></i>Boîte à Bouf
                             </div>
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
-                            <div class="container">
-                                <i class="material-icons"></i>Nous contacter
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="black-text">
+                    <a href="admin-pages-faq" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Fonctionnement (FAQ)
@@ -237,7 +228,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="black-text">
+                    <a href="admin-pages-termes" class="black-text">
                         <div class="collapsible-header grey lighten-5">
                             <div class="container">
                                 <i class="material-icons"></i>Termes et conditions

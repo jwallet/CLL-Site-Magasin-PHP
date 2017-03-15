@@ -19,7 +19,7 @@ $itemsBdDesc = array();
 $itemsBdImg = array();
 $itemsBdPrix = array();
 $itemsBdOrdre = array();
-$sql="SELECT i.id, pi.type, i.titre, i.description, i.image, i.prix FROM menu m JOIN menu_detail md ON m.id = md.idmenu JOIN item i ON md.iditem = i.id JOIN p_item pi ON i.idtype = pi.id WHERE m.isnow=1 ORDER BY pi.ordre, i.prix, i.titre";
+$sql="SELECT i.id, pi.type, i.titre, i.description, i.image, i.prix FROM menu m JOIN menu_detail md ON m.id = md.idmenu JOIN item i ON md.iditem = i.id JOIN p_item pi ON i.idtype = pi.id WHERE m.isnow=1 AND i.desactif=0 ORDER BY pi.ordre, i.prix, i.titre";
 $stmt = $mysqli->prepare($sql);
 $stmt->execute();
 $stmt->bind_result($un,$deux,$trois, $quatre, $cinq, $six);

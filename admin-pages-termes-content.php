@@ -21,11 +21,12 @@ while($stmt->fetch()){
 $stmt->free_result();
 $stmt->close();
 ?>
-<script src='//cloud.tinymce.com/stable/tinymce.min.js'></script>
+<script src='js/tinymce/tinymce.min.js'></script>
 <script>
     tinymce.init({
         selector: '#textarea1',
         theme: 'modern',
+        language: 'fr_FR',
         menubar:false,
         statusbar: false,
         toolbar: 'undo redo styleselect bold italic underline blockquote removeformat alignleft aligncenter alignright alignjustify outdent indent code',

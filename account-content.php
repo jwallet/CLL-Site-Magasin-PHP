@@ -39,7 +39,6 @@ if(isset($_SESSION['toast'])) {
         </li>
     <?php } ?>
 
-    <?php if (!$isadmin){ ?>
     <!-- profil -->
     <li>
         <a href="account-infos" class="black-text">
@@ -51,7 +50,6 @@ if(isset($_SESSION['toast'])) {
             </div>
         </a>
     </li>
-    <?php } ?>
 
     <!-- changer password -->
     <li>

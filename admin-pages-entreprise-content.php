@@ -41,13 +41,17 @@ $i=0;
 $stmt->free_result();
 $stmt->close();
 ?>
-<script src='//cloud.tinymce.com/stable/tinymce.min.js'></script>
+
+<script src='js/tinymce/tinymce.min.js'></script>
 <script>
     tinymce.init({
         selector: '#textarea1, #textarea2, #textarea3',
         theme: 'modern',
+        language: 'fr_FR',
         menubar:false,
         statusbar: false,
+        content_css: 'css/materialize.css',
+        body_class: 'tinybody',
         toolbar: 'undo redo styleselect bold italic underline blockquote removeformat alignleft aligncenter alignright alignjustify outdent indent code',
         plugins: 'code',
         height: 200,

@@ -3564,7 +3564,14 @@ nav ul a span.badge {
   margin-left: -0.75rem;
   margin-right: -0.75rem;
 }
-
+.tinybody{
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 100%;
+    display: inherit;
+    min-height: 100vh;
+    flex-direction: column;
+}
 .section {
   padding-top: 1rem;
   padding-bottom: 1rem;

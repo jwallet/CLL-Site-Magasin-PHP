@@ -44,7 +44,7 @@ if($stmt->fetch()){
                 while($stmt->fetch()) {
                     $itemsIdFromMenu[] = $iditem;
                 }
-                $sql = "SELECT i.id, t.type, i.titre, i.prix FROM item i JOIN p_item t ON i.idtype=t.id ORDER BY t.ordre;";
+                $sql = "SELECT i.id, t.type, i.titre, i.prix FROM item i JOIN p_item t ON i.idtype=t.id WHERE i.desactif=0 ORDER BY t.ordre;";
                 $stmt = $mysqli->prepare($sql);
                 $stmt->execute();
                 $stmt->bind_result($iditem,$type,$item,$prix);

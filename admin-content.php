@@ -241,15 +241,15 @@
     </li>
 
     <!-- ecrire courriel general -->
-    <li>
-        <a href="#" class="black-text">
-            <div class="collapsible-header">
-                <div class="container">
-                    <i class="material-icons">email</i>Ecrire à tous les clients
-                </div>
-            </div>
-        </a>
-    </li>
+<!--    <li>-->
+<!--        <a href="#" class="black-text">-->
+<!--            <div class="collapsible-header">-->
+<!--                <div class="container">-->
+<!--                    <i class="material-icons">email</i>Ecrire à tous les clients-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </a>-->
+<!--    </li>-->
 
     <!-- sortie panneau admin -->
     <li>

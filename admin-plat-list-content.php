@@ -25,7 +25,7 @@ $itemsTitre = array();
 $itemsDesc = array();
 $itemsImg = array();
 $itemsPrix = array();
-$stmt = $mysqli->prepare("SELECT item.id,titre,description,prix,image,type FROM item LEFT JOIN p_item ON item.idtype = p_item.id order by ordre;");
+$stmt = $mysqli->prepare("SELECT item.id,titre,description,prix,image,type FROM item LEFT JOIN p_item ON item.idtype = p_item.id WHERE desactif=0 order by ordre;");
 $stmt->execute();
 $stmt->bind_result($id,$titre,$description,$prix,$image,$type);
 while($stmt->fetch()) {

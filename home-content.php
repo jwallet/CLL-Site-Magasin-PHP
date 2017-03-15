@@ -11,13 +11,13 @@ $images += glob($dir . '/*.JPEG');
     <ul class="slides">
         <?php for($i = 0; $i < 5; $i++){?>
             <li>
-                <img src="<?php $img = array_rand($images); echo $images[$img]; ?>">
+                <img src="<?php $img = array_rand($images); echo "upload/".urlencode((string)str_replace("upload/","",$images[$img])); ?>">
                 <div class="caption center-align " style="width:100%;height:500px;left:0;top:0;background-color:rgba(0, 0, 0, 0.5);" >
                     <img class="hide-on-small-only" src="css/ico/logo.png" style="width: auto; height:270px; margin-top:40px;"/>
                     <img class="hide-on-med-and-up" src="css/ico/logo.png" style="width: auto; height: 230px; margin-top:60px;"/>
                 </div>
             </li>
-        <?php }?>
+        <?php  }?>
     </ul>
 </div>
 

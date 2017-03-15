@@ -29,16 +29,57 @@ if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
         }
     }
     if ($id != "") {
-        if ($platimage != "") {
-            $sql = "UPDATE item SET idtype=?,titre=?,description=?,prix=?,image=? WHERE id=?;";
-            $stmt = $mysqli->prepare($sql);
-            $stmt->bind_param("issdsi", $plattype,$plattitre, $platdescription, $platprix, $platimage, $id);
-        } else {
-            $sql = "UPDATE item SET idtype=?,titre=?,description=?,prix=? WHERE id=?;";
-            $stmt = $mysqli->prepare($sql);
-            $stmt->bind_param("issdi", $plattype, $plattitre, $platdescription, $platprix, $id);
-        }
+        //select item pour voir si yer pas setter en tant que deja publie = on doit pas changer le passer, on insert
+        $sql = "SELECT id, image FROM item WHERE id = ? AND used = 1 AND desactif=0;";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("i", $id);
         $stmt->execute();
+        $stmt->bind_result($un,$deux);
+        $oldimg=$deux;
+        //si yer trouver on insert le nouveau et update lancien en tant que invisible
+        //avec les conditions de l'image si on en a une nouvelle ou pas
+        if ($stmt->fetch()) {
+            $stmt->free_result();
+            $stmt->close();
+            if ($platimage != "") {
+                $sql = "INSERT INTO item SET idtype=?,titre=?,description=?,prix=?,image=?;";
+                $stmt = $mysqli->prepare($sql);
+                $stmt->bind_param("issds", $plattype, $plattitre, $platdescription, $platprix, $platimage);
+                $stmt->execute();
+                $stmt->close();
+
+            } else {
+                $sql = "INSERT INTO item SET idtype=?,titre=?,description=?,prix=?,image=?;";
+                $stmt = $mysqli->prepare($sql);
+                $stmt->bind_param("issds", $plattype, $plattitre, $platdescription, $platprix, $oldimg);
+                $stmt->execute();
+                $stmt->close();
+            }
+            $sql = "UPDATE item SET desactif=1 WHERE id=?;";
+            $stmt = $mysqli->prepare($sql);
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $_SESSION['toast'] = "plat-mod";
+            $redirect = "admin-plat-list";
+
+        }
+        //si l'item a jamais ete publie alors on peut la modifier sans en ajouter une nouvelle
+        //on brise pas le passe
+        //toujours selon les conditions d'upload des images
+        else{
+            $stmt->free_result();
+            $stmt->close();
+            if ($platimage != "") {
+                $sql = "UPDATE item SET idtype=?,titre=?,description=?,prix=?,image=? WHERE id=?;";
+                $stmt = $mysqli->prepare($sql);
+                $stmt->bind_param("issdsi", $plattype, $plattitre, $platdescription, $platprix, $platimage, $id);
+            } else {
+                $sql = "UPDATE item SET idtype=?,titre=?,description=?,prix=? WHERE id=?;";
+                $stmt = $mysqli->prepare($sql);
+                $stmt->bind_param("issdi", $plattype, $plattitre, $platdescription, $platprix, $id);
+            }
+            $stmt->execute();
+        }
         $stmt->close();
         $_SESSION['toast'] = "plat-mod";
         $redirect = "admin-plat-list";
@@ -60,33 +101,6 @@ if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
     }
 
 }
-//elseif(isset($_POST['titre']) and isset($_POST['platsupp']) and isset($_POST['prix'])and isset($_POST['type'])) {
-//    include("bd-connect.php");
-//    include("meta.php");
-//    $platimage = "";
-//    $plattitre = $_POST['titre'];
-//    $platdescription = $_POST['description'];
-//    $platprix = $_POST['prix'];
-//    $plattype = $_POST['type'];
-//    $platimage = basename($_FILES['image']['name']); //retient le filename . extension
-//    $extension = pathinfo($platimage, PATHINFO_EXTENSION); // retient l extension seulement
-//    $filename = basename($_FILES['image']['name'], "." . $extension); // retient seulement le filename
-//    if (isset($_FILES["image"])) {
-//        //copie du fichier du dossier temporaire au bon endroit
-//        if (@fopen($_GLOBAL['dirimg'] . $platimage, "r")) {
-//            unlink($_GLOBAL['dirimg'] . $platimage);
-//        }
-//    }
-//    $sql = "DELETE FROM item WHERE id=?;";
-//    $stmt = $mysqli->prepare($sql);
-//    $stmt->bind_param("i", $_GET['id']);
-//    if ($stmt->execute()) {
-//        $_SESSION['toast'] = "plat-type-mod";
-//        $redirect = "admin-plat-mod";
-//    }
-//    $stmt->free_result();
-//    $stmt->close();
-//}
 else
 {
     if(isset($_GET['idout'])){
@@ -102,7 +116,7 @@ else
         $stmt->bind_result($imagetoremove);
         $stmt->fetch();
         //si ya une image on la delete de upload
-        if($imgtorem!=null and $imgtorem!=""){
+        if($imagetoremove!=null and $imagetoremove!=""){
             if (@fopen($_GLOBAL['dirimg'] . $imagetoremove, "r")) {
                 unlink($_GLOBAL['dirimg'] . $imagetoremove);
             }

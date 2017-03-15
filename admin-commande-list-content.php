@@ -128,7 +128,7 @@ $stmt->free_result();
         }
         ?>
         <?php
-        $stmt = $mysqli->prepare("SELECT SUM(Quantite*i.prix) FROM commande_detail AS cd JOIN commande AS c ON c.id = cd.idcommande JOIN menu m on m.id = c.idmenu JOIN item i ON cd.iditem = i.id WHERE m.isnow=1;");
+        $stmt = $mysqli->prepare("SELECT SUM(Quantite*i.prix) FROM commande_detail AS cd JOIN commande AS c ON c.id = cd.idcommande JOIN personne p on p.id = c.idpersonne JOIN menu m on m.id = c.idmenu JOIN item i ON cd.iditem = i.id WHERE m.isnow=1 and p.isnew!=2;");
 //        $stmt->bind_param("i",$Total);
         $stmt->execute();
         $stmt->bind_result($Total);

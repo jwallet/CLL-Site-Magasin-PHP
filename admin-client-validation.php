@@ -82,7 +82,7 @@ if(isset($_POST['email']) and isset($_POST['clientadd'])) {
     $stmt->close();
     }elseif(isset($_GET['idin'])){
     echo $_GET['idin'];
-    echo $sql = "UPDATE personne SET isnew=0 WHERE id=?;";
+    $sql = "UPDATE personne SET isnew=0 WHERE id=?;";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $_GET['idin']);
     if ($stmt->execute()) {

@@ -3,7 +3,7 @@ Projet final fait dans le cadre du cours de commerces et entreprise du Cégep de
 <img src="https://cloud.githubusercontent.com/assets/23088305/23930879/7724aae0-0905-11e7-8e8c-57e12b74f0a3.png" height="560px"/>
 <img src="https://cloud.githubusercontent.com/assets/23088305/23930910/a5cbb44c-0905-11e7-9836-c6b9d0f163b6.png" height="560px"/>
 <img src="https://cloud.githubusercontent.com/assets/23088305/23931139/f6c40bd2-0906-11e7-9e37-4d0e5efbeabd.png" height="560px"/>
-
+<img src="https://cloud.githubusercontent.com/assets/23088305/23960826/6765ecd4-097f-11e7-87da-b6531f4f4dc8.png" width="850px"/>
 
 ![alt tag](https://raw.github.com/dogfalo/materialize/master/images/materialize.gif)
 ===========

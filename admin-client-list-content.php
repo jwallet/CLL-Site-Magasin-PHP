@@ -5,7 +5,7 @@ $personnesNom = array();
 $personnesTelephone = array();
 $personnesAdresse = array();
 $personnesEmail = array();
-$stmt = $mysqli->prepare("SELECT id,email,prenom,nom,telephone,adresse FROM personne WHERE isadmin=0 order by nom;");
+$stmt = $mysqli->prepare("SELECT id,email,prenom,nom,telephone,adresse FROM personne WHERE isadmin=0 and isnew != 2 order by nom;");
 $stmt->execute();
 $stmt->bind_result($id,$email,$prenom,$nom,$telephone,$adresse);
 while($stmt->fetch()) {

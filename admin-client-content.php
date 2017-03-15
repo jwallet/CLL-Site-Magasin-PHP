@@ -56,7 +56,7 @@ else{
             <div class="input-field">
                 <i class="material-icons prefix">phone</i>
                 <input id="telephone" name="telephone"
-                       type="tel" title="(999) 999-9999" value="<?php echo $telephone; ?>" pattern="^([0-9]{3} |[0-9]{3}-)[0-9]{3}-[0-9]{4}$" class="validate">
+                       type="tel" title="999 999-9999" value="<?php echo $telephone; ?>" pattern="^([0-9]{3} |[0-9]{3}-)[0-9]{3}-[0-9]{4}$" class="validate">
                 <label for="telephone">Telephone</label>
             </div>
             <div class="input-field">

@@ -17,11 +17,22 @@ if(isset($_SESSION['toast'])) {
     <div class="section">
         <form class="row" action="account-first-access-validation" method="post">
             <div class="col s12">
+                <input type="hidden" name="id" value="<?php echo $_SESSION['user-id']; ?>">
                 <div class="input-field row">
                     <i class="material-icons prefix">email</i>
                     <input type="email" name="email" id="email"
                            value="<?php echo $_SESSION['user-email']?>" readonly>
                     <label for="email">Courriel</label>
+                </div>
+                <div class="input-field row">
+                    <i class="material-icons prefix">lock</i>
+                    <input type="password" name="new1password" id="new1" minlength="6" class="validate" required>
+                    <label for="new2">Nouveau mot de passe</label>
+                </div>
+                <div class="input-field row">
+                    <i class="material-icons prefix">lock</i>
+                    <input type="password" name="new2password" id="new2" minlength="6" class="validate" required>
+                    <label for="new2">Confirmer mot de passe</label>
                 </div>
                 <div class="input-field row">
                     <i class="material-icons prefix">person</i>
@@ -53,3 +64,17 @@ if(isset($_SESSION['toast'])) {
         </form>
     </div>
 </div>
+<script type="text/javascript">
+    var password = document.getElementById("new1")
+        , confirm_password = document.getElementById("new2");
+    function validatePassword(){
+        if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Mot de passe ne correspond pas");
+        } else {
+            confirm_password.setCustomValidity('');
+            confirm_password.removeClass("invalid").addClass("valid");
+        }
+    }
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>

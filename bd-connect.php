@@ -1,10 +1,10 @@
 <?php
-$_GLOBAL['mail-user'] = 'laboiteabouf@outlook.com';
-$_GLOBAL['mail-psw'] = 'Dodgecolt1984';
+$_GLOBAL['mail-user'] = 'robot.laboiteabouf@gmail.com';
+$_GLOBAL['mail-psw'] = 'robotadmin123';
+$_GLOBAL['mail-cc'] = 'laboiteabouf@outlook.com';
 //iP0AxxQjTpQR2lwO -- password
-//$_GLOBAL['dirimg'] = "/var/mers/html/projet/h2017/equipe5/upload/";
 $mysqli = new mysqli("localhost", "equipe5h17", "rogue-art","equipe5h17","22");
-//$mysqli = new mysqli("localhost", "mon-usager-SQL", "iP0AxxQjTpQR2lwO", "boitebouf");
+
 if ($mysqli -> connect_error) {
     die('Impossible de se connecter à la bd:' . $mysqli->connect_error);
 }

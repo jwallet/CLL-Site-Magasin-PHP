@@ -11,7 +11,9 @@ if(isset($_POST['email']) and isset($_POST['clientadd'])) {
     }
     //verification si tous les champs ont été renseignés, pu besoin de l'indiquer comme "is new"
     if (isset($_POST['prenom']) and isset($_POST['nom']) and isset($_POST['telephone'])) {
-        $isnew = 0;
+        if($_POST['prenom']!="" and $_POST['nom']!="" and $_POST['telephone']!="") {
+            $isnew = 0;
+        }
     }
     $prenom = $_POST['prenom'];
     $nom = $_POST['nom'];
@@ -42,15 +44,15 @@ if(isset($_POST['email']) and isset($_POST['clientadd'])) {
             //Envoie email
             $mail = new PHPMailer;
             $mail->isSMTP();
-            $mail->Host = 'smtp-mail.outlook.com';
+            $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = $_GLOBAL['mail-user'];
             $mail->Password = $_GLOBAL['mail-psw'];
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
-            $mail->setFrom($_GLOBAL['mail-user'], 'Mailer');
+            $mail->setFrom($_GLOBAL['mail-user'], 'La Boîte à Bouf');
             $mail->addAddress($email);
-            $mail->addReplyTo($_GLOBAL['mail-user'], 'Info');
+            $mail->addReplyTo($_GLOBAL['mail-user'], 'La Boîte à Bouf');
             $mail->isHTML(true);
             $mail->Subject = 'Votre inscription à la ' . $_GLOBAL['entreprise'];
             $mail->CharSet = 'UTF-8';

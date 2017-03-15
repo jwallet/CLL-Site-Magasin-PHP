@@ -5,9 +5,10 @@ $personnesNom = array();
 $personnesTelephone = array();
 $personnesAdresse = array();
 $personnesEmail = array();
-$stmt = $mysqli->prepare("SELECT id,email,prenom,nom,telephone,adresse FROM personne WHERE isadmin=0 and isnew != 2 order by nom;");
+$personnesType = array();
+$stmt = $mysqli->prepare("SELECT id,email,prenom,nom,telephone,adresse,isnew FROM personne WHERE isadmin=0 order by nom;");
 $stmt->execute();
-$stmt->bind_result($id,$email,$prenom,$nom,$telephone,$adresse);
+$stmt->bind_result($id,$email,$prenom,$nom,$telephone,$adresse,$isnew);
 while($stmt->fetch()) {
     $personnesId[] = $id;
     $personnesPrenom[] = $prenom;
@@ -15,6 +16,7 @@ while($stmt->fetch()) {
     $personnesTelephone[] = $telephone;
     $personnesAdresse[] = $adresse;
     $personnesEmail[] = $email;
+    $personnesType[] = $isnew;
 }
 ?>
 <?php if (isset($_SESSION['toast']) == 'client-mod'){?>
@@ -53,7 +55,8 @@ unset($_SESSION['toast']); ?>
                     <span style="font-size:85%;">
                             <?php echo $personnesAdresse[$i]; ?>
                         </span>
-                    <div id="modalDelItem<?php echo $i; ?>" class="modal">
+                    <?php if ($personnesType[$i] < 2) { ?>
+                        <div id="modalDelItem<?php echo $i; ?>" class="modal">
                         <div class="modal-content">
                             <h4>Désactivation Client</h4>
                             <p><h5>Etes-vous certain de vouloir désactiver ce client?</h5>
@@ -68,6 +71,26 @@ unset($_SESSION['toast']); ?>
                     </div>
                     <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/> Désactiver Client</a>
                     <a href="#modalDelItem<?php echo $i; ?>"  class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text"><i class="material-icons">delete</i></a>
+                    <?php }else
+                    { ?>
+                         <div id="modalActClient<?php echo $i; ?>" class="modal">
+                        <div class="modal-content">
+                            <h4>Désactivation Client</h4>
+                            <p><h5>Etes-vous certain de vouloir activer ce client?</h5>
+                            <b>Nom:</b> <?php echo ucfirst(strtolower($personnesPrenom[$i] . " " . $personnesNom[$i])); ?><br/>
+                            <b>email:</b> <?php echo ucfirst(strtolower($personnesEmail[$i])); ?><br/>
+                            <b>Telephone:</b> <?php echo ucfirst(strtolower($personnesTelephone[$i])); ?>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="admin-client-validation?idin=<?php echo $personnesId[$i]; ?>" class="btn modal-action modal-close waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">Oui</a>
+                            <a class="modal-action modal-close waves-effect waves-light btn-flat"><b>Non, annuler</b></a>
+                        </div>
+                    </div>
+                    <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/> Activer Client</a>
+                    <a href="#modalActClient<?php echo $i; ?>"  class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text"><i class="material-icons">Add</i></a>
+                    <?php
+                    }
+                    ?>
                 </a>
             </li>
             <?php

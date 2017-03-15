@@ -80,7 +80,18 @@ if(isset($_POST['email']) and isset($_POST['clientadd'])) {
     }
     $stmt->free_result();
     $stmt->close();
-    }else
+    }elseif(isset($_GET['idin'])){
+    echo $_GET['idin'];
+    echo $sql = "UPDATE personne SET isnew=0 WHERE id=?;";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $_GET['idin']);
+    if ($stmt->execute()) {
+        $_SESSION['toast'] = "client-act";
+        $redirect = "admin-client-list";
+    }
+    $stmt->free_result();
+    $stmt->close();
+}else
     {
         $_SESSION['toast'] = "erreur-client";
         $redirect = "admin-client-list";
@@ -88,7 +99,7 @@ if(isset($_POST['email']) and isset($_POST['clientadd'])) {
 ?>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0;URL='<?php if(isset($redirect)){ echo $redirect; } else { echo "home"; } ?>'"/>
+<!--    <meta http-equiv="refresh" content="0;URL='--><?php //if(isset($redirect)){ echo $redirect; } else { echo "home"; } ?><!--'"/>-->
 </head>
 </html>
 <?php

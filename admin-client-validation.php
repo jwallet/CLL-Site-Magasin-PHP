@@ -1,7 +1,8 @@
 <?php
-include("bd-connect.php");
-include("meta.php");
-if(isset($_POST['email']) and isset($_POST['clientadd'])) {
+
+if(isset($_POST['email'])) {
+    include("bd-connect.php");
+    include("meta.php");
     require 'phpmailer/PHPMailerAutoload.php';
     $isnew = 1;
     if (isset($_POST['id'])) {
@@ -101,7 +102,7 @@ if(isset($_POST['email']) and isset($_POST['clientadd'])) {
 ?>
 <html>
 <head>
-<!--    <meta http-equiv="refresh" content="0;URL='--><?php //if(isset($redirect)){ echo $redirect; } else { echo "home"; } ?><!--'"/>-->
+    <meta http-equiv="refresh" content="0;URL='<?php if(isset($redirect)){ echo $redirect; } else { echo "home"; } ?>'"/>
 </head>
 </html>
 <?php

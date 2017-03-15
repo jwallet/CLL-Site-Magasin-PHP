@@ -60,8 +60,8 @@ $images += glob($dir . '/*.JPEG');
     </li>
     <li><div class="divider"></div></li>
     <li><a href="menu"><i class="material-icons">map</i>Menu de la semaine</a></li>
-    <?php if(isset($_SESSION['user-online'])){ if($_SESSION['user-online']){ ?>
-    <li><a href="shop-cart"><i class="material-icons">shopping_cart</i>Panier de commande</a></li>
+    <?php if(isset($_SESSION['user-online'])){ if($_SESSION['user-online']){ if(!$_SESSION['user-isadmin']){ ?>
+    <li><a href="shop-cart"><i class="material-icons">shopping_cart</i>Panier de commande</a></li><?php } ?>
     <li><a href="account"><i class="material-icons">person</i>Compte</a></li>
     <?php }}else{
         ?>

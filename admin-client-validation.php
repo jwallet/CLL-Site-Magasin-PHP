@@ -1,7 +1,8 @@
 <?php
-include("bd-connect.php");
-include("meta.php");
-if(isset($_POST['email']) and isset($_POST['clientadd'])) {
+
+if(isset($_POST['email'])) {
+    include("bd-connect.php");
+    include("meta.php");
     require 'phpmailer/PHPMailerAutoload.php';
     $isnew = 1;
     if (isset($_POST['id'])) {
@@ -11,7 +12,9 @@ if(isset($_POST['email']) and isset($_POST['clientadd'])) {
     }
     //verification si tous les champs ont été renseignés, pu besoin de l'indiquer comme "is new"
     if (isset($_POST['prenom']) and isset($_POST['nom']) and isset($_POST['telephone'])) {
-        $isnew = 0;
+        if($_POST['prenom']!="" and $_POST['nom']!="" and $_POST['telephone']!="") {
+            $isnew = 0;
+        }
     }
     $prenom = $_POST['prenom'];
     $nom = $_POST['nom'];
@@ -23,8 +26,6 @@ if(isset($_POST['email']) and isset($_POST['clientadd'])) {
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param("sssssi", $email, $prenom, $nom, $telephone, $adresse, $id);
         $stmt->execute();
-        $stmt->free_result();
-        $stmt->close();
         $_SESSION['toast'] = "client-mod";
         $redirect = "admin-client-list";
     } else {
@@ -42,15 +43,15 @@ if(isset($_POST['email']) and isset($_POST['clientadd'])) {
             //Envoie email
             $mail = new PHPMailer;
             $mail->isSMTP();
-            $mail->Host = 'smtp-mail.outlook.com';
+            $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = $_GLOBAL['mail-user'];
             $mail->Password = $_GLOBAL['mail-psw'];
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
-            $mail->setFrom($_GLOBAL['mail-user'], 'Mailer');
+            $mail->setFrom($_GLOBAL['mail-user'], 'La Boîte à Bouf');
             $mail->addAddress($email);
-            $mail->addReplyTo($_GLOBAL['mail-user'], 'Info');
+            $mail->addReplyTo($_GLOBAL['mail-user'], 'La Boîte à Bouf');
             $mail->isHTML(true);
             $mail->Subject = 'Votre inscription à la ' . $_GLOBAL['entreprise'];
             $mail->CharSet = 'UTF-8';
@@ -69,7 +70,8 @@ if(isset($_POST['email']) and isset($_POST['clientadd'])) {
     }
     $stmt->free_result();
     $stmt->close();
-}elseif(isset($_GET['idout'])){
+}
+elseif(isset($_GET['idout'])){
     echo $_GET['idout'];
     echo $sql = "UPDATE personne SET isnew=2 WHERE id=?;";
     $stmt = $mysqli->prepare($sql);
@@ -99,7 +101,7 @@ if(isset($_POST['email']) and isset($_POST['clientadd'])) {
 ?>
 <html>
 <head>
-<!--    <meta http-equiv="refresh" content="0;URL='--><?php //if(isset($redirect)){ echo $redirect; } else { echo "home"; } ?><!--'"/>-->
+    <meta http-equiv="refresh" content="0;URL='<?php if(isset($redirect)){ echo $redirect; } else { echo "home"; } ?>'"/>
 </head>
 </html>
 <?php

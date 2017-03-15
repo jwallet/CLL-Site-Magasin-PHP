@@ -1,6 +1,11 @@
 <?php
-    if(isset($_SESSION['user-isadmin'])){
+$isadmin = false;
+$isnew = false;
+if(isset($_SESSION['user-isadmin'])){
     $isadmin = $_SESSION['user-isadmin'];
+}
+if(isset($_SESSION['user-isnew'])){
+    $isnew = $_SESSION['user-isnew'];
 }
 
 if(isset($_SESSION['toast'])) {
@@ -26,18 +31,19 @@ if(isset($_SESSION['toast'])) {
 }?>
 
 <ul class="collapsible" data-collapsible="accordion">
-    <?php if (!$isadmin){ ?>
-        <!-- commandes -->
-        <li>
-            <a href="account-commandes" class="black-text">
-                <div class="collapsible-header">
-                    <div class="container">
-                        <i class="material-icons">shopping_basket</i>Commandes
+    <?php if(!$isnew){
+        if (!$isadmin){ ?>
+            <!-- commandes -->
+            <li>
+                <a href="account-commandes" class="black-text">
+                    <div class="collapsible-header">
+                        <div class="container">
+                            <i class="material-icons">shopping_basket</i>Commandes
+                        </div>
                     </div>
-                </div>
-            </a>
-        </li>
-    <?php } ?>
+                </a>
+            </li>
+        <?php } ?>
 
     <!-- profil -->
     <li>
@@ -95,7 +101,7 @@ if(isset($_SESSION['toast'])) {
         password.onchange = validatePassword;
         confirm_password.onkeyup = validatePassword;
     </script>
-
+<?php } ?>
     <!-- deconnexion -->
     <li>
         <a href="account-disconnect" class="black-text">

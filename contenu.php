@@ -17,6 +17,9 @@ if(isset($_SESSION['user-online'])){
             } elseif ($page['fichier'] == "connect") {
                 header("Location: account");
             }
+            elseif ($page['fichier'] == "account-first-access") {
+                header("Location: home");
+            }
         }
         else {
             if($page['categorie']!="home" and $page['categorie']!="account") {
@@ -31,7 +34,7 @@ if(isset($_SESSION['user-online'])){
 }
 //verification des pages bloquantes, si user est pas connecter et veut acceder a des pages avec acces
 else{
-    if($page['categorie']!="home" and $page['categorie']!="menu"){
+    if(($page['categorie']!="home" and $page['categorie']!="menu") or $page['fichier']=="account-first-access"){
         header ("Location: connect");
     }
 }

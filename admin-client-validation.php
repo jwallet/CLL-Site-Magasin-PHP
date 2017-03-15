@@ -1,7 +1,7 @@
 <?php
 include("bd-connect.php");
 include("meta.php");
-if(isset($_POST['email']) and $POST('clientadd')) {
+if(isset($_POST['email']) and isset($_POST['clientadd'])) {
     require 'phpmailer/PHPMailerAutoload.php';
     $isnew = 1;
     if (isset($_POST['id'])) {
@@ -69,12 +69,12 @@ if(isset($_POST['email']) and $POST('clientadd')) {
     }
     $stmt->free_result();
     $stmt->close();
-}elseif(isset($_POST['email']) and $POST('clientsupp')){
-    $sql = "UPDATE personne SET isnew=2 WHERE id=?;";
+}elseif(isset($_GET['idout'])){
+    echo $sql = "UPDATE personne SET isnew=2 WHERE id=?;";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $_GET['id']);
+    $stmt->bind_param("i", $_GET['idout']);
     if ($stmt->execute()) {
-        $_SESSION['toast'] = "client-mod";
+        $_SESSION['toast'] = "client-del";
         $redirect = "admin-client";
     }
     $stmt->free_result();
@@ -82,12 +82,12 @@ if(isset($_POST['email']) and $POST('clientadd')) {
     }else
     {
         $_SESSION['toast'] = "erreur-client";
-        $redirect = "admin-client";
+        $redirect = "admin-client-list";
     }
 ?>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0;URL='<?php if(isset($redirect)){ echo $redirect; } else { echo "home"; } ?>'"/>
+<!--    <meta http-equiv="refresh" content="0;URL='--><?php //if(isset($redirect)){ echo $redirect; } else { echo "home"; } ?><!--'"/>-->
 </head>
 </html>
 <?php

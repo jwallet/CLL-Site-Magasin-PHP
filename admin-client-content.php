@@ -66,11 +66,6 @@ else{
             </div>
             <button style="width: 100%;" id="send" name="clientadd" class="waves-effect waves-light btn-large  <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?>" type="submit" name="action">Enregistrer
             </button>
-            <?php if ($id != "") {?>
-                <br><br>
-                <button style="width: 100%;" name="clientsupp" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?> "
-                        type='submit'>Supprimer</button>
-            <?php }?>
         </form>
     </div>
 </div>

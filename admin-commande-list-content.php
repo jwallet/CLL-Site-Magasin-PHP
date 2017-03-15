@@ -49,7 +49,7 @@ while($stmt->fetch()) {
 }
 $stmt->free_result();
 //Aller chercher tous les clients actifs
-$stmt = $mysqli->prepare("SELECT id,prenom,nom FROM personne WHERE isadmin=0 order by nom;");
+$stmt = $mysqli->prepare("SELECT id,prenom,nom FROM personne WHERE isadmin=0 and isnew!=2 order by nom;");
 $stmt->execute();
 $stmt->bind_result($id,$prenom,$nom);
 while($stmt->fetch()) {
@@ -96,7 +96,7 @@ $stmt->free_result();
                     <td><?php echo $Quantite;?></td>
                 <?php
                 }
-                $stmt = $mysqli->prepare("SELECT SUM(i.prix * cd.Quantite) FROM item AS i JOIN commande_detail AS cd ON i.id = cd.iditem JOIN commande c ON c.id = cd.idcommande WHERE c.id = ?;");
+                $stmt = $mysqli->prepare("SELECT SUM(i.prix * cd.Quantite) FROM item AS i JOIN commande_detail AS cd ON i.id = cd.iditem JOIN commande c ON c.id = cd.idcommande JOIN personne p ON p.id = c.idpersonne WHERE c.id = ? and p.isnew!=2;");
                 $stmt->bind_param("i",$idcommande);
                 $stmt->execute();
                 $stmt->bind_result($TotalPers);
@@ -113,7 +113,7 @@ $stmt->free_result();
         <td><b>Total Portions</b></td>
         <?php for($j=0; $j<sizeof($itemsBdId); $j++){
             $TotalQuantite = 0;
-            $stmt = $mysqli->prepare("SELECT SUM(Quantite) FROM commande_detail AS cd JOIN commande AS c ON c.id = cd.idcommande JOIN menu m on m.id = c.idmenu WHERE cd.iditem = ? and m.isnow=1;");
+            $stmt = $mysqli->prepare("SELECT SUM(Quantite) FROM commande_detail AS cd JOIN commande AS c ON c.id = cd.idcommande JOIN personne p ON p.id = c.idpersonne JOIN menu m on m.id = c.idmenu WHERE cd.iditem = ? and m.isnow=1 and p.isnew!=2;");
             $stmt->bind_param("i",$itemsBdId[$j]);
             $stmt->execute();
             $stmt->bind_result($TotalQuantite);

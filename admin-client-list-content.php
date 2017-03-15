@@ -24,7 +24,16 @@ while($stmt->fetch()) {
         });
     </script>
     <?php
-} ?>
+} elseif (isset($_SESSION['toast']) == 'client-del') {
+    ?>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Materialize.toast('Le client a été désactivé avec succès', 3000);
+        });
+    </script>
+    <?php
+}
+unset($_SESSION['toast']); ?>
 <div class="container col">
     <ul class="collection">
         <?php for($i=0; $i<sizeof($personnesId); $i++){?>
@@ -44,9 +53,28 @@ while($stmt->fetch()) {
                     <span style="font-size:85%;">
                             <?php echo $personnesAdresse[$i]; ?>
                         </span>
+                    <div id="modalDelItem<?php echo $i; ?>" class="modal">
+                        <div class="modal-content">
+                            <h4>Désactivation Client</h4>
+                            <p><h5>Etes-vous certain de vouloir désactiver ce client?</h5>
+                            <b>Nom:</b> <?php echo ucfirst(strtolower($personnesPrenom[$i] . " " . $personnesNom[$i])); ?><br/>
+                            <b>email:</b> <?php echo ucfirst(strtolower($personnesEmail[$i])); ?><br/>
+                            <b>Telephone:</b> <?php echo ucfirst(strtolower($personnesTelephone[$i])); ?>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="admin-client-validation?idout=<?php echo $personnesId[$i]; ?>" class="btn modal-action modal-close waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">Oui</a>
+                            <a class="modal-action modal-close waves-effect waves-light btn-flat"><b>Non, annuler</b></a>
+                        </div>
+                    </div>
+                    <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/> Désactiver Client</a>
+                    <a href="#modalDelItem<?php echo $i; ?>"  class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text"><i class="material-icons">delete</i></a>
                 </a>
             </li>
             <?php
         }?>
     </ul>
 </div>
+
+<script type="text/javascript">
+    $('.modal').modal();
+</script>

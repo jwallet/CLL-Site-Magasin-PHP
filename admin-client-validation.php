@@ -26,8 +26,6 @@ if(isset($_POST['email'])) {
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param("sssssi", $email, $prenom, $nom, $telephone, $adresse, $id);
         $stmt->execute();
-        $stmt->free_result();
-        $stmt->close();
         $_SESSION['toast'] = "client-mod";
         $redirect = "admin-client-list";
     } else {
@@ -72,7 +70,8 @@ if(isset($_POST['email'])) {
     }
     $stmt->free_result();
     $stmt->close();
-}elseif(isset($_GET['idout'])){
+}
+elseif(isset($_GET['idout'])){
     echo $_GET['idout'];
     echo $sql = "UPDATE personne SET isnew=2 WHERE id=?;";
     $stmt = $mysqli->prepare($sql);

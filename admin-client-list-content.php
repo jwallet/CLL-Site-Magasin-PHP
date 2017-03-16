@@ -6,7 +6,7 @@ $personnesTelephone = array();
 $personnesAdresse = array();
 $personnesEmail = array();
 $personnesType = array();
-$stmt = $mysqli->prepare("SELECT id,email,prenom,nom,telephone,adresse,isnew FROM personne WHERE isadmin=0 order by nom;");
+$stmt = $mysqli->prepare("SELECT id,email,prenom,nom,telephone,adresse,isnew FROM personne WHERE isadmin=0 order by isnew, nom;");
 $stmt->execute();
 $stmt->bind_result($id,$email,$prenom,$nom,$telephone,$adresse,$isnew);
 while($stmt->fetch()) {
@@ -39,20 +39,20 @@ unset($_SESSION['toast']); ?>
 <div class="container col">
     <ul class="collection">
         <?php for($i=0; $i<sizeof($personnesId); $i++){?>
-            <li class="collection-item avatar" style="padding-left:80px;">
+            <li class="collection-item avatar" style="padding-left:15px;">
                 <a style="color:black;" href="admin-client?id=<?php echo $personnesId[$i]; ?>">
-                    <span style="background-image:url('<?php if( $itemsImg[$i]!=null and  $itemsImg[$i]!=""){ echo "upload/".$itemsImg[$i];} else { echo "css/ico/logo.png"; } ?>');background-position:center;background-size:auto 60px;width:60px;height: 60px; margin-top:-8px;margin-left:-6px;" alt="" class="circle"></span>
                     <span class="title">
-                        <?php echo $personnesEmail[$i]; ?>
-                    </span>
-                    <span class="<?php echo $_GLOBAL['couleur2a']; ?>-text" style="padding-left:8px;font-size:14px;font-style: italic;">
-                            <?php echo ucfirst(strtolower($personnesPrenom[$i])) . " " . ucfirst(strtolower($personnesNom[$i])); ?>
-                        </span><br/>
+                        <?php echo ucfirst(strtolower($personnesPrenom[$i])) . " " . ucfirst(strtolower($personnesNom[$i])); ?>
+                    </span><i class="material-icons btn-floating grey" style="margin-top:-5px;margin-left:10px;line-height:1.2;width:21px;height:21px;font-size:130%;"><?php if ($personnesType[$i] < 2) { echo "visibility"; } else { echo "visibility_off";} ?></i>
+                    <br/>
                     <span style="font-size:85%;">
+                            <?php echo $personnesEmail[$i]; ?>
+                        </span><br/>
+                    <span style="font-size:85%;" class="<?php echo $_GLOBAL['couleur2a']; ?>-text">
                             <?php echo ucfirst(strtolower($personnesTelephone[$i])); ?>
                             <br>
                         </span>
-                    <span style="font-size:85%;">
+                    <span style="font-size:75%;" class="<?php echo $_GLOBAL['couleur2a']; ?>-text">
                             <?php echo $personnesAdresse[$i]; ?>
                         </span>
                     <?php if ($personnesType[$i] < 2) { ?>
@@ -69,8 +69,7 @@ unset($_SESSION['toast']); ?>
                             <a class="modal-action modal-close waves-effect waves-light btn-flat"><b>Non, annuler</b></a>
                         </div>
                     </div>
-                    <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/> Désactiver Client</a>
-                    <a href="#modalDelItem<?php echo $i; ?>"  class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text"><i class="material-icons">delete</i></a>
+                    <a href="#modalDelItem<?php echo $i; ?>" class="btn-floating <?php echo $_GLOBAL['couleur1a']; ?> secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text"><i class="material-icons">delete</i></a>
                     <?php }else
                     { ?>
                          <div id="modalActClient<?php echo $i; ?>" class="modal">
@@ -86,8 +85,7 @@ unset($_SESSION['toast']); ?>
                             <a class="modal-action modal-close waves-effect waves-light btn-flat"><b>Non, annuler</b></a>
                         </div>
                     </div>
-                    <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/> Activer Client</a>
-                    <a href="#modalActClient<?php echo $i; ?>"  class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text"><i class="material-icons">Add</i></a>
+                    <a href="#modalActClient<?php echo $i; ?>" class="btn-floating <?php echo $_GLOBAL['couleur1a']; ?> secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text"><i class="material-icons">delete</i></a>
                     <?php
                     }
                     ?>

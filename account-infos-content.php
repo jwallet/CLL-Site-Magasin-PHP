@@ -89,12 +89,12 @@ if(isset($_SESSION['toast'])) {
                 <form action="account-name-validation" class="col s12" style="margin:0;padding:0;" method="post">
                     <div class="input-field row">
                         <input type="text" name="prenom" id="prenom"
-                               title="Lettres seulement"  pattern="[a-zA-Z]+" value="<?php echo $_SESSION['user-prenom']?>" required>
+                               title="Lettres seulement"  value="<?php echo $_SESSION['user-prenom']?>" required>
                         <label for="prenom">Prénom</label>
                     </div>
                     <div class="input-field row">
                         <input type="text" name="nom" id="nom"
-                               title="Lettres seulement"  pattern="[a-zA-Z]+" value="<?php echo $_SESSION['user-nom']?>" required>
+                               title="Lettres seulement"  value="<?php echo $_SESSION['user-nom']?>" required>
                         <label for="nom">Nom</label>
                     </div>
                     <button class="btn waves-effect waves-light row right  <?php echo $_GLOBAL['couleur1a']; ?>" type="submit" name="action">Enregistrer

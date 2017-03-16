@@ -45,12 +45,12 @@ else{
             </div>
             <div class="input-field">
                 <i class="material-icons prefix">person</i>
-                <input id="prenom" name="prenom" type="text" value="<?php echo $prenom; ?>" title="Lettres seulement"  pattern="[a-zA-Z]+" class="validate">
+                <input id="prenom" name="prenom" type="text" value="<?php echo $prenom; ?>" title="Lettres seulement" class="validate">
                 <label for="prenom">Prénom</label>
             </div>
             <div class="input-field">
                 <i class="material-icons prefix">person</i>
-                <input id="nom" name="nom" type="text" value="<?php echo $nom; ?>" title="Lettres seulement" pattern="[a-zA-Z]+" class="validate">
+                <input id="nom" name="nom" type="text" value="<?php echo $nom; ?>" title="Lettres seulement" class="validate">
                 <label for="nom">Nom</label>
             </div>
             <div class="input-field">

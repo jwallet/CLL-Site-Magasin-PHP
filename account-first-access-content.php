@@ -36,13 +36,13 @@ if(isset($_SESSION['toast'])) {
                 </div>
                 <div class="input-field row">
                     <i class="material-icons prefix">person</i>
-                    <input type="text" name="prenom" id="prenom" title="Lettres seulement"  pattern="[a-zA-Z]+"
+                    <input type="text" name="prenom" id="prenom" title="Lettres seulement"
                            value="<?php echo $_SESSION['user-prenom']?>" required>
                     <label for="prenom">Prénom *</label>
                 </div>
                 <div class="input-field row">
                     <i class="material-icons prefix">person</i>
-                    <input type="text" name="nom" id="nom" title="Lettres seulement"  pattern="[a-zA-Z]+"
+                    <input type="text" name="nom" id="nom" title="Lettres seulement"
                            value="<?php echo $_SESSION['user-nom']?>" required>
                     <label for="nom">Nom *</label>
                 </div>

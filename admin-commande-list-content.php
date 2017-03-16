@@ -60,7 +60,7 @@ while($stmt->fetch()) {
 $stmt->free_result();
 ?>
 
-<table class="centered highlight bordered">
+<table class="centered highlight bordered responsive-table striped">
     <thead>
     <tr>
         <th data-field="Client"></th>

@@ -104,8 +104,7 @@ $message = "<div class=\"container\">
                 . "<br/>TPS (5%) : " . money_format('%(#10n', ($soustotal*0.05))
                 . "<br/>Prix total : " . money_format('%(#10n', ($soustotal*1.14975))
                 . " *</p><p class='grey-text text-darken-1'>* Le prix total vous sera chargé 
-                sur place lors de votre visite à la " . $_GLOBAL['entreprise'] . ". Voir la zone ci-dessous 
-                pour connaitre nos heures de cueillete et notre emplacement.</p></div></div>";
+                sur place lors de votre visite à la " . $_GLOBAL['entreprise'] . "</p></div></div>";
 
 $mail->Body    = $message;
 if(!$mail->send()){

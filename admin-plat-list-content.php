@@ -41,7 +41,7 @@ while($stmt->fetch()) {
 <div class="container col">
     <ul class="collection">
         <?php for($i=0; $i<sizeof($itemsId); $i++){?>
-                <li class="collection-item avatar" style="padding-left:80px;padding-right:50px;">
+                <li class="collection-item avatar" style="padding-left:80px;padding-right:56px;">
                     <a style="color:black;" href="admin-plat?id=<?php echo $itemsId[$i]; ?>">
                         <span style="background-image:url('<?php if( $itemsImg[$i]!=null and  $itemsImg[$i]!=""){ echo "upload/".$itemsImg[$i];} else { echo "css/ico/logo.png"; } ?>');background-position:center;background-size:auto 60px;width:60px;height: 60px; margin-top:-8px;margin-left:-6px;" alt="" class="circle"></span>
                         <span class="title">
@@ -68,8 +68,8 @@ while($stmt->fetch()) {
                             </div>
                         </div>
 
-                        <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/><?php echo money_format('%(#10n', ($itemsPrix[$i])); ?></a>
-                        <a href="#modalDelItem<?php echo $i; ?>"  class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text"><i class="material-icons">delete</i></a>
+                        <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="padding-top:18px;font-size:90%;"><br/><?php echo money_format('%(#10n', ($itemsPrix[$i])); ?></a>
+                        <a href="#modalDelItem<?php echo $i; ?>" style="margin-top:-6px;" class="btn-floating <?php echo $_GLOBAL['couleur1a']; ?> secondary-content"><i class="material-icons">delete</i></a>
                     </a>
                 </li>
                 <?php

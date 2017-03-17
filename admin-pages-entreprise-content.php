@@ -52,7 +52,7 @@ $stmt->close();
         statusbar: false,
         content_css: 'css/materialize.css',
         body_class: 'tinybody',
-        toolbar: 'undo redo styleselect bold italic underline blockquote removeformat alignleft aligncenter alignright alignjustify outdent indent code',
+        toolbar: 'undo redo | styleselect | bold italic underline | blockquote | alignleft aligncenter alignright alignjustify | outdent indent | removeformat |  code',
         plugins: 'code',
         height: 200,
        });

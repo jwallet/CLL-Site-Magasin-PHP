@@ -236,6 +236,15 @@
                         </div>
                     </a>
                 </li>
+                <li>
+                    <a href="admin-pages-commander" class="black-text">
+                        <div class="collapsible-header grey lighten-3">
+                            <div class="container">
+                                <i class="material-icons"></i>Confirmer la commande
+                            </div>
+                        </div>
+                    </a>
+                </li>
             </ul>
         </div>
     </li>

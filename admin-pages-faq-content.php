@@ -36,13 +36,13 @@ $stmt->close();
         language: 'fr_FR',
         menubar:false,
         statusbar: false,
-        toolbar: 'undo redo styleselect bold italic underline blockquote removeformat alignleft aligncenter alignright alignjustify outdent indent code',
+        toolbar: 'undo redo | styleselect | bold italic underline | blockquote | alignleft aligncenter alignright alignjustify | outdent indent | removeformat |  code',
         plugins: 'code',
-        height: 500
+        height: 400
     });
 </script>
 
-<div class="container">
+<div id="tool" class="container">
     <form action="#" class="section" method="post">
         <h5>Fonctionnement (FAQ)</h5>
         <p>Utilisez ### pour ajouter une section, puis sur une nouvelle ligne écrivez le contenu de la nouvelle section.<br/><div style="background-color:#666; color:white; padding:10px;border:1px solid black;font-family: Courier"><b>###</b> Titre de la section <b>###</b><br/>Le contenu de la section</div></p>

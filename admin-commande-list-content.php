@@ -64,8 +64,8 @@ $stmt->free_result();
     <tr>
         <th data-field="Client"><br/><br/></th>
         <?php for($i=0; $i<sizeof($itemsBdId); $i++){?>
-            <th data-field="itemid" style="cursor:pointer;text-align: right;margin:0;padding:0;margin-top:-20px;">
-                <div class="tooltipped" data-position="left" data-delay="50" data-tooltip="<?php echo ucfirst(strtolower($itemsBdTitre[$i])); ?>" style="background-image:url('<?php if( $itemsBdImg[$i]!=null and  $itemsBdImg[$i]!=""){ echo "upload/".$itemsBdImg[$i];} else { echo "css/ico/logo.png"; } ?>');background-position:center; background-repeat:no-repeat;border:2px solid white;background-size:100px auto;border-radius:10px;width:100px;height:50px;" alt="plat" >
+            <th data-field="itemid" style="cursor:pointer;text-align: right;margin:0;padding:0;">
+                <div class="tooltipped" data-position="left" data-delay="50" data-tooltip="<?php echo ucfirst(strtolower($itemsBdTitre[$i])); ?>" style="background-image:url('<?php if( $itemsBdImg[$i]!=null and  $itemsBdImg[$i]!=""){ echo "upload/".$itemsBdImg[$i];} else { echo "css/ico/logo.png"; } ?>');background-position:center; background-repeat:no-repeat;border:2px solid white;background-size:100px auto;border-radius:10px;width:100px;height:50px;margin-top:-20px;" alt="<?php echo ucfirst(strtolower($itemsBdTitre[$i])); ?>" >
                 </div>
             </th>
         <?php } ?>

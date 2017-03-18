@@ -43,7 +43,7 @@ while($stmt->fetch()) {
         <?php for($i=0; $i<sizeof($itemsId); $i++){?>
                 <li class="collection-item avatar" style="padding-left:100px;min-height:95px;padding-right:56px;">
                     <a style="color:black;" href="admin-plat?id=<?php echo $itemsId[$i]; ?>">
-                        <div class="circle" style="background-image:url('<?php if( $itemsImg[$i]!=null and  $itemsImg[$i]!=""){ echo "upload/".$itemsImg[$i];} else { echo "css/ico/logo.png"; } ?>');background-position:center; background-repeat:no-repeat;border:2px solid white;background-size:auto 100px;border-radius:20px;width:70px;height:70px;margin-top:-10px;" alt="<?php echo ucfirst(strtolower($itemsBdTitre[$i])); ?>" >
+                        <div class="circle" style="background-image:url('<?php if( $itemsImg[$i]!=null and  $itemsImg[$i]!=""){ echo "upload/".$itemsImg[$i];} else { echo "css/ico/logo.png"; } ?>');background-position:center; background-repeat:no-repeat;border:2px solid white;background-size:auto 100px;border-radius:20px;width:80px;height:80px;margin-top:-10px;" alt="<?php echo ucfirst(strtolower($itemsBdTitre[$i])); ?>" >
                         </div>
                         <span class="title">
                             <?php echo ucfirst(strtolower($itemsTitre[$i])); ?>

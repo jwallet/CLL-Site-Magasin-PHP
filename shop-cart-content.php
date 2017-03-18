@@ -135,9 +135,11 @@ else{
             $stmt->fetch();
             $stmt->close();
             for($i=0; $i<sizeof($itemsId); $i++){?>
-                <li class="collection-item avatar" style="padding-left:80px;">
-                    <span style="background-image:url('<?php if( $itemsImg[$i]!=null and  $itemsImg[$i]!=""){ echo "upload/".$itemsImg[$i];} else { echo "css/ico/logo.png"; } ?>');background-position:center;background-size:auto 60px;width:60px;height: 60px; margin-top:-8px;margin-left:-6px;" alt="" class="circle"></span>
-                    <span class="title"><?php echo ucfirst(strtolower($itemsTitre[$i])); ?></span><span class="<?php echo $_GLOBAL['couleur2a']; ?>-text" style="padding-left:8px;font-size:14px;font-style: italic;"><?php echo ucfirst(strtolower($itemsType[$i])); ?></span>
+                <li class="collection-item avatar" style="padding-top:15px;padding-bottom:15px;padding-left:100px;">
+                    <div class="circle" style="background-image:url('<?php if( $itemsImg[$i]!=null and  $itemsImg[$i]!=""){ echo "upload/".$itemsImg[$i];} else { echo "css/ico/logo.png"; } ?>');background-position:center; background-repeat:no-repeat;border:2px solid white;background-size:auto 100px;border-radius:20px;width:80px;height:84px;margin-top:-6px;" alt="<?php echo ucfirst(strtolower($itemsBdTitre[$i])); ?>" >
+                    </div>
+                    <span class="title"><?php echo ucfirst(strtolower($itemsTitre[$i])); ?></span>
+                    <br/><span class="<?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:14px;font-style: italic;"><?php echo ucfirst(strtolower($itemsType[$i])); ?></span>
                     <p><form action="shop-cart" method="post" style="padding:0;margin:0;">
                         <input name="updateid" type="hidden" value="<?php echo $itemsId[$i]; ?>"/>
                         <input name="updatequant" style="width: 50px;float:left;height: 1.5rem;border:1px solid #AAA;" type="number" value="<?php echo $itemsQuant[$i]; ?>"/>
@@ -148,8 +150,8 @@ else{
                             <i class="material-icons">delete</i>
                         </a>
                     </form></p>
-                    <a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($itemsPrix[$i]*$itemsQuant[$i])); ?></a>
-                    <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/><?php echo money_format('%(#10n', ($itemsPrix[$i])); ?> /chacun</a>
+                    <a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="margin-top:0px;font-size:120%;"><?php echo money_format('%(#10n', ($itemsPrix[$i]*$itemsQuant[$i])); ?></a>
+                    <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="margin-top:10px;font-size:90%;"><br/><?php echo money_format('%(#10n', ($itemsPrix[$i])); ?> /chacun</a>
                 </li>
             <?php
             $total += $itemsQuant[$i]*$itemsPrix[$i];

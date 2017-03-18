@@ -75,7 +75,7 @@ echo "
                                                 <div class="section">
                                                     <div class="white-text" style="margin:0px 20px 0px 20px;">
 
-                                                        <div style="float:right; border-radius:70px;background-image:url('<?php if( $itemsBdImg[$j]!=null and  $itemsBdImg[$j]!=""){ echo "upload/".$itemsBdImg[$j];} else { echo "css/ico/logo.png"; } ?>');background-position:center;background-size:auto 140px;width:140px;height: 140px; margin-right:-10px;" alt=""></div>
+                                                        <div style="float:right; border-radius:70px;background-image:url('<?php if( $itemsBdImg[$j]!=null and  $itemsBdImg[$j]!=""){ echo "upload/".$itemsBdImg[$j];} else { echo "css/ico/logo.png"; } ?>');background-position:center;background-repeat:no-repeat;background-size:auto 170px;width:140px;height: 140px; margin-right:-5px;" alt="<?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?>"></div>
                                                         <h5 class="col s12"><?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?></h5>
                                                         <p class="col s12" style="min-height: 100px;"><?php if($itemsBdDesc[$j]!=null and $itemsBdDesc[$j]!=""){ echo $itemsBdDesc[$j]; } else { echo "Aucune description n'est disponible."; } ?></p>
                                                         <?php if(isset($_SESSION['user-online']) and date("N")<=$_GLOBAL['jour-limite-commander']){?>

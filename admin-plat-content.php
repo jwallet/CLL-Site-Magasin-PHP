@@ -23,7 +23,7 @@
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div class="input-field">
                 <i class="material-icons prefix">title</i>
-                <input type="text" name="titre" value="<?php echo $titre; ?>" class="validate" required>
+                <input type="text" name="titre" value="<?php echo ucfirst(strtolower($titre)); ?>" class="validate" required>
                 <label>Titre du plat</label>
             </div>
             <div class="input-field">
@@ -79,7 +79,7 @@
             <div class="center">
                 <div class="card center">
                     <span class="card-title">Image associée à ce plat</span>
-                    <div class="card-image"
+                    <div class="card-image" alt="<?php echo ucfirst(strtolower($titre)); ?>"
                      style="height:280px;width:100%;background-size:100% auto;background-position:center;background-repeat: no-repeat;
                              background-image:url('<?php echo $_GLOBAL['dirimg'].$image; ?>');">
                     </div>

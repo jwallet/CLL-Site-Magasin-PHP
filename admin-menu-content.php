@@ -22,8 +22,8 @@ if($stmt->fetch()){
 }
 ?>
     <div class="container">
-    <div class="section" style="padding:5px;">
-        <form action="admin-menu-validation" method="POST">
+    <div class="section">
+        <form action="admin-menu-validation" method="POST" style="margin-top:20px;margin-bottom:20px;">
             <input type="hidden" name="action" value="<?php echo $action; ?>"/>
             <input type="hidden" name="id" value="<?php echo $menuloaded; ?>"/>
             <div class="input-field">

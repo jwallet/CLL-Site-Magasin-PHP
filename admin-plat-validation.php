@@ -101,22 +101,22 @@ if(isset($_POST['titre']) and isset($_POST['prix'])and isset($_POST['type'])) {
     }
 
 }
-else
-{
-    if(isset($_GET['idout'])){
-        include("bd-connect.php");
-        include("meta.php");
-        //on efface le id, le call vient du bouton delete dans la liste des items
-        // on cherche limage associer avant
-        $id = (integer)$_GET['idout'];
-        $sql = "SELECT image FROM item WHERE id=?;";
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $stmt->bind_result($imagetoremove);
-        $stmt->fetch();
+else if(isset($_GET['idout'])){
+    include("bd-connect.php");
+    include("meta.php");
+    //on efface le id, le call vient du bouton delete dans la liste des items
+    // on cherche limage associer avant
+    $id = (integer)$_GET['idout'];
+    $sql = "SELECT image, used FROM item WHERE id=?;";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->bind_result($imagetoremove, $used);
+    $stmt->fetch();
+    //si item a pas ete publie on peut la retirer et son image aussi, sinon on desactif litem
+    if($used!=1) {
         //si ya une image on la delete de upload
-        if($imagetoremove!=null and $imagetoremove!=""){
+        if ($imagetoremove != null and $imagetoremove != "") {
             if (@fopen($_GLOBAL['dirimg'] . $imagetoremove, "r")) {
                 unlink($_GLOBAL['dirimg'] . $imagetoremove);
             }
@@ -127,16 +127,26 @@ else
         $sql = "DELETE FROM item WHERE id=?;";
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param("i", $id);
-        if ($stmt->execute()) {
-            $_SESSION['toast'] = "plat-del";
-            $redirect = "admin-plat-list";
-        }
+        $stmt->execute();
+        $_SESSION['toast'] = "plat-del";
+        $redirect = "admin-plat-list";
         $stmt->close();
     }
     else{
-        $_SESSION['toast'] = "erreur-plat";
-        $redirect = "admin";
+        $stmt->free_result();
+        $stmt->close();
+        $sql = "UPDATE item SET desactif=1 WHERE id=?;";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $_SESSION['toast'] = "plat-del";
+        $redirect = "admin-plat-list";
+        $stmt->close();
     }
+}
+else{
+    $_SESSION['toast'] = "erreur-plat";
+    $redirect = "admin";
 }
 ?>
 

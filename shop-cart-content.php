@@ -128,7 +128,7 @@ else{
     <ul class="collection">
         <?php if(!$empty) {
             $total=0;
-            $sql ="SELECT textarea FROM pages WHERE nom LIKE 'confirme' AND categorie LIKE 'shoppingcart'";
+            $sql ="SELECT textarea FROM pages WHERE nom LIKE 'commander' AND categorie LIKE 'confirmation'";
             $stmt = $mysqli->prepare($sql);
             $stmt->execute();
             $stmt->bind_result($tarea);
@@ -160,7 +160,7 @@ else{
             <div id="modalCommander" class="modal">
                 <div class="modal-content">
                     <h4>Commander</h4>
-                    <?php echo $tarea; ?>
+                    <?php echo $tarea;?>
                     <b>Désirez-vous poursuivre et commander ces plats?</b>
 
                 </div>

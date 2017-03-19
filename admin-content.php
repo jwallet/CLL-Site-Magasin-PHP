@@ -237,10 +237,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="admin-pages-commander" class="black-text">
+                    <a href="admin-pages-dialogues" class="black-text">
                         <div class="collapsible-header grey lighten-3">
                             <div class="container">
-                                <i class="material-icons"></i>Confirmer la commande
+                                <i class="material-icons"></i>Dialogues d'acceptation
                             </div>
                         </div>
                     </a>

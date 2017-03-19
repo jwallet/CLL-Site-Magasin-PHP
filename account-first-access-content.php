@@ -1,4 +1,10 @@
 <?php
+$sql ="SELECT textarea FROM pages WHERE nom LIKE 'cookie' AND categorie LIKE 'confirmation'";
+$stmt = $mysqli->prepare($sql);
+$stmt->execute();
+$stmt->bind_result($tarea);
+$stmt->fetch();
+$stmt->close();
 //check pour des toasts
 if(isset($_SESSION['toast'])) {
     if ($_SESSION['toast'] == 'first-access-failed') {
@@ -59,11 +65,7 @@ if(isset($_SESSION['toast'])) {
             </div>
             <p>
                 <input style="left:inherit;margin-left:2px;margin-top:8px;" type="checkbox" name="accepter" id="cookie" class="validate" required>
-                <label for="cookie">J'accepte que La Boîte à Bouf puisse sauvegarder
-                    de petits fichiers texte, aussi appelés cookies, qui permetteront de m'identifier
-                    sur leur site Internet. Je comprends que ce site Internet crée et utilise des cookies localisés
-                    sur mon ordinateur pour être en mesure de connaître les plats que je désire commander
-                    et de pouvoir les afficher dans la section mon panier.</label>
+                <label for="cookie"><?php echo str_replace("</p>","",str_replace("<p>","",$tarea)); ?></label>
             </p><br/>
             <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?>"
                     type='submit' name="connect">Enregistrer</button>

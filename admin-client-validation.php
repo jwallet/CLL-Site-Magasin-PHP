@@ -14,6 +14,7 @@ if(isset($_POST['email'])) {
     $nom = $_POST['nom'];
     $telephone = $_POST['telephone'];
     $email = $_POST['email'];
+    $adresse = $_POST['adresse'];
     $password = randomPassword();
     if ($id != "") {
         $sql = "UPDATE personne SET email=?,prenom=?,nom=?,telephone=?,adresse=? WHERE id=?;";

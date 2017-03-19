@@ -36,8 +36,8 @@ $stmt->close();
         language: 'fr_FR',
         menubar:false,
         statusbar: false,
-        toolbar: 'undo redo | styleselect | bold italic underline | blockquote | alignleft aligncenter alignright alignjustify | outdent indent | removeformat |  code',
-        plugins: 'code',
+        toolbar: 'undo redo | styleselect | bold italic underline | blockquote | alignleft aligncenter alignright alignjustify | link | outdent indent | removeformat | code',
+        plugins: 'code link',
         height: 400
     });
 </script>

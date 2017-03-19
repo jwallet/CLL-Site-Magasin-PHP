@@ -15,8 +15,8 @@ if(isset($_SESSION['toast'])) {
 ?>
 <div class="container">
     <div class="section">
-        <form class="row" action="account-first-access-validation" method="post">
-            <div class="col s12">
+        <form class="row" action="account-first-access-validation" method="post" id="submitform">
+            <p class="col s12">
                 <input type="hidden" name="id" value="<?php echo $_SESSION['user-id']; ?>">
                 <div class="input-field row">
                     <i class="material-icons prefix">email</i>
@@ -59,9 +59,13 @@ if(isset($_SESSION['toast'])) {
                     <label for="adresse">Adresse</label>
                 </div>
                 <p>
-                    <input type="checkbox" name="accepter" id="cookie" title="Veuillez accepter pour continuer" required>
-                    <label for="cookie">Red</label>
-                </p>
+                    <input style="left:inherit;margin-left:2px;margin-top:8px;" type="checkbox" name="accepter" id="cookie" class="validate" required>
+                    <label for="cookie">J'accepte que La Boîte à Bouf puisse sauvegarder
+                        de petits fichiers texte, aussi appelés cookies, qui permetteront de m'identifier
+                        sur leur site Internet. Je comprends que ce site Internet crée et utilise des cookies localisés
+                        sur mon ordinateur pour être en mesure de connaître les plats que je désire commander
+                        et de pouvoir les afficher dans la section mon panier.</label>
+                </p><br/>
                 <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?>"
                         type='submit' name="connect">Enregistrer</button>
             </div>

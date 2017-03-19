@@ -2,8 +2,7 @@
 if(isset($_POST['id']) and
     isset($_POST['new1password']) and isset($_POST['new2password']) and
     isset($_POST['email']) and isset($_POST['prenom']) and
-    isset($_POST['nom']) and isset($_POST['telephone']) and
-    isset($_POST['accepter'])) {
+    isset($_POST['nom']) and isset($_POST['telephone'])) {
     include("bd-connect.php");
     $sql = "UPDATE personne SET passe = ?, prenom = ?, nom = ?, telephone = ?, adresse = ?, isnew = 0 WHERE id = ? AND email LIKE ? AND passe LIKE ?;";
     $stmt = $mysqli->prepare($sql);

@@ -50,7 +50,7 @@ if(isset($_POST['email'])) {
             $mail->isHTML(true);
             $mail->Subject = 'Votre inscription à la ' . $_GLOBAL['entreprise'];
             $mail->CharSet = 'UTF-8';
-            $mail->Body = "Bienvenue chez la " . $_GLOBAL['entreprise'] . ", <br> voici le mot de passe qui vous a été généré: <b> $password </b>. <br>Vous pouvez le modifier à tout moment en vous connectant à votre compte sur notre site web.<br>Merci, et au plaisir de vous revoir.";
+            $mail->Body = "Bienvenue chez la " . $_GLOBAL['entreprise'] . ", <br> voici le mot de passe qui vous a été généré:<br/><b>$password</b><br>Vous pouvez le modifier à tout moment en vous connectant à votre compte sur notre site web.<br>Merci, et au plaisir de vous revoir.";
             $password = md5($password);
             if (!$mail->send()) {
                 $_SESSION['toast'] = "client-ajout-erreurmail";

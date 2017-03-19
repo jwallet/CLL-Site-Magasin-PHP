@@ -73,7 +73,7 @@ if(isset($_SESSION['toast'])) {
                     </div>
                     <div class="input-field row">
                         <input type="password" name="new1password" id="new1" minlength="6" class="validate" required>
-                        <label for="new2">Nouveau mot de passe</label>
+                        <label for="new1">Nouveau mot de passe</label>
                     </div>
                     <div class="input-field row">
                         <input type="password" name="new2password" id="new2" minlength="6" class="validate" required>
@@ -88,18 +88,18 @@ if(isset($_SESSION['toast'])) {
     </li>
 
     <script type="text/javascript">
-        var password = document.getElementById("new1")
-            , confirm_password = document.getElementById("new2");
+        var w = document.getElementById("new1");
+        var x = document.getElementById("new2");
         function validatePassword(){
-            if(password.value != confirm_password.value) {
-                confirm_password.setCustomValidity("Mot de passe ne correspond pas");
+            if(x.value != w.value) {
+                x.setCustomValidity("Mot de passe ne correspond pas");
             } else {
-                confirm_password.setCustomValidity('');
-                confirm_password.removeClass("invalid").addClass("valid");
+                x.setCustomValidity('');
+                $('#new2').removeClass("invalid");
             }
         }
-        password.onchange = validatePassword;
-        confirm_password.onkeyup = validatePassword;
+        w.onchange = validatePassword;
+        x.onkeyup = validatePassword;
     </script>
 <?php } ?>
     <!-- deconnexion -->

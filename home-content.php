@@ -29,14 +29,14 @@ $images += glob($dir . '/*.JPEG');
             $daystart = $_GLOBAL['jour-debut-commander-text'];
             if(date("N")<=$_GLOBAL['jour-limite-commander']){
                 if(date("N")!=$_GLOBAL['jour-limite-commander']) {
-                    echo "<span>Date limite : " . strftime("%A, %e %B", date(strtotime("next $dayend"))) . " avant minuit</span>";
+                    echo "<span>Commander avant : " . strftime("%A, %e %B", date(strtotime("next $dayend"))) . " minuit</span>";
                 }
                 else{
-                    echo "<span>Date limite : " . strftime("%A, %e %B", date(strtotime($dayend))) . " avant minuit</span>";
+                    echo "<span>Commander avant : " . strftime("%A, %e %B", date(strtotime($dayend))) . " minuit</span>";
                 }
             }
             else{
-                echo "<span>Date limite expirée<br/>Prochain menu : " . strftime("%A, %e %B",date(strtotime("next $daystart"))) . "</span>";
+                echo "<span>Période de commande expirée<br/>Prochain menu : " . strftime("%A, %e %B",date(strtotime("next $daystart"))) . "</span>";
             }?>
         </div>
         <div>

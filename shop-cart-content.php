@@ -24,7 +24,7 @@ elseif(isset($_SESSION['toast'])) {
     unset($_SESSION['toast']);
 }
 if(date("N")>$_GLOBAL['jour-limite-commander']){
-    setcookie("shoppingcart", null, time() -1);//too bad, too late
+    setcookie("shoppingcart", null, time() -10);//too bad, too late
 }
 if(isset($_COOKIE["shoppingcart"])) {
     $itemsId = array();

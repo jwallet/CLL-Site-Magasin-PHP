@@ -10,12 +10,6 @@ if(isset($_POST['email'])) {
     } else {
         $id = "";
     }
-    //verification si tous les champs ont été renseignés, pu besoin de l'indiquer comme "is new"
-    if (isset($_POST['prenom']) and isset($_POST['nom']) and isset($_POST['telephone'])) {
-        if($_POST['prenom']!="" and $_POST['nom']!="" and $_POST['telephone']!="") {
-            $isnew = 0;
-        }
-    }
     $prenom = $_POST['prenom'];
     $nom = $_POST['nom'];
     $telephone = $_POST['telephone'];

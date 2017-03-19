@@ -36,7 +36,7 @@ $images += glob($dir . '/*.JPEG');
                 }
             }
             else{
-                echo "<span>Période de commande expirée<br/>Prochain menu : " . strftime("%A, %e %B",date(strtotime("next $daystart"))) . "</span>";
+                echo "<span>Période de commande terminée<br/>Prochain menu : " . strftime("%A, %e %B",date(strtotime("next $daystart"))) . "</span>";
             }?>
         </div>
         <div>

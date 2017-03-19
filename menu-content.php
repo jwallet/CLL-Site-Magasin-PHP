@@ -195,7 +195,7 @@ echo "
                                                         elseif(date("N")>$_GLOBAL['jour-limite-commander']){ ?>
                                                             <div class="col s12" style="padding-left:0;padding-right: 0;">
                                                                 <a style="width:100%;" class="btn btn-default disabled waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">
-                                                                    <span>Période de commande terminée</span>
+                                                                    Commande désactivée
                                                                 </a>
                                                             </div>
                                                         <?php } else {?>

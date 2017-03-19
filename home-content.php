@@ -22,7 +22,7 @@ $images += glob($dir . '/*.JPEG');
 </div>
 
 <div class='container'>
-    <div class="section" style="width: 94%; margin-left:3%; margin-right: 3%;">
+    <div class="section">
         <div class="center red-text text-darken-2" style="width: 100%;font-size:120%;font-weight: bold;line-height: 2.5;">
             <?php
             $dayend = $_GLOBAL['jour-limite-commander-text'];

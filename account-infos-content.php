@@ -47,10 +47,11 @@ if(isset($_SESSION['toast'])) {
     }
     unset($_SESSION['toast']);
 }?>
-<div class="container">
-    <div class="section">
+<div class="<?php echo $_GLOBAL['couleur1a'] ?> <?php echo $_GLOBAL['couleur1c'] ?> white-text">
+    <div class="container">
         <div class="row">
             <div class="col s12">
+                <h5 class="col s12">Mes informations personnelles</h5>
                 <div class="col m6 s12">
                     <div class="col s4"><b>Prénom</b></div>
                     <div class="col s8"><?php echo $_SESSION['user-prenom']?></div>
@@ -72,7 +73,6 @@ if(isset($_SESSION['toast'])) {
                     <div class="col s8"><?php echo $_SESSION['user-adresse']?></div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -84,7 +84,7 @@ if(isset($_SESSION['toast'])) {
                 <i class="material-icons">person</i>Modifier mon prénom et nom
             </div>
         </div>
-        <div class="collapsible-body">
+        <div class="collapsible-body grey lighten-3">
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
                 <form action="account-name-validation" class="col s12" style="margin:0;padding:0;" method="post">
                     <div class="input-field row">
@@ -111,7 +111,7 @@ if(isset($_SESSION['toast'])) {
                 <i class="material-icons">email</i>Modifier mon courriel
             </div>
         </div>
-        <div class="collapsible-body">
+        <div class="collapsible-body grey lighten-3">
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
                 <form action="account-email-validation" class="col s12" style="margin:0;padding:0;" method="post">
                     <div class="input-field row">
@@ -136,7 +136,7 @@ if(isset($_SESSION['toast'])) {
                 <i class="material-icons">phone</i>Modifier mon téléphone
             </div>
         </div>
-        <div class="collapsible-body">
+        <div class="collapsible-body grey lighten-3">
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
                 <form action="account-phone-validation" class="col s12" style="margin:0;padding:0;" method="post">
                     <div class="input-field row">
@@ -158,7 +158,7 @@ if(isset($_SESSION['toast'])) {
                 <i class="material-icons">home</i>Modifier mon adresse
             </div>
         </div>
-        <div class="collapsible-body">
+        <div class="collapsible-body grey lighten-3">
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
                 <form action="account-address-validation" class="col s12" style="margin:0;padding:0;" method="post">
                     <div class="input-field row">

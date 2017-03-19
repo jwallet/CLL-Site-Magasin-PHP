@@ -64,7 +64,7 @@ if(isset($_SESSION['toast'])) {
                 <i class="material-icons">lock</i>Changer mon mot de passe
             </div>
         </div>
-        <div class="collapsible-body">
+        <div class="collapsible-body grey lighten-3">
             <div class="container row" style="margin-bottom:0; margin-top:0; padding:0;line-height: 0;">
                 <form action="account-password-validation" class="col s12" method="post" style="margin:0;padding:0;">
                     <div class="input-field row">

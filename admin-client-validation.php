@@ -1,5 +1,4 @@
 <?php
-
 if(isset($_POST['email'])) {
     include("bd-connect.php");
     include("meta.php");
@@ -67,28 +66,34 @@ if(isset($_POST['email'])) {
     $stmt->close();
 }
 elseif(isset($_GET['idout'])){
-    echo $_GET['idout'];
-    echo $sql = "UPDATE personne SET isnew=2 WHERE id=?;";
+    include("bd-connect.php");
+    include("meta.php");
+    $idout = (integer)$_GET['idout'];
+    $sql = "UPDATE personne SET isnew=2 WHERE id=?;";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $_GET['idout']);
+    $stmt->bind_param("i", $idout);
     if ($stmt->execute()) {
-        $_SESSION['toast'] = "client-del";
+        $_SESSION['toast'] = "client-out";
         $redirect = "admin-client-list";
     }
     $stmt->free_result();
     $stmt->close();
-    }elseif(isset($_GET['idin'])){
-    echo $_GET['idin'];
-    $sql = "UPDATE personne SET isnew=0 WHERE id=?;";
+}
+elseif(isset($_GET['idin'])){
+    include("bd-connect.php");
+    include("meta.php");
+    $idin = (integer)$_GET['idin'];
+    $sql = "UPDATE personne SET isnew=1 WHERE id=?;";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $_GET['idin']);
+    $stmt->bind_param("i", $idin);
     if ($stmt->execute()) {
-        $_SESSION['toast'] = "client-act";
+        $_SESSION['toast'] = "client-in";
         $redirect = "admin-client-list";
     }
     $stmt->free_result();
     $stmt->close();
-}else
+}
+else
     {
         $_SESSION['toast'] = "erreur-client";
         $redirect = "admin-client-list";

@@ -3574,6 +3574,9 @@ nav ul a span.badge {
 .section {
   padding-top: 1rem;
   padding-bottom: 1rem;
+    width: 94%;
+    margin-left:3%;
+    margin-right: 3%;"
 }
 
 .section.no-pad {

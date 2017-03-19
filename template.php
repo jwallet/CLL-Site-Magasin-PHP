@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
 <?php include_once("bd-connect.php"); ?>
     <head>

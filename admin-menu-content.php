@@ -57,7 +57,7 @@ if($stmt->fetch()){
                         <tr>
                             <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items[]\" $checkit/>
                                 <label for=\"$iditem\">$item</label></td>
-                            <td class=\"right-align\">$prix $</td>
+                            <td class=\"right-align\">" . money_format('%(#10n', $prix) . "</td>
                         </tr>
                         ";
                     }
@@ -79,7 +79,7 @@ if($stmt->fetch()){
                         <tr>
                             <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items[]\" $checkit/>
                                 <label for=\"$iditem\">$item</label></td>
-                            <td class=\"right-align\">$prix $</td>     
+                            <td class=\"right-align\">" . money_format('%(#10n', $prix) . "</td>     
                         </tr>";
                     }
                     $group = $type;

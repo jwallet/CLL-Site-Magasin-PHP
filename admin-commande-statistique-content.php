@@ -34,7 +34,7 @@ $stmt->free_result();
     <?php for($j=0; $j<sizeof($itemsBdTitre); $j++){ ?>
         <tr>
             <td><?php echo $itemsBdTitre[$j];?></td>
-            <td><?php echo $itemsBdPrix[$j];?></td>
+            <td><?php echo money_format('%(#10n', $itemsBdPrix[$j]);?></td>
             <td><?php echo $itemsBdQte[$j];?></td>
         </tr>
     <?php }?>
@@ -52,7 +52,7 @@ $stmt->free_result();
     <?php for($j=0; $j<sizeof($itemsBdTitreWeek); $j++){ ?>
         <tr>
             <td><?php echo $itemsBdTitreWeek[$j];?></td>
-            <td><?php echo $itemsBdPrixWeek[$j];?></td>
+            <td><?php echo money_format('%(#10n', $itemsBdPrixWeek[$j]);?></td>
             <td><?php echo $itemsBdQteWeek[$j];?></td>
         </tr>
     <?php }?>

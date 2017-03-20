@@ -23,7 +23,7 @@ while($stmt->fetch()) {
 }
 $stmt->free_result();
 ?>
-<h4 class="center"><b><u>Les trois repas les plus vendus</u></b></h4>
+<div class="container"><h4>Les trois repas les plus vendus</h4></div>
 <table class="striped centered">
     <thead>
     <th data-field="TitreItem">Titre du repas</th>
@@ -41,7 +41,7 @@ $stmt->free_result();
     </tbody>
 </table>
 <br>
-<h4 class="center"><b><u>Les ventes de la semaine</u></b></h4>
+<div class="container"><h4>Les ventes de la semaine</h4></div>
 <table class="striped centered">
     <thead>
     <th data-field="TitreItem">Titre du repas</th>

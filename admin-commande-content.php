@@ -42,7 +42,7 @@
                 ?>
                     <div class="col s12">
                         <div class="input-field col s9">
-                            <label><?php ECHO $itemsBdTitre[$i]; ?></label>
+                            <label class="black-text"><?php ECHO $itemsBdTitre[$i]; ?></label>
                         </div>
                         <div class="input-field col s3">
                             <input type="number" id="quantite<?php ECHO $itemsBdId[$i];?>" name="quantite<?php ECHO $itemsBdId[$i];?>" class="validate" min="0" max="20" value="<?php ECHO $Quantite;?>" required>

@@ -1,7 +1,7 @@
 <?php
-include("bd-connect.php");
-include("meta.php");
-if(isset($_POST['email']) and $POST('clientadd')) {
+if(isset($_POST['email'])) {
+    include("bd-connect.php");
+    include("meta.php");
     require 'phpmailer/PHPMailerAutoload.php';
     $isnew = 1;
     if (isset($_POST['id'])) {
@@ -9,22 +9,17 @@ if(isset($_POST['email']) and $POST('clientadd')) {
     } else {
         $id = "";
     }
-    //verification si tous les champs ont été renseignés, pu besoin de l'indiquer comme "is new"
-    if (isset($_POST['prenom']) and isset($_POST['nom']) and isset($_POST['telephone'])) {
-        $isnew = 0;
-    }
     $prenom = $_POST['prenom'];
     $nom = $_POST['nom'];
     $telephone = $_POST['telephone'];
     $email = $_POST['email'];
+    $adresse = $_POST['adresse'];
     $password = randomPassword();
     if ($id != "") {
         $sql = "UPDATE personne SET email=?,prenom=?,nom=?,telephone=?,adresse=? WHERE id=?;";
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param("sssssi", $email, $prenom, $nom, $telephone, $adresse, $id);
         $stmt->execute();
-        $stmt->free_result();
-        $stmt->close();
         $_SESSION['toast'] = "client-mod";
         $redirect = "admin-client-list";
     } else {
@@ -42,19 +37,19 @@ if(isset($_POST['email']) and $POST('clientadd')) {
             //Envoie email
             $mail = new PHPMailer;
             $mail->isSMTP();
-            $mail->Host = 'smtp-mail.outlook.com';
+            $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = $_GLOBAL['mail-user'];
             $mail->Password = $_GLOBAL['mail-psw'];
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
-            $mail->setFrom($_GLOBAL['mail-user'], 'Mailer');
+            $mail->setFrom($_GLOBAL['mail-user'], 'La Boîte à Bouf');
             $mail->addAddress($email);
-            $mail->addReplyTo($_GLOBAL['mail-user'], 'Info');
+            $mail->addReplyTo($_GLOBAL['mail-user'], 'La Boîte à Bouf');
             $mail->isHTML(true);
             $mail->Subject = 'Votre inscription à la ' . $_GLOBAL['entreprise'];
             $mail->CharSet = 'UTF-8';
-            $mail->Body = "Bienvenue chez la " . $_GLOBAL['entreprise'] . ", <br> voici le mot de passe qui vous a été généré: <b> $password </b>. <br>Vous pouvez le modifier à tout moment en vous connectant à votre compte sur notre site web.<br>Merci, et au plaisir de vous revoir.";
+            $mail->Body = "Bienvenue chez la " . $_GLOBAL['entreprise'] . ", <br> voici le mot de passe qui vous a été généré:<br/><b>$password</b><br>Vous pouvez le modifier à tout moment en vous connectant à votre compte sur notre site web.<br>Merci, et au plaisir de vous revoir.";
             $password = md5($password);
             if (!$mail->send()) {
                 $_SESSION['toast'] = "client-ajout-erreurmail";
@@ -69,20 +64,39 @@ if(isset($_POST['email']) and $POST('clientadd')) {
     }
     $stmt->free_result();
     $stmt->close();
-}elseif(isset($_POST['email']) and $POST('clientsupp')){
+}
+elseif(isset($_GET['idout'])){
+    include("bd-connect.php");
+    include("meta.php");
+    $idout = (integer)$_GET['idout'];
     $sql = "UPDATE personne SET isnew=2 WHERE id=?;";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $_GET['id']);
+    $stmt->bind_param("i", $idout);
     if ($stmt->execute()) {
-        $_SESSION['toast'] = "client-mod";
-        $redirect = "admin-client";
+        $_SESSION['toast'] = "client-out";
+        $redirect = "admin-client-list";
     }
     $stmt->free_result();
     $stmt->close();
-    }else
+}
+elseif(isset($_GET['idin'])){
+    include("bd-connect.php");
+    include("meta.php");
+    $idin = (integer)$_GET['idin'];
+    $sql = "UPDATE personne SET isnew=1 WHERE id=?;";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $idin);
+    if ($stmt->execute()) {
+        $_SESSION['toast'] = "client-in";
+        $redirect = "admin-client-list";
+    }
+    $stmt->free_result();
+    $stmt->close();
+}
+else
     {
         $_SESSION['toast'] = "erreur-client";
-        $redirect = "admin-client";
+        $redirect = "admin-client-list";
     }
 ?>
 <html>

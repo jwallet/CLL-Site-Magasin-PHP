@@ -142,8 +142,8 @@ else{
             <h5>Confirmation de votre commande</h5>
             <div class="divider"></div>
             <p>Nous avons reçu aucune commande votre part pour le menu de cette semaine.
-                Si ceci est un erreur, veuillez contacter avec nous par la zone
-                <a href="home-a-propos">Entreprise</a> en bas de page.
+                Si ceci est un erreur, veuillez contacter avec la
+                <a href="home-a-propos">Boîte à Bouf</a> au bas de la page.
             </p>
         <?php
         }?>

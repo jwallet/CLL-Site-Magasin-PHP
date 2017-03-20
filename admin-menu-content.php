@@ -23,8 +23,8 @@ if($stmt->fetch()){
 ?>
 <!--Affichage de l'interface du menu -->
     <div class="container">
-    <div class="section" style="padding:5px;">
-        <form action="admin-menu-validation" method="POST">
+    <div class="section">
+        <form action="admin-menu-validation" method="POST" style="margin-top:20px;margin-bottom:20px;">
             <input type="hidden" name="action" value="<?php echo $action; ?>"/>
             <input type="hidden" name="id" value="<?php echo $menuloaded; ?>"/>
             <div class="input-field">
@@ -45,7 +45,7 @@ if($stmt->fetch()){
                 while($stmt->fetch()) {
                     $itemsIdFromMenu[] = $iditem;
                 }
-                $sql = "SELECT i.id, t.type, i.titre, i.prix FROM item i JOIN p_item t ON i.idtype=t.id ORDER BY t.ordre;";
+                $sql = "SELECT i.id, t.type, i.titre, i.prix FROM item i JOIN p_item t ON i.idtype=t.id WHERE i.desactif=0 ORDER BY t.ordre;";
                 $stmt = $mysqli->prepare($sql);
                 $stmt->execute();
                 $stmt->bind_result($iditem,$type,$item,$prix);
@@ -58,7 +58,7 @@ if($stmt->fetch()){
                         <tr>
                             <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items[]\" $checkit/>
                                 <label for=\"$iditem\">$item</label></td>
-                            <td class=\"right-align\">$prix $</td>
+                            <td class=\"right-align\">" . money_format('%(#10n', $prix) . "</td>
                         </tr>
                         ";
                     }
@@ -80,7 +80,7 @@ if($stmt->fetch()){
                         <tr>
                             <td><input type=\"checkbox\" id=\"$iditem\" value=\"$iditem\" name=\"items[]\" $checkit/>
                                 <label for=\"$iditem\">$item</label></td>
-                            <td class=\"right-align\">$prix $</td>     
+                            <td class=\"right-align\">" . money_format('%(#10n', $prix) . "</td>     
                         </tr>";
                     }
                     $group = $type;

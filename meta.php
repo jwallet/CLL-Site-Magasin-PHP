@@ -1,6 +1,7 @@
 <?php
 $_GLOBAL['couleur1a'] = "brown";
 $_GLOBAL['couleur1b'] = "lighten-1";
+$_GLOBAL['couleur1c'] = "darken-1"; //pour infos compte client
 $_GLOBAL['couleur2a'] = "grey";
 $_GLOBAL['couleur2b'] = "lighten-2";
 $_GLOBAL['couleur-menu-1a'] = "grey";
@@ -18,8 +19,6 @@ $_GLOBAL['jour-limite-commander-text'] = "friday"; //anglais pour datetime
 $_GLOBAL['jour-debut-commander-text'] = "monday"; //anglais pour datetime
 $_GLOBAL['jour-debut-commander'] = 1; //lundi = 1, quand sera ouvert
 $_GLOBAL['entreprise'] = "Boîte à Bouf";
-$_GLOBAL['mail-user'] = 'laboiteabouf@outlook.com';
-$_GLOBAL['mail-psw'] = 'Dodgecolt1984';
 $_GLOBAL['dirimg'] = "upload/";
 setlocale(LC_ALL, 'fr_CA.utf8', 'fra');
 
@@ -34,7 +33,7 @@ $page = $result->fetch_assoc();
 <meta name='description' content='<?php echo $_GLOBAL['entreprise']; ?> est un service traiteur qui offre des plats cuisinés maison.'/>
 <meta name='keywords' content='Boîte, à, Bouf, bouffe, traiteur, plats, cuisine, maison'/>
 <meta name='author' content='Jose Ouellet et Guillaume Prudhomme'/>
-<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'/>
 <title><?php echo $page['titre'] ?> - <?php echo $_GLOBAL['entreprise']; ?></title>
 
 <!--mettre les valeurs meta (copier-coller) dans les fichiers independants index.html et index.php-->

@@ -56,16 +56,16 @@ while($stmt->fetch()){
 //Envoie email
 $mail = new PHPMailer;
 $mail->isSMTP();
-$mail->Host = 'smtp-mail.outlook.com';
+$mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
 $mail->Username = $_GLOBAL['mail-user'];
 $mail->Password = $_GLOBAL['mail-psw'];
 $mail->SMTPSecure = 'tls';
 $mail->Port = 587;
-$mail->setFrom($_GLOBAL['mail-user'], 'Mailer');
+$mail->setFrom($_GLOBAL['mail-user'], 'La Boîte à Bouf');
 $mail->addAddress($email);
-$mail->addCC($_GLOBAL['mail-user'], 'Info');
-$mail->addReplyTo($_GLOBAL['mail-user'], 'Info');
+$mail->addCC($_GLOBAL['mail-cc']);
+$mail->addReplyTo($_GLOBAL['mail-user'], 'La Boîte à Bouf');
 $mail->isHTML(true);
 $mail->Subject = '[' . $titremenu . '] Confirmation de commande #' . $idcommande;
 $mail->CharSet = 'UTF-8';
@@ -104,8 +104,7 @@ $message = "<div class=\"container\">
                 . "<br/>TPS (5%) : " . money_format('%(#10n', ($soustotal*0.05))
                 . "<br/>Prix total : " . money_format('%(#10n', ($soustotal*1.14975))
                 . " *</p><p class='grey-text text-darken-1'>* Le prix total vous sera chargé 
-                sur place lors de votre visite à la " . $_GLOBAL['entreprise'] . ". Voir la zone ci-dessous 
-                pour connaitre nos heures de cueillete et notre emplacement.</p></div></div>";
+                sur place lors de votre visite à la " . $_GLOBAL['entreprise'] . "</p></div></div>";
 
 $mail->Body    = $message;
 if(!$mail->send()){

@@ -2,13 +2,13 @@
     if ($_SESSION['toast'] == 'client-ajout-existe'){?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('L\'ajout a échoué. Ce courriel est déjà enregistré.', 8000);
+                Materialize.toast('L\'ajout a échoué. Ce courriel est déjà enregistré.', 3000);
             });
         </script>
     <?php }elseif($_SESSION['toast'] == 'client-ajout-erreurmail'){ ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('L\'envoie du courriel a échoué. Veuillez réessayer plus tard.', 8000);
+                Materialize.toast('L\'envoie du courriel a échoué. Veuillez réessayer plus tard.', 3000);
             });
         </script>
     <?php }
@@ -45,18 +45,18 @@ else{
             </div>
             <div class="input-field">
                 <i class="material-icons prefix">person</i>
-                <input id="prenom" name="prenom" type="text" value="<?php echo $prenom; ?>" title="Lettres seulement"  pattern="[a-zA-Z]+" class="validate">
+                <input id="prenom" name="prenom" type="text" value="<?php echo $prenom; ?>" title="Lettres seulement" class="validate">
                 <label for="prenom">Prénom</label>
             </div>
             <div class="input-field">
                 <i class="material-icons prefix">person</i>
-                <input id="nom" name="nom" type="text" value="<?php echo $nom; ?>" title="Lettres seulement" pattern="[a-zA-Z]+" class="validate">
+                <input id="nom" name="nom" type="text" value="<?php echo $nom; ?>" title="Lettres seulement" class="validate">
                 <label for="nom">Nom</label>
             </div>
             <div class="input-field">
                 <i class="material-icons prefix">phone</i>
                 <input id="telephone" name="telephone"
-                       type="tel" title="(999) 999-9999" value="<?php echo $telephone; ?>" pattern="^([0-9]{3} |[0-9]{3}-)[0-9]{3}-[0-9]{4}$" class="validate">
+                       type="tel" title="999 999-9999" value="<?php echo $telephone; ?>" pattern="^([0-9]{3} |[0-9]{3}-)[0-9]{3}-[0-9]{4}$" class="validate">
                 <label for="telephone">Telephone</label>
             </div>
             <div class="input-field">
@@ -66,11 +66,6 @@ else{
             </div>
             <button style="width: 100%;" id="send" name="clientadd" class="waves-effect waves-light btn-large  <?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b']?>" type="submit" name="action">Enregistrer
             </button>
-            <?php if ($id != "") {?>
-                <br><br>
-                <button style="width: 100%;" name="clientsupp" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?> "
-                        type='submit'>Supprimer</button>
-            <?php }?>
         </form>
     </div>
 </div>

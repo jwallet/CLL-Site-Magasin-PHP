@@ -1,13 +1,12 @@
 # Site magasin PHP
 Projet final fait dans le cadre du cours de commerces et entreprise du Cégep de Lévis-Lauzon CLL par but éducatif. Le site utilise Apache 2, PHP 5, MySQL 5, Materialize CSS template (ci-dessous), en plus de l'indispensable Javascript et Jquery. Le site simule les fonctionalités d'un site web transactionnel autant accessible sur ordinateur, tablette ou mobile.
-
-![image](https://cloud.githubusercontent.com/assets/23088305/23735037/3068dd32-0451-11e7-952f-876594c79918.png)
-![image](https://cloud.githubusercontent.com/assets/23088305/23735080/70c45eba-0451-11e7-88bc-3aed65e29e4e.png)
+<img src="https://cloud.githubusercontent.com/assets/23088305/23930879/7724aae0-0905-11e7-8e8c-57e12b74f0a3.png" height="560px"/>
+<img src="https://cloud.githubusercontent.com/assets/23088305/23930910/a5cbb44c-0905-11e7-9836-c6b9d0f163b6.png" height="560px"/>
+<img src="https://cloud.githubusercontent.com/assets/23088305/23931139/f6c40bd2-0906-11e7-9e37-4d0e5efbeabd.png" height="560px"/>
+<img src="https://cloud.githubusercontent.com/assets/23088305/23960826/6765ecd4-097f-11e7-87da-b6531f4f4dc8.png" width="850px"/>
 
 ![alt tag](https://raw.github.com/dogfalo/materialize/master/images/materialize.gif)
 ===========
-
-[![Travis CI](https://travis-ci.org/Dogfalo/materialize.svg?branch=master)](https://travis-ci.org/Dogfalo/materialize)[![devDependency Status](https://david-dm.org/Dogfalo/materialize/dev-status.svg)](https://david-dm.org/Dogfalo/materialize#info=devDependencies)[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Dogfalo/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Materialize](http://materializecss.com/), a CSS Framework based on material design
 

@@ -4,7 +4,7 @@ if(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('L\'ajout du plat a échoué.', 8000);
+                Materialize.toast('L\'ajout du plat a échoué.', 3000);
             });
         </script>
         <?php
@@ -19,7 +19,7 @@ $itemsBdDesc = array();
 $itemsBdImg = array();
 $itemsBdPrix = array();
 $itemsBdOrdre = array();
-$sql="SELECT i.id, pi.type, i.titre, i.description, i.image, i.prix FROM menu m JOIN menu_detail md ON m.id = md.idmenu JOIN item i ON md.iditem = i.id JOIN p_item pi ON i.idtype = pi.id WHERE m.isnow=1 ORDER BY pi.ordre, i.prix, i.titre";
+$sql="SELECT i.id, pi.type, i.titre, i.description, i.image, i.prix FROM menu m JOIN menu_detail md ON m.id = md.idmenu JOIN item i ON md.iditem = i.id JOIN p_item pi ON i.idtype = pi.id WHERE m.isnow=1 AND i.desactif=0 ORDER BY pi.ordre, i.prix, i.titre";
 $stmt = $mysqli->prepare($sql);
 $stmt->execute();
 $stmt->bind_result($un,$deux,$trois, $quatre, $cinq, $six);
@@ -63,10 +63,10 @@ echo "
                             <span><?php if($itemsBdDesc[$j]!=null and $itemsBdDesc[$j]!=""){ echo $itemsBdDesc[$j]; } else { echo "Aucune description n'est disponible."; } ?></span>
                         </div>
                     </div>
-                    
+
                     <div class='collapsible-body' style='padding:0;'>
                         <span>
-                            <div class="menu-back-img" style="background-image:url('<?php if($itemsBdImg[$j]!="" and $itemsBdImg[$j]!=null){ echo "upload/$itemsBdImg[$j]"; } else { echo "http://www.harristonmintofair.ca/wp-content/uploads/2015/07/o-CHICKEN-WINGS-facebook.jpg";} ?>');">
+                            <div class="menu-back-img" style="background-color:#444;background-image:url('<?php if($itemsBdImg[$j]!="" and $itemsBdImg[$j]!=null){ echo "upload/$itemsBdImg[$j]"; } else { echo "";} ?>');">
                                 <div class="menu-back-img-shadow">
                                     <div class="container">
                                         <div class='section'>
@@ -75,10 +75,10 @@ echo "
                                                 <div class="section">
                                                     <div class="white-text" style="margin:0px 20px 0px 20px;">
 
-                                                        <div style="float:right; border-radius:70px;background-image:url('<?php if( $itemsBdImg[$j]!=null and  $itemsBdImg[$j]!=""){ echo "upload/".$itemsBdImg[$j];} else { echo "css/ico/logo.png"; } ?>');background-position:center;background-size:auto 140px;width:140px;height: 140px; margin-right:-10px;" alt=""></div>
+                                                        <div style="float:right; border-radius:70px;background-image:url('<?php if( $itemsBdImg[$j]!=null and  $itemsBdImg[$j]!=""){ echo "upload/".$itemsBdImg[$j];} else { echo "css/ico/logo.png"; } ?>');background-position:center;background-repeat:no-repeat;background-size:auto 170px;width:140px;height: 140px; margin-right:-5px;" alt="<?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?>"></div>
                                                         <h5 class="col s12"><?php echo ucfirst(strtolower($itemsBdTitre[$j])); ?></h5>
                                                         <p class="col s12" style="min-height: 100px;"><?php if($itemsBdDesc[$j]!=null and $itemsBdDesc[$j]!=""){ echo $itemsBdDesc[$j]; } else { echo "Aucune description n'est disponible."; } ?></p>
-                                                        <?php if(isset($_SESSION['user-online'])){?>
+                                                        <?php if(isset($_SESSION['user-online']) and date("N")<=$_GLOBAL['jour-limite-commander']){?>
                                                         <div class="row s12" style="margin:0;padding:0;">
 
                                                             <form action="menu-validation" method="post">
@@ -192,7 +192,13 @@ echo "
                                                             });
                                                         </script>
                                                         <?php }
-                                                        else{?>
+                                                        elseif(date("N")>$_GLOBAL['jour-limite-commander']){ ?>
+                                                            <div class="col s12" style="padding-left:0;padding-right: 0;">
+                                                                <a style="width:100%;" class="btn btn-default disabled waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">
+                                                                    Commande désactivée
+                                                                </a>
+                                                            </div>
+                                                        <?php } else {?>
                                                             <div class="col s12" style="padding-left:0;padding-right: 0;">
                                                                 <a href="connect" style="width:100%;" class="btn btn-default waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">
                                                                     <span>Connectez-vous</span>

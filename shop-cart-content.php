@@ -4,7 +4,7 @@ if(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Plat ajouté.', 8000);
+                Materialize.toast('Plat ajouté.', 3000);
             });
         </script>
         <?php
@@ -16,12 +16,15 @@ elseif(isset($_SESSION['toast'])) {
         ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('L\'envoie de la commande a échoué.', 8000);
+                Materialize.toast('L\'envoie de la commande a échoué.', 3000);
             });
         </script>
         <?php
     }
     unset($_SESSION['toast']);
+}
+if(date("N")>$_GLOBAL['jour-limite-commander']){
+    setcookie("shoppingcart", null, time() -10);//too bad, too late
 }
 if(isset($_COOKIE["shoppingcart"])) {
     $itemsId = array();
@@ -125,10 +128,18 @@ else{
     <ul class="collection">
         <?php if(!$empty) {
             $total=0;
+            $sql ="SELECT textarea FROM pages WHERE nom LIKE 'commander' AND categorie LIKE 'confirmation'";
+            $stmt = $mysqli->prepare($sql);
+            $stmt->execute();
+            $stmt->bind_result($tarea);
+            $stmt->fetch();
+            $stmt->close();
             for($i=0; $i<sizeof($itemsId); $i++){?>
-                <li class="collection-item avatar" style="padding-left:80px;">
-                    <span style="background-image:url('<?php if( $itemsImg[$i]!=null and  $itemsImg[$i]!=""){ echo "upload/".$itemsImg[$i];} else { echo "css/ico/logo.png"; } ?>');background-position:center;background-size:auto 60px;width:60px;height: 60px; margin-top:-8px;margin-left:-6px;" alt="" class="circle"></span>
-                    <span class="title"><?php echo ucfirst(strtolower($itemsTitre[$i])); ?></span><span class="<?php echo $_GLOBAL['couleur2a']; ?>-text" style="padding-left:8px;font-size:14px;font-style: italic;"><?php echo ucfirst(strtolower($itemsType[$i])); ?></span>
+                <li class="collection-item avatar" style="padding-top:15px;padding-bottom:15px;padding-left:100px;">
+                    <div class="circle" style="background-image:url('<?php if( $itemsImg[$i]!=null and  $itemsImg[$i]!=""){ echo "upload/".$itemsImg[$i];} else { echo "css/ico/logo.png"; } ?>');background-position:center; background-repeat:no-repeat;border:2px solid white;background-size:auto 100px;border-radius:20px;width:80px;height:84px;margin-top:-6px;" alt="<?php echo ucfirst(strtolower($itemsBdTitre[$i])); ?>" >
+                    </div>
+                    <span class="title"><?php echo ucfirst(strtolower($itemsTitre[$i])); ?></span>
+                    <br/><span class="<?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:14px;font-style: italic;"><?php echo ucfirst(strtolower($itemsType[$i])); ?></span>
                     <p><form action="shop-cart" method="post" style="padding:0;margin:0;">
                         <input name="updateid" type="hidden" value="<?php echo $itemsId[$i]; ?>"/>
                         <input name="updatequant" style="width: 50px;float:left;height: 1.5rem;border:1px solid #AAA;" type="number" value="<?php echo $itemsQuant[$i]; ?>"/>
@@ -139,12 +150,26 @@ else{
                             <i class="material-icons">delete</i>
                         </a>
                     </form></p>
-                    <a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($itemsPrix[$i]*$itemsQuant[$i])); ?></a>
-                    <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="font-size:90%;"><br/><?php echo money_format('%(#10n', ($itemsPrix[$i])); ?> /chacun</a>
+                    <a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="margin-top:0px;font-size:120%;"><?php echo money_format('%(#10n', ($itemsPrix[$i]*$itemsQuant[$i])); ?></a>
+                    <a class="secondary-content <?php echo $_GLOBAL['couleur2a']; ?>-text" style="margin-top:10px;font-size:90%;"><br/><?php echo money_format('%(#10n', ($itemsPrix[$i])); ?> /chacun</a>
                 </li>
             <?php
             $total += $itemsQuant[$i]*$itemsPrix[$i];
             }?>
+            <!-- Modal Structure -->
+            <div id="modalCommander" class="modal">
+                <div class="modal-content">
+                    <h4>Commander</h4>
+                    <?php echo $tarea;?>
+                    <b>Désirez-vous poursuivre et commander ces plats?</b>
+
+                </div>
+                <div class="modal-footer">
+                    <a href="shop-commander-validation" class="btn modal-action modal-close waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">Oui</a>
+                    <a class="modal-action modal-close waves-effect waves-light btn-flat"><b>Non, annuler</b></a>
+                </div>
+            </div>
+
             <li class="collection-item">
                 <span>Sous-total</span><a class="secondary-content <?php echo $_GLOBAL['couleur1a']; ?>-text" style="font-size:120%;"><?php echo money_format('%(#10n', ($total)); ?></a><br/>
                 <div class="divider" style="margin-top:8px;margin-bottom:8px;"></div>
@@ -159,25 +184,6 @@ else{
             echo "<h5 class='center'>Panier vide</h5><p class='center'>Ajouter des plats à partir du <a href='menu'>menu de la semaine</a> pour passer une commande.</p>";
         }?>
     </ul>
-    <!-- Modal Structure -->
-    <div id="modalCommander" class="modal">
-        <div class="modal-content">
-            <h4>Commander</h4>
-            <p>En poursuivant, vous acceptez les <a href="home-termes-conditions">termes et conditions</a> et vous
-                comprenez que le prix total de la commande correspond au montant qui vous sera chargé pour récupérer
-                vos plats sur nos lieux à la <a href="home-contact"><?php echo $_GLOBAL['entreprise']; ?></a>. Assurez-vous d'avoir pris
-                connaissances de l'<a href="home-horaire">horaire de cueillette</a> des repas et des autres liens
-                au bas de la page. Nous vous invitions à consulter également <a href="home-faq">le fonctionnement</a>
-                de la <?php echo $_GLOBAL['entreprise'];?> avant de commander.
-            </p>
-            <b>Désirez-vous poursuivre et commander ces plats?</b>
-
-        </div>
-        <div class="modal-footer">
-            <a href="shop-commander-validation" class="btn modal-action modal-close waves-effect waves-light <?php echo $_GLOBAL['couleur1a']; ?>">Oui</a>
-            <a class="modal-action modal-close waves-effect waves-light btn-flat"><b>Non, annuler</b></a>
-        </div>
-    </div>
 </div>
 <script type="text/javascript">
     $('.modal').modal();

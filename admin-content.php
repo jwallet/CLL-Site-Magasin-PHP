@@ -2,15 +2,23 @@
     if ($_SESSION['toast'] == 'plat-ajout'){?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Le plat a été ajouté', 8000);
+                Materialize.toast('Le plat a été ajouté', 3000);
             });
         </script>
         <?php
     }
+    elseif($_SESSION['toast'] == 'erreur-plat'){?>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Materialize.toast('La modification du plat a échoué', 3000);
+        });
+    </script>
+    <?php
+    }
     elseif ($_SESSION['toast'] == 'client-ajout'){ ?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Le client a été ajouté', 8000);
+                Materialize.toast('Le client a été ajouté', 3000);
             });
         </script>
         <?php
@@ -18,7 +26,7 @@
     elseif ($_SESSION['toast'] == 'menu-next-added'){?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Le prochain menu a été ajouté', 8000);
+                Materialize.toast('Le prochain menu a été ajouté', 3000);
             });
         </script>
         <?php
@@ -26,7 +34,7 @@
     elseif ($_SESSION['toast'] == 'menu-next-updated'){?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Le prochain menu a été mis à jour', 8000);
+                Materialize.toast('Le prochain menu a été mis à jour', 3000);
             });
         </script>
         <?php
@@ -34,7 +42,7 @@
     elseif ($_SESSION['toast'] == 'menu-now-updated'){?>
         <script type="text/javascript">
             $(document).ready(function () {
-                Materialize.toast('Le menu actuel a été mis à jour', 8000);
+                Materialize.toast('Le menu actuel a été mis à jour', 3000);
             });
         </script>
         <?php
@@ -54,26 +62,17 @@
         <div class="collapsible-body" style="padding:0;">
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
-                    <a href="" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
+                    <a href="admin-commande-statistique" class="black-text">
+                        <div class="collapsible-header grey lighten-3">
                             <div class="container">
-                                <i class="material-icons"></i>Voir les commandes recues
+                                <i class="material-icons"></i>Statistique des commandes
                             </div>
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
-                            <div class="container">
-                                <i class="material-icons"></i>Archives des commandes
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
+                    <a href="admin-commande-list" class="black-text">
+                        <div class="collapsible-header grey lighten-3">
                             <div class="container">
                                 <i class="material-icons"></i>Gérer une commande de client
                             </div>
@@ -97,7 +96,7 @@
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
                     <a href="admin-menu?next" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
+                        <div class="collapsible-header grey lighten-3">
                             <div class="container">
                                 <i class="material-icons"></i>Rédiger le prochain menu
                             </div>
@@ -106,7 +105,7 @@
                 </li>
                 <li>
                     <a href="admin-menu?current" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
+                        <div class="collapsible-header grey lighten-3">
                             <div class="container">
                                 <i class="material-icons"></i>Modifier le menu actuel
                             </div>
@@ -130,7 +129,7 @@
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
                     <a href="admin-plat" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
+                        <div class="collapsible-header grey lighten-3">
                             <div class="container">
                                 <i class="material-icons"></i>Ajouter un nouveau plat
                             </div>
@@ -139,7 +138,7 @@
                 </li>
                 <li>
                     <a href="admin-plat-list" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
+                        <div class="collapsible-header grey lighten-3">
                             <div class="container">
                                 <i class="material-icons"></i>Gérer un plat existant
                             </div>
@@ -148,7 +147,7 @@
                 </li>
                 <li>
                     <a href="admin-plat-type" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
+                        <div class="collapsible-header grey lighten-3">
                             <div class="container">
                                 <i class="material-icons"></i>Modifier la liste des types de plat
                             </div>
@@ -171,7 +170,7 @@
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
                     <a href="admin-client" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
+                        <div class="collapsible-header grey lighten-3">
                             <div class="container">
                                 <i class="material-icons"></i>Ajouter un nouveau compte client
                             </div>
@@ -180,7 +179,7 @@
                 </li>
                 <li>
                     <a href="admin-client-list" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
+                        <div class="collapsible-header grey lighten-3">
                             <div class="container">
                                 <i class="material-icons"></i>Gérer un compte client existant
                             </div>
@@ -202,26 +201,17 @@
         <div class="collapsible-body" style="padding:0;">
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
+                    <a href="admin-pages-entreprise" class="black-text">
+                        <div class="collapsible-header grey lighten-3">
                             <div class="container">
-                                <i class="material-icons"></i>A propos de l'entreprise
+                                <i class="material-icons"></i>Boîte à Bouf
                             </div>
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
-                            <div class="container">
-                                <i class="material-icons"></i>Nous contacter
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
+                    <a href="admin-pages-faq" class="black-text">
+                        <div class="collapsible-header grey lighten-3">
                             <div class="container">
                                 <i class="material-icons"></i>Fonctionnement (FAQ)
                             </div>
@@ -229,10 +219,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-5">
+                    <a href="admin-pages-termes" class="black-text">
+                        <div class="collapsible-header grey lighten-3">
                             <div class="container">
                                 <i class="material-icons"></i>Termes et conditions
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="admin-pages-dialogues" class="black-text">
+                        <div class="collapsible-header grey lighten-3">
+                            <div class="container">
+                                <i class="material-icons"></i>Dialogues d'acceptation
                             </div>
                         </div>
                     </a>
@@ -242,15 +241,15 @@
     </li>
 
     <!-- ecrire courriel general -->
-    <li>
-        <a href="#" class="black-text">
-            <div class="collapsible-header">
-                <div class="container">
-                    <i class="material-icons">email</i>Ecrire à tous les clients
-                </div>
-            </div>
-        </a>
-    </li>
+<!--    <li>-->
+<!--        <a href="#" class="black-text">-->
+<!--            <div class="collapsible-header">-->
+<!--                <div class="container">-->
+<!--                    <i class="material-icons">email</i>Ecrire à tous les clients-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </a>-->
+<!--    </li>-->
 
     <!-- sortie panneau admin -->
     <li>

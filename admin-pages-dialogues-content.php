@@ -52,8 +52,6 @@ $stmt->close();
     <form action="#" class="section" method="post">
         <h5>Termes et conditions avant de commander</h5>
         <textarea id="textarea1" name="textarea1"><?php if($i = array_search("commander",$titre,true)){ echo $tarea[$i];}; ?></textarea>
-        <h5>Utilisation des cookies lors du premier accès</h5>
-        <textarea id="textarea2" name="textarea2"><?php if($i = array_search("cookie",$titre,true)){ echo $tarea[$i];}; ?></textarea>
         <br/>
         <button type="submit" style="width: 100%" class="btn btn-large <?php echo $_GLOBAL['couleur1a']?> ">Enregister</button>
     </form>

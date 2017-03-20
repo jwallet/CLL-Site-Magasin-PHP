@@ -27,6 +27,7 @@
         <form action="admin-commande-validation" method="POST">
             <input type="hidden" name="idmenu" value="<?php echo $idmenu; ?>">
             <input type="hidden" name="idpersonne" value="<?php echo $_GET['id']; ?>">
+            <div class="row">
             <?php for($i=0; $i<sizeof($itemsBdId); $i++){
                 $Quantite=0;
                 $stmt= $mysqli->prepare("SELECT IFNULL(Quantite,0) FROM commande c JOIN commande_detail cd ON c.id = cd.idcommande JOIN item i ON cd.iditem = i.id WHERE c.idpersonne=? and c.idmenu=? and cd.iditem=?;");
@@ -39,17 +40,16 @@
                     $Quantite=0;
                 }
                 ?>
-                <div class="row">
-                    <div class="col s6">
-                        <span><b><?php ECHO $itemsBdTitre[$i]; ?></b></span>
-                    </div>
-                    <div class="col s6">
-                        <div class="input-field">
+                    <div class="col s12">
+                        <div class="input-field col s9">
+                            <label><?php ECHO $itemsBdTitre[$i]; ?></label>
+                        </div>
+                        <div class="input-field col s3">
                             <input type="number" id="quantite<?php ECHO $itemsBdId[$i];?>" name="quantite<?php ECHO $itemsBdId[$i];?>" class="validate" min="0" max="20" value="<?php ECHO $Quantite;?>" required>
                         </div>
                     </div>
-                </div>
             <?php } ?>
+            </div>
             <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?> " name="commandeEnrg" type='submit'>Enregistrer</button>
         </form>
     </div>

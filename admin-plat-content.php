@@ -17,6 +17,7 @@ else{
     $image = "";
 }
 ?>
+<!--Affichage de l'écran de modification d'un plat-->
 <div id="modalsup" name="modalsup" class="modal">
     <div class="modal-content">
         <h4>Modal Header</h4>

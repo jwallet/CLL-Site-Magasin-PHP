@@ -1,4 +1,5 @@
 <?php
+//tout le code concernant la modification du menu actuel et prochain
 if(isset($_POST['titre'])) {
     include("bd-connect.php");
     $action = $_POST['action'];

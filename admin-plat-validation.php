@@ -1,4 +1,5 @@
 <?php
+//Tout le code php convernant l'ajout, la modification ou la suppression d'un plat
 include("bd-connect.php");
 include("meta.php");
 if(isset($_POST['titre'])and isset($_POST['platenrg']) and isset($_POST['prix'])and isset($_POST['type'])) {
@@ -61,6 +62,7 @@ if(isset($_POST['titre'])and isset($_POST['platenrg']) and isset($_POST['prix'])
         $redirect = "admin";
     }
 }
+//Lors d'une suppression...
 elseif(isset($_POST['titre']) and isset($_POST['platsupp']) and isset($_POST['prix'])and isset($_POST['type'])) {
     $platimage = "";
     $plattitre = $_POST['titre'];

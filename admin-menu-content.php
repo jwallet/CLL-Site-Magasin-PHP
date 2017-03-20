@@ -21,6 +21,7 @@ if($stmt->fetch()){
     $menuloaded = $id;
 }
 ?>
+<!--Affichage de l'interface du menu -->
     <div class="container">
     <div class="section" style="padding:5px;">
         <form action="admin-menu-validation" method="POST">

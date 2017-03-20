@@ -1,11 +1,13 @@
 <!-- verification si user est connecte, dun coup qui tape l'adresse a main, sinon redirection vers son compte -->
 <?php if(isset($_SESSION['user-online'])){
+    //Variable session de l'user
     if($_SESSION['user-online']==true){
         header ("Location: account");
     }
 }
 
 if(isset($_SESSION['toast'])) {
+    //Toast de fail connexion
     if($_SESSION['toast']=='login-failed'){
         ?>
         <script type="text/javascript">
@@ -16,8 +18,8 @@ if(isset($_SESSION['toast'])) {
         <?php
     }
     unset($_SESSION['toast']);
-}?>
-
+} ?>
+<!--Affichage à l'écran de connexion-->
 <div class="container">
     <div class="section">
         <form action="connect-validation" method="post">

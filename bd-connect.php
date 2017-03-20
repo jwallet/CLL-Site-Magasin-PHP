@@ -15,7 +15,7 @@ if ($mysqli -> connect_error) {
 $mysqli->set_charset("UTF8");
 $fichier = explode("/", $_SERVER['PHP_SELF']);
 $fichier = $fichier[count($fichier)-1];
-if(isset($_COOKIE['cookiesaccepted']) or $fichier=="connect"){
+if(isset($_COOKIE['cookiesaccepted'])){
     session_start();
 }
 ?>

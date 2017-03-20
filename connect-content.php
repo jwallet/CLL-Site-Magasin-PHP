@@ -33,8 +33,8 @@ if(isset($_SESSION['toast'])) {
                     <input id="icon_password" type="password" name="password" id="password" class="validate" required>
                     <label for="icon_password">Mot de passe</label>
                 </div>
-                <button style="width: 94%; margin-left:3%; margin-right: 3%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?>"
-                   type='submit' name="connect">Se connecter</button>
+                <button style="width: 94%; margin-left:3%; margin-right: 3%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']; if(!isset($_COOKIE['cookiesaccepted'])){echo " disabled";}?>"
+                   type='submit' name="connect"><?php if(!isset($_COOKIE['cookiesaccepted'])){echo "Vous devez accepter les cookies";}else{ echo "Se connecter";}?></button>
         </form>
     </div>
 </div>

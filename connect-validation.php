@@ -1,6 +1,5 @@
 <?php
 if(isset($_POST['email']) and isset($_POST['password'])){
-    session_start();
     include("bd-connect.php");
 
     $sql = "SELECT id, prenom, nom, telephone, adresse, isadmin, isnew FROM personne WHERE email LIKE ? AND passe LIKE ?;";
@@ -25,6 +24,7 @@ if(isset($_POST['email']) and isset($_POST['password'])){
         $_SESSION['user-adresse'] = $adresse;
         $_SESSION['user-isadmin'] = $isadmin;
         $_SESSION['user-isnew'] = $isnew;
+
         if(!$_SESSION['user-isadmin']){
             if(!$_SESSION['user-isnew']) {
                 $redirect = "menu"; //une fois connecte un user, il va shopper

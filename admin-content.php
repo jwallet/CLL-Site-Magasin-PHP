@@ -62,19 +62,10 @@
         <div class="collapsible-body" style="padding:0;">
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
-                    <a href="admin-commande-list" class="black-text">
+                    <a href="admin-commande-statistique" class="black-text">
                         <div class="collapsible-header grey lighten-3">
                             <div class="container">
-                                <i class="material-icons"></i>Voir les commandes recues
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="black-text">
-                        <div class="collapsible-header grey lighten-3">
-                            <div class="container">
-                                <i class="material-icons"></i>Archives des commandes
+                                <i class="material-icons"></i>Statistique des commandes
                             </div>
                         </div>
                     </a>

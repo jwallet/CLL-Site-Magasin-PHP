@@ -4,6 +4,7 @@ if(isset($_POST['id']) and
     isset($_POST['email']) and isset($_POST['prenom']) and
     isset($_POST['nom']) and isset($_POST['telephone'])) {
     include("bd-connect.php");
+    session_start();
     $sql = "UPDATE personne SET passe = ?, prenom = ?, nom = ?, telephone = ?, adresse = ?, isnew = 0 WHERE id = ? AND email LIKE ? AND passe LIKE ?;";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("sssssiss",$passe, $prenom, $nom, $telephone, $adresse, $id, $email, $oldpass);
@@ -45,7 +46,23 @@ if(isset($_POST['id']) and
         $_SESSION['user-adresse'] = $adresse;
         $_SESSION['user-isadmin'] = $isadmin;
         $_SESSION['user-isnew'] = $isnew;
+        setcookie("cookiesaccepted",true,time()+31556926);//cookies accepted
         $redirect = "menu"; //une fois connecte un user, il va shopper
+    }
+    else{
+        if(isset($_SESSION['user-online'])) {
+            unset($_SESSION['user-online']);
+            unset($_SESSION['user-id']);
+            unset($_SESSION['user-email']);
+            unset($_SESSION['user-passe']);
+            unset($_SESSION['user-prenom']);
+            unset($_SESSION['user-nom']);
+            unset($_SESSION['user-telephone']);
+            unset($_SESSION['user-adresse']);
+            unset($_SESSION['user-isadmin']);
+            unset($_SESSION['user-isnew']);
+        }
+        $redirect = "account-first-access";
     }
 
     $stmt->free_result();

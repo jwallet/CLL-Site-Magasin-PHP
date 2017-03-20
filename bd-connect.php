@@ -1,4 +1,8 @@
 <?php
+if(isset($_POST['accepter'])){
+    setcookie("cookiesaccepted",true,time()+31556926);//cookies accepted
+    echo "<meta http-equiv=\"refresh\" content=\"0;URL='#'>";
+}
 $_GLOBAL['mail-user'] = 'robot.laboiteabouf@gmail.com';
 $_GLOBAL['mail-psw'] = 'robotadmin123';
 $_GLOBAL['mail-cc'] = 'laboiteabouf@outlook.com';
@@ -9,5 +13,9 @@ if ($mysqli -> connect_error) {
     die('Impossible de se connecter à la bd:' . $mysqli->connect_error);
 }
 $mysqli->set_charset("UTF8");
-session_start();
+$fichier = explode("/", $_SERVER['PHP_SELF']);
+$fichier = $fichier[count($fichier)-1];
+if(isset($_COOKIE['cookiesaccepted']) or $fichier=="connect"){
+    session_start();
+}
 ?>

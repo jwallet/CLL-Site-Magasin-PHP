@@ -1,6 +1,8 @@
 <?php
 if(isset($_POST['email']) and isset($_POST['password'])){
+    session_start();
     include("bd-connect.php");
+
     $sql = "SELECT id, prenom, nom, telephone, adresse, isadmin, isnew FROM personne WHERE email LIKE ? AND passe LIKE ?;";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ss",$email,$passe);
@@ -26,12 +28,14 @@ if(isset($_POST['email']) and isset($_POST['password'])){
         if(!$_SESSION['user-isadmin']){
             if(!$_SESSION['user-isnew']) {
                 $redirect = "menu"; //une fois connecte un user, il va shopper
+                setcookie("cookiesaccepted",true,time()+31556926);//cookies accepted
             }
             else{
                 $redirect = "account-first-access"; //si premier acces, va remplir tes infos.
             }
         }
         else{
+            setcookie("cookiesaccepted",true,time()+31556926);//cookies accepted
             $redirect = 'admin'; //une fois connecte un admin, il va au dashboard admin
         }
     }

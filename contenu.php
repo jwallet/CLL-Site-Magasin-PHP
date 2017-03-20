@@ -6,6 +6,34 @@ $sql = "SELECT * FROM w_pages_contenu WHERE CONCAT(fichier,'.php') LIKE '$fichie
 $result = $mysqli->query($sql);
 $page = $result->fetch_assoc();
 
+//---------------------cookie accepter --------------------------------
+
+if(!isset($_COOKIE['cookiesaccepted'])){
+    echo "
+<div style='position:fixed;width:100%;bottom:0; z-index:5;' class='hide-on-small-only'>
+    <form method='post' action='#'>
+        <div class=\"toast\" style='position:static;width:100%;'>
+            <p>Ce site internet utilise et sauvegarde sur votre ordinateur des petits fichiers texte, 
+            aussi appelés cookies, qui permetteront de vous identifier.</p>
+            <div style='width:350px;'>
+                <button style='margin:0;width:100%;' name=\"accepter\" type='submit' class='btn grey grey-text text-darken-4'><b>J'accepte</b></button>
+            </div>
+        </div>
+    </form>   
+</div>
+<div style='position:fixed;width:100%;bottom:0;z-index:5;' class='hide-on-med-and-up'>
+    <form method='post' action='#'>
+        <div class=\"toast\" style='position:static;width:100%;display:block;'>
+            <p>Ce site internet utilise et sauvegarde sur votre ordinateur des petits fichiers texte, 
+            aussi appelés cookies, qui permetteront de vous identifier.</p>
+            <div style='width:100%;margin-top:10px;'>
+                <button style='margin:0;width:100%;' name=\"accepter\" type='submit' class='btn grey grey-text text-darken-4'><b>J'accepte</b></button>
+            </div>
+        </div>
+    </form>   
+</div>";
+}
+//-----------------------------
 //----------verification des acces---------------------------------------------------------
 //verification si user est connecte et qui veut ouvrir la page connexion pareille = retour
 if(isset($_SESSION['user-online'])){

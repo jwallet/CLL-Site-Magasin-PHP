@@ -14,8 +14,8 @@ $_GLOBAL['couleur-menu-4a'] = "white";
 $_GLOBAL['couleur-menu-4b'] = "";
 $_GLOBAL['couleur-menu-5a'] = "black";
 
-$_GLOBAL['jour-limite-commander'] = 5; //vendredi = 5, quand sera desactiver la commande
-$_GLOBAL['jour-limite-commander-text'] = "friday"; //anglais pour datetime
+$_GLOBAL['jour-limite-commander'] = 4; //vendredi = 5, quand sera desactiver la commande
+$_GLOBAL['jour-limite-commander-text'] = "thursday"; //anglais pour datetime
 $_GLOBAL['jour-debut-commander-text'] = "monday"; //anglais pour datetime
 $_GLOBAL['jour-debut-commander'] = 1; //lundi = 1, quand sera ouvert
 $_GLOBAL['entreprise'] = "Boîte à Bouf";

@@ -1,0 +1,22 @@
+<?php
+    include("bd-connect.php");
+    $stmt = $mysqli->prepare("SELECT id FROM menu m WHERE m.isnow=1;");
+    $stmt->execute();
+    $stmt->bind_result($idActual);
+    $stmt->fetch();
+    $stmt->free_result();
+    $stmt = $mysqli->prepare("SELECT id FROM menu m WHERE m.isnext=1;");
+    $stmt->execute();
+    $stmt->bind_result($idNext);
+    if($stmt->fetch()) {
+        $stmt->free_result();
+        $stmt = $mysqli->prepare("UPDATE menu SET isnow=1, isnext=0 WHERE id=?;");
+        $stmt->bind_param("i", $idNext);
+        $stmt->execute();
+        $stmt->free_result();
+    }
+    $stmt = $mysqli->prepare("UPDATE menu SET isnow=0, isnext=0 WHERE id=?;");
+    $stmt->bind_param("i", $idActual);
+    $stmt->execute();
+    $stmt->free_result();
+?>

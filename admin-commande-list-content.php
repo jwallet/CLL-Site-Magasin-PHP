@@ -74,36 +74,36 @@ $stmt->free_result();
     </thead>
 
     <tbody>
-        <tr>
-            <td><b>Total<br/>(portions)</b></td>
-            <?php for($j=0; $j<sizeof($itemsBdId); $j++){
-                $TotalQuantite = 0;
-                $stmt = $mysqli->prepare("SELECT SUM(Quantite) FROM commande_detail AS cd JOIN commande AS c ON c.id = cd.idcommande JOIN personne p ON p.id = c.idpersonne JOIN menu m on m.id = c.idmenu WHERE cd.iditem = ? and m.isnow=1 and p.isnew!=2;");
-                $stmt->bind_param("i",$itemsBdId[$j]);
-                $stmt->execute();
-                $stmt->bind_result($TotalQuantite);
-                $stmt->fetch();
-                $stmt->free_result();
-                if (!isset($TotalQuantite)){
-                    $TotalQuantite = 0;
-                }
-                ?>
-                <td><?php echo $TotalQuantite ;?> </td>
-                <?php
-            }
-            ?>
-            <?php
-            $stmt = $mysqli->prepare("SELECT SUM(Quantite*i.prix) FROM commande_detail AS cd JOIN commande AS c ON c.id = cd.idcommande JOIN personne p on p.id = c.idpersonne JOIN menu m on m.id = c.idmenu JOIN item i ON cd.iditem = i.id WHERE m.isnow=1 and p.isnew!=2;");
-            $stmt->execute();
-            $stmt->bind_result($Total);
-            $stmt->fetch();
-            $stmt->free_result();
-            if (!isset($Total)){
-                $Total = 0;
-            }
-            ?>
-            <td><?php echo money_format('%(#10n', ($Total));?></td>
-        </tr>
+<!--        <tr>-->
+<!--            <td><b>Total<br/>(portions)</b></td>-->
+<!--            --><?php //for($j=0; $j<sizeof($itemsBdId); $j++){
+//                $TotalQuantite = 0;
+//                $stmt = $mysqli->prepare("SELECT SUM(Quantite) FROM commande_detail AS cd JOIN commande AS c ON c.id = cd.idcommande JOIN personne p ON p.id = c.idpersonne JOIN menu m on m.id = c.idmenu WHERE cd.iditem = ? and m.isnow=1 and p.isnew!=2;");
+//                $stmt->bind_param("i",$itemsBdId[$j]);
+//                $stmt->execute();
+//                $stmt->bind_result($TotalQuantite);
+//                $stmt->fetch();
+//                $stmt->free_result();
+//                if (!isset($TotalQuantite)){
+//                    $TotalQuantite = 0;
+//                }
+//                ?>
+<!--                <td>--><?php //echo $TotalQuantite ;?><!-- </td>-->
+<!--                --><?php
+//            }
+//            ?>
+<!--            --><?php
+//            $stmt = $mysqli->prepare("SELECT SUM(Quantite*i.prix) FROM commande_detail AS cd JOIN commande AS c ON c.id = cd.idcommande JOIN personne p on p.id = c.idpersonne JOIN menu m on m.id = c.idmenu JOIN item i ON cd.iditem = i.id WHERE m.isnow=1 and p.isnew!=2;");
+//            $stmt->execute();
+//            $stmt->bind_result($Total);
+//            $stmt->fetch();
+//            $stmt->free_result();
+//            if (!isset($Total)){
+//                $Total = 0;
+//            }
+//            ?>
+<!--            <td>--><?php //echo money_format('%(#10n', ($Total));?><!--</td>-->
+<!--        </tr>-->
     <?php
     for($i=0; $i<sizeof($personnesId); $i++)
     {

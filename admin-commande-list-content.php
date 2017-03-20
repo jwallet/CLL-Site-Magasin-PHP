@@ -49,7 +49,7 @@ while($stmt->fetch()) {
 }
 $stmt->free_result();
 //Aller chercher tous les clients actifs
-$stmt = $mysqli->prepare("SELECT id,prenom,nom FROM personne WHERE isadmin=0 and isnew!=2 order by nom;");
+$stmt = $mysqli->prepare("SELECT DISTINCT(p.id),p.prenom,p.nom FROM personne AS p LEFT JOIN commande AS c ON c.idpersonne = p.id LEFT JOIN commande_detail AS cd ON c.id = cd.idcommande WHERE p.isadmin=0 and p.isnew!=2 order by cd.quantite DESC, p.nom;");
 $stmt->execute();
 $stmt->bind_result($id,$prenom,$nom);
 while($stmt->fetch()) {
@@ -127,7 +127,7 @@ $stmt->free_result();
                 $stmt->fetch();
                 $stmt->free_result();
                 ?>
-                <td><?php echo $Quantite ;?></td>
+                <td><?php if($Quantite!=0){echo "<b>$Quantite</b>";}else{ echo "<span class='grey-text'>$Quantite</span>";} ;?></td>
             <?php
             }
             $stmt = $mysqli->prepare("SELECT SUM(i.prix * cd.Quantite) FROM item AS i JOIN commande_detail AS cd ON i.id = cd.iditem JOIN commande c ON c.id = cd.idcommande JOIN personne p ON p.id = c.idpersonne WHERE c.id = ? and p.isnew!=2;");

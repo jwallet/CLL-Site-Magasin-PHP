@@ -22,6 +22,24 @@ while($stmt->fetch()) {
     $itemsBdPrixWeek[] = $trois;
 }
 $stmt->free_result();
+//Prix totale de tous les clients
+$stmt = $mysqli->prepare("SELECT SUM(Quantite*i.prix) FROM commande_detail AS cd JOIN commande AS c ON c.id = cd.idcommande JOIN personne p on p.id = c.idpersonne JOIN menu m on m.id = c.idmenu JOIN item i ON cd.iditem = i.id WHERE m.isnow=1 and p.isnew!=2;");
+$stmt->execute();
+$stmt->bind_result($Total);
+$stmt->fetch();
+$stmt->free_result();
+if (!isset($Total)){
+      $Total = 0;
+      }
+//Nombre de portions total
+$stmt = $mysqli->prepare("SELECT SUM(quantite) FROM commande_detail cd JOIN item i ON cd.iditem = i.id JOIN commande c ON cd.idcommande = c.id JOIN menu m ON c.idmenu = m.id WHERE m.isnow=1 order by quantite DESC;");
+$stmt->execute();
+$stmt->bind_result($TotalPortion);
+$stmt->fetch();
+$stmt->free_result();
+if (!isset($TotalPortion)){
+    $TotalPortion = 0;
+}
 ?>
 <div class="container"><h5>Les trois repas les plus vendus</h5></div>
 <table class="striped centered">
@@ -56,5 +74,10 @@ $stmt->free_result();
             <td><?php echo $itemsBdQteWeek[$j];?></td>
         </tr>
     <?php }?>
+        <tr>
+            <td><u><b>Total</b></u></td>
+            <td><b><?php echo money_format('%(#10n', $Total);?></b></td>
+            <td><b><?php echo $TotalPortion;?></b></td>
+        </tr>
     </tbody>
 </table>

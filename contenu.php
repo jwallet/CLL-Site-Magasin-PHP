@@ -6,6 +6,30 @@ $sql = "SELECT * FROM w_pages_contenu WHERE CONCAT(fichier,'.php') LIKE '$fichie
 $result = $mysqli->query($sql);
 $page = $result->fetch_assoc();
 
+//---------------------cookie accepter --------------------------------
+
+if(!isset($_COOKIE['cookiesaccepted'])){
+    $avertissementcookies = "Pour utiliser ce site internet vous devez accepter qu'il puisse sauvegarder et lire sur votre ordinateur des petits fichiers texte, 
+            aussi appelés cookies, qui permetteront de vous identifier et commander en tant que client.";
+    echo "
+<div style='position:fixed;width:100%;bottom:0; z-index:5;'>
+    <form method='post' action='#'>
+        <div class=\"toast hide-on-small-only\" style='position:static;width:100%;word-break: normal;'>
+            <p>$avertissementcookies</p>
+            <div style='width:350px;'>
+                <button style='margin:0;width:100%;' name=\"accepter\" type='submit' class='btn waves-effect waves-light brown darken-1 white-text'><b>J'accepte</b></button>
+            </div>
+        </div>
+        <div class=\"toast hide-on-med-and-up\" style='position:static;width:100%;display:block;word-break: normal;'>
+            <p>$avertissementcookies</p>
+            <div style='width:100%;margin-top:10px;'>
+                <button style='margin:0;width:100%;' name=\"accepter\" type='submit' class='btn waves-effect waves-light brown darken-1 white-text'><b>J'accepte</b></button>
+            </div>
+        </div>
+    </form>   
+</div>";
+}
+//-----------------------------
 //----------verification des acces---------------------------------------------------------
 //verification si user est connecte et qui veut ouvrir la page connexion pareille = retour
 if(isset($_SESSION['user-online'])){
@@ -34,15 +58,15 @@ if(isset($_SESSION['user-online'])){
 }
 //verification des pages bloquantes, si user est pas connecter et veut acceder a des pages avec acces
 else{
-    if(($page['categorie']!="home" and $page['categorie']!="menu") or $page['fichier']=="account-first-access"){
+    if(($page['categorie']!="home" and $page['categorie']!="menu" and $page['categorie']!="erreurs") or $page['fichier']=="account-first-access"){
         header ("Location: connect");
     }
 }
 //-------------fin verification acces------------------------------------------------------
 
 ?>
-<div class="progress" id="mainProgressBar" style="margin:0;">
-    <div class="indeterminate"></div>
+<div class="progress <?php echo $_GLOBAL['couleur2a']. " " . $_GLOBAL['couleur2b']?>" id="mainProgressBar" style="margin:0;position:fixed;top:0;">
+    <div class="indeterminate <?php echo $_GLOBAL['couleur-menu-2a']?>"></div>
 </div>
 
     <nav class="<?php echo $_GLOBAL['couleur1a'] . " " . $_GLOBAL['couleur1b'] ?>" style="background-image:url('css/res/wood.jpg');background-size:auto 62px;border-bottom:2px solid #4e342e;text-shadow: #444 0px -2px;">
@@ -113,7 +137,7 @@ else{
     </nav>
 
     <?php
-include_once($page["fichier"]."-content.php");
+    include_once($page["fichier"] . "-content.php");
 ?>
 
 <script type="text/javascript">

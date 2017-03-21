@@ -1,17 +1,23 @@
+
 <?php if(isset($_SESSION['toast'])) {
+    //Toast Modification
     if ($_SESSION['toast'] == 'plat-type-mod'){?>
         <script type="text/javascript">
             $(document).ready(function () {
                 Materialize.toast('Type de plat modifié', 3000);
             });
         </script>
-    <?php }elseif($_SESSION['toast'] == 'plat-type-add'){ ?>
+    <?php }elseif($_SESSION['toast'] == 'plat-type-add'){
+            //Toast lors d'un ajout
+            ?>
             <script type="text/javascript">
                     $(document).ready(function () {
                     Materialize.toast('Type de plat ajouté', 3000);
                     });
             </script>
-    <?php }elseif($_SESSION['toast'] == 'erreur-plat-type'){ ?>
+    <?php }elseif($_SESSION['toast'] == 'erreur-plat-type'){
+        //Toast lors d'un erreur
+        ?>
         <script type="text/javascript">
             $(document).ready(function () {
                 Materialize.toast('La modification a échoué', 3000);
@@ -36,6 +42,7 @@ while($stmt->fetch()) {
 }
 $stmt->close();
 ?>
+<!--Affichage des plats dans un dropdownlist, de l'ordre...-->
 <div class="container">
     <div class="section">
         <form action="admin-plat-type-validation" method="POST">

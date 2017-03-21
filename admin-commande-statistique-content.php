@@ -23,7 +23,7 @@ while($stmt->fetch()) {
 }
 $stmt->free_result();
 ?>
-<h4 class="center"><b><u>Les trois repas les plus vendus</u></b></h4>
+<div class="container"><h5>Les trois repas les plus vendus</h5></div>
 <table class="striped centered">
     <thead>
     <th data-field="TitreItem">Titre du repas</th>
@@ -34,14 +34,14 @@ $stmt->free_result();
     <?php for($j=0; $j<sizeof($itemsBdTitre); $j++){ ?>
         <tr>
             <td><?php echo $itemsBdTitre[$j];?></td>
-            <td><?php echo $itemsBdPrix[$j];?></td>
+            <td><?php echo money_format('%(#10n', $itemsBdPrix[$j]);?></td>
             <td><?php echo $itemsBdQte[$j];?></td>
         </tr>
     <?php }?>
     </tbody>
 </table>
 <br>
-<h4 class="center"><b><u>Les ventes de la semaine</u></b></h4>
+<div class="container"><h5>Les ventes de la semaine</h5></div>
 <table class="striped centered">
     <thead>
     <th data-field="TitreItem">Titre du repas</th>
@@ -52,7 +52,7 @@ $stmt->free_result();
     <?php for($j=0; $j<sizeof($itemsBdTitreWeek); $j++){ ?>
         <tr>
             <td><?php echo $itemsBdTitreWeek[$j];?></td>
-            <td><?php echo $itemsBdPrixWeek[$j];?></td>
+            <td><?php echo money_format('%(#10n', $itemsBdPrixWeek[$j]);?></td>
             <td><?php echo $itemsBdQteWeek[$j];?></td>
         </tr>
     <?php }?>

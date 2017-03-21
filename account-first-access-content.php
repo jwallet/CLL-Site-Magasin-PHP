@@ -63,10 +63,10 @@ if(isset($_SESSION['toast'])) {
                 <input type="text" name="adresse" id="adresse" value="<?php echo $_SESSION['user-adresse']?>">
                 <label for="adresse">Adresse</label>
             </div>
-            <p>
-                <input style="left:inherit;margin-left:2px;margin-top:8px;" type="checkbox" name="accepter" id="cookie" class="validate" required>
-                <label for="cookie"><?php echo str_replace("</p>","",str_replace("<p>","",$tarea)); ?></label>
-            </p><br/>
+<!--            <p>-->
+<!--                <input style="left:inherit;margin-left:2px;margin-top:8px;" type="checkbox" name="accepter" id="cookie" class="validate" required>-->
+<!--                <label for="cookie">--><?php //echo str_replace("</p>","",str_replace("<p>","",$tarea)); ?><!--</label>-->
+<!--            </p><br/>-->
             <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?>"
                     type='submit' name="connect">Enregistrer</button>
         </form>

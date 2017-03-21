@@ -1,4 +1,5 @@
 <?php
+//Code d'Ajout et modification d'un type de plat
 if(isset($_POST['type']) and isset($_POST['id']) and isset($_POST['ordre'])) {
     include("bd-connect.php");
     $type = $_POST['type'];
@@ -6,6 +7,7 @@ if(isset($_POST['type']) and isset($_POST['id']) and isset($_POST['ordre'])) {
     $ordre = $_POST['ordre'];
     echo $type . " ".$id . " ". $ordre;
     if ($id != 0) {
+        //Modification d'un type de plat
         $sql = "UPDATE p_item SET type=?, ordre=? WHERE id=?;";
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param("sii", $type, $ordre, $id);
@@ -16,6 +18,7 @@ if(isset($_POST['type']) and isset($_POST['id']) and isset($_POST['ordre'])) {
         $stmt->free_result();
         $stmt->close();
     } else {
+        //Ajout d'un type plat
         $sql = "INSERT INTO p_item (type,ordre) values (?,?)";
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param("si", $type, $ordre);

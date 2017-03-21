@@ -1,5 +1,6 @@
 <?php
 include("bd-connect.php");
+//Vérification de l'adresse
 if(isset($_SESSION['user-id']) and isset($_POST['adresse'])){
     $sql = "UPDATE personne SET adresse = ? WHERE id = ?;";
     $stmt = $mysqli->prepare($sql);

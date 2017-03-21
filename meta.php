@@ -14,8 +14,8 @@ $_GLOBAL['couleur-menu-4a'] = "white";
 $_GLOBAL['couleur-menu-4b'] = "";
 $_GLOBAL['couleur-menu-5a'] = "black";
 
-$_GLOBAL['jour-limite-commander'] = 5; //vendredi = 5, quand sera desactiver la commande
-$_GLOBAL['jour-limite-commander-text'] = "friday"; //anglais pour datetime
+$_GLOBAL['jour-limite-commander'] = 4; //vendredi = 5, quand sera desactiver la commande
+$_GLOBAL['jour-limite-commander-text'] = "thursday"; //anglais pour datetime
 $_GLOBAL['jour-debut-commander-text'] = "monday"; //anglais pour datetime
 $_GLOBAL['jour-debut-commander'] = 1; //lundi = 1, quand sera ouvert
 $_GLOBAL['entreprise'] = "Boîte à Bouf";
@@ -33,7 +33,7 @@ $page = $result->fetch_assoc();
 <meta name='description' content='<?php echo $_GLOBAL['entreprise']; ?> est un service traiteur qui offre des plats cuisinés maison.'/>
 <meta name='keywords' content='Boîte, à, Bouf, bouffe, traiteur, plats, cuisine, maison'/>
 <meta name='author' content='Jose Ouellet et Guillaume Prudhomme'/>
-<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'/>
 <title><?php echo $page['titre'] ?> - <?php echo $_GLOBAL['entreprise']; ?></title>
 
 <!--mettre les valeurs meta (copier-coller) dans les fichiers independants index.html et index.php-->

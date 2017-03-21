@@ -76,18 +76,18 @@
                 </div>
             </div>
             <?php if($id!="" and isset($image)){?>
-            <div class="center">
-                <div class="card center">
-                    <span class="card-title">Image associée à ce plat</span>
-                    <div class="card-image" alt="<?php echo ucfirst(strtolower($titre)); ?>"
-                     style="height:280px;width:100%;background-size:100% auto;background-position:center;background-repeat: no-repeat;
-                             background-image:url('<?php echo $_GLOBAL['dirimg'].$image; ?>');">
+                <div class="center">
+                    <div class="card center">
+                        <span class="card-title">Image associée à ce plat</span>
+                        <div class="card-image" alt="<?php echo ucfirst(strtolower($titre)); ?>"
+                             style="height:280px;width:100%;background-size:100% auto;background-position:center;background-repeat: no-repeat;
+                                     background-image:url('<?php echo $_GLOBAL['dirimg'].$image; ?>');">
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php } ?>
             <button style="width: 100%;" class="waves-effect waves-light btn-large <?php echo $_GLOBAL['couleur1a']?> "
-                        type='submit'>Enregistrer</button>
+                    type='submit'>Enregistrer</button>
         </form>
     </div>
 </div>

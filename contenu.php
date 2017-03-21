@@ -12,7 +12,7 @@ if(!isset($_COOKIE['cookiesaccepted'])){
     echo "
 <div style='position:fixed;width:100%;bottom:0; z-index:5;' class='hide-on-small-only'>
     <form method='post' action='#'>
-        <div class=\"toast\" style='position:static;width:100%;'>
+        <div class=\"toast\" style='position:static;width:100%;word-break: normal;'>
             <p>Ce site internet utilise et sauvegarde sur votre ordinateur des petits fichiers texte, 
             aussi appelés cookies, qui permetteront de vous identifier.</p>
             <div style='width:350px;'>
@@ -23,7 +23,7 @@ if(!isset($_COOKIE['cookiesaccepted'])){
 </div>
 <div style='position:fixed;width:100%;bottom:0;z-index:5;' class='hide-on-med-and-up'>
     <form method='post' action='#'>
-        <div class=\"toast\" style='position:static;width:100%;display:block;'>
+        <div class=\"toast\" style='position:static;width:100%;display:block;word-break: normal;'>
             <p>Ce site internet utilise et sauvegarde sur votre ordinateur des petits fichiers texte, 
             aussi appelés cookies, qui permetteront de vous identifier.</p>
             <div style='width:100%;margin-top:10px;'>

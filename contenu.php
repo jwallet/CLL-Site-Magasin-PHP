@@ -62,7 +62,7 @@ if(isset($_SESSION['user-online'])){
 }
 //verification des pages bloquantes, si user est pas connecter et veut acceder a des pages avec acces
 else{
-    if(($page['categorie']!="home" and $page['categorie']!="menu") or $page['fichier']=="account-first-access"){
+    if(($page['categorie']!="home" and $page['categorie']!="menu" and $page['categorie']!="erreurs") or $page['fichier']=="account-first-access"){
         header ("Location: connect");
     }
 }
@@ -141,7 +141,7 @@ else{
     </nav>
 
     <?php
-include_once($page["fichier"]."-content.php");
+    include_once($page["fichier"] . "-content.php");
 ?>
 
 <script type="text/javascript">

@@ -9,23 +9,19 @@ $page = $result->fetch_assoc();
 //---------------------cookie accepter --------------------------------
 
 if(!isset($_COOKIE['cookiesaccepted'])){
+    $avertissementcookies = "Pour utiliser ce site internet vous devez accepter qu'il puisse sauvegarder et lire sur votre ordinateur des petits fichiers texte, 
+            aussi appelés cookies, qui permetteront de vous identifier et commander en tant que client.";
     echo "
-<div style='position:fixed;width:100%;bottom:0; z-index:5;' class='hide-on-small-only'>
+<div style='position:fixed;width:100%;bottom:0; z-index:5;'>
     <form method='post' action='#'>
-        <div class=\"toast\" style='position:static;width:100%;word-break: normal;'>
-            <p>Ce site internet utilise et sauvegarde sur votre ordinateur des petits fichiers texte, 
-            aussi appelés cookies, qui permetteront de vous identifier.</p>
+        <div class=\"toast hide-on-small-only\" style='position:static;width:100%;word-break: normal;'>
+            <p>$avertissementcookies</p>
             <div style='width:350px;'>
                 <button style='margin:0;width:100%;' name=\"accepter\" type='submit' class='btn grey grey-text text-darken-4'><b>J'accepte</b></button>
             </div>
         </div>
-    </form>   
-</div>
-<div style='position:fixed;width:100%;bottom:0;z-index:5;' class='hide-on-med-and-up'>
-    <form method='post' action='#'>
-        <div class=\"toast\" style='position:static;width:100%;display:block;word-break: normal;'>
-            <p>Ce site internet utilise et sauvegarde sur votre ordinateur des petits fichiers texte, 
-            aussi appelés cookies, qui permetteront de vous identifier.</p>
+        <div class=\"toast hide-on-med-and-up\" style='position:static;width:100%;display:block;word-break: normal;'>
+            <p>$avertissementcookies</p>
             <div style='width:100%;margin-top:10px;'>
                 <button style='margin:0;width:100%;' name=\"accepter\" type='submit' class='btn grey grey-text text-darken-4'><b>J'accepte</b></button>
             </div>

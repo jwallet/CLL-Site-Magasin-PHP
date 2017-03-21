@@ -10,8 +10,11 @@
     </head>
     <body>
         <?php
+            echo "<main>";
             include_once("contenu.php");
+            echo "</main>";
             include_once("footer.php");
         ?>
+
     </body>
 </html>

@@ -12,7 +12,7 @@ while($stmt->fetch()) {
     $itemsBdPrix[] = $trois;
 }
 $stmt->free_result();
-$stmt = $mysqli->prepare("SELECT quantite,i.titre, i.prix FROM commande_detail cd JOIN item i ON cd.iditem = i.id JOIN commande c ON cd.idcommande = c.id JOIN menu m ON c.idmenu = m.id WHERE m.isnow=1 order by quantite DESC LIMIT 4");
+$stmt = $mysqli->prepare("SELECT SUM(quantite),i.titre, i.prix FROM commande_detail cd JOIN item i ON cd.iditem = i.id JOIN commande c ON cd.idcommande = c.id JOIN menu m ON c.idmenu = m.id WHERE m.isnow=1 GROUP BY i.titre,i.prix order by quantite DESC");
 $stmt->execute();
 $stmt->bind_result($un,$deux,$trois);
 $j = 0;
